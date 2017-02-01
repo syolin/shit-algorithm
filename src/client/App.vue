@@ -1,7 +1,5 @@
 <template>
-  <div class="app full-height">
-    <h1>{{ message }}</h1>
-    <a v-link="{ name: 'hello' }">Goto Hello</a>
+  <div id="app">
     <router-view></router-view>
   </div>
 </template>
@@ -17,14 +15,12 @@ export default {
 </script>
 
 <style>
-html {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+  #app{
+    width: 100%;
+    height: 100vh;
+  }
+  *{
+    margin:0;
+    padding:0;
+  }
 </style>

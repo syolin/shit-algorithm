@@ -1,18 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-import App from './App'
-import Hello from './components/Hello'
-
 Vue.config.debug = true
 Vue.use(Router)
+// Awesome Swiper
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
+
+import App from './App'
+
+import index from './components/main/index'
 
 const router = new Router()
 
 router.map({
-  '/hello': {
-    name: 'hello',
-    component: Hello
+  '/': {
+    name: 'index',
+    component: index
   }
 })
 
