@@ -1,22 +1,16 @@
 import express from 'express'
 
-const api = express.Router();
+import user from './users/users';
+
+const router = express.Router();
 
 /* GET home page. */
-api.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.json({
-        success: "hi"
-    });
-});
-api.get('/users', function(req, res, next) {
-    res.json({
-        success: "hi"
-    });
-});
-api.get('/users2', function(req, res, next) {
-    res.json({
-        success: "hi"
+        result : "this is indexs / "
     });
 });
 
-export default api
+router.use('/users', user);
+
+export default router

@@ -1,3 +1,4 @@
+// module loader
 import express from 'express';
 import path from 'path';
 import favicon from 'serve-favicon';
@@ -5,12 +6,19 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import webpack from 'webpack';
+import mongoose from 'mongoose';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
+// router
 import router from './router/client/index';
 import api from './router/api/index';
+import apiUsers from './router/api/users/users';
+// webpack config
 import config from '../../webpack.config';
+
+// config.js
+import mongoConfig from './config';
 
 const app = express();
 
@@ -35,12 +43,23 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
+// client router
 app.use('/', router);
+
+//api router
 app.use('/api', api);
+
+// MongoDB connection
+mongoose.connect(mongoConfig.mongodbUri);
+const database = mongoose.connection;
+database.on('error', console.error);
+database.once('open', () => {
+   console.log('Connected to mongodb server');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err)
 });

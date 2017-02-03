@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+require('es6-promise/auto');
 
 module.exports = {
     entry: path.join(__dirname, 'src/client/index.js'),
@@ -15,21 +16,9 @@ module.exports = {
         root: path.join(__dirname, 'node_modules')
     },
     module: {
-        preLoaders: [
-            {
-                test: /\.vue$/,
-                loader: 'eslint',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.js$/,
-                loader: 'eslint',
-                exclude: /node_modules/
-            }
-        ],
         loaders: [
             {
-                //Awesome Swiper 로더 등록
+                //Awesome Swiper 로더 ? 등록
                 test: /\.css$/,
                 loaders: ['vue-style-loader', 'css-loader']
             },

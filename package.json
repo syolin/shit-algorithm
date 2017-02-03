@@ -1,5 +1,5 @@
 {
-  "name": "vue-express-dev-boilerplate",
+  "name": "shit",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -41,6 +41,20 @@
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.7.1"
+    "webpack-hot-middleware": "^2.7.1",
+    "webpack-hot-middleware": "^2.7.1",
+     "jsonwebtoken": "^7.2.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "es6-promise": "^4.0.5",
+    "vue-axios": "^1.2.2",
+    "jsonwebtoken": "^7.2.1",
+    "mongoose": "^4.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "xss": "^0.3.3"
   }
 }
