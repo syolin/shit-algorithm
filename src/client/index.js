@@ -18,7 +18,9 @@ import users from './components/users/index'
 // Vue Router
 Vue.config.debug = true
 Vue.use(Router)
-const router = new Router()
+const router = new Router({
+    mode: 'history'
+})
 router.map({
   '/': {
     name: 'index',
