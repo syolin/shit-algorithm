@@ -4,7 +4,6 @@
           <login v-if="sign"></login>
           <register v-else="sign"></register>
           <button type="button" name="button" v-on:click="change_sign">{{sign_msg}}</button>
-
         </div>
     </div>
 </template>
@@ -14,6 +13,8 @@
     import login from './login.vue'
     import register from './register.vue'
 
+
+    // 변수에 넣어서 출력
     export default {
         name: 'index',
         components: {
