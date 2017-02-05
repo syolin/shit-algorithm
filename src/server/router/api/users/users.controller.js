@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import model from '../../../models/user.model';
+import crypto from 'crypto';
 
 const User = mongoose.model('User');
 
@@ -20,8 +21,10 @@ User.findOneByUserId = userId => {
     }).exec();
 };
 
-User.verify = password => {
-    return this.password === password
+User.passwordHash = password => {
+    const passwordHash = crypto.createHash("sha512").update(password).digest("hex");
+
+    return passwordHash;
 };
 
 export default User;
