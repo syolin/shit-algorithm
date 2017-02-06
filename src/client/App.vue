@@ -3,12 +3,112 @@
         <div id="menu">
             <ul>
                 <li><a v-link="{path: '/'}">MAIN</a></li>
-                <li><a v-link="{path: '/users'}">SIGN</a></li>
+                <li><a @click="openModal">SIGN</a></li>
                 <li><a v-link="{path: '/'}">MENU1</a></li>
                 <li><a v-link="{path: '/'}">MENU2</a></li>
+                <!--<li v-on:click="signModal = true">SIGN BUTTON</li>-->
             </ul>
         </div>
+        <div id="sign">
+
+            <div class="ui modal">
+
+                <i class="close icon" v-on:click="closeModal"></i>
+                <div class="login_form" v-if="signLogin">
+                    <div class="description">
+                        <div class="ui two column centered grid">
+                            <div class="container">
+                                <div class="culnmn">
+                                    <h1 class="ui grey header">로그인</h1>
+
+                                    <form class="ui large form">
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="user icon"></i>
+                                                <input type="text" name="email" placeholder="E-mail address">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="lock icon"></i>
+                                                <input type="password" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                        <div class="ui fluid large teal submit button">Login</div>
+                                    </form>
+                                    <div class="subtile" id="subid">
+                                        <a href="#">회원가입</a>
+                                    </div>
+                                    <div class="subtile" id="subpass">
+                                        <a href="#">아이디ㅣ비밀번호 찾기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="register_form" v-else>
+                    <div class="description">
+                        <div class="ui two column centered grid">
+                            <div class="container">
+                                <div class="culnmn">
+                                    <h1 class="ui grey header">회원가입</h1>
+
+                                    <form class="ui large form">
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="user icon"></i>
+                                                <input type="text" name="email" placeholder="userid">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="lock icon"></i>
+                                                <input type="password" name="password" placeholder="********">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="user icon"></i>
+                                                <input type="password" name="password" placeholder="username">
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui left icon input">
+                                                <i class="student icon"></i>
+                                                <input type="password" name="password" placeholder="class">
+                                            </div>
+                                        </div>
+                                        <div class="ui fluid large teal submit button">
+                                            <i class="sign in icon"></i>
+                                            Login
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="register">-->
+                        <!--<input type="text" id="username" name="username" v-model="username">-->
+                        <!--<input type="text" id="userid" name="userid" v-model="userid">-->
+                        <!--<input type="text" id="password" name="password" v-model="password">-->
+                        <!--<input type="text" id="studentcode" name="studentCode" v-model="studentcode">-->
+                        <!--</div>-->
+
+                    </div>
+
+                </div>
+                <div class="signBUtton">
+                <button v-on:click="signLogin = true" class="ui button black">
+                    로그인하기
+                </button>
+                <button v-on:click="signLogin = false" class="ui button black">
+                    회원가입하기
+                </button>
+                </div>
+            </div>
+        </div>
         <router-view></router-view>
+
     </div>
 </template>
 
@@ -16,9 +116,38 @@
     export default {
         data () {
             return {
-                message: 'Express + Vue boilerplate'
+                signLogin: true,
+                username: '',
+                userid: '',
+                password: '',
+                studentcode: ''
             }
         },
+        methods: {
+            openModal: function () {
+                $('.ui.modal').modal('show');
+            },
+            closeModal: function () {
+                $('.ui.modal').modal('hide')
+            },
+            submit(){
+                if (signLogin === true) {
+                    //로그인
+
+                }
+                else {
+                    //회원가입
+                    alert('regis');
+                    this.$http.post('api/users/signup', {
+                        username: this.username,
+                        userid: this.userid,
+                        password: this.password,
+                        studentcode: this.studentcode
+                    })
+                }
+
+            }
+        }
     }
 </script>
 
@@ -31,7 +160,6 @@
     #app {
         width: 100%;
         height: calc(100vh - 100px);
-        margin-top: 100px;
     }
 
     #menu {
@@ -40,17 +168,62 @@
         width: 100%;
         top: 0px;
         z-index: 5;
-        background-color: blue;
     }
-    li{
+
+    li {
         float: left;
-        list-style:none;
+        list-style: none;
+        cursor: pointer;
     }
+
     a {
         color: white;
         float: left;
         list-style: none;
         margin-left: 50px;
         cursor: pointer;
+    }
+    .signButton{
+        display: flex;
+        justify-content: center;
+    }
+
+    #subdiv {
+        margin-top: 30px;
+    }
+
+    #subh {
+        margin-bottom: 30px;
+    }
+
+    #loginbtn {
+        margin-bottom: 20px;
+        background-color: rgb(134, 82, 33);
+        color: white;
+    }
+
+    #formgrid {
+        padding: 0;
+    }
+    .container{
+        height: auto;
+        padding: 100px;
+    }
+
+    #topbtn {
+        width: 200px;
+        margin: 20px 0px 30px 0px;
+    }
+
+    .subtile {
+        margin-top: 10px
+    }
+
+    #subpass {
+        margin: 0;
+    }
+
+    .ui.grey.header {
+        margin-top: 10px;
     }
 </style>

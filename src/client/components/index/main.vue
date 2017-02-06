@@ -63,7 +63,8 @@
                 swiperOption: {
                     parallax: true,
                     speed: 600,
-                    autoplay: 3000
+                    autoplay: 5000,
+                    autoplayDisableOnInteraction: false,
                 }
             }
         }

@@ -37,7 +37,7 @@ module.exports = {
                 loader: 'json'
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(png|jpg|gif|svg|woff|ttf|woff2|eot)$/,
                 loader: 'url',
                 query: {
                     limit: 10000,
@@ -51,6 +51,6 @@ module.exports = {
         formatter: require('eslint-friendly-formatter')
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
     ]
 }
