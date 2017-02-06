@@ -1,16 +1,83 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import xssFilters from 'xss-filters';
+import compose from 'composable-middleware';
 
 import controller from './users.controller';
-
+import auth from '../../../modules/auth';
 
 const router = express.Router();
+
+
+// let isAuthenticated = (req, res, next) => {
+//     const decoded = jwt.verify(token, secret);
+//     console.log(decoded);
+// };
 
 router.get('/', function (req, res) {
    res.send({
        result: 'This is Users api router'
    });
+});
+
+/*
+    GET /api/users/:id
+    해당 유저 정보
+ */
+// router.get('/:id', function (req, res) {
+//
+//     const param = xssFilters.inHTMLData(req.params.id);
+//
+//     const respond = user => {
+//
+//     };
+//
+//     const onError = error => {
+//
+//     };
+//
+//     controller.findOneByUserId(param)
+//         .then(respond)
+//         .then(onError)
+// });
+
+// const isAuthenticated = () => {
+//
+//     return compose()
+//         .use((req, res, next) => {
+//             const token = req.headers.authorization;
+//             if (token) {
+//                 let secret = req.app.get('jwt-secret');
+//                 try {
+//                     const decode = jwt.verify(req.headers.authorization, secret);
+//                     req.user = decode;
+//
+//                     next();
+//                 } catch(error) {
+//                     res.status(403).json({
+//                         result: 'error',
+//                         message: error.message
+//                     });
+//                 }
+//             } else {
+//                 res.status(403).json({
+//                     result: 'error',
+//                     message: 'not token'
+//                 })
+//             }
+//         })
+//         .use((req, res, next) => {
+//             req.user = {
+//                 userId: req.user.userId,
+//                 username: req.user.username,
+//                 studentCode: req.user.studentCode
+//             };
+//             next();
+//         });
+// };
+
+router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
+    res.send(req.user);
 });
 
 /*
@@ -117,12 +184,12 @@ router.post('/signup', function(req, res) {
  */
 router.post('/signin', function (req, res) {
 
+    let secret = req.app.get('jwt-secret');
+
     const userInfo = {
         userId : xssFilters.inHTMLData(req.body.userid),
         password : xssFilters.inHTMLData(req.body.password)
     };
-
-    const secret = req.app.get('jwt-secret');
 
     const validation = user => {
         if (!userInfo.userId || !userInfo.password) throw new Error('validation error');
@@ -136,11 +203,12 @@ router.post('/signin', function (req, res) {
         if(user.account == false) throw new Error('account false');
 
         if (user.password === controller.passwordHash(userInfo.password)) {
-            const loginPromise = new Promise((resolve, reject) => {
+            const jwtPromise = new Promise((resolve, reject) => {
                 jwt.sign(
                     {
-                        _id: user._id,
-                        userId: user.userId
+                        username: user.username,
+                        userId: user.userId,
+                        studentCode: user.studentCode
                     },
                     secret,
                     {
@@ -150,7 +218,7 @@ router.post('/signin', function (req, res) {
                         resolve(token);
                     });
             });
-            return loginPromise;
+            return jwtPromise;
 
         } else {
             throw new Error('login fail');
