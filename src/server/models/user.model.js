@@ -19,6 +19,10 @@ const UserSchema = new Schema({
         type: Number,
         required: true,
     },
+    account: {
+        type: Boolean,
+        required: true
+    }
     // problems: {
     //     code: Number,
     //     result: String,

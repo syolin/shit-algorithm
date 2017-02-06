@@ -1,17 +1,52 @@
 import express from 'express';
-import passport from 'passport';
 import jwt from 'jsonwebtoken';
+import xssFilters from 'xss-filters';
 
 import controller from './users.controller';
 
 
 const router = express.Router();
 
-/* GET home page. */
 router.get('/', function (req, res) {
    res.send({
-       result: 'hello'
+       result: 'This is Users api router'
    });
+});
+
+/*
+    GET /api/account/:id
+    테스트 Account 인가 라우트
+ */
+router.get('/account/:id', function (req, res) {
+
+    const param = xssFilters.inHTMLData(req.params.id);
+
+    const account = user => {
+        controller.accountTrue(user.userId);
+        return user;
+    };
+
+    const respond = user => {
+        res.json({
+            result: 'success',
+            message: {
+                username: user.username,
+                userId: user.userId
+            }
+        });
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            user : error.message
+        })
+    };
+
+    controller.findOneByUserId(param)
+        .then(account)
+        .then(respond)
+        .catch(onError);
 });
 
 
@@ -28,32 +63,27 @@ router.post('/signup', function(req, res) {
 
     // 요청 들어온 body 값
     const userInfo = {
-        username : req.body.username,
-        userId : req.body.userid,
-        password : req.body.password,
-        studentCode : req.body.studentcode
+        username : xssFilters.inHTMLData(req.body.username),
+        userId : xssFilters.inHTMLData(req.body.userid),
+        password : xssFilters.inHTMLData(req.body.password),
+        studentCode : xssFilters.inHTMLData(req.body.studentcode)
     };
 
     // Validation
     const validation = user => {
-        if (!userInfo.username || !userInfo.userId || !userInfo.password || !userInfo.studentCode) throw new Error('값이 입력되지 않았음');
+        if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode)) throw new Error('validation error');
 
         return user;
     };
 
-    // Password Hash
-    const hash = user => {
-        const selt = Math.round((new Date().valueOf() * Math.random())) + "";
-        const passwordHash = crypto.createHash("sha512").update(userInfo.password+selt);
-    };
-
     // 아이디 체크 및 데이터 입력
     const create = user => {
-        if (user) throw new Error('이미 사용중인 아이디');
+        if (user) throw new Error('username exit');
 
+        const accountFalse = false;
         const passwordHash = controller.passwordHash(userInfo.password);
 
-        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode);
+        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse);
     };
 
     const respond = user => {
@@ -88,20 +118,22 @@ router.post('/signup', function(req, res) {
 router.post('/signin', function (req, res) {
 
     const userInfo = {
-        userId : req.body.userid,
-        password : req.body.password
+        userId : xssFilters.inHTMLData(req.body.userid),
+        password : xssFilters.inHTMLData(req.body.password)
     };
 
     const secret = req.app.get('jwt-secret');
 
     const validation = user => {
-        if (!userInfo.userId || !userInfo.password) throw new Error('값이 입력되지 않았음');
+        if (!userInfo.userId || !userInfo.password) throw new Error('validation error');
 
         return user;
     };
 
     const check = user => {
-        if (!user) throw new Error('로그인 실패');
+        if (!user) throw new Error('login fail');
+
+        if(user.account == false) throw new Error('account false');
 
         if (user.password === controller.passwordHash(userInfo.password)) {
             const loginPromise = new Promise((resolve, reject) => {
@@ -121,7 +153,7 @@ router.post('/signin', function (req, res) {
             return loginPromise;
 
         } else {
-            throw new Error('로그인 실패');
+            throw new Error('login fail');
         }
     };
 
