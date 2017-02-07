@@ -1,6 +1,5 @@
 var path = require('path')
 var webpack = require('webpack')
-require('es6-promise/auto');
 
 module.exports = {
     entry: path.join(__dirname, 'src/client/index.js'),
@@ -47,10 +46,7 @@ module.exports = {
         ]
     },
     devtool: 'eval-source-map',
-    eslint: {
-        formatter: require('eslint-friendly-formatter')
-    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
     ]
-}
+};
