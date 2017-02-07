@@ -1,7 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import xssFilters from 'xss-filters';
-import compose from 'composable-middleware';
 
 import controller from './users.controller';
 import auth from '../../../modules/auth';
@@ -77,7 +76,10 @@ router.get('/', function (req, res) {
 // };
 
 router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
-    res.send(req.user);
+    res.json({
+        result: 'success',
+        user : req.user
+    });
 });
 
 /*
@@ -88,6 +90,7 @@ router.get('/account/:id', function (req, res) {
 
     const param = xssFilters.inHTMLData(req.params.id);
 
+    // 승인 처리
     const account = user => {
         controller.accountTrue(user.userId);
         return user;
@@ -184,7 +187,7 @@ router.post('/signup', function(req, res) {
  */
 router.post('/signin', function (req, res) {
 
-    let secret = req.app.get('jwt-secret');
+    const secret = req.app.get('jwt-secret');
 
     const userInfo = {
         userId : xssFilters.inHTMLData(req.body.userid),
@@ -200,26 +203,12 @@ router.post('/signin', function (req, res) {
     const check = user => {
         if (!user) throw new Error('login fail');
 
+        // 승인 처리 확인
         if(user.account == false) throw new Error('account false');
 
+        // Password Hash 인증
         if (user.password === controller.passwordHash(userInfo.password)) {
-            const jwtPromise = new Promise((resolve, reject) => {
-                jwt.sign(
-                    {
-                        username: user.username,
-                        userId: user.userId,
-                        studentCode: user.studentCode
-                    },
-                    secret,
-                    {
-                        expiresIn: '1d'
-                    }, (err, token) => {
-                        if (err) reject(err);
-                        resolve(token);
-                    });
-            });
-            return jwtPromise;
-
+            return auth.signToken(user, secret);
         } else {
             throw new Error('login fail');
         }
