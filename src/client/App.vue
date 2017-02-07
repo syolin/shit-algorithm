@@ -30,14 +30,17 @@
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="lock icon"></i>
-                                                <input type="password" name="password" placeholder="비밀번호"v-model="password">
+                                                <input type="password" name="password" placeholder="비밀번호"
+                                                       v-model="password">
                                             </div>
                                         </div>
-                                        <div v-on:click="submit"class="ui fluid large teal submit button submitButton">로그인</div>                                        
+                                        <div v-on:click="submit" class="ui fluid large teal submit button submitButton">
+                                            로그인
+                                        </div>
                                     </form>
-                                      <button v-on:click="signLogin = false" class="ui button black signButton">
-                                      회원가입하기
-                                        </button>
+                                    <button v-on:click="signLogin = false" class="ui button black signButton">
+                                        회원가입하기
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -60,35 +63,33 @@
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="lock icon"></i>
-                                                <input type="password" name="password" placeholder="비밀번호"v-model="password">
+                                                <input type="password" name="password" placeholder="비밀번호"
+                                                       v-model="password">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="user icon"></i>
-                                                <input type="text" name="username" placeholder="이름"v-model="username">
+                                                <input type="text" name="username" placeholder="이름" v-model="username">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="student icon"></i>
-                                                <input type="number" name="studentcode" placeholder="학번"v-model="studentcode">
+                                                <input type="number" name="studentcode" placeholder="학번"
+                                                       v-model="studentcode">
                                             </div>
                                         </div>
-                                            <div v-on:click="submit" class="ui fluid large teal submit button submitButton">회원가입</div>
+                                        <div v-on:click="submit" class="ui fluid large teal submit button submitButton">
+                                            회원가입
+                                        </div>
                                     </form>
-                                        <button v-on:click="signLogin = true" class="ui button black signButton">
-                                         로그인하기
-                                        </button>
+                                    <button v-on:click="signLogin = true" class="ui button black signButton">
+                                        로그인하기
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="register">-->
-                        <!--<input type="text" id="username" name="username" v-model="username">-->
-                        <!--<input type="text" id="userid" name="userid" v-model="userid">-->
-                        <!--<input type="text" id="password" name="password" v-model="password">-->
-                        <!--<input type="text" id="studentcode" name="studentCode" v-model="studentcode">-->
-                        <!--</div>-->
 
                     </div>
 
@@ -124,8 +125,8 @@
                 if (this.signLogin === true) {
                     //로그인
                     this.$http.post('api/users/signin', {
-                    userid: this.userid,
-                    password: this.password,
+                        userid: this.userid,
+                        password: this.password,
                     })
                 }
                 else {
@@ -148,11 +149,13 @@
         margin: 0;
         padding: 0;
     }
-    .ui.grey.header{
+
+    .ui.grey.header {
         margin-top: 0px;
         margin-bottom: 50px;
-        font-size:2.5rem
+        font-size: 2.5rem
     }
+
     #app {
         width: 100%;
         height: calc(100vh - 100px);
@@ -171,7 +174,8 @@
         list-style: none;
         cursor: pointer;
     }
-    .submitButton{
+
+    .submitButton {
         margin-top: 40px;
     }
 
@@ -182,7 +186,8 @@
         margin-left: 50px;
         cursor: pointer;
     }
-    .signButton{
+
+    .signButton {
         margin-top: 15px;
         width: 100%;
     }
@@ -204,9 +209,10 @@
     #formgrid {
         padding: 0;
     }
-    .container{
+
+    .container {
         height: auto;
-        padding:50px 170px 110px;
+        padding: 50px 170px 110px;
     }
 
     #topbtn {

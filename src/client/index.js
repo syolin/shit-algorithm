@@ -16,7 +16,6 @@ Vue.prototype.$http = axios;
 // Import Vue Components
 import App from './App'
 import index from './components/index/index'
-import users from './components/users/index'
 
 // Vue Router
 Vue.config.debug = true;
@@ -32,19 +31,13 @@ const routes = [
     {
       path: '/', component : index
     },
-    {
-      path: '/users', component : users
-    }
+
 ];
 router.map({
   '/': {
     name: 'index',
     component: index
   },
-  '/users': {
-    name: 'users',
-    component: users
-  }
 });
 router.beforeEach(() => {
   window.scrollTo(0, 0)
