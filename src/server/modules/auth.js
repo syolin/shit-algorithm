@@ -2,7 +2,9 @@ import jwt from 'jsonwebtoken';
 import compose from 'composable-middleware';
 
 const auth = {
-    signToken : (user, secret) => {
+
+    // 토큰 부여여
+   signToken : (user, secret) => {
         return new Promise((resolve, reject) => {
             jwt.sign(
                 {
@@ -19,6 +21,8 @@ const auth = {
                 });
         });
     },
+
+    // 인증 여부 확인
     isAuthenticated : () => {
         return compose()
             .use((req, res, next) => {
