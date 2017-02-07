@@ -3,7 +3,6 @@
  * - 문제 번호
  * - 문제 이름
  * - 출처
- * - 제출자 => 문제 제출 search
  * - 시간 제한
  * - 문제 설명
  * - 입력 예제
@@ -20,3 +19,50 @@
  * - 시간
  * - 제출 시간
  */
+
+import mongoose from 'mongoose';
+
+const Schema = mongoose.Schema;
+
+const ProblemSchema = new Schema({
+    num: {
+        type: Number,
+        required: true,
+    },
+    problemName: {
+        type: String,
+        required: true,
+    },
+    source: {
+        type: String,
+        required: true,
+    },
+    explanation: {
+        type: String,
+        required: true,
+    },
+    problemInfo: {
+        inputExample: String,
+        outputExample: String,
+        timeLimit: {
+            type: Number,
+            required: true,
+        },
+        memoryLimit: {
+            type: String,
+            required: true,
+        }
+    },
+    submission: {
+        success: Number,
+        fail: Number,
+        average: Number
+    },
+    account: {
+        type: Boolean,
+        required: true
+    }
+
+});
+
+export default mongoose.model('User', ProblemSchema);
