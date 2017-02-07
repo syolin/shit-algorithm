@@ -33,7 +33,7 @@
                                                 <input type="password" name="password" placeholder="비밀번호"v-model="password">
                                             </div>
                                         </div>
-                                        <div v-on:click="submit"class="ui fluid large teal submit button">로그인</div>
+                                        <div v-on:click="submit"class="ui fluid large teal submit button submitButton">로그인</div>                                        
                                     </form>
                                       <button v-on:click="signLogin = false" class="ui button black signButton">
                                       회원가입하기
@@ -75,9 +75,7 @@
                                                 <input type="number" name="studentcode" placeholder="학번"v-model="studentcode">
                                             </div>
                                         </div>
-                                        <div class="ui fluid large teal submit button">
-                                            <div v-on:click="submit" class="ui fluid large teal submit button">회원가입</div>
-                                        </div>
+                                            <div v-on:click="submit" class="ui fluid large teal submit button submitButton">회원가입</div>
                                     </form>
                                         <button v-on:click="signLogin = true" class="ui button black signButton">
                                          로그인하기
@@ -125,7 +123,6 @@
                 alert(this.signLogin);
                 if (this.signLogin === true) {
                     //로그인
-                    alert('login');
                     this.$http.post('api/users/signin', {
                     userid: this.userid,
                     password: this.password,
@@ -133,7 +130,6 @@
                 }
                 else {
                     //회원가입
-                    alert('regis');
                     this.$http.post('api/users/signup', {
                         username: this.username,
                         userid: this.userid,
@@ -174,6 +170,9 @@
         float: left;
         list-style: none;
         cursor: pointer;
+    }
+    .submitButton{
+        margin-top: 40px;
     }
 
     a {
