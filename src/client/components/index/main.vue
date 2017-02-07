@@ -115,13 +115,13 @@
     .swiper-slide .title {
         font-size: 41px;
         font-weight: 300;
-        color: coral;
+        color: #fff;
 
     }
 
     .swiper-slide .subtitle {
         font-size: 21px;
-        color: coral;
+        color: #fff;
 
     }
 
@@ -129,7 +129,7 @@
         font-size: 14px;
         max-width: 400px;
         line-height: 1.3;
-        color: coral;
+        color: #fff;
 
     }
 </style>

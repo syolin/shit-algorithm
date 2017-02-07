@@ -1,3 +1,9 @@
+<!--
+#a5dff9
+#ef5285
+#60c5ba
+#feee7d
+-->
 <template>
     <div id="app">
         <div id="menu">
@@ -145,22 +151,15 @@
 </script>
 
 <style scoped>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
     .ui.grey.header {
         margin-top: 0px;
         margin-bottom: 50px;
         font-size: 2.5rem
     }
-
     #app {
         width: 100%;
         height: calc(100vh - 100px);
     }
-
     #menu {
         position: absolute;
         height: 100px;
@@ -168,66 +167,53 @@
         top: 0px;
         z-index: 5;
     }
-
     li {
         float: left;
         list-style: none;
         cursor: pointer;
+        list-style: none;
+        cursor: pointer;
     }
-
     .submitButton {
         margin-top: 40px;
     }
-
     a {
         color: white;
-        float: left;
-        list-style: none;
+        font-size: 30px;
         margin-left: 50px;
-        cursor: pointer;
     }
-
     .signButton {
         margin-top: 15px;
         width: 100%;
     }
-
     #subdiv {
         margin-top: 30px;
     }
-
     #subh {
         margin-bottom: 30px;
     }
-
     #loginbtn {
         margin-bottom: 20px;
         background-color: rgb(134, 82, 33);
         color: white;
     }
-
     #formgrid {
         padding: 0;
     }
-
     .container {
         height: auto;
         padding: 50px 170px 110px;
     }
-
     #topbtn {
         width: 200px;
         margin: 20px 0px 30px 0px;
     }
-
     .subtile {
         margin-top: 10px
     }
-
     #subpass {
         margin: 0;
     }
-
     .ui.grey.header {
         margin-top: 10px;
     }
