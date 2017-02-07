@@ -47,10 +47,10 @@ module.exports = {
         ]
     },
     devtool: 'eval-source-map',
-    eslint: {
-        formatter: require('eslint-friendly-formatter')
-    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+      'jQuery': 'jquery'
+    })
     ]
 }

@@ -3,8 +3,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'semantic-ui/dist/semantic.css'
-import 'semantic-ui/dist/semantic.js'
+import 'semantic-ui/dist/semantic.min.css'
+import 'semantic-ui/dist/semantic.min.js'
+import jquery from 'jquery'
+window.$ = jquery
+window.jQuery = jquery
 
 // Vue Use
 Vue.use(axios);
