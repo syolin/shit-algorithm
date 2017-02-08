@@ -46,7 +46,6 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-mongoose.Promise = global.Promise;
 mongoose.connect(mongoConfig.mongodbUri);
 const database = mongoose.connection;
 database.on('error', console.error);
