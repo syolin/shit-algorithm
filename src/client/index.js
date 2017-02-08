@@ -1,6 +1,7 @@
 // Import Module
 import Vue from 'vue'
 import Router from 'vue-router'
+import Vuex from 'vuex'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'semantic-ui/dist/semantic.min.css'
@@ -10,6 +11,7 @@ window.$ = jquery
 window.jQuery = jquery
 
 // Vue Use
+Vue.use(Vuex);
 Vue.use(axios);
 Vue.use(VueAwesomeSwiper);
 
@@ -19,6 +21,7 @@ Vue.prototype.$http = axios;
 // Import Vue Components
 import App from './App'
 import index from './components/index/index'
+import problems from './components/problems/problems'
 
 // Vue Router
 Vue.config.debug = true;
@@ -34,12 +37,19 @@ const routes = [
     {
       path: '/', component : index
     },
+    {
+      path: '/problems', component : problems
+    },
 
 ];
 router.map({
   '/': {
     name: 'index',
     component: index
+  },
+  '/problems': {
+  name: 'problems',
+  component: problems
   },
 });
 router.beforeEach(() => {

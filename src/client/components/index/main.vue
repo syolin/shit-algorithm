@@ -73,8 +73,8 @@
 
 <style scoped>
     .main {
-        height: 100%;
-        z-index: 3;
+    height: 100%;
+    z-index: 3;
     }
     .parallax{
         height: 100%;
@@ -100,7 +100,7 @@
         top: 0;
         width: 130%;
         height: 100%;
-        background-image: url(../../img/bg.jpg);
+        background-image: url(../../assets/img/bg.jpg);
         -webkit-background-size: cover;
         background-size: cover;
         background-position: center;
