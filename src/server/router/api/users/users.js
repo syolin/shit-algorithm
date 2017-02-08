@@ -98,6 +98,10 @@ router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
     GET /api/account/:id
     테스트 Account 인가 라우트
  */
+import mongoose from 'mongoose';
+import model from '../../../models/user.model';
+const User = mongoose.model('User');
+
 router.get('/account/:id', function (req, res) {
 
 });
