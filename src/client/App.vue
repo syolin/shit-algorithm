@@ -114,6 +114,7 @@
 
 <script>
     export default {
+        name: 'vm',
         data () {
             return {
                 loginState: false,
@@ -127,7 +128,7 @@
         },
         methods: {
             logout(){
-                loginState = false;
+                this.loginState = false;
             },
             openModal() {
                 $('.ui.modal').modal('show');
@@ -144,15 +145,17 @@
                     })
                     .then(function (response) {
                         alert('success')
-                        loginState = true;
+                        this.loginState = true;
                         alert(response.data.result + ' ' + response.data.token);
                         $('.ui.modal').modal('hide');                        
                     })
                     .catch(function (error) {
-                        alert(error.data.message);                                              
-
+                        if(error.response.data.message == 'account false'){
+                            alert("승인중입니다");
+                           $('.ui.modal').modal('hide');    
+                           console.log(this.data());
+                        }
                     });
-
                 }
                 else {
                     //회원가입
