@@ -46,19 +46,21 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
+mongoose.Promise = global.Promise;
+mongoose.connect(mongoConfig.mongodbUri);
+const database = mongoose.connection;
+database.on('error', console.error);
+database.once('open', () => {
+    console.log('Connected to mongodb server');
+});
+
+
+
 // client router
 app.use('/', router);
 
 //api router
 app.use('/api', api);
-
-// MongoDB connection
-mongoose.connect(mongoConfig.mongodbUri);
-const database = mongoose.connection;
-database.on('error', console.error);
-database.once('open', () => {
-   console.log('Connected to mongodb server');
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

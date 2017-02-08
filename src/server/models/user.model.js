@@ -21,7 +21,6 @@ const UserSchema = new Schema({
     },
     account: {
         type: Boolean,
-        required: true
     }
     // problems: {
     //     code: Number,
