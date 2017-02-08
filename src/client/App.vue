@@ -158,10 +158,10 @@
                         alert(response.data.result + ' ' + response.data.token);
                         $('.ui.modal').modal('hide');                        
                     })
-                    .catch(function (error) {
+                    .catch((error) => {
                         if(error.response.data.message == 'account false'){
                             alert("승인중입니다");
-                           $('.ui.modal').modal('hide');    
+                           $('.ui.modal').modal('hide');
                            console.log(this.loginState);
                         }
                     });
