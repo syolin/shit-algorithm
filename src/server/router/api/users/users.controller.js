@@ -17,6 +17,10 @@ User.create = (username, userId, password, studentCode, account) => {
     return user.save();
 };
 
+User.findAll = () => {
+    return User.find();
+};
+
 // 유저 정보 검색
 User.findOneByUserId = userId => {
     return User.findOne({
@@ -32,7 +36,10 @@ User.passwordHash = password => {
 };
 
 User.accountTrue = userId => {
-    return User.update({userId: userId}, {$set: {account: true}});
+    // return User.update({userId: userId}, {$set: {account: true}});
+    User.update({userId: userId}, {$set:{account:true}});
 };
+
+
 
 export default User;

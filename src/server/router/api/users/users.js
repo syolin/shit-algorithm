@@ -1,5 +1,4 @@
 import express from 'express';
-import jwt from 'jsonwebtoken';
 import xssFilters from 'xss-filters';
 
 import controller from './users.controller';
@@ -14,9 +13,22 @@ const router = express.Router();
 // };
 
 router.get('/', function (req, res) {
-   res.send({
-       result: 'This is Users api router'
-   });
+   const respond = users => {
+        res.json({
+            user : users
+        })
+   };
+
+   const onError = error => {
+       res.status(409).json({
+           result: 'error',
+           message: error.message
+       });
+   };
+
+   controller.findAll()
+       .then(respond)
+       .catch(onError);
 });
 
 /*
@@ -88,35 +100,6 @@ router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
  */
 router.get('/account/:id', function (req, res) {
 
-    const param = xssFilters.inHTMLData(req.params.id);
-
-    // 승인 처리
-    const account = user => {
-        controller.accountTrue(user.userId);
-        return user;
-    };
-
-    const respond = user => {
-        res.json({
-            result: 'success',
-            message: {
-                username: user.username,
-                userId: user.userId
-            }
-        });
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result: 'error',
-            user : error.message
-        })
-    };
-
-    controller.findOneByUserId(param)
-        .then(account)
-        .then(respond)
-        .catch(onError);
 });
 
 
@@ -204,8 +187,13 @@ router.post('/signin', function (req, res) {
         if (!user) throw new Error('login fail');
 
         // 승인 처리 확인
-        if(user.account == false) throw new Error('account false');
+        if(user.account == false)
+            throw new Error('account false');
+        else
+            return user;
+    };
 
+    const token = user => {
         // Password Hash 인증
         if (user.password === controller.passwordHash(userInfo.password)) {
             return auth.signToken(user, secret);
@@ -231,6 +219,7 @@ router.post('/signin', function (req, res) {
     controller.findOneByUserId(userInfo.userId)
         .then(validation)
         .then(check)
+        .then(token)
         .then(respond)
         .catch(onError);
 });
