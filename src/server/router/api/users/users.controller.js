@@ -37,6 +37,7 @@ User.passwordHash = password => {
 
 User.accountTrue = userId => {
     // return User.update({userId: userId}, {$set: {account: true}});
+
     User.update({userId: userId}, {$set:{account:true}});
 };
 

@@ -17,6 +17,5 @@ router.get('/', function(req, res, next) {
 
 router.use('/users', user);
 
-router.use('/problems', problem);
 
 export default router
