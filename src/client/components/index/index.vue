@@ -1,10 +1,10 @@
 <template>
     <div id="index">
-        <div class="container">
+        <div class="sigo_container">
             <parallax></parallax>
             <!--<menubar></menubar>-->
         </div>
-        <div class="container">
+        <div class="sigo_container">
             <timeline></timeline>
         </div>
     </div>
@@ -27,15 +27,4 @@
         }
     }
 </script>
-
-<style>
-    .container {
-        width: 100%;
-        height: 100vh;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
-</style>
+<style src="../../assets/css/index.css"></style>

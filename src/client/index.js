@@ -21,7 +21,7 @@ Vue.prototype.$http = axios;
 // Import Vue Components
 import App from './App'
 import index from './components/index/index'
-import problems from './components/problems/index'
+import problems from './components/problems/problems'
 
 // Vue Router
 Vue.config.debug = true;
