@@ -9,12 +9,16 @@
         <div id="menu">
             <ul>
                 <li><a v-link="{path: '/'}">MAIN</a></li>
-                <li><a @click="openModal">SIGN</a></li>
-                <li><a v-link="{path: '/'}">MENU1</a></li>
+                <li v-if="loginState">
+                    <a @click="logout">{{username}}</a>
+                    <a v-link="{path: '/mypage'}">마이페이지</a>
+                </li>                
+                <li v-else><a @click="openModal">SIGN</a></li>
+                <li><a v-link="{path: '/problems'}">문제 풀기</a></li>
                 <li><a v-link="{path: '/'}">MENU2</a></li>
             </ul>
         </div>
-        <div id="sign">
+        <div v-if="loginState == false" id="sign">
 
             <div class="ui modal">
 
@@ -112,28 +116,43 @@
     export default {
         data () {
             return {
+                loginState: false,
                 signLogin: true,
                 username: '',
                 userid: '',
                 password: '',
-                studentcode: ''
+                studentcode: '',
+                loginResult: ''
             }
         },
         methods: {
-            openModal: function () {
+            logout(){
+                loginState = false;
+            },
+            openModal() {
                 $('.ui.modal').modal('show');
             },
-            closeModal: function () {
+            closeModal() {
                 $('.ui.modal').modal('hide')
             },
             submit(){
-                alert(this.signLogin);
                 if (this.signLogin === true) {
                     //로그인
                     this.$http.post('api/users/signin', {
                         userid: this.userid,
                         password: this.password,
                     })
+                    .then(function (response) {
+                        alert('success')
+                        loginState = true;
+                        alert(response.data.result + ' ' + response.data.token);
+                        $('.ui.modal').modal('hide');                        
+                    })
+                    .catch(function (error) {
+                        alert(error.data.message);                                              
+
+                    });
+
                 }
                 else {
                     //회원가입
@@ -143,6 +162,13 @@
                         password: this.password,
                         studentcode: this.studentcode
                     })
+                    .then(function (response) {
+                        alert(response.data.result + ' ' + response.data.username);
+                        $('.ui.modal').modal('hide')
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
                 }
 
             }
