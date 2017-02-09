@@ -57,10 +57,6 @@ const ProblemSchema = new Schema({
         success: Number,
         fail: Number,
         average: Number
-    },
-    account: {
-        type: Boolean,
-        required: true
     }
 
 });

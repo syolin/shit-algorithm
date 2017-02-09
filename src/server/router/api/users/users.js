@@ -188,7 +188,7 @@ router.post('/signin', function (req, res) {
     };
 
     const check = user => {
-        if (!user) throw new Error('login fail');
+        if (!user) throw new Error('login user fail');
 
         // 승인 처리 확인
         if(user.account == false)
@@ -199,10 +199,10 @@ router.post('/signin', function (req, res) {
 
     const token = user => {
         // Password Hash 인증
-        if (user.password === controller.passwordHash(userInfo.password)) {
+        if (user.password == controller.passwordHash(userInfo.password)) {
             return auth.signToken(user, secret);
         } else {
-            throw new Error('login fail');
+            throw new Error('login token fail');
         }
     };
 
