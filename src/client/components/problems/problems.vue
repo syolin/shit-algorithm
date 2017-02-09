@@ -1,30 +1,28 @@
 <template>
-    <div id="problems">
-        <div class="container">
-            <problemList></problemList>
+    <div id="index">
+        <div class="sigo_container">
+            <problemlist></problemlist>
+
         </div>
-        problems
+
     </div>
-    
 </template>
 
 <script>
-    import problemList from './problem_list.vue'
+    import problemlist from './problemlist.vue'
 
     export default {
-        name: 'problemList',
+        name: 'index',
         components: {
-            'problemList' : problemList
+            'problemlist' : problemlist,
         },
         data () {
             return {
 
             }
         }
+
     }
+
 </script>
-
 <style src="../../assets/css/problems.css"></style>
-<style scoped>
-
-</style>

@@ -1,23 +1,45 @@
-<!--
-#a5dff9
-#ef5285
-#60c5ba
-#feee7d
--->
 <template>
     <div id="app">
-        <div id="menu">
-            <ul>
+        <div id="menu" class="ui secondary menu">
+            <ul id="mainmn">
                 <li><a v-link="{path: '/'}">MAIN</a></li>
+            </ul>
+            <ul id="submn">
                 <li v-if="loginState">
                     <a @click="logout">{{username}}</a>
                     <a v-link="{path: '/mypage'}">마이페이지</a>
-                </li>                
-                <li v-else><a @click="openModal">SIGN</a></li>
+                </li>
+                <li><a v-link="{path: '/'}">공지사항</a></li>
                 <li><a v-link="{path: '/problems'}">문제 풀기</a></li>
-                <li><a v-link="{path: '/'}">MENU2</a></li>
+                <li><a v-link="{path: '/'}">강의</a></li>
+                <li><a v-link="{path: '/'}">랭킹</a></li>
+                <li v-else><a @click="openModal">SIGN</a></li>
             </ul>
         </div>
+        <div class="main">
+            <h3 class="ui center aligned header"> 문제풀기
+                <div class="sub header">Manage your account settings and set e-mail preferences.</div>
+            </h3>
+            <div class="ui grid" id="newsp">
+                <div class="sixteen wide column">뉴스피드</div>
+            </div>
+        </div>
+        <!-- <div id="menu">
+          <ul>
+            <li><a v-link="{path: '/'}">MAIN</a></li>
+          </ul>
+            <ul>
+                <li v-if="loginState">
+                    <a @click="logout">{{username}}</a>
+                    <a v-link="{path: '/mypage'}">마이페이지</a>
+                </li>
+                <li><a v-link="{path: '/'}">공지사항</a></li>
+                <li><a v-link="{path: '/problems'}">문제 풀기</a></li>
+                <li><a v-link="{path: '/'}">강의</a></li>
+                <li><a v-link="{path: '/'}">랭킹</a></li>
+                <li v-else><a @click="openModal">SIGN</a></li>
+            </ul>
+        </div> -->
         <div v-if="loginState == false" id="sign">
             <div class="ui modal">
                 <i class="close icon" v-on:click="closeModal"></i>
@@ -86,7 +108,7 @@
                                                 <i class="student icon"></i>
                                                 <input type="text" name="studentcode" placeholder="학번"
                                                        v-model="studentcode" v-on:keypress="isNumber(event)">
-                            
+
                                             </div>
                                         </div>
                                         <div v-on:click="submit" class="ui fluid large teal submit button submitButton">
@@ -117,10 +139,10 @@
             return {
                 loginState: false,
                 signState: true,
-                userid: '',                
-                password: '',                
+                userid: '',
+                password: '',
                 username: '',
-                studentcode: '',                
+                studentcode: '',
                 loginResult: ''
             }
         },
@@ -152,19 +174,19 @@
                         userid: this.userid,
                         password: this.password,
                     })
-                    .then(function (response) {
-                        alert('success')
-                        this.loginState = true;
-                        alert(response.data.result + ' ' + response.data.token);
-                        $('.ui.modal').modal('hide');                        
-                    })
-                    .catch((error) => {
-                        if(error.response.data.message == 'account false'){
-                            alert("승인중입니다");
-                           $('.ui.modal').modal('hide');
-                           console.log(this.loginState);
-                        }
-                    });
+                        .then(function (response) {
+                            alert('success')
+                            this.loginState = true;
+                            alert(response.data.result + ' ' + response.data.token);
+                            $('.ui.modal').modal('hide');
+                        })
+                        .catch((error) => {
+                            if(error.response.data.message == 'account false'){
+                                alert("승인중입니다");
+                                $('.ui.modal').modal('hide');
+                                console.log(this.loginState);
+                            }
+                        });
                 }
                 else {
                     //회원가입
@@ -174,15 +196,14 @@
                         password: this.password,
                         studentcode: this.studentcode
                     })
-                    .then(function (response) {
-                        alert(response.data.result + ' ' + response.data.username);
-                        $('.ui.modal').modal('hide')
-                    })
-                    .catch(function (error) {
-                        alert(error);
-                    });
+                        .then(function (response) {
+                            alert(response.data.result + ' ' + response.data.username);
+                            $('.ui.modal').modal('hide')
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
                 }
-
             }
         }
     }
@@ -191,6 +212,8 @@
 
 <style src="./assets/css/app.css"></style>
 <style scoped>
+    body{
+    }
     .ui.modal{
         height:auto !important;
     }
@@ -200,5 +223,28 @@
     .culnmn{
         padding: 5% 17% 1%;
     }
-
+    .ui.secondary.menu{
+        margin: 15px 0px 0px 0px;
+    }
+    #menu{
+        margin-top: 10px;
+        position: fixed;
+    }
+    #mainmn{
+        margin-right: 50%;
+        margin-left: 70px;
+    }
+    a{
+        font-size: 16px;
+        color: rgb(224, 224, 224);
+    }
+    .ui.center.aligned.header{
+        margin: 70px;
+    }
+    .ui.grid{
+        justify-content: center;
+    }
+    .main{
+        /*margin-top: 1000px;*/
+    }
 </style>
