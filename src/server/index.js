@@ -1,6 +1,5 @@
 // module loader
 import express from 'express';
-import http from 'http';
 import https from 'https';
 import path from 'path';
 import favicon from 'serve-favicon';
@@ -80,7 +79,5 @@ app.use(function(err, req, res, next) {
   })
 });
 
-http.createServer(app).listen(9999);
-https.createServer(options, app).listen(443);
-
+app.listen(9999);
 export default app
