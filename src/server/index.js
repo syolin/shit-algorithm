@@ -1,5 +1,7 @@
 // module loader
 import express from 'express';
+import http from 'http';
+import https from 'https';
 import path from 'path';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
@@ -78,6 +80,7 @@ app.use(function(err, req, res, next) {
   })
 });
 
-app.listen(4000);
+http.createServer(app).listen(9999);
+https.createServer(options, app).listen(443);
 
 export default app
