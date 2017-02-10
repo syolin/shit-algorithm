@@ -9,9 +9,8 @@
                     <a @click="logout">{{username}}</a>
                     <a v-link="{path: '/mypage'}">마이페이지</a>
                 </li>
-                <li><a v-link="{path: '/'}">공지사항</a></li>
+                <li><a v-link="{path: '/notice'}">공지사항</a></li>
                 <li><a v-link="{path: '/problems'}">문제 풀기</a></li>
-                <li><a v-link="{path: '/'}">강의</a></li>
                 <li><a v-link="{path: '/'}">랭킹</a></li>
                 <li v-else><a @click="openModal">SIGN</a></li>
             </ul>
@@ -20,9 +19,6 @@
             <h3 class="ui center aligned header"> 문제풀기
                 <div class="sub header">Manage your account settings and set e-mail preferences.</div>
             </h3>
-            <div class="ui grid" id="newsp">
-                <div class="sixteen wide column">뉴스피드</div>
-            </div>
         </div>
         <!-- <div id="menu">
           <ul>
@@ -143,7 +139,9 @@
                 password: '',
                 username: '',
                 studentcode: '',
-                loginResult: ''
+                loginResult: '',
+                token: '',
+                
             }
         },
         methods: {
@@ -174,13 +172,17 @@
                         userid: this.userid,
                         password: this.password,
                     })
-                        .then(function (response) {
-                            alert('success')
+                        .then((response)=> {
                             this.loginState = true;
-                            alert(response.data.result + ' ' + response.data.token);
+                            this.token = response.data.token;
+                            alert(response.data.result);
+                            alert(this.token);
+                            this.$cookie.set('test', 'Hello world!', 1);
+                            console.log(this.$cookie.get('test'));
                             $('.ui.modal').modal('hide');
                         })
                         .catch((error) => {
+                            alert('error');
                             if(error.response.data.message == 'account false'){
                                 alert("승인중입니다");
                                 $('.ui.modal').modal('hide');

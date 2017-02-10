@@ -1,0 +1,62 @@
+body{
+  padding-top: 70px;
+}
+img.medium.ui.image{
+  width: 440px;
+  height: 225px;
+}
+h1.ui.header{
+  font-size: 40px;
+}
+.container{
+  background-color: #f3f3f3 ;
+  position:absolute;
+top:0;
+right:0;
+bottom:0;
+left:0;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+div.formdiv{
+  padding: 30px;
+  border-bottom: 1px solid #dcdcdc ;
+  background-color: white;
+}
+#subdiv{
+  margin-top: 30px;
+}
+#subh{
+  margin-bottom: 30px;
+}
+#loginbtn{
+  margin-bottom: 20px;
+  background-color: rgb(134, 82, 33);
+  color: white;
+}
+#userid{
+  border: none;
+  border-left-style: solid;
+  border-radius: 0;
+}
+#userpw{
+  border: none;
+  border-left-style: solid;
+  border-radius: 0;
+}
+#adlogin{
+  background-color: #ff9517 ;
+}
+#adlogin:hover{
+  background-color: #e48c22 ;
+}
+#adlogin:active{
+  background-color: #d27f1e ;
+}
+#userid:hover{
+  border-color: #AAA;
+}
+#userpw:hover{
+  border-color: #AAA;
+}
