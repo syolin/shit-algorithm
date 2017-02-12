@@ -172,18 +172,24 @@
                         userid: this.userid,
                         password: this.password,
                     })
-                        .then((response)=> {
+                        .then((res)=> {
                             this.loginState = true;
-                            this.token = response.data.token;
-                            alert(response.data.result);
+                            this.token = res.data.token;
+                            alert(res.data.result);
                             alert(this.token);
-                            this.$cookie.set('test', 'Hello world!', 1);
-                            console.log(this.$cookie.get('test'));
+                            console.log(res.headers);
+                            this.$http.defaults.headers.common["Authorization"] = res.data.token;
+                            console.log(this.$http.defaults.headers);
+                            this.$http.get('api/users/tokentest')
+                                .then(function(res){
+                                    console.log(res);
+                                })
                             $('.ui.modal').modal('hide');
+
                         })
-                        .catch((error) => {
+                        .catch((err) => {
                             alert('error');
-                            if(error.response.data.message == 'account false'){
+                            if(err.response.data.message == 'account false'){
                                 alert("승인중입니다");
                                 $('.ui.modal').modal('hide');
                                 console.log(this.loginState);
