@@ -21,8 +21,14 @@
  */
 
 import mongoose from 'mongoose';
+import autoIncrement from 'mongoose-auto-increment';
 
 const Schema = mongoose.Schema;
+
+const connection = mongoose.createConnection("mongodb://api:godqhrgks123@ds145659.mlab.com:45659/shit_algorithm");
+
+autoIncrement.initialize(connection);
+
 
 const ProblemSchema = new Schema({
     num: {
@@ -41,7 +47,7 @@ const ProblemSchema = new Schema({
         type: String,
         required: true,
     },
-    problemInfo: {
+    problemData: {
         inputExample: String,
         outputExample: String,
         timeLimit: {
@@ -49,16 +55,13 @@ const ProblemSchema = new Schema({
             required: true,
         },
         memoryLimit: {
-            type: String,
+            type: Number,
             required: true,
         }
-    },
-    submission: {
-        success: Number,
-        fail: Number,
-        average: Number
     }
 
 });
 
-export default mongoose.model('Problem', ProblemSchema);
+ProblemSchema.plugin(autoIncrement.plugin, { model: 'Problem', field: 'num'});
+
+    export default mongoose.model('Problem', ProblemSchema);

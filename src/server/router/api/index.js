@@ -1,9 +1,7 @@
 import express from 'express'
 
-// Users router
+// router
 import user from './users/users';
-
-// Problems router
 import problem from './problems/problems';
 
 const router = express.Router();
@@ -16,6 +14,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/users', user);
+
+router.use('/problems', problem);
 
 
 export default router

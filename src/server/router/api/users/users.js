@@ -6,16 +6,11 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
-
-// let isAuthenticated = (req, res, next) => {
-//     const decoded = jwt.verify(token, secret);
-//     console.log(decoded);
-// };
-
 router.get('/', function (req, res) {
    const respond = users => {
         res.json({
-            user : users
+            result: 'success',
+            users : users
         })
    };
 
@@ -51,41 +46,6 @@ router.get('/', function (req, res) {
 //         .then(respond)
 //         .then(onError)
 // });
-
-// const isAuthenticated = () => {
-//
-//     return compose()
-//         .use((req, res, next) => {
-//             const token = req.headers.authorization;
-//             if (token) {
-//                 let secret = req.app.get('jwt-secret');
-//                 try {
-//                     const decode = jwt.verify(req.headers.authorization, secret);
-//                     req.user = decode;
-//
-//                     next();
-//                 } catch(error) {
-//                     res.status(403).json({
-//                         result: 'error',
-//                         message: error.message
-//                     });
-//                 }
-//             } else {
-//                 res.status(403).json({
-//                     result: 'error',
-//                     message: 'not token'
-//                 })
-//             }
-//         })
-//         .use((req, res, next) => {
-//             req.user = {
-//                 userId: req.user.userId,
-//                 username: req.user.username,
-//                 studentCode: req.user.studentCode
-//             };
-//             next();
-//         });
-// };
 
 router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
     res.json({
@@ -127,11 +87,7 @@ router.post('/signup', function(req, res) {
     };
 
     // Validation
-    const validation = user => {
-        if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode)) throw new Error('validation error');
-
-        return user;
-    };
+    if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode)) throw new Error('validation error');
 
     // 아이디 체크 및 데이터 입력
     const create = user => {
@@ -199,7 +155,7 @@ router.post('/signin', function (req, res) {
 
     const token = user => {
         // Password Hash 인증
-        if (user.password == controller.passwordHash(userInfo.password)) {
+        if (user.password === controller.passwordHash(userInfo.password)) {
             return auth.signToken(user, secret);
         } else {
             throw new Error('login token fail');
