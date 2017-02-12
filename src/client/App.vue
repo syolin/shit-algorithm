@@ -5,14 +5,15 @@
                 <li><a v-link="{path: '/'}">MAIN</a></li>
             </ul>
             <ul id="submn">
-                <li v-if="loginState">
-                    <a @click="logout">{{username}}</a>
-                    <a v-link="{path: '/mypage'}">마이페이지</a>
-                </li>
+
                 <li><a v-link="{path: '/notice'}">공지사항</a></li>
                 <li><a v-link="{path: '/problems'}">문제 풀기</a></li>
                 <li><a v-link="{path: '/'}">랭킹</a></li>
-                <li v-else><a @click="openModal">SIGN</a></li>
+                <li v-if="loginState">
+                    <a v-link="{path: '/mypage'}">{{username}}님</a>
+                    <a @click="logout">로그아웃</a>
+                </li>
+                <li v-if="loginState == false"><a @click="openModal">SIGN</a></li>
             </ul>
         </div>
         <div class="main">
@@ -20,22 +21,6 @@
                 <div class="sub header">Manage your account settings and set e-mail preferences.</div>
             </h3>
         </div>
-        <!-- <div id="menu">
-          <ul>
-            <li><a v-link="{path: '/'}">MAIN</a></li>
-          </ul>
-            <ul>
-                <li v-if="loginState">
-                    <a @click="logout">{{username}}</a>
-                    <a v-link="{path: '/mypage'}">마이페이지</a>
-                </li>
-                <li><a v-link="{path: '/'}">공지사항</a></li>
-                <li><a v-link="{path: '/problems'}">문제 풀기</a></li>
-                <li><a v-link="{path: '/'}">강의</a></li>
-                <li><a v-link="{path: '/'}">랭킹</a></li>
-                <li v-else><a @click="openModal">SIGN</a></li>
-            </ul>
-        </div> -->
         <div v-if="loginState == false" id="sign">
             <div class="ui modal">
                 <i class="close icon" v-on:click="closeModal"></i>
@@ -60,7 +45,7 @@
                                                        v-model="password">
                                             </div>
                                         </div>
-                                        <div v-on:click="submit" class="ui fluid large teal submit button submitButton">
+                                        <div v-on:click="submit" v-on:keyup.enter="submit" class="ui fluid large teal submit button submitButton">
                                             로그인
                                         </div>
                                     </form>
@@ -107,7 +92,7 @@
 
                                             </div>
                                         </div>
-                                        <div v-on:click="submit" class="ui fluid large teal submit button submitButton">
+                                        <div v-on:click="submit" v-on:keyup.enter="submit" class="ui fluid large teal submit button submitButton">
                                             회원가입
                                         </div>
                                     </form>
@@ -175,23 +160,27 @@
                         .then((res)=> {
                             this.loginState = true;
                             this.token = res.data.token;
-                            alert(res.data.result);
-                            alert(this.token);
-                            console.log(res.headers);
-                            this.$http.defaults.headers.common["Authorization"] = res.data.token;
+                            this.$http.defaults.headers.common["Authorization"] = this.token;
                             console.log(this.$http.defaults.headers);
-                            this.$http.get('api/users/tokentest')
-                                .then(function(res){
-                                    console.log(res);
-                                })
-                            $('.ui.modal').modal('hide');
 
+                            //Token
+                            this.$http.get('api/users/tokentest')
+                                .then((res) => {
+                                    if(res.status == 200){
+                                        this.username = res.data.user.username;
+                                        this.closeModal();
+                                        this.loginState = true;
+                                    }
+                                })
+                                .catch((err) => {
+                                    alert(err);
+                                })
                         })
                         .catch((err) => {
-                            alert('error');
+                            alert(err);
                             if(err.response.data.message == 'account false'){
                                 alert("승인중입니다");
-                                $('.ui.modal').modal('hide');
+                                this.closeModal();
                                 console.log(this.loginState);
                             }
                         });
@@ -206,7 +195,7 @@
                     })
                         .then(function (response) {
                             alert(response.data.result + ' ' + response.data.username);
-                            $('.ui.modal').modal('hide')
+                            this.closeModal();
                         })
                         .catch(function (error) {
                             alert(error);
@@ -251,8 +240,5 @@
     }
     .ui.grid{
         justify-content: center;
-    }
-    .main{
-        /*margin-top: 1000px;*/
     }
 </style>

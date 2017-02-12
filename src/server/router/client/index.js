@@ -17,6 +17,11 @@ router.get('/admin', function(req, res, next) {
     res.render('index', { title: 'SIGO' })
 });
 
+/* GET mypage */
+router.get('/mypage', function(req, res, next) {
+    res.render('index', { title: 'SIGO' })
+});
+
 
 
 
