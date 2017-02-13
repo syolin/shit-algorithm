@@ -22,6 +22,10 @@ const UserSchema = new Schema({
     account: {
         type: Boolean,
         required: true
+    },
+    rating: {
+        type: Number,
+        required: true
     }
     // problems: {
     //     code: Number,

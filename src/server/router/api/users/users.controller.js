@@ -5,13 +5,14 @@ import crypto from 'crypto';
 const User = mongoose.model('User');
 
 // 유저 등록
-User.create = (username, userId, password, studentCode, account) => {
+User.create = (username, userId, password, studentCode, account, rating) => {
     const user = new User({
         username,
         userId,
         password,
         studentCode,
-        account
+        account,
+        rating
     });
 
     return user.save();

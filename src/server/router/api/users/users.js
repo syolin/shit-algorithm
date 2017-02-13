@@ -34,7 +34,7 @@ router.get('/', function (req, res) {
 //
 //     const param = xssFilters.inHTMLData(req.params.id);
 //
-//     const respond = user => {
+//     const respond = user => {``
 //
 //     };
 //
@@ -50,7 +50,7 @@ router.get('/', function (req, res) {
 router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
     res.json({
         result: 'success',
-        user : req.user
+        user : req.user,
     });
 });
 
@@ -83,11 +83,12 @@ router.post('/signup', function(req, res) {
         username : xssFilters.inHTMLData(req.body.username),
         userId : xssFilters.inHTMLData(req.body.userid),
         password : xssFilters.inHTMLData(req.body.password),
-        studentCode : xssFilters.inHTMLData(req.body.studentcode)
+        studentCode : xssFilters.inHTMLData(req.body.studentcode),
+        rating : xssFilters/inHTMLData(req.body.rating)
     };
 
     // Validation
-    if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode)) throw new Error('validation error');
+    if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode) || isNan(userInfo.rating)) throw new Error('validation error');
 
     // 아이디 체크 및 데이터 입력
     const create = user => {
@@ -96,7 +97,7 @@ router.post('/signup', function(req, res) {
         const accountFalse = false;
         const passwordHash = controller.passwordHash(userInfo.password);
 
-        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse);
+        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse, userInfo.rating);
     };
 
     const respond = user => {
@@ -144,28 +145,32 @@ router.post('/signin', function (req, res) {
     };
 
     const check = user => {
+        // 유저 아이디 체크
         if (!user) throw new Error('login user fail');
 
-        // 승인 처리 확인
-        if(user.account == false)
-            throw new Error('account false');
-        else
-            return user;
+        // 패스워드 체크
+        if(user.password !== controller.passwordHash(userInfo.password)) throw new Error('login user fail');
+
+        return user;
     };
 
     const token = user => {
         // Password Hash 인증
-        if (user.password === controller.passwordHash(userInfo.password)) {
-            return auth.signToken(user, secret);
+        if(user.account == true) {
+            return {
+                token: auth.signToken(user, secret),
+                rating: user.rating
+            };
         } else {
-            throw new Error('login token fail');
+            throw new Error('account false');
         }
     };
 
     const respond = token => {
         res.json({
             result : 'success',
-            token : token
+            rating: token.rating,
+            token : token.token
         });
     };
 
