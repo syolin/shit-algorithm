@@ -1,5 +1,4 @@
 <template>
-    <!--app-->
     <div id="app">
         <div id="menu" class="ui secondary menu">
             <ul id="mainmn">
