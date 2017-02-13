@@ -8,7 +8,8 @@ const auth = {
                 {
                     username: user.username,
                     userId: user.userId,
-                    studentCode: user.studentCode
+                    studentCode: user.studentCode,
+                    rating: user.rating
                 },
                 secret,
                 {
@@ -19,7 +20,7 @@ const auth = {
                 });
         });
     },
-    isAuthenticated : () => {
+    isAuthenticated : (rating) => {
         return compose()
             .use((req, res, next) => {
                 const token = req.headers.authorization;
@@ -47,9 +48,24 @@ const auth = {
                 req.user = {
                     userId: req.user.userId,
                     username: req.user.username,
-                    studentCode: req.user.studentCode
+                    studentCode: req.user.studentCode,
+                    rating: req.user.rating
                 };
-                next();
+
+                if (rating == 'admin') {
+                    if (req.user.rating >= 2) {
+                        next();
+                    } else {
+                        res.status(403).json({
+                            result: 'error',
+                            message: 'not admin'
+                        });
+                    }
+                } else {
+                    next();
+                }
+
+
             });
     },
 

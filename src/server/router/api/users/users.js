@@ -47,6 +47,26 @@ router.get('/', function (req, res) {
 //         .then(onError)
 // });
 
+router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {
+    const respond = users => {
+        res.json({
+            result: 'success',
+            users : users
+        });
+    }
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    }
+
+    controller.findSpecificUser('account')
+        .then(respond)
+        .catch(onError);
+});
+
 router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
     res.json({
         result: 'success',

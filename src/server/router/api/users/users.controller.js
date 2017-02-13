@@ -29,6 +29,12 @@ User.findOneByUserId = userId => {
     }).exec();
 };
 
+User.findSpecificUser = condition => {
+    if(condition == 'account') return User.find({account : false});
+
+    return false;
+}
+
 // Password Hash
 User.passwordHash = password => {
     const passwordHash = crypto.createHash("sha512").update(password).digest("hex");
