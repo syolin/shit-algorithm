@@ -101,7 +101,7 @@ router.post('/signup', function(req, res) {
         const accountFalse = false;
         const passwordHash = controller.passwordHash(userInfo.password);
 
-        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse, rating);
+        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse, userInfo.rating);
     };
 
     const respond = user => {
