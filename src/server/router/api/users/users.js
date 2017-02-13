@@ -83,11 +83,16 @@ router.post('/signup', function(req, res) {
         username : xssFilters.inHTMLData(req.body.username),
         userId : xssFilters.inHTMLData(req.body.userid),
         password : xssFilters.inHTMLData(req.body.password),
-        studentCode : xssFilters.inHTMLData(req.body.studentcode)
+        studentCode : xssFilters.inHTMLData(req.body.studentcode),
+        rating : xssFilters.inHTMLData(req.body.rating)
     };
 
     // Validation
-    if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode)) throw new Error('validation error');
+    const validation = user => {
+        if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode) || isNaN(userInfo.rating)) throw new Error('validation error');
+
+        return user;
+    }
 
     // 아이디 체크 및 데이터 입력
     const create = user => {
@@ -96,7 +101,7 @@ router.post('/signup', function(req, res) {
         const accountFalse = false;
         const passwordHash = controller.passwordHash(userInfo.password);
 
-        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse);
+        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse, rating);
     };
 
     const respond = user => {
