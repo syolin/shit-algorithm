@@ -2,23 +2,26 @@
     <div id="admin">
         <div class="sigo_container">
             <div class="adminLogin">
+                <div class="description">
+
                 <div class="ui two column centered grid">
-                    <div class="container">
-            <div class="culnmn">
+                    <div class="sigo_container">
+            <div v-if="userRating != 3"class="culnmn">
                 <h1 class="ui header">ADMIN LOGIN</h1>
                 <div class="formdiv">
                 <form class="ui large form">
                     <div class="field">
-                        <input type="text" name="email" placeholder="아이디" id="userid">
+                        <input type="text" name="email" placeholder="아이디" id="adminid" v-model="adminid">
                     </div>
                     <div class="field">
-                        <input type="password" name="password" placeholder="비밀번호" id="userpw">
+                        <input type="password" name="password" placeholder="비밀번호" id="adminpw" v-model="adminpw">
                     </div>
-                    <div class="ui fluid large teal submit button adminLogin" id="adlogin">
+                    <div class="ui fluid large teal submit button adminLogin" id="adlogin" v-on:click="adminLogin">
                       Login</div>
                 </form>
               </div>
               </div>
+                    </div>
         </div>
     </div>
 
@@ -35,21 +38,20 @@
                     <div class="twelve wide stretched column">
                         <member v-if="memberState"></member>
                         <probleminput v-if="problemState"></probleminput>
-                        <list v-if="listState"></list>
+                        <notice v-if="listState"></notice>
                     </div>
                 </div>
         </div>
     </div>
 
         </div>
-    </div>
 </template>
 
 <script>
 
     import member from './member.vue'
     import probleminput from './probleminput.vue'
-    import list from './list.vue'
+    import notice from './notice.vue'
 
 
     export default {
@@ -57,18 +59,32 @@
         components: {
             'member' : member,
             'probleminput' : probleminput,
-            'list': list
+            'notice': notice
         },
         data () {
             return {
+                adminid: '',
+                adminpw: '',
                 memberState : true,
                 problemState: false,
                 listState: false,
-                adminState: false
+                adminState: false,
+                userRating: '',
+                members: [],
+                problems: [],
+                notice: [],
+                userToken: ''
             }
         },
         created:function(){
-            this.openModal();
+
+            this.userRating = this.$cookie.get('userRating');
+            if(this.userRating != 3){
+                this.openModal();
+            }else{
+                this.adminState = true;
+            }
+
         },
         methods:{
             openModal() {
@@ -83,7 +99,6 @@
                 this.memberState = false;
                 this.problemState = true;
                 this.listState = false;
-                
             },
             click_member(){
                 this.memberState = true;
@@ -95,26 +110,40 @@
                 this.problemState = false;
                 this.listState = true;
             },
+            // 어드민이 아닐경우
             adminLogin(){
-
              this.$http.post('api/users/signin', {
-                        userid: this.userid,
-                        password: this.password,
+                        userid: this.adminid,
+                        password: this.adminpw,
                     })
-                .then(function (response) {
-                    alert('success')
-                    this.loginState = true;
-                    alert(response.data.result + ' ' + response.data.token);
-                    $('.ui.modal').modal('hide');
+                .then((res)=> {
+                    this.userToken = res.data.token;
+                    this.userToken = res.data.token;
+                    // 헤더 토큰 등록
+                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
+                    this.$http.get('api/users/tokentest')
+                        .then((res)=>{
+                            if(res.status == 200){
+                                this.username = res.data.user.username;
+
+                                this.userRating = res.data.user.rating;
+
+                                this.$cookie.set('userToken',this.userToken, 1);
+                                this.$cookie.set('userRating',this.userRating, 1);
+
+                                this.closeModal();
+                                this.adminState = true;
+                                this.getMember();
+                            }
+                        })
+                        .catch((err)=>{
+                            alert(err);
+                        })
                 })
-                .catch((error) => {
-                    if(error.response.data.message == 'account false'){
-                        alert("어드민이아닙니다");
-                        $('.ui.modal').modal('hide');
-                        console.log(this.loginState);
-                    }
+                .catch((err) => {
+                 alert(err);
                 });
-            }
+            },
         }
     }
 </script>

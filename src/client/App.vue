@@ -7,11 +7,12 @@
             <ul id="submn">
 
                 <li><a v-link="{path: '/notice'}">공지사항</a></li>
-                <li><a v-link="{path: '/problems'}">문제 풀기</a></li>
-                <li><a v-link="{path: '/'}">랭킹</a></li>
+                <li><a v-on:click="problemLoginCheck" >문제 풀기</a></li>
+                <li><a v-on:click="rankLoginCheck" >랭킹</a></li>
                 <li v-if="loginState">
-                    <a v-link="{path: '/mypage'}">{{username}}님</a>
-                    <a @click="logout">로그아웃</a>
+                    <a v-if="userRating == 3" v-link="{path: '/admin'}">관리자페이지 - {{username}}님</a>
+                    <a v-else v-link="{path: '/mypage'}">{{username}}님</a>
+                    <a v-link="{path: '/'}" @click="logout">로그아웃</a>
                 </li>
                 <li v-if="loginState == false"><a @click="openModal">SIGN</a></li>
             </ul>
@@ -127,18 +128,44 @@
                 username: '',
                 studentcode: '',
                 loginResult: '',
-                token: '',
+                userToken: '',
+                userRating: '',
+                linkInfo : '',
 
             }
         },
         created(){
             // 현재 쿠키
-            console.log('cookie : ' + this.$cookie.get('userToken'));
+            this.userToken = this.$cookie.get('userToken');
+            if(this.userToken != null){
+                this.username = this.$cookie.get('userName');
+                this.loginState = true;
+            }
         },
         methods: {
+            problemLoginCheck(){
+                if(this.$cookie.get('userToken') == null){
+                    alert('로그인 해주세요');
+                }else{
+                    this.$router.go({
+                        name: 'problems'
+                    })
+                }
+            },
+            rankLoginCheck(){
+              if(this.$cookie.get('userToken') == null){
+                  alert('로그인 해주세요');
+              }else{
+                  this.$router.go({
+                      name: 'rank'
+                  })
+              }
+            },
             cookieDel(){
                 // 쿠키 삭제
                 this.$cookie.delete('userToken');
+                this.$cookie.delete('userRating');
+                this.$cookie.delete('userName');
             },
             isNumber: function (evt) {
                 evt = (evt) ? evt : window.event;
@@ -152,6 +179,8 @@
             },
             logout(){
                 this.loginState = false;
+                alert('Log Out');
+                this.cookieDel();
             },
             // 폼 모달
             openModal() {
@@ -171,9 +200,9 @@
                         password: this.password,
                     })
                     .then((res) => {
-                    this.token = res.data.token;
+                    this.userToken = res.data.token;
                     // 헤더 토큰 등록
-                    this.$http.defaults.headers.common["Authorization"] = this.token;
+                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
                     // 토큰 테스트
                     this.$http.get('api/users/tokentest')
                         //로그인 성공
@@ -184,10 +213,13 @@
                         this.username = res.data.user.username;
                         this.closeModal();
                         this.loginState = true;
-                        //Cookie : 이름 , 내용 , 만료기간 ( 0 일경우 브라우저 닫히면 쿠키 삭제 ) , 도메인
-                        this.$cookie.set('userToken',this.token, 1);
+                        this.userRating = res.data.user.rating;
+                        //Cookie : 이름 , 내용 , 만료기간 , 도메인
+                        this.$cookie.set('userName', this.username, 1);
+                        this.$cookie.set('userToken',this.userToken, 1);
+                        this.$cookie.set('userRating',this.userRating, 1);
                         // 쿠키 값 출력
-                        console.log(this.$cookie.get('userToken'));
+                        alert(" 안녕하세요 ");
                     }
                 })
                     //토큰인증 실패

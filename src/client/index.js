@@ -28,6 +28,7 @@ import App from './App'
 import index from './components/index/index'
 import problems from './components/problems/problems'
 import admin from './components/admin/admin'
+import rank from './components/rank/rank'
 
 // Vue Router
 Vue.config.debug = true;
@@ -41,33 +42,40 @@ const router = new Router({
 
 const routes = [
     {
-      path: '/', component : index
+        path: '/', component: index
     },
     {
-      path: '/problems', component : problems
+        path: '/problems', component: problems
     },
-        {
-      path: '/admin', component : admin
+    {
+        path: '/admin', component: admin
     },
+    {
+        path: '/rank', component: rank
+    }
 
 
 ];
 router.map({
-  '/': {
-    name: 'index',
-    component: index
-  },
-  '/problems': {
-  name: 'problems',
-  component: problems
-},
-  '/admin': {
-  name: 'admin',
-  component: admin
-},
+    '/': {
+        name: 'index',
+        component: index
+    },
+    '/problems': {
+        name: 'problems',
+        component: problems
+    },
+    '/admin': {
+        name: 'admin',
+        component: admin
+    },
+    '/rank': {
+        name: 'rank',
+        component: rank
+    }
 });
 router.beforeEach(() => {
-  window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
 });
 
 router.start(App, '#app');

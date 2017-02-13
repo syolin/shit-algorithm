@@ -22,6 +22,11 @@ router.get('/mypage', function(req, res, next) {
     res.render('index', { title: 'SIGO' })
 });
 
+/* GET rank page */
+router.get('/rank', function(req, res, next) {
+    res.render('index', { title: 'SIGO' })
+});
+
 
 
 
