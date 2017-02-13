@@ -45,7 +45,8 @@
                                                        v-model="password">
                                             </div>
                                         </div>
-                                        <div v-on:click="submit" v-on:keyup.enter="submit" class="ui fluid large teal submit button submitButton">
+                                        <div v-on:click="submit" v-on:keyup.enter="submit"
+                                             class="ui fluid large teal submit button submitButton">
                                             로그인
                                         </div>
                                     </form>
@@ -92,7 +93,8 @@
 
                                             </div>
                                         </div>
-                                        <div v-on:click="submit" v-on:keyup.enter="submit" class="ui fluid large teal submit button submitButton">
+                                        <div v-on:click="submit" v-on:keyup.enter="submit"
+                                             class="ui fluid large teal submit button submitButton">
                                             회원가입
                                         </div>
                                     </form>
@@ -126,15 +128,24 @@
                 studentcode: '',
                 loginResult: '',
                 token: '',
-                
+
             }
         },
+        created(){
+            // 현재 쿠키
+            console.log('cookie : ' + this.$cookie.get('userToken'));
+        },
         methods: {
-            isNumber: function(evt) {
+            cookieDel(){
+                // 쿠키 삭제
+                this.$cookie.delete('userToken');
+            },
+            isNumber: function (evt) {
                 evt = (evt) ? evt : window.event;
                 var charCode = (evt.which) ? evt.which : evt.keyCode;
                 if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
-                    evt.preventDefault();;
+                    evt.preventDefault();
+                    ;
                 } else {
                     return true;
                 }
@@ -142,6 +153,7 @@
             logout(){
                 this.loginState = false;
             },
+            // 폼 모달
             openModal() {
                 $('.ui.modal').modal({
                     blurring: true
@@ -152,38 +164,46 @@
             },
             submit(){
                 if (this.signState === true) {
-                    //로그인
-                    this.$http.post('api/users/signin', {
+                    // true = 로그인 , false = 회원가입
+                    this.$http.post('api/users/signin',
+                    {
                         userid: this.userid,
                         password: this.password,
                     })
-                        .then((res)=> {
-                            this.loginState = true;
-                            this.token = res.data.token;
-                            this.$http.defaults.headers.common["Authorization"] = this.token;
-                            console.log(this.$http.defaults.headers);
+                    .then((res) => {
+                    this.token = res.data.token;
+                    // 헤더 토큰 등록
+                    this.$http.defaults.headers.common["Authorization"] = this.token;
+                    // 토큰 테스트
+                    this.$http.get('api/users/tokentest')
+                        //로그인 성공
+                        .then((res) => {
+                        if(res.status == 200)
+                    {
+                        this.loginState = true;
+                        this.username = res.data.user.username;
+                        this.closeModal();
+                        this.loginState = true;
+                        //Cookie : 이름 , 내용 , 만료기간 ( 0 일경우 브라우저 닫히면 쿠키 삭제 ) , 도메인
+                        this.$cookie.set('userToken',this.token, 1);
+                        // 쿠키 값 출력
+                        console.log(this.$cookie.get('userToken'));
+                    }
+                })
+                    //토큰인증 실패
+                .
+                    catch((err) => {
+                        alert("token error " +err);
+                    })
+                })
+                .
+                    catch((err) => {
+                        alert(err);
+                    if (err.response.data.message == 'account false') {
+                        alert("승인중입니다");
+                    }
+                })
 
-                            //Token
-                            this.$http.get('api/users/tokentest')
-                                .then((res) => {
-                                    if(res.status == 200){
-                                        this.username = res.data.user.username;
-                                        this.closeModal();
-                                        this.loginState = true;
-                                    }
-                                })
-                                .catch((err) => {
-                                    alert(err);
-                                })
-                        })
-                        .catch((err) => {
-                            alert(err);
-                            if(err.response.data.message == 'account false'){
-                                alert("승인중입니다");
-                                this.closeModal();
-                                console.log(this.loginState);
-                            }
-                        });
                 }
                 else {
                     //회원가입
@@ -207,38 +227,47 @@
 </script>
 
 
-<style src="./assets/css/app.css"></style>
+<style src="./assets/css/app.css" scoped></style>
 <style scoped>
-    body{
+    body {
     }
-    .ui.modal{
-        height:auto !important;
+
+    .ui.modal {
+        height: auto !important;
     }
-    .container{
+
+    .container {
         height: auto;
     }
-    .culnmn{
+
+    .culnmn {
         padding: 5% 17% 1%;
     }
-    .ui.secondary.menu{
+
+    .ui.secondary.menu {
         margin: 15px 0px 0px 0px;
     }
-    #menu{
+
+    #menu {
         margin-top: 10px;
         position: fixed;
     }
-    #mainmn{
+
+    #mainmn {
         margin-right: 50%;
         margin-left: 70px;
     }
-    a{
+
+    a {
         font-size: 16px;
         color: rgb(224, 224, 224);
     }
-    .ui.center.aligned.header{
+
+    .ui.center.aligned.header {
         margin: 70px;
     }
-    .ui.grid{
+
+    .ui.grid {
         justify-content: center;
     }
 </style>
