@@ -1,6 +1,5 @@
 import express from 'express';
 import xssFilters from 'xss-filters';
-import jwt from 'jsonwebtoken';
 
 import controller from './problems.controoler';
 
