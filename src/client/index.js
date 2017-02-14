@@ -27,6 +27,7 @@ Vue.prototype.$http = axios;
 import App from './App'
 import index from './components/index/index'
 import problems from './components/problems/problems'
+import solve from  './components/problems/solve'
 import admin from './components/admin/admin'
 import rank from './components/rank/rank'
 
@@ -52,6 +53,9 @@ const routes = [
     },
     {
         path: '/rank', component: rank
+    },
+    {
+        parh: '/problems/:num', component: solve
     }
 
 
@@ -72,8 +76,13 @@ router.map({
     '/rank': {
         name: 'rank',
         component: rank
+    },
+    '/problems/:num':{
+        name: 'solve',
+        component: solve
     }
-});
+})
+;
 router.beforeEach(() => {
     window.scrollTo(0, 0)
 });

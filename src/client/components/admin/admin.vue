@@ -1,29 +1,27 @@
 <template>
     <div id="admin">
         <div class="sigo_container">
-            <div class="adminLogin">
-                <div class="description">
+            <!--<div class="adminLogin">-->
+                <!--<div class="description">-->
 
-                <div class="ui two column centered grid">
-                    <div class="sigo_container">
-            <div v-if="userRating != 3"class="culnmn">
-                <h1 class="ui header">ADMIN LOGIN</h1>
-                <div class="formdiv">
-                <form class="ui large form">
-                    <div class="field">
-                        <input type="text" name="email" placeholder="아이디" id="adminid" v-model="adminid">
-                    </div>
-                    <div class="field">
-                        <input type="password" name="password" placeholder="비밀번호" id="adminpw" v-model="adminpw">
-                    </div>
-                    <div class="ui fluid large teal submit button adminLogin" id="adlogin" v-on:click="adminLogin">
-                      Login</div>
-                </form>
-              </div>
-              </div>
-                    </div>
-        </div>
-    </div>
+                <!--<div class="ui two column centered grid">-->
+                    <!--<div class="sigo_container">-->
+            <!--<div v-if="userRating != 3"class="culnmn">-->
+                <!--<h1 class="ui header">ADMIN LOGIN</h1>-->
+                <!--<div class="formdiv">-->
+                <!--<form class="ui large form">-->
+                    <!--<div class="field">-->
+                        <!--<input type="text" name="email" placeholder="아이디" id="adminid" v-model="adminid">-->
+                    <!--</div>-->
+                    <!--<div class="field">-->
+                        <!--<input type="password" name="password" placeholder="비밀번호" id="adminpw" v-model="adminpw">-->
+                    <!--</div>-->
+                    <!--<div class="ui fluid large teal submit button adminLogin" id="adlogin" v-on:click="adminLogin">-->
+                      <!--Login</div>-->
+                <!--</form>-->
+              <!--</div>-->
+              <!--</div>-->
+                    <!--</div>-->
 
 
             </div>
@@ -37,20 +35,19 @@
                 </div>
                     <div class="twelve wide stretched column">
                         <member v-if="memberState"></member>
-                        <probleminput v-if="problemState"></probleminput>
+                        <problemmanage v-if="problemState"></problemmanage>
                         <notice v-if="listState"></notice>
                     </div>
                 </div>
         </div>
     </div>
 
-        </div>
 </template>
 
 <script>
 
     import member from './member.vue'
-    import probleminput from './probleminput.vue'
+    import problemmanage from './problemmange.vue'
     import notice from './notice.vue'
 
 
@@ -58,7 +55,7 @@
         name: 'admin',
         components: {
             'member' : member,
-            'probleminput' : probleminput,
+            'problemmanage' : problemmanage,
             'notice': notice
         },
         data () {
@@ -79,8 +76,21 @@
         created:function(){
 
             this.userRating = this.$cookie.get('userRating');
-            if(this.userRating != 3){
-                this.openModal();
+            this.userToken = this.$cookie.get('userToken');
+            if(this.userToken == null){
+                alert("로그인 해주세요");
+                    this.$router.go({
+                        name: 'index'
+                    })
+//                $('.ui.modal').modal({
+//                    blurring: true
+//                }).modal('show')
+            }
+            else if(this.userRating != 3){
+                alert('어드민이 아닙니다');
+                this.$router.go({
+                    name: 'index'
+                })
             }else{
                 this.adminState = true;
             }
@@ -118,27 +128,35 @@
                     })
                 .then((res)=> {
                     this.userToken = res.data.token;
-                    this.userToken = res.data.token;
-                    // 헤더 토큰 등록
-                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
-                    this.$http.get('api/users/tokentest')
-                        .then((res)=>{
-                            if(res.status == 200){
-                                this.username = res.data.user.username;
+                    this.userName = res.data.user.username;
+                    this.userRating = res.data.user.rating;
 
-                                this.userRating = res.data.user.rating;
+                    this.$cookie.set('userName;', this.userName, 1);
+                    this.$cookie.set('userToken',this.userToken, 1);
+                    this.$cookie.set('userRating',this.userRating, 1);
 
-                                this.$cookie.set('userToken',this.userToken, 1);
-                                this.$cookie.set('userRating',this.userRating, 1);
-
-                                this.closeModal();
-                                this.adminState = true;
-                                this.getMember();
-                            }
-                        })
-                        .catch((err)=>{
-                            alert(err);
-                        })
+                    this.closeModal();
+                    this.adminState = true;
+//                    // 헤더 토큰 등록
+//                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
+//                    this.$http.get('api/users/tokentest')
+//                        .then((res)=>{
+//                            if(res.status == 200){
+//                                this.username = res.data.user.username;
+//
+//                                this.userRating = res.data.user.rating;
+//
+//                                this.$cookie.set('userToken',this.userToken, 1);
+//                                this.$cookie.set('userRating',this.userRating, 1);
+//
+//                                this.closeModal();
+//                                this.adminState = true;
+//                                this.getMember();
+//                            }
+//                        })
+//                        .catch((err)=>{
+//                            alert(err);
+//                        })
                 })
                 .catch((err) => {
                  alert(err);

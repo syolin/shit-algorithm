@@ -27,6 +27,10 @@ router.get('/rank', function(req, res, next) {
     res.render('index', { title: 'SIGO' })
 });
 
+router.get('/problems/:num', function(req, res, next) {
+    res.render('index', { title: 'SIGO' })
+});
+
 
 
 

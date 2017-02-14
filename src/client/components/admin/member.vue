@@ -33,7 +33,6 @@
             getMember: function () {
                 this.$http.get('api/users')
                     .then((res) => {
-                        console.log(res.data.users[0].account);
 
                         var i = 0;
                         while(i<res.data.users.length) {

@@ -20,7 +20,7 @@
                 <div class="content">
                   <p class="header">
                     <span>{{item.num}}</span>번 문제</p>
-                  <a href="#" class="ui disabled header">
+                  <a :href="'problems/' + item.num" v-on:click="" class="ui disabled header">
                     이름 : <span>{{item.name}}</span>
                   </a>
                   <div class="description">

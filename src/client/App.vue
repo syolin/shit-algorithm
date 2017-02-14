@@ -137,9 +137,13 @@
         created(){
             // 현재 쿠키
             this.userToken = this.$cookie.get('userToken');
+            console.log(this.userToken);
             if(this.userToken != null){
                 this.username = this.$cookie.get('userName');
+                console.log(this.username);
                 this.loginState = true;
+                this.userRating = this.$cookie.get('userRating');
+
             }
         },
         methods: {
@@ -200,34 +204,60 @@
                         password: this.password,
                     })
                     .then((res) => {
-                    this.userToken = res.data.token;
-                    // 헤더 토큰 등록
-                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
-                    // 토큰 테스트
-                    this.$http.get('api/users/tokentest')
-                        //로그인 성공
-                        .then((res) => {
-                        if(res.status == 200)
-                    {
-                        this.loginState = true;
-                        this.username = res.data.user.username;
-                        this.closeModal();
-                        this.loginState = true;
-                        this.userRating = res.data.user.rating;
-                        //Cookie : 이름 , 내용 , 만료기간 , 도메인
-                        this.$cookie.set('userName', this.username, 1);
-                        this.$cookie.set('userToken',this.userToken, 1);
-                        this.$cookie.set('userRating',this.userRating, 1);
-                        // 쿠키 값 출력
-                        alert(" 안녕하세요 ");
-                    }
-                })
+                        this.userToken = res.data.token;
+                        this.$cookie.set('userToken', this.userToken, 1);
+                        this.$http.defaults.headers.common["Authorization"] = this.userToken;
+                        this.$http.get('api/users/my-info')
+                            .then((res) => {
+                                console.log(res);
+                                this.username = res.data.user.username;
+                                console.log(this.username);
+                                this.userRating = res.data.user.rating;
+                                this.$cookie.set('userRating', this.userRating, 1);
+                                this.$cookie.set('userName', this.username, 1);
+
+                                this.loginState = true;
+                                this.closeModal();
+                                alert('안녕하세요');
+                            })
+                    })
+//                        this.userName = res.data.user.username;
+//                        this.userToken = res.data.token;
+//                        this.userRating = res.data.user.rating;
+//
+//                        this.$cookie.set('userName', this.username, 1);
+//                        this.$cookie.set('userToken', this.userToken, 1);
+//                        this.$cookie.set('userRating', this.userRating, 1);
+//
+//                        this.loginState = true;
+//                        this.closeModal();
+//                        alert(" 안녕하세요 ");
+//                    })
+
+                        // 헤더 토큰 등록
+//                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
+//                    console.log(this.userToken);
+//                    // 토큰 테스트
+//                    this.$http.get('api/users/tokentest')
+//                        //로그인 성공
+//                        .then((res) => {
+//                        if(res.status == 200)
+//                    {
+//                        this.loginState = true;
+//                        this.username = res.data.user.username;
+//                        this.closeModal();
+//                        this.loginState = true;
+//                        this.userRating = res.data.user.rating;
+//                        //Cookie : 이름 , 내용 , 만료기간 , 도메인
+//                        this.$cookie.set('userName', this.username, 1);
+//                        this.$cookie.set('userToken',this.userToken, 1);
+//                        this.$cookie.set('userRating',this.userRating, 1);
+//                        alert(" 안녕하세요 ");
+//                    }
                     //토큰인증 실패
-                .
-                    catch((err) => {
+                    .catch((err) => {
                         alert("token error " +err);
                     })
-                })
                 .
                     catch((err) => {
                         alert(err);
