@@ -203,7 +203,7 @@ router.post('/signin', function (req, res) {
         res.json({
             result : 'success',
             user : {
-                username : token.username
+                username : token.username,
                 rating : token.rating,
             },
             token : token.token
