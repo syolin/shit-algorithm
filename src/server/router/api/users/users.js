@@ -75,7 +75,7 @@ router.get('/mypage', auth.isAuthenticated(), function (req, res) {
     });
 });
 
-router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
+router.get('/my-info', auth.isAuthenticated(), function (req, res) {
     res.json({
         result: 'success',
         user : req.user
@@ -189,24 +189,17 @@ router.post('/signin', function (req, res) {
     const token = user => {
         // Password Hash 인증
         if (user.password === controller.passwordHash(userInfo.password)) {
-            return {
-                user : user,
-                token : auth.signToken(user, secret),
-                rating : user.rating
-            };
-        } else {
+            return auth.signToken(user, secret);
+
             throw new Error('login token fail');
         }
     };
 
-    const respond = token => {
+    const respond = result => {
         res.json({
             result : 'success',
-            user : {
-                username : token.username,
-                rating : token.rating,
-            },
-            token : token.token
+            token : result
+
         });
     };
 
