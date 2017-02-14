@@ -47,6 +47,7 @@ router.get('/', function (req, res) {
 //         .then(onError)
 // });
 
+
 router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {
     const respond = users => {
         res.json({
@@ -65,6 +66,13 @@ router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {
     controller.findSpecificUser('account')
         .then(respond)
         .catch(onError);
+});
+
+router.get('/mypage', auth.isAuthenticated(), function (req, res) {
+    res.json({
+        result: 'success',
+        user : req.user
+    });
 });
 
 router.get('/tokentest', auth.isAuthenticated(), function (req, res) {
@@ -181,7 +189,10 @@ router.post('/signin', function (req, res) {
     const token = user => {
         // Password Hash 인증
         if (user.password === controller.passwordHash(userInfo.password)) {
-            return auth.signToken(user, secret);
+            return {
+                token : auth.signToken(user, secret),
+                rating : user.rating
+            }
         } else {
             throw new Error('login token fail');
         }
@@ -190,7 +201,8 @@ router.post('/signin', function (req, res) {
     const respond = token => {
         res.json({
             result : 'success',
-            token : token
+            rating : token.rating,
+            token : token.token
         });
     };
 
