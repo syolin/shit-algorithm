@@ -190,9 +190,10 @@ router.post('/signin', function (req, res) {
         // Password Hash 인증
         if (user.password === controller.passwordHash(userInfo.password)) {
             return {
+                user : user,
                 token : auth.signToken(user, secret),
                 rating : user.rating
-            }
+            };
         } else {
             throw new Error('login token fail');
         }
@@ -201,7 +202,10 @@ router.post('/signin', function (req, res) {
     const respond = token => {
         res.json({
             result : 'success',
-            rating : token.rating,
+            user : {
+                username : token.username
+                rating : token.rating,
+            },
             token : token.token
         });
     };
