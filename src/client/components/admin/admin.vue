@@ -74,23 +74,15 @@
             }
         },
         created:function(){
-
-            this.userRating = this.$cookie.get('userRating');
             this.userToken = this.$cookie.get('userToken');
-            if(this.userToken == null){
-                alert("로그인 해주세요");
-                    this.$router.go({
-                        name: 'index'
-                    })
-//                $('.ui.modal').modal({
-//                    blurring: true
-//                }).modal('show')
-            }
-            else if(this.userRating != 3){
-                alert('어드민이 아닙니다');
-                this.$router.go({
-                    name: 'index'
-                })
+            this.userRating = this.$cookie.get('userRating');
+            if((this.userToken == null) && (this.userRating != 3)){
+                if(this.userToken == null){
+                    alert("로그인 해주세요");
+                }else if(this.userRating != 3){
+                    alert("어드민이 아닙니다")
+                }
+                location.href="/";
             }else{
                 this.adminState = true;
             }

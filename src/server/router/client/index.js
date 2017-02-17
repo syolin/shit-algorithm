@@ -1,4 +1,6 @@
 import express from 'express'
+import auth from '../../modules/auth';
+
 
 const router = express.Router();
 
@@ -13,7 +15,7 @@ router.get('/problems', function(req, res, next) {
 });
 
 /* GET admin page. */
-router.get('/admin', function(req, res, next) {
+router.get('/admin', auth.isAuthenticated('admin'), function(req, res, next) {
     res.render('index', { title: 'SIGO' })
 });
 
@@ -28,6 +30,10 @@ router.get('/rank', function(req, res, next) {
 });
 
 router.get('/problems/:num', function(req, res, next) {
+    res.render('index', { title: 'SIGO' })
+});
+
+router.get('/notice', function(req, res, next) {
     res.render('index', { title: 'SIGO' })
 });
 

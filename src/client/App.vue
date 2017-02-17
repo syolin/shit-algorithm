@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div id="menu" class="ui secondary menu">
+        <div id="menu" class="ui secondary menu" :class>
             <ul id="mainmn">
                 <li><a v-link="{path: '/'}">MAIN</a></li>
             </ul>
@@ -36,20 +36,20 @@
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="user icon"></i>
-                                                <input type="text" name="userid" placeholder="아이디" v-model="userid">
+                                                <input type="text" name="userid" placeholder="아이디" v-model="userid" v-on:keydown.enter="submit">
                                             </div>
                                         </div>
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="lock icon"></i>
                                                 <input type="password" name="password" placeholder="비밀번호"
-                                                       v-model="password">
+                                                       v-model="password" v-on:keydown.enter="submit">
                                             </div>
                                         </div>
-                                        <div v-on:click="submit" v-on:keyup.enter="submit"
+                                        <button type="button" v-on:click="submit"
                                              class="ui fluid large teal submit button submitButton">
                                             로그인
-                                        </div>
+                                        </button>
                                     </form>
                                     <button v-on:click="signState = false" class="ui button black signButton">
                                         회원가입하기
@@ -131,22 +131,47 @@
                 userToken: '',
                 userRating: '',
                 linkInfo : '',
+                scrolled : '',
+                offset: ''
 
             }
         },
         created(){
             // 현재 쿠키
             this.userToken = this.$cookie.get('userToken');
-            console.log(this.userToken);
             if(this.userToken != null){
                 this.username = this.$cookie.get('userName');
-                console.log(this.username);
-                this.loginState = true;
                 this.userRating = this.$cookie.get('userRating');
+                this.loginState = true;
+            }
+            $(window).scroll(function(){
+                this.scrolled = $(this).scrollTop();
+                this.offset = $('.timeline').offset().top;
+                console.log('offset : ' + offset);
+            })
+
+        },
+        watch:{
+            scrolled: function(){
+                $(window).scroll(function(){
+                    console.log('scrolled : ' + this.scrolled);
+                    if(this.scrolled >= this.offset){
+                        console.log('white menu');
+                    }else{
+                        console.log('transpare menu');
+                    }
+                })
 
             }
         },
+        ready () {
+            window.addEventListener('scroll', this.scrollFunction);
+        },
         methods: {
+            scrollFunction(e){
+                this.scrolled = window.scrollY > 0;
+
+            },
             problemLoginCheck(){
                 if(this.$cookie.get('userToken') == null){
                     alert('로그인 해주세요');
@@ -204,60 +229,34 @@
                         password: this.password,
                     })
                     .then((res) => {
-                        this.userToken = res.data.token;
-                        this.$cookie.set('userToken', this.userToken, 1);
-                        this.$http.defaults.headers.common["Authorization"] = this.userToken;
-                        this.$http.get('api/users/my-info')
-                            .then((res) => {
-                                console.log(res);
-                                this.username = res.data.user.username;
-                                console.log(this.username);
-                                this.userRating = res.data.user.rating;
-                                this.$cookie.set('userRating', this.userRating, 1);
-                                this.$cookie.set('userName', this.username, 1);
-
-                                this.loginState = true;
-                                this.closeModal();
-                                alert('안녕하세요');
-                            })
-                    })
-//                        this.userName = res.data.user.username;
-//                        this.userToken = res.data.token;
-//                        this.userRating = res.data.user.rating;
-//
-//                        this.$cookie.set('userName', this.username, 1);
-//                        this.$cookie.set('userToken', this.userToken, 1);
-//                        this.$cookie.set('userRating', this.userRating, 1);
-//
-//                        this.loginState = true;
-//                        this.closeModal();
-//                        alert(" 안녕하세요 ");
-//                    })
-
-                        // 헤더 토큰 등록
-//                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
-//                    console.log(this.userToken);
-//                    // 토큰 테스트
-//                    this.$http.get('api/users/tokentest')
-//                        //로그인 성공
-//                        .then((res) => {
-//                        if(res.status == 200)
-//                    {
-//                        this.loginState = true;
-//                        this.username = res.data.user.username;
-//                        this.closeModal();
-//                        this.loginState = true;
-//                        this.userRating = res.data.user.rating;
-//                        //Cookie : 이름 , 내용 , 만료기간 , 도메인
-//                        this.$cookie.set('userName', this.username, 1);
-//                        this.$cookie.set('userToken',this.userToken, 1);
-//                        this.$cookie.set('userRating',this.userRating, 1);
-//                        alert(" 안녕하세요 ");
-//                    }
+                    this.userToken = res.data.token;
+                    // 헤더 토큰 등록
+                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
+                    // 토큰 테스트
+                    this.$http.get('api/users/my-info')
+                        //로그인 성공
+                        .then((res) => {
+                        if(res.status == 200)
+                    {
+                        this.loginState = true;
+                        this.username = res.data.user.username;
+                        this.closeModal();
+                        this.loginState = true;
+                        this.userRating = res.data.user.rating;
+                        //Cookie : 이름 , 내용 , 만료기간 , 도메인
+                        this.$cookie.set('userName', this.username, 1);
+                        this.$cookie.set('userToken',this.userToken, 1);
+                        this.$cookie.set('userRating',this.userRating, 1);
+                        // 쿠키 값 출력
+                        alert(" 안녕하세요 ");
+                    }
+                })
                     //토큰인증 실패
-                    .catch((err) => {
+                .
+                    catch((err) => {
                         alert("token error " +err);
                     })
+                })
                 .
                     catch((err) => {
                         alert(err);
