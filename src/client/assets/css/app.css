@@ -37,18 +37,21 @@
         width: 100%;
         height: calc(100vh- 100px);
     }
-    /*#topmenu{
-      position: absolute;
-      width: 100%;
-    }*/
     #menu {
-      padding-top: 30px;
-      margin: 0px;
-        position: relative;
-        height: 100px;
-        width: 100%;
-        top: 0px;
-        z-index: 5;
+      margin: 0px !important;
+      position: absolute;
+      height: 100px;
+      width: 100%;
+      top: 0px;
+      z-index: 5;
+        background-color: transparent;
+        transition: all 0.3s ease-in-out;
+
+    }
+    .menu_show{
+        height: 100px !important;
+        background-color: #fff !important;
+        position: fixed !important;
     }
     #mainmn{
         margin-right: 55%;
@@ -60,6 +63,7 @@
         cursor: pointer;
         list-style: none;
         cursor: pointer;
+        line-height: 100px;
     }
     .submitButton {
         margin-top: 40px;

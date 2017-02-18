@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div id="menu" class="ui secondary menu" :class>
+        <div id="menu" class="ui secondary menu" :class="{menu_show : scrolled > 200}">
             <ul id="mainmn">
                 <li><a v-link="{path: '/'}">MAIN</a></li>
             </ul>
@@ -16,11 +16,6 @@
                 </li>
                 <li v-if="loginState == false"><a @click="openModal">SIGN</a></li>
             </ul>
-        </div>
-        <div class="main">
-            <h3 class="ui center aligned header"> 문제풀기
-                <div class="sub header">Manage your account settings and set e-mail preferences.</div>
-            </h3>
         </div>
         <div v-if="loginState == false" id="sign">
             <div class="ui modal">
@@ -132,45 +127,23 @@
                 userRating: '',
                 linkInfo : '',
                 scrolled : '',
-                offset: ''
-
             }
         },
         created(){
             // 현재 쿠키
             this.userToken = this.$cookie.get('userToken');
-            if(this.userToken != null){
+            if(this.userToken != null) {
                 this.username = this.$cookie.get('userName');
                 this.userRating = this.$cookie.get('userRating');
                 this.loginState = true;
-            }
-            $(window).scroll(function(){
-                this.scrolled = $(this).scrollTop();
-                this.offset = $('.timeline').offset().top;
-                console.log('offset : ' + offset);
-            })
-
-        },
-        watch:{
-            scrolled: function(){
-                $(window).scroll(function(){
-                    console.log('scrolled : ' + this.scrolled);
-                    if(this.scrolled >= this.offset){
-                        console.log('white menu');
-                    }else{
-                        console.log('transpare menu');
-                    }
-                })
-
             }
         },
         ready () {
             window.addEventListener('scroll', this.scrollFunction);
         },
         methods: {
-            scrollFunction(e){
-                this.scrolled = window.scrollY > 0;
-
+            scrollFunction(){
+                this.scrolled = window.scrollY;
             },
             problemLoginCheck(){
                 if(this.$cookie.get('userToken') == null){
@@ -290,45 +263,5 @@
 
 <style src="./assets/css/app.css" scoped></style>
 <style scoped>
-    body {
-    }
 
-    .ui.modal {
-        height: auto !important;
-    }
-
-    .container {
-        height: auto;
-    }
-
-    .culnmn {
-        padding: 5% 17% 1%;
-    }
-
-    .ui.secondary.menu {
-        margin: 15px 0px 0px 0px;
-    }
-
-    #menu {
-        margin-top: 10px;
-        position: fixed;
-    }
-
-    #mainmn {
-        margin-right: 50%;
-        margin-left: 70px;
-    }
-
-    a {
-        font-size: 16px;
-        color: rgb(224, 224, 224);
-    }
-
-    .ui.center.aligned.header {
-        margin: 70px;
-    }
-
-    .ui.grid {
-        justify-content: center;
-    }
 </style>
