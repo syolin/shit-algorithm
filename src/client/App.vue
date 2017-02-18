@@ -2,19 +2,19 @@
     <div id="app">
         <div id="menu" class="ui secondary menu" :class="{menu_show : scrolled > 200}">
             <ul id="mainmn">
-                <li><a v-link="{path: '/'}">MAIN</a></li>
+                <li><a v-link="{path: '/'}" :class="{menu_show_font : scrolled > 200}">MAIN</a></li>
             </ul>
-            <ul id="submn">
+            <ul id="submn" >
 
-                <li><a v-link="{path: '/notice'}">공지사항</a></li>
-                <li><a v-on:click="problemLoginCheck" >문제 풀기</a></li>
-                <li><a v-on:click="rankLoginCheck" >랭킹</a></li>
+                <li><a v-link="{path: '/notice'}" :class="{menu_show_font : scrolled > 200}">공지사항</a></li>
+                <li><a v-on:click="problemLoginCheck" :class="{menu_show_font : scrolled > 200}" >문제 풀기</a></li>
+                <li><a v-on:click="rankLoginCheck" :class="{menu_show_font : scrolled > 200}" >랭킹</a></li>
                 <li v-if="loginState">
-                    <a v-if="userRating == 3" v-link="{path: '/admin'}">관리자페이지 - {{username}}님</a>
-                    <a v-else v-link="{path: '/mypage'}">{{username}}님</a>
-                    <a v-link="{path: '/'}" @click="logout">로그아웃</a>
+                    <a v-if="userRating == 3" v-link="{path: '/admin'}" :class="{menu_show_font : scrolled > 200}">관리자페이지 - {{username}}님</a>
+                    <a v-else v-link="{path: '/mypage'}" :class="{menu_show_font : scrolled > 200}">{{username}}님</a>
+                    <a v-link="{path: '/'}" @click="logout" :class="{menu_show_font : scrolled > 200}">로그아웃</a>
                 </li>
-                <li v-if="loginState == false"><a @click="openModal">SIGN</a></li>
+                <li v-if="loginState == false"><a @click="openModal" :class="{menu_show_font : scrolled > 200}">SIGN</a></li>
             </ul>
         </div>
         <div v-if="loginState == false" id="sign">

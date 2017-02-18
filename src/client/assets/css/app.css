@@ -53,9 +53,15 @@
         background-color: #fff !important;
         position: fixed !important;
     }
+    .menu_show_font{
+        color: #686868 !important;
+    }
     #mainmn{
-        margin-right: 55%;
         margin-left: 70px;
+    }
+    #submn{
+        position: absolute;
+        right: 50px;
     }
     #menu li {
         float: left;
