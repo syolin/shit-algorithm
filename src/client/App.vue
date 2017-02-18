@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div id="menu" class="ui secondary menu" :class="{menu_show : scrolled > 200}">
+        <div id="menu" class="ui secondary menu" :class="{menu_show : scrolled > 200, solve_menu : solveMenu}">
             <ul id="mainmn">
                 <li><a v-link="{path: '/'}" :class="{menu_show_font : scrolled > 200}">MAIN</a></li>
             </ul>
@@ -127,6 +127,7 @@
                 userRating: '',
                 linkInfo : '',
                 scrolled : '',
+                solveMenu : false
             }
         },
         created(){
