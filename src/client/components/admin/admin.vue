@@ -129,26 +129,6 @@
 
                     this.closeModal();
                     this.adminState = true;
-//                    // 헤더 토큰 등록
-//                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
-//                    this.$http.get('api/users/tokentest')
-//                        .then((res)=>{
-//                            if(res.status == 200){
-//                                this.username = res.data.user.username;
-//
-//                                this.userRating = res.data.user.rating;
-//
-//                                this.$cookie.set('userToken',this.userToken, 1);
-//                                this.$cookie.set('userRating',this.userRating, 1);
-//
-//                                this.closeModal();
-//                                this.adminState = true;
-//                                this.getMember();
-//                            }
-//                        })
-//                        .catch((err)=>{
-//                            alert(err);
-//                        })
                 })
                 .catch((err) => {
                  alert(err);

@@ -1,20 +1,27 @@
 <template>
-    <div id="index">
-        <div class="sigo_container">
-            <ul>
-                <li v-for="item in items">
-                    번호: <span>{{item.num}}</span><br>
-                    이름: <span>{{item.name}}</span><br>
-                    소스: <span>{{item.source}}</span><br>
-                    설명: <span>{{item.explanation}}</span><br>
-                    입력예제: <span>{{item.inputex}}</span><br>
-                    출력예제: <span>{{item.outputex}}</span><br>
-                    시간: <span>{{item.time}}</span><br>
-                    메모리: <span>{{item.memorylimit}}</span><br>
-
-                    <br>
-                </li>
-            </ul>
+    <div id="solve">
+        <div class="sigo_container" v-for="item in items">
+            <div class="solve_title">
+                <div class="solve_num">
+                    {{item.num}}
+                </div>
+                <div class="solve_name">
+                    {{item.name}}
+                </div>
+            </div>
+            <div class="solve_sidebar">
+                <div class="solve_explain">
+                    {{item.explanation}}
+                </div>
+            </div>
+            <div class="solve_main">
+                <div class="solve_inpiut">
+                    {{item.inputex}}
+                </div>
+                <div class="solve_output">
+                    {{item.outputex}}
+                </div>
+            </div>
         </div>
 
     </div>
@@ -31,14 +38,18 @@
             }
         },
         created(){
+            if(this.$cookie.get('userToken') == null){
+                alert('로그인 해주세요');
+                location.href="/";
+            }
             this.url = this.$route.params.num;
             this.problemData();
+            console.log(this.items);
         },
         methods:{
             problemData: function () {
                 this.$http.get('../api/problems/'+this.url)
                     .then((res) => {
-                        console.log(res);
                         this.items.push({
                             num : res.data.problem.num,
                             name : res.data.problem.problemName,
@@ -52,8 +63,13 @@
                     })
             }
         }
-
-
     }
 
 </script>
+<style src="../../assets/css/solve.css" scoped></style>
+<style>
+    #menu{
+        background-color: #373737 !important;
+        border-bottom: 3px solid #2d2d2d
+    }
+</style>

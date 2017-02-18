@@ -131,6 +131,7 @@
         },
         created(){
             // 현재 쿠키
+            console.log(location.href);
             this.userToken = this.$cookie.get('userToken');
             if(this.userToken != null) {
                 this.username = this.$cookie.get('userName');

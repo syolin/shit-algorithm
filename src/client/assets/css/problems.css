@@ -5,9 +5,8 @@
 }
 body{
   background-color: rgb(250,250,250);
-}
-a{
-  /*color: black;*/
+  height: auto;
+
 }
 #menu{
   background-color: white;

@@ -3,9 +3,15 @@
         padding:0;
     }
     a {
-      color: rgb(224, 224, 224);
-      font-size: 16px;
-      margin-left: 50px;
+        color: #e0e0e0;
+        font-size: 16px;
+        margin-left: 50px;
+        padding: 20px 0px;
+        transition: all 0.2s ease-in;
+        cursor: pointer;
+    }
+    a:hover{
+        color: white;
     }
     .ui.modal{
         height:auto !important;
@@ -35,40 +41,37 @@
     }
     #app {
         width: 100%;
-        height: calc(100vh- 100px);
+        height: calc(100vh - 100px);
     }
     #menu {
-      margin: 0px !important;
-      position: absolute;
-      height: 100px;
-      width: 100%;
-      top: 0px;
-      z-index: 5;
+        margin: 0px !important;
+        position: absolute;
+        height: 100px;
+        width: 100%;
+        top: 0px;
+        z-index: 5;
         background-color: transparent;
         transition: all 0.3s ease-in-out;
-
     }
     .menu_show{
         height: 100px !important;
-        background-color: #fff !important;
+        background-color: #f9f9f9 !important;
         position: fixed !important;
+        border-bottom: 1px solid #c8c8c8 !important;
     }
     .menu_show_font{
-        color: #686868 !important;
+        color: #1b1b1b;
     }
     #mainmn{
         margin-left: 70px;
     }
     #submn{
         position: absolute;
-        right: 50px;
+        right: 70px;
     }
     #menu li {
         float: left;
         list-style: none;
-        cursor: pointer;
-        list-style: none;
-        cursor: pointer;
         line-height: 100px;
     }
     .submitButton {
