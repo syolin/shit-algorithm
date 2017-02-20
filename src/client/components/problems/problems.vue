@@ -1,5 +1,5 @@
 <template>
-    <div id="index">
+    <div id="problems">
         <div class="sigo_container">
             <problemlist></problemlist>
 
@@ -31,4 +31,4 @@
     }
 
 </script>
-<style src="../../assets/css/problems.css"></style>
+<style src="../../assets/css/problems.css" scoped></style>
