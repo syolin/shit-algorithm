@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Vuex from 'vuex'
+import VueTyperPlugin from 'vue-typer'
 import axios from 'axios'
 import VueCookie from 'vue-cookie'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -17,6 +18,7 @@ Vue.use(VueCookie);
 Vue.use(Vuex);
 Vue.use(axios);
 Vue.use(VueAwesomeSwiper);
+Vue.use(VueTyperPlugin);
 
 // Vue Axios
 
