@@ -4,11 +4,11 @@
             <ul id="mainmn">
                 <li><a v-link="{path: '/'}" :class="{menu_show_font : scrolled > 200}">MAIN</a></li>
             </ul>
-            <ul id="submn" >
+            <ul id="submn">
 
                 <li><a v-link="{path: '/notice'}" :class="{menu_show_font : scrolled > 200}">공지사항</a></li>
-                <li><a v-on:click="problemLoginCheck" :class="{menu_show_font : scrolled > 200}" >문제 풀기</a></li>
-                <li><a v-on:click="rankLoginCheck" :class="{menu_show_font : scrolled > 200}" >랭킹</a></li>
+                <li><a v-on:click="problemLoginCheck" :class="{menu_show_font : scrolled > 200}">문제 풀기</a></li>
+                <li><a v-on:click="rankLoginCheck" :class="{menu_show_font : scrolled > 200}">랭킹</a></li>
                 <li v-if="loginState">
                     <a v-if="userRating == 3" v-link="{path: '/admin'}" :class="{menu_show_font : scrolled > 200}">관리자페이지 - {{username}}님</a>
                     <a v-else v-link="{path: '/mypage'}" :class="{menu_show_font : scrolled > 200}">{{username}}님</a>
@@ -37,12 +37,10 @@
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="lock icon"></i>
-                                                <input type="password" name="password" placeholder="비밀번호"
-                                                       v-model="password" v-on:keydown.enter="submit">
+                                                <input type="password" name="password" placeholder="비밀번호" v-model="password" v-on:keydown.enter="submit">
                                             </div>
                                         </div>
-                                        <button type="button" v-on:click="submit"
-                                             class="ui fluid large teal submit button submitButton">
+                                        <button type="button" v-on:click="submit" class="ui fluid large teal submit button submitButton">
                                             로그인
                                         </button>
                                     </form>
@@ -71,8 +69,7 @@
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="lock icon"></i>
-                                                <input type="password" name="password" placeholder="비밀번호"
-                                                       v-model="password">
+                                                <input type="password" name="password" placeholder="비밀번호" v-model="password">
                                             </div>
                                         </div>
                                         <div class="field">
@@ -84,13 +81,11 @@
                                         <div class="field">
                                             <div class="ui left icon input">
                                                 <i class="student icon"></i>
-                                                <input type="text" name="studentcode" placeholder="학번"
-                                                       v-model="studentcode" v-on:keypress="isNumber(event)">
+                                                <input type="text" name="studentcode" placeholder="학번" v-model="studentcode" v-on:keypress="isNumber(event)">
 
                                             </div>
                                         </div>
-                                        <div v-on:click="submit" v-on:keyup.enter="submit"
-                                             class="ui fluid large teal submit button submitButton">
+                                        <div v-on:click="submit" v-on:keyup.enter="submit" class="ui fluid large teal submit button submitButton">
                                             회원가입
                                         </div>
                                     </form>
@@ -114,7 +109,7 @@
 <script>
     export default {
         name: 'vm',
-        data () {
+        data() {
             return {
                 loginState: false,
                 signState: true,
@@ -125,47 +120,47 @@
                 loginResult: '',
                 userToken: '',
                 userRating: '',
-                linkInfo : '',
-                scrolled : '',
-                solveMenu : false
+                linkInfo: '',
+                scrolled: '',
+                solveMenu: false
             }
         },
-        created(){
+        created() {
             // 현재 쿠키
             console.log(location.href);
             this.userToken = this.$cookie.get('userToken');
-            if(this.userToken != null) {
+            if (this.userToken != null) {
                 this.username = this.$cookie.get('userName');
                 this.userRating = this.$cookie.get('userRating');
                 this.loginState = true;
             }
         },
-        ready () {
+        ready() {
             window.addEventListener('scroll', this.scrollFunction);
         },
         methods: {
-            scrollFunction(){
+            scrollFunction() {
                 this.scrolled = window.scrollY;
             },
-            problemLoginCheck(){
-                if(this.$cookie.get('userToken') == null){
+            problemLoginCheck() {
+                if (this.$cookie.get('userToken') == null) {
                     alert('로그인 해주세요');
-                }else{
+                } else {
                     this.$router.go({
                         name: 'problems'
                     })
                 }
             },
-            rankLoginCheck(){
-              if(this.$cookie.get('userToken') == null){
-                  alert('로그인 해주세요');
-              }else{
-                  this.$router.go({
-                      name: 'rank'
-                  })
-              }
+            rankLoginCheck() {
+                if (this.$cookie.get('userToken') == null) {
+                    alert('로그인 해주세요');
+                } else {
+                    this.$router.go({
+                        name: 'rank'
+                    })
+                }
             },
-            cookieDel(){
+            cookieDel() {
                 // 쿠키 삭제
                 this.$cookie.delete('userToken');
                 this.$cookie.delete('userRating');
@@ -175,13 +170,12 @@
                 evt = (evt) ? evt : window.event;
                 var charCode = (evt.which) ? evt.which : evt.keyCode;
                 if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
-                    evt.preventDefault();
-                    ;
+                    evt.preventDefault();;
                 } else {
                     return true;
                 }
             },
-            logout(){
+            logout() {
                 this.loginState = false;
                 alert('Log Out');
                 this.cookieDel();
@@ -195,60 +189,57 @@
             closeModal() {
                 $('.ui.modal').modal('hide')
             },
-            submit(){
+            submit() {
                 if (this.signState === true) {
                     // true = 로그인 , false = 회원가입
-                    this.$http.post('api/users/signin',
-                    {
-                        userid: this.userid,
-                        password: this.password,
-                    })
-                    .then((res) => {
-                    this.userToken = res.data.token;
-                    // 헤더 토큰 등록
-                    this.$http.defaults.headers.common["Authorization"] = this.userToken;
-                    // 토큰 테스트
-                    this.$http.get('api/users/my-info')
-                        //로그인 성공
+                    this.$http.post('api/users/signin', {
+                            userid: this.userid,
+                            password: this.password,
+                        })
                         .then((res) => {
-                        if(res.status == 200)
-                    {
-                        this.loginState = true;
-                        this.username = res.data.user.username;
-                        this.closeModal();
-                        this.loginState = true;
-                        this.userRating = res.data.user.rating;
-                        //Cookie : 이름 , 내용 , 만료기간 , 도메인
-                        this.$cookie.set('userName', this.username, 1);
-                        this.$cookie.set('userToken',this.userToken, 1);
-                        this.$cookie.set('userRating',this.userRating, 1);
-                        // 쿠키 값 출력
-                        alert(" 안녕하세요 ");
-                    }
-                })
-                    //토큰인증 실패
-                .
-                    catch((err) => {
-                        alert("token error " +err);
-                    })
-                })
-                .
+                            this.userToken = res.data.token;
+                            // 헤더 토큰 등록
+                            this.$http.defaults.headers.common["Authorization"] = this.userToken;
+                            // 토큰 테스트
+                            this.$http.get('api/users/my-info')
+                                //로그인 성공
+                                .then((res) => {
+                                    if (res.status == 200) {
+                                        this.loginState = true;
+                                        this.username = res.data.user.username;
+                                        this.closeModal();
+                                        this.loginState = true;
+                                        this.userRating = res.data.user.rating;
+                                        //Cookie : 이름 , 내용 , 만료기간 , 도메인
+                                        this.$cookie.set('userName', this.username, 1);
+                                        this.$cookie.set('userToken', this.userToken, 1);
+                                        this.$cookie.set('userRating', this.userRating, 1);
+                                        // 쿠키 값 출력
+                                        alert(" 안녕하세요 ");
+                                    }
+                                })
+                                //토큰인증 실패
+                                .
+                            catch((err) => {
+                                alert("token error " + err);
+                            })
+                        })
+                        .
                     catch((err) => {
                         alert(err);
-                    if (err.response.data.message == 'account false') {
-                        alert("승인중입니다");
-                    }
-                })
+                        if (err.response.data.message == 'account false') {
+                            alert("승인중입니다");
+                        }
+                    })
 
-                }
-                else {
+                } else {
                     //회원가입
                     this.$http.post('api/users/signup', {
-                        username: this.username,
-                        userid: this.userid,
-                        password: this.password,
-                        studentcode: this.studentcode
-                    })
+                            username: this.username,
+                            userid: this.userid,
+                            password: this.password,
+                            studentcode: this.studentcode
+                        })
                         .then(function (response) {
                             alert(response.data.result + ' ' + response.data.username);
                             this.closeModal();
