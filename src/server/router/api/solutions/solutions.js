@@ -17,7 +17,7 @@ router.post('/', function (req, res) {
     request.post({url:url, form: form}, function (err, response, body) {
         if (err) body=err;
 
-        res.json(body);
+        res.send(body);
     })
 });
 
@@ -26,7 +26,7 @@ router.get('/:name', function (req, res) {
     var url = 'http://121.186.23.245:9989/code/' + req.params.name;
     request(url, function (err, response, body) {
         if (err) body=err;
-        res.json(body);
+        res.send(body);
     });
 });
 router.get('/:name/:scanf', function (req, res) {
