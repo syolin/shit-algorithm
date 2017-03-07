@@ -1,6 +1,5 @@
 // module loader
 import express from 'express';
-import https from 'https';
 import path from 'path';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
@@ -41,8 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const compiler = webpack(config);
 
 app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  stats: { colors: true }
+    publicPath: config.output.publicPath,
+    stats: { colors: true }
 }));
 
 app.use(webpackHotMiddleware(compiler));
@@ -54,6 +53,17 @@ database.once('open', () => {
     console.log('Connected to mongodb server');
 });
 
+var allowCORS = function(req, res, next) {
+    res.header('Acess-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    (req.method === 'OPTIONS') ?
+        res.send(200) :
+        next();
+};
+
+// 이 부분은 app.use(router) 전에 추가하도록 하자
+app.use(allowCORS);
 
 
 // client router
@@ -64,19 +74,19 @@ app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err)
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err)
 });
 
 // error handler
 // will print stacktrace
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: err
-  })
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: err
+    })
 });
 
 app.listen(9999);
