@@ -9,7 +9,6 @@ import webpack from 'webpack';
 import mongoose from 'mongoose';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import cors from 'cors';
 
 // router
 import router from './router/client/index';
@@ -54,8 +53,12 @@ database.once('open', () => {
     console.log('Connected to mongodb server');
 });
 
-app.use(cors);
-
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://121.186.23.245:9998");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+    next();
+});
 
 // client router
 app.use('/', router);
