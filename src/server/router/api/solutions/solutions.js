@@ -67,7 +67,7 @@ router.post('/', function (req, res) {
 
             const solutionApiUrl = 'http://121.186.23.245:9989/code/'+ resolve.name;
             const example = {
-                input : problem.problemData.inputExample2 ? problem.problemData.inputExample2 : problem.problemData.inputExample
+                input : problem.problemData.inputExample2 ? problem.problemData.inputExample2 : problem.problemData.inputExample,
                 output : problem.problemData.outputExample2 ? problem.problemData.outputExample2 : problem.problemData.outputExample
             }
             let url = example.input ? solutionApiUrl +'/'+ example.input : solutionApiUrl;
