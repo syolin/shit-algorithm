@@ -59,6 +59,8 @@ router.post('/', function (req, res) {
         problemData : {
             inputExample : xssFilters.inHTMLData(body.inputexample),
             outputExample : xssFilters.inHTMLData(body.outputexample),
+            inputExample2: xssFilters.inHTMLData(body.inputexample2),
+            outputExample2 : xssFilters.inHTMLData(body.outputexample2),
             timeLimit : xssFilters.inHTMLData(body.timelimit),
             memoryLimit : xssFilters.inHTMLData(body.memorylimit)
         }
@@ -67,6 +69,7 @@ router.post('/', function (req, res) {
     // Validation
     if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation ||
         !problemInfo.problemData.inputExample || !problemInfo.problemData.outputExample ||
+        !problemInfo.problemData.inputExample2 || !problemInfo.problemData.outputExample2 ||
         isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) throw new Error('validation error');
 
     const respond = problem => {

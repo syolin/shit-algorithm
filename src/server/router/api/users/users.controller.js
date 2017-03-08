@@ -18,8 +18,16 @@ User.create = (username, userId, password, studentCode, account, rating) => {
     return user.save();
 };
 
+User.accountTrue = userId => {
+    // return User.update({userId: userId}, {$set: {account: true}});
+    User.update({userId: userId}, {rating: true});
+
+    return User.findOneByUserId(userId);
+};
+
 User.findAll = () => {
-    return User.find();
+    return User.find()
+        .select('username studentCode');
 };
 
 // 유저 정보 검색
@@ -30,7 +38,7 @@ User.findOneByUserId = userId => {
 };
 
 User.findSpecificUser = condition => {
-    if(condition == 'account') return User.find({account : false});
+    if(condition == 'account') return User.find({account : false}).select('username userId studentCode account rating');
 
     return false;
 }
@@ -42,11 +50,6 @@ User.passwordHash = password => {
     return passwordHash;
 };
 
-User.accountTrue = userId => {
-    // return User.update({userId: userId}, {$set: {account: true}});
-
-    User.update({userId: userId}, {$set:{account:true}});
-};
 
 
 

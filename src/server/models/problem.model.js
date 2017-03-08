@@ -52,6 +52,8 @@ const ProblemSchema = new Schema({
     problemData: {
         inputExample: String,
         outputExample: String,
+        inputExample2: String,
+        outputExample2: String,
         timeLimit: {
             type: Number,
             required: true,

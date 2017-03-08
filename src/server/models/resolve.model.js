@@ -54,6 +54,8 @@ const ResolveSchema = new Schema({
             type: String,
             required: true,
         },
+        compileName: String,
+        date: Date,
         memory: Number,
         time: Number
     }

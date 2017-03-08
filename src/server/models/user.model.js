@@ -27,10 +27,6 @@ const UserSchema = new Schema({
         type: Number,
         required: true
     }
-    // problems: {
-    //     code: Number,
-    //     result: String,
-    // }
 
 });
 

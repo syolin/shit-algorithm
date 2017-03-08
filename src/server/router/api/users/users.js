@@ -90,7 +90,23 @@ router.get('/my-info', auth.isAuthenticated(), function (req, res) {
 // import model from '../../../models/user.model';
 // const User = mongoose.model('User');
 
-router.get('/account/:id', function (req, res) {
+router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
+
+    const respond = user => {
+        res.json({
+            user : user.account
+        });
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result : error
+        });
+    };
+
+    controller.accountTrue(req.params.user)
+        .then(respond)
+        .catch(onError);
 
 });
 
@@ -112,12 +128,12 @@ router.post('/signup', function(req, res) {
         userId : xssFilters.inHTMLData(req.body.userid),
         password : xssFilters.inHTMLData(req.body.password),
         studentCode : xssFilters.inHTMLData(req.body.studentcode),
-        rating : xssFilters.inHTMLData(req.body.rating)
+        // rating : xssFilters.inHTMLData(req.body.rating)
     };
 
     // Validation
     const validation = user => {
-        if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode) || isNaN(userInfo.rating)) throw new Error('validation error');
+        if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode) /*|| isNaN(userInfo.rating)*/) throw new Error('validation error');
 
         return user;
     }
@@ -129,7 +145,7 @@ router.post('/signup', function(req, res) {
         const accountFalse = false;
         const passwordHash = controller.passwordHash(userInfo.password);
 
-        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse, userInfo.rating);
+        return controller.create(userInfo.username, userInfo.userId, passwordHash, userInfo.studentCode, accountFalse, 1/* 유저 등급 */);
     };
 
     const respond = user => {
@@ -178,6 +194,9 @@ router.post('/signin', function (req, res) {
 
     const check = user => {
         if (!user) throw new Error('login user fail');
+
+        const passwordHash = controller.passwordHash(userInfo.password);
+        if (passwordHash != user.password) throw new Error('password Error');
 
         // 승인 처리 확인
         if(user.account == false)
