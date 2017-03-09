@@ -58,6 +58,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         problemName : xssFilters.inHTMLData(body.problemname),
         source : xssFilters.inHTMLData(body.source),
         explanation : xssFilters.inHTMLData(body.explanation),
+        score : xssFilters.inHTMLData(body.score),
         problemData : {
             inputExample : xssFilters.inHTMLData(body.inputexample),
             outputExample : xssFilters.inHTMLData(body.outputexample),
@@ -69,7 +70,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     };
     console.log(problemInfo._id, problemInfo.problemName, problemInfo.source, problemInfo.explanation, problemInfo.problemData);
     // Validation
-    if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation ||
+    if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation || isNaN(problemInfo.score) ||
         !problemInfo.problemData.inputExample || !problemInfo.problemData.outputExample ||
         !problemInfo.problemData.inputExample2 || !problemInfo.problemData.outputExample2 ||
         isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) throw new Error('validation error');
@@ -98,7 +99,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
      *
      *
      */
-    controller.create(problemInfo.problemName, problemInfo.source, problemInfo.explanation, problemInfo.problemData)
+    controller.create(problemInfo.problemName, problemInfo.source, problemInfo.explanation, problemInfo.score, problemInfo.problemData)
         .then(respond)
         .catch(onError);
 });

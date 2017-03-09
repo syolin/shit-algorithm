@@ -13,12 +13,16 @@ Resolve.create = (userId, resolveData) => {
     return resolve.save();
 };
 
+Resolve.findSuccess = (user, num) => {
+    return Resolve.find({"resolveData.problemNum" : num, "userId" : user});
+};
+
 Resolve.findSpecificResolve = (condition,value) => {
-    if (condition == "num") return Resolve.find({problemNum : value});
-    if (condition == "userId") return Resolve.find({userId : value});
+    if (condition == "num") return Resolve.find({problemNum : value})
+    if (condition == "userId") return Resolve.find({userId : value})
 
     return false;
-}
+};
 
 Resolve.findAll = () => {
     return Resolve.find().exec();

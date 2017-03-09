@@ -26,8 +26,12 @@ const UserSchema = new Schema({
     rating: {
         type: Number,
         required: true
+    },
+    score: {
+        type: Number,
+        required: true,
+        default: 0
     }
-
 });
 
 export default mongoose.model('User', UserSchema);

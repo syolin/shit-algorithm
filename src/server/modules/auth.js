@@ -24,7 +24,7 @@ const auth = {
         return compose()
             .use((req, res, next) => {
                 // const token = req.cookies.userToken;
-                const token = req.headers.authorization;
+                const token = req.cookies.userToken;
                 if (token) {
                     const secret = req.app.get('jwt-secret');
                     try {

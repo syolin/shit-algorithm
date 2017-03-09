@@ -4,11 +4,12 @@ import model from '../../../models/problem.model';
 const Problem = mongoose.model('Problem');
 
 // 문제 등록
-Problem.create = (problemName, source, explanation, problemData) => {
+Problem.create = (problemName, source, explanation, score, problemData) => {
     const problem = new Problem({
         problemName,
         source,
         explanation,
+        score,
         problemData,
     });
 
