@@ -23,11 +23,12 @@ const auth = {
     isAuthenticated : (rating) => {
         return compose()
             .use((req, res, next) => {
+                // const token = req.cookies.userToken;
                 const token = req.headers.authorization;
                 if (token) {
                     const secret = req.app.get('jwt-secret');
                     try {
-                        const decode = jwt.verify(req.headers.authorization, secret);
+                        const decode = jwt.verify(token, secret);
                         req.user = decode;
 
                         next();

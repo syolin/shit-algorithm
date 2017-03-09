@@ -52,7 +52,14 @@ router.post('/', function (req, res) {
     const compileRequest = (problem, form, callback) => {
         const postUrl = 'http://121.186.23.245:9989/code/';
         request.post({url:postUrl, form: form}, function (err, Response, body) {
-            if (err) throw new Error(err);
+            if (err) {
+                res.json({
+                    result : 'error',
+                    message : err
+                });
+
+                return;
+            }
 
             const resolve = JSON.parse(body);
 

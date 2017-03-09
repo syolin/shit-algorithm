@@ -3,6 +3,8 @@ import xssFilters from 'xss-filters';
 
 import controller from './problems.controoler';
 
+import auth from '../../../modules/auth';
+
 const router = express.Router();
 
 
@@ -50,7 +52,7 @@ router.get('/:num', function (req, res) {
         .catch(onError);
 });
 
-router.post('/', function (req, res) {
+router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const problemInfo = {
         problemName : xssFilters.inHTMLData(body.problemname),
