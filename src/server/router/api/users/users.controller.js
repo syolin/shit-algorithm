@@ -20,14 +20,16 @@ User.create = (username, userId, password, studentCode, account, rating) => {
 
 User.accountTrue = userId => {
     // return User.update({userId: userId}, {$set: {account: true}});
-    User.update({userId: userId}, {rating: true});
+    return User.updateOne({userId: userId}, {account: true});
+};
 
-    return User.findOneByUserId(userId);
+User.scoreUpdate = (userId,score) => {
+    return User.updateOne({userId: userId}, {$inc:{score: score}});
 };
 
 User.findAll = () => {
     return User.find()
-        .select('username studentCode');
+        .select('username studentCode score');
 };
 
 // 유저 정보 검색
@@ -38,7 +40,7 @@ User.findOneByUserId = userId => {
 };
 
 User.findSpecificUser = condition => {
-    if(condition == 'account') return User.find({account : false}).select('username userId studentCode account rating');
+    if(condition == 'account') return User.find({account : false}).select('username userId studentCode account rating score');
 
     return false;
 }

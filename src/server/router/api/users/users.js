@@ -94,7 +94,7 @@ router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
 
     const respond = user => {
         res.json({
-            user : user.account
+            result : 'success'
         });
     };
 

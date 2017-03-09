@@ -3,6 +3,7 @@ import request from 'request';
 
 import solutionController from './solutions.controller';
 import problemController from '../problems/problems.controoler';
+import userController from '../users/users.controller';
 
 import auth from '../../../modules/auth';
 
@@ -29,13 +30,6 @@ router.get('/',auth.isAuthenticated('admin'), function (req, res) {
 });
 
 router.get('/test/:user/:num', function (req, res) {
-
-    console.log(solutionController.findSuccess(req.params.user, req.params.num));
-    console.log('-------------------------------1');
-    console.log(solutionController.findAll());
-    console.log('-------------------------------2');
-    console.log(solutionController.findOneByNum(8));
-    console.log('-------------------------------3');
 
     const respond = users => {
         res.json({
@@ -70,6 +64,12 @@ router.post('/', function (req, res) {
 
     const validation = problem => {
         if (!form.inputCode || !form.name || !form.lang || !form.userId || isNaN(form.problemNum)) throw new Error("validation error");
+
+        return problem;
+    };
+
+    const EarlyData = problem => {
+        if (!problem) throw new Error("해당 문제가 없습니다.");
 
         return problem;
     };
@@ -129,6 +129,7 @@ router.post('/', function (req, res) {
                 form : form,
                 compileBody : resolve,
                 example : example,
+                score : resolve.score,
                 url : url
             });
 
@@ -176,6 +177,8 @@ router.post('/', function (req, res) {
                 if (getResolve.result == data.example.output) {
 
                     result = 'success';
+
+                    userController.scoreUpdate(form.userId, data.score);
 
                     res.json({
                         result: result

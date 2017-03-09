@@ -18,7 +18,7 @@ Problem.create = (problemName, source, explanation, score, problemData) => {
 
 Problem.findAll = () => {
     return Problem.find()
-        .select('num problemName source')
+        .select('num problemName source score')
         .exec();
 };
 

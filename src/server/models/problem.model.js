@@ -49,7 +49,11 @@ const ProblemSchema = new Schema({
         type: String,
         required: true,
     },
-    score: Number,
+    score: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     problemData: {
         inputExample: String,
         outputExample: String,
