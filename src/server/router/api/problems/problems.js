@@ -68,17 +68,19 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
             memoryLimit : xssFilters.inHTMLData(body.memorylimit)
         }
     };
-    console.log(problemInfo._id, problemInfo.problemName, problemInfo.source, problemInfo.explanation, problemInfo.problemData);
     // Validation
-    if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation || isNaN(problemInfo.score) ||
-        !problemInfo.problemData.inputExample || !problemInfo.problemData.outputExample ||
-        !problemInfo.problemData.inputExample2 || !problemInfo.problemData.outputExample2 ||
-        isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) throw new Error('validation error');
+    const validation = problem => {
+        if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation || isNaN(problemInfo.score) ||
+            !problemInfo.problemData.inputExample || !problemInfo.problemData.outputExample ||
+            !problemInfo.problemData.inputExample2 || !problemInfo.problemData.outputExample2 ||
+            isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) throw new Error('validation error');
+
+        return problem;
+    }
 
     const respond = problem => {
         res.json({
             result: 'success',
-            // problem : problem
         });
     };
 
