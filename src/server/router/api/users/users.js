@@ -30,22 +30,28 @@ router.get('/', function (req, res) {
     GET /api/users/:id
     해당 유저 정보
  */
-// router.get('/:id', function (req, res) {
-//
-//     const param = xssFilters.inHTMLData(req.params.id);
-//
-//     const respond = user => {
-//
-//     };
-//
-//     const onError = error => {
-//
-//     };
-//
-//     controller.findOneByUserId(param)
-//         .then(respond)
-//         .then(onError)
-// });
+router.get('/search/:id', function (req, res) {
+
+    const param = xssFilters.inHTMLData(req.params.id);
+
+    const respond = user => {
+        res.json({
+            result: 'success',
+            users : user
+        });
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
+    controller.findOneByUserId(req.params.id)
+        .then(respond)
+        .then(onError)
+});
 
 
 router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {

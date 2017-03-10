@@ -68,7 +68,7 @@ router.post('/', function (req, res) {
         return problem;
     };
 
-    const EarlyData = problem => {
+    const earlyData = problem => {
         if (!problem) throw new Error("해당 문제가 없습니다.");
 
         return problem;
@@ -81,10 +81,13 @@ router.post('/', function (req, res) {
     };
 
     const findSuccess = problem => {
-        const find = solutionController.findSuccess(form.userId, form.problemNum);
+        const find = solutionController.findSpecificResolve("num", form.problemNum);
 
         for(let i=0; i < find.length; i++) {
-            if (find[i].resolveData.result == 'success') throw new Error("이미 성공한 문제 입니다.")
+            if (find[i].resolveData.result == 'success') {
+                console.log(find[i]);
+                throw new Error("이미 성공한 문제 입니다.");
+            }
         }
 
         return problem;
@@ -129,7 +132,7 @@ router.post('/', function (req, res) {
                 form : form,
                 compileBody : resolve,
                 example : example,
-                score : resolve.score,
+                score : problem.score,
                 url : url
             });
 
@@ -222,6 +225,7 @@ router.post('/', function (req, res) {
 
     problemController.findOneByProblem(form.problemNum)
         .then(validation)
+        .then(earlyData)
         .then(security)
         .then(findSuccess)
         // .then(compileRequest)

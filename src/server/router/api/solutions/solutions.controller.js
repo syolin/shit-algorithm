@@ -14,7 +14,7 @@ Resolve.create = (userId, resolveData) => {
 };
 
 Resolve.findSuccess = (user, num) => {
-    return Resolve.find({"resolveData.problemNum" : num, "userId" : user});
+    return Resolve.find({userId : user});
 };
 
 Resolve.findSpecificResolve = (condition,value) => {

@@ -24,7 +24,7 @@ User.accountTrue = userId => {
 };
 
 User.scoreUpdate = (userId,score) => {
-    return User.updateOne({userId: userId}, {$inc:{score: score}});
+    User.updateOne({userId: userId}, {$inc :{score: score}},false,function(err, result){})
 };
 
 User.findAll = () => {
