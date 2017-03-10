@@ -199,10 +199,10 @@ router.post('/signin', function (req, res) {
     };
 
     const check = user => {
-        if (!user) throw new Error('login user fail');
+        if (!user) throw new Error('login fail');
 
         const passwordHash = controller.passwordHash(userInfo.password);
-        if (passwordHash != user.password) throw new Error('password Error');
+        if (passwordHash != user.password) throw new Error('login fail');
 
         // 승인 처리 확인
         if(user.account == false)

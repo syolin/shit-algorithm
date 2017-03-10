@@ -28,6 +28,10 @@ Problem.findOneByProblem = num => {
     }).exec();
 };
 
+Problem.updateOne = (form) => {
+    return Problem.update({num: form.problemNum}, form);
+};
+
 
 
 

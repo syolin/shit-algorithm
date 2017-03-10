@@ -52,6 +52,43 @@ router.get('/:num', function (req, res) {
         .catch(onError);
 });
 
+router.put('/', function (req, res) {
+    const body = req.body;
+    const form = {
+        problemNum : body.problemnum,
+        problemName : body.problemname,
+        source : body.source,
+        explanation : body.explanation,
+        score : body.score,
+        problemData : {
+            inputExample : body.inputexample,
+            outputExample : body.outputexample,
+            inputExample2: body.inputexample2,
+            outputExample2 : body.outputexample2,
+            timeLimit : body.timelimit,
+            memoryLimit : body.memorylimit
+        }
+    };
+
+    const respond = problem => {
+        res.json({
+            result: 'success',
+            problem : problem
+        });
+    }
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    }
+
+    controller.updateOne(form)
+        .then(respond)
+        .catch(onError);
+});
+
 router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const problemInfo = {
