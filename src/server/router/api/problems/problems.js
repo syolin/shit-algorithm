@@ -55,17 +55,17 @@ router.get('/:num', function (req, res) {
 router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const problemInfo = {
-        problemName : xssFilters.inHTMLData(body.problemname),
-        source : xssFilters.inHTMLData(body.source),
-        explanation : xssFilters.inHTMLData(body.explanation),
-        score : xssFilters.inHTMLData(body.score),
+        problemName : body.problemname,
+        source : body.source,
+        explanation : body.explanation,
+        score : body.score,
         problemData : {
-            inputExample : xssFilters.inHTMLData(body.inputexample),
-            outputExample : xssFilters.inHTMLData(body.outputexample),
-            inputExample2: xssFilters.inHTMLData(body.inputexample2),
-            outputExample2 : xssFilters.inHTMLData(body.outputexample2),
-            timeLimit : xssFilters.inHTMLData(body.timelimit),
-            memoryLimit : xssFilters.inHTMLData(body.memorylimit)
+            inputExample : body.inputexample,
+            outputExample : body.outputexample,
+            inputExample2: body.inputexample2,
+            outputExample2 : body.outputexample2,
+            timeLimit : body.timelimit,
+            memoryLimit : body.memorylimit
         }
     };
     // Validation

@@ -48,7 +48,7 @@ router.get('/search/:id', function (req, res) {
         });
     };
 
-    controller.findOneByUserId(req.params.id)
+    controller.findOneByUserId(param)
         .then(respond)
         .then(onError)
 });

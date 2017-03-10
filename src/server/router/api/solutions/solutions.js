@@ -4,6 +4,7 @@ import request from 'request';
 import solutionController from './solutions.controller';
 import problemController from '../problems/problems.controoler';
 import userController from '../users/users.controller';
+import xssFilters from 'xss-filters';
 
 import auth from '../../../modules/auth';
 
@@ -80,19 +81,6 @@ router.post('/', function (req, res) {
         return problem;
     };
 
-    const findSuccess = problem => {
-        const find = solutionController.findSpecificResolve("num", form.problemNum);
-
-        for(let i=0; i < find.length; i++) {
-            if (find[i].resolveData.result == 'success') {
-                console.log(find[i]);
-                throw new Error("이미 성공한 문제 입니다.");
-            }
-        }
-
-        return problem;
-    };
-
     const compileRequest = (problem, form, callback) => {
         const postUrl = 'http://121.186.23.245:9989/code/';
         request.post({url:postUrl, form: form}, function (err, Response, body) {
@@ -102,7 +90,7 @@ router.post('/', function (req, res) {
 
             if (resolve.result != 'success') {
                 res.status(409).json({
-                    result: 'error',
+                    result: 'compile error',
                     message: resolve.result
                 });
 
@@ -141,78 +129,89 @@ router.post('/', function (req, res) {
 
     const setRequest = problem => {
 
-        compileRequest(problem, form, function (data) {
-            request.get(data.url, function (err, response, body) {
-                if (err) {
-                    res.status(409).json({
-                        result : 'error',
-                        message : err
+        request.get('http://localhost:9999/api/solution/findsuccess/'+form.userId+'/'+problem.num, function (err, Response, body) {
+            const bodyJson = JSON.parse(body);
+            if (bodyJson.result) {
+                res.status(409).json({
+                    result : 'error',
+                    message : '이미 정답을 맞춘 문제입니다.'
+                });
+            } else {
+                compileRequest(problem, form, function (data) {
+                    request.get(data.url, function (err, response, body) {
+                        if (err) {
+                            res.status(409).json({
+                                result : 'error',
+                                message : err
+                            });
+
+                            return;
+                        }
+
+                        // if (body.code.indexOf("ECONNRESET") != -1) throw new Error("한글에러");
+
+                        const getResolve = JSON.parse(body || null);
+
+                        if (getResolve.result.indexOf("not found") != -1) {
+                            res.status(409).json({
+                                result: 'error',
+                                message: 'compile error'
+                            });
+
+                            return;
+                        }
+
+
+                        // 제출 하지 않고, 결과만 요청
+                        if (req.body.mode) {
+                            res.json({
+                                result: getResolve.result
+                            });
+
+                            return;
+                        }
+
+                        let result;
+
+                        if (getResolve.result == data.example.output) {
+
+                            result = 'success';
+
+                            userController.scoreUpdate(form.userId, data.score);
+
+                            res.json({
+                                result: result
+                            });
+                        } else {
+
+                            result = 'fail';
+
+                            res.json({
+                                result: result
+                            });
+                        }
+
+                        let resolveInfo = {
+                            userId : req.body.userid,
+                            resolveData : {
+                                language: form.lang,
+                                problemNum: form.problemNum,
+                                code: form.inputCode,
+                                result: result,
+                                compileName: data.compileBody.name,
+                                date: new Date(),
+                                memory: 0,
+                                time: 0
+                            }
+                        };
+
+                        solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
+
                     });
+                })
+            }
+        });
 
-                    return;
-                }
-
-                // if (body.code.indexOf("ECONNRESET") != -1) throw new Error("한글에러");
-
-                const getResolve = JSON.parse(body || null);
-
-                if (getResolve.result.indexOf("not found") != -1) {
-                    res.status(409).json({
-                        result: 'error',
-                        message: 'compile error'
-                    });
-
-                    return;
-                }
-
-
-                // 제출 하지 않고, 결과만 요청
-                if (req.body.mode) {
-                    res.json({
-                        result: getResolve.result
-                    });
-
-                    return;
-                }
-
-                let result;
-
-                if (getResolve.result == data.example.output) {
-
-                    result = 'success';
-
-                    userController.scoreUpdate(form.userId, data.score);
-
-                    res.json({
-                        result: result
-                    });
-                } else {
-
-                    result = 'fail';
-
-                    res.json({
-                        result: result
-                    });
-                }
-
-                let resolveInfo = {
-                    userId : req.body.userid,
-                    resolveData : {
-                        language: form.lang,
-                        problemNum: form.problemNum,
-                        code: form.inputCode,
-                        result: result,
-                        compileName: data.compileBody.name,
-                        date: new Date(),
-                        memory: 0,
-                        time: 0
-                    }
-                };
-
-                solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
-
-            });
-        })
 
     };
 
@@ -227,12 +226,43 @@ router.post('/', function (req, res) {
         .then(validation)
         .then(earlyData)
         .then(security)
-        .then(findSuccess)
-        // .then(compileRequest)
+        // .then(compileRequest)  키지마세
         .then(setRequest)
         .catch(onError);
 
 
+});
+
+router.get('/findsuccess/:userId/:num', function (req, res) {
+    const userId = xssFilters.inHTMLData(req.params.userId);
+    const num = xssFilters.inHTMLData(req.params.num);
+
+    const respond = resolves => {
+
+        let result = false;
+
+        for(let i=0; i < resolves.length; i++) {
+            if (resolves[i].resolveData.result == 'success') {
+                result = true;
+            }
+        }
+
+        res.json({
+            result : result
+        });
+
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
+    solutionController.findSuccess(userId, num)
+        .then(respond)
+        .catch(onError);
 });
 
 // router.get('/:name', function (req, res) {
