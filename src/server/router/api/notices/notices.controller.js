@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import model from '../../../models/notice.model';
 
-const Notice = mongoose.model('Problem');
+const Notice = mongoose.model('Notice');
 
 // 문제 등록
 Notice.create = (noticeName, contents, date) => {
