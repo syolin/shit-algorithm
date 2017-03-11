@@ -10,7 +10,7 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
-router.get('/',auth.isAuthenticated('admin'), function (req, res) {
+router.get('/',auth.isAuthenticated(), function (req, res) {
     const respond = resolves => {
         res.json({
             result: 'success',
@@ -25,31 +25,13 @@ router.get('/',auth.isAuthenticated('admin'), function (req, res) {
         });
     };
 
-    solutionController.findAll(true)
+    let value = req.user.rating == '3' ? true : false;
+
+    solutionController.findAll(value)
         .then(respond)
         .catch(onError);
+
 });
-
-router.get('/normal', function (req, res) {
-    const respond = resolves => {
-        res.json({
-            result: 'success',
-            resolves: resolves
-        });
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result: 'error',
-            message: error.message
-        });
-    };
-
-    solutionController.findAll()
-        .then(respond)
-        .catch(onError);
-});
-
 router.get('/test/:user/:num', function (req, res) {
 
     const respond = users => {

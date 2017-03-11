@@ -6,7 +6,7 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
-router.get('/',auth.isAuthenticated(), function (req, res) {
+router.get('/', function (req, res) {
    const respond = users => {
         res.json({
             result: 'success',
@@ -21,10 +21,7 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
        });
    };
 
-   let value = req.user.rating == '3' ? true : false;
-
-
-   controller.findAll(value)
+   controller.findAll()
        .then(respond)
        .catch(onError);
 });
