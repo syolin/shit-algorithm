@@ -18,8 +18,7 @@ Problem.create = (problemName, source, explanation, score, problemData) => {
 
 Problem.findAll = () => {
     return Problem.find()
-        .select('num problemName source score')
-        .exec();
+        .select('num problemName source score').sort({num:1});
 };
 
 Problem.findOneByProblem = num => {
@@ -33,7 +32,8 @@ Problem.updateOne = (form) => {
 };
 
 Problem.deleteOne = (num) => {
-    return Problem.remove({num : num});
+    Problem.remove({num : num});
+    return Problem.update({num: num+1}, {num: num});
 };
 
 

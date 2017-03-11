@@ -7,23 +7,26 @@ import auth from '../../../modules/auth';
 const router = express.Router();
 
 router.get('/',auth.isAuthenticated(), function (req, res) {
-   const respond = users => {
+
+    let value = req.user.rating == '3' ? true : false;
+
+    const respond = users => {
         res.json({
             result: 'success',
             users : users
         })
-   };
+    };
 
-   const onError = error => {
-       res.status(409).json({
-           result: 'error',
-           message: error.message
-       });
-   };
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
 
-   controller.findAll()
-       .then(respond)
-       .catch(onError);
+    controller.findAll(value)
+        .then(respond)
+        .catch(onError);
 });
 
 router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {

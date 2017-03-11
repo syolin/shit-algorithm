@@ -27,9 +27,11 @@ User.scoreUpdate = (userId,score) => {
     User.updateOne({userId: userId}, {$inc :{score: score}},false,function(err, result){})
 };
 
-User.findAll = () => {
+User.findAll = (auth) => {
+    if (auth) return User.find()
+        .select('userId username studentCode score').sort({rating:1});
     return User.find()
-        .select('username studentCode score');
+        .select('username studentCode score').sort({rating:1});
 };
 
 // 유저 정보 검색

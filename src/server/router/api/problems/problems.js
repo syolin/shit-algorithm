@@ -101,9 +101,6 @@ router.put('/',auth.isAuthenticated(), function (req, res) {
         return;
     }
 
-
-
-
     const respond = problem => {
         res.json({
             result: 'success',
