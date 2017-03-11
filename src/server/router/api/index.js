@@ -5,6 +5,7 @@ import auth from '../../modules/auth';
 import user from './users/users';
 import problem from './problems/problems';
 import solution from './solutions/solutions';
+import notice from './notices/notices';
 
 const router = express.Router();
 
@@ -26,6 +27,8 @@ router.use('/users', user);
 router.use('/problems', problem);
 
 router.use('/solution', solution);
+
+router.use('/notices', notice);
 
 
 export default router
