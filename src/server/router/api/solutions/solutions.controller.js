@@ -24,7 +24,7 @@ Resolve.findSpecificResolve = (condition,value) => {
 };
 
 Resolve.findAll = (auth) => {
-    if(auth) return Resolve.find().sort({num: -1 });
+    if(auth) return Resolve.find().sort({num: -1});
     return Resolve.find().select('userId resolveData.problemNum resolveData.result resolveData.date').sort({num: -1});
 };
 

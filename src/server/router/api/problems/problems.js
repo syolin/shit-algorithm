@@ -1,5 +1,6 @@
 import express from 'express';
 import xssFilters from 'xss-filters';
+import request from 'request';
 
 import controller from './problems.controoler';
 
@@ -8,6 +9,9 @@ import auth from '../../../modules/auth';
 const router = express.Router();
 
 
+/*
+    모든 문제 출력
+ */
 router.get('/',auth.isAuthenticated(), function (req, res) {
     const respond = problems => {
         res.json({
@@ -28,13 +32,20 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 });
 
+/*
+    해당 문제 삭제
+ */
 router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
+
 
     const respond = problem => {
         res.json({
             result: 'success',
             problem : problem
-        })
+        });
+
+        // 뒷 문제를 앞으로 정렬
+        controller.updateSortNum(req.params.num);
     };
 
     const onError = error => {
@@ -49,15 +60,15 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
         .catch(onError);
 });
 
+/*
+    해당 문제 출력
+ */
 router.get('/:num',auth.isAuthenticated(), function (req, res) {
-
-    const problemNum = xssFilters.inHTMLData(req.params.num);
 
     const respond = problem => {
         res.json({
             result: 'success',
-            problem: problem,
-            submission: "제공전"
+            problem: problem
         });
     };
 
@@ -68,11 +79,39 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
         });
     };
 
-    controller.findOneByProblem(problemNum)
+    controller.findOneByProblem(req.params.num)
         .then(respond)
         .catch(onError);
 });
 
+
+/*
+    테스트용
+ */
+router.get('/updatesort/:num', auth.isAuthenticated('admin'), function (req, res) {
+
+    const respond = problem => {
+        res.json({
+            result: 'success',
+            problem: problem
+        });
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result : 'error',
+            message : error.message
+        });
+    };
+
+    controller.updateWantNum(req.params.num)
+        .then(respond)
+        .catch(onError);
+});
+
+/*
+    해당 문제 수정
+ */
 router.put('/',auth.isAuthenticated(), function (req, res) {
     const body = req.body;
     const form = {
@@ -120,6 +159,9 @@ router.put('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 });
 
+/*
+    문제 등록
+ */
 router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const problemInfo = {
@@ -136,6 +178,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
             memoryLimit : body.memorylimit
         }
     };
+
     // Validation
     if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation || isNaN(problemInfo.score) ||
         isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) {

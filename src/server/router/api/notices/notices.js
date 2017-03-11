@@ -1,13 +1,16 @@
 import express from 'express';
 import xssFilters from 'xss-filters';
 
-
 import controller from './notices.controller';
 
 import auth from '../../../modules/auth';
 
 const router = express.Router();
 
+
+/*
+    모든 공지 출력
+ */
 router.get('/',auth.isAuthenticated(), function (req, res) {
     const respond = notices => {
         res.json({
@@ -28,6 +31,9 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 });
 
+/*
+    해당 공지 삭제
+ */
 router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
 
     const respond = notice => {
@@ -49,6 +55,9 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
         .catch(onError);
 });
 
+/*
+    해당 공지 출력
+ */
 router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
     const noticeNum = xssFilters.inHTMLData(req.params.num);
@@ -72,6 +81,9 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 });
 
+/*
+    해당 공지 수정
+ */
 router.put('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const form = {
@@ -109,6 +121,9 @@ router.put('/',auth.isAuthenticated('admin'), function (req, res) {
         .catch(onError);
 });
 
+/*
+    공지 등록
+ */
 router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const noticeInfo = {

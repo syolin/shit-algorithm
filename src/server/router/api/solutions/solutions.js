@@ -10,6 +10,10 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
+/*
+    모든 결과 출력
+    ㄴ 어드민 일경우 해당 결과에 대한 모든 정보 출력
+ */
 router.get('/',auth.isAuthenticated(), function (req, res) {
 
     let value = req.user.rating == '3' ? true : false;
@@ -55,7 +59,9 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
 //
 // });
 
-
+/*
+    문제 제출
+ */
 router.post('/',auth.isAuthenticated(), function (req, res) {
 
     const form = {
@@ -72,18 +78,21 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         return problem;
     };
 
+    // Not Found 예외 처리
     const earlyData = problem => {
         if (!problem) throw new Error("해당 문제가 없습니다.");
 
         return problem;
     };
 
+    // 코드 제출 결과에 System 함수를 배제하기 위한 예외 처리
     const security = problem => {
         if (form.inputCode.indexOf("system") != -1) throw new Error("코드 내부에 system 을 사용할 수 없습니다.");
 
         return problem;
     };
 
+    // 컴파일 콜백 함수
     const compileRequest = (problem, form, callback) => {
         const postUrl = 'http://121.186.23.245:9989/code/';
         request.post({url:postUrl, form: form}, function (err, Response, body) {
@@ -91,17 +100,20 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
             const resolve = JSON.parse(body);
 
+            // 컴파일 에러가 있을경우 예외처리
             if (resolve.result != 'success') {
                 res.status(409).json({
                     result: 'compile error',
                     message: resolve.result
                 });
-
                 return;
             }
 
             const solutionApiUrl = 'http://121.186.23.245:9989/code/'+ resolve.name;
 
+            /*
+                두번쨰 예제가 있을 경우, 두번째 예제로 정답을 체크
+             */
             let example;
 
             if (req.body.mode) {
@@ -118,7 +130,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
             let url = example.input ? solutionApiUrl +'/'+ example.input : solutionApiUrl;
 
-
             callback({
                 form : form,
                 compileBody : resolve,
@@ -130,8 +141,11 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         });
     };
 
+
+    // 실행 및 결과 함수
     const setRequest = problem => {
 
+        // 정답일 경우 예외 처리
         request.get('http://localhost:9999/api/solution/findsuccess/'+form.userId+'/'+problem.num, function (err, Response, body) {
             const bodyJson = JSON.parse(body);
             if (bodyJson.result) {
@@ -141,28 +155,30 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                 });
             } else {
                 compileRequest(problem, form, function (data) {
+                    // 컴파일 한 파일을 실행후 결과 확인
                     request.get(data.url, function (err, response, body) {
                         if (err) {
                             res.status(409).json({
-                                result : 'error',
-                                message : err
+                                result: 'error',
+                                message: err
                             });
-
                             return;
-                        }
+                        };
 
                         // if (body.code.indexOf("ECONNRESET") != -1) throw new Error("한글에러");
 
+                        // 제대로 값이 불러와지지 않았다면 null
                         const getResolve = JSON.parse(body || null);
 
+
+                        // not found 예외 처리
                         if (getResolve.result.indexOf("not found") != -1) {
                             res.status(409).json({
                                 result: 'error',
                                 message: 'compile error'
                             });
-
                             return;
-                        }
+                        };
 
 
                         // 제출 하지 않고, 결과만 요청
@@ -170,10 +186,12 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                             res.json({
                                 result: getResolve.result
                             });
-
                             return;
-                        }
+                        };
 
+                        /*
+                            정답 체크 후 응답
+                         */
                         let result;
 
                         if (getResolve.result == data.example.output) {
@@ -208,6 +226,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                             }
                         };
 
+                        // 디비에 결과 저장
                         solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
 
                     });
@@ -236,6 +255,9 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
 });
 
+/*
+    문제 정답 결과 출력
+ */
 router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, res) {
     const userId = xssFilters.inHTMLData(req.params.userId);
     const num = xssFilters.inHTMLData(req.params.num);
