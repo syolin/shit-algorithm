@@ -1,5 +1,6 @@
 import express from 'express';
-import request from 'request';
+import xssFilters from 'xss-filters';
+
 
 import controller from './notices.controller';
 
