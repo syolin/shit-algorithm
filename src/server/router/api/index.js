@@ -1,4 +1,5 @@
 import express from 'express'
+import auth from '../../modules/auth';
 
 // router
 import user from './users/users';
@@ -22,9 +23,9 @@ router.get('/test', function (req, res) {
 
 router.use('/users', user);
 
-router.use('/problems', problem);
+router.use('/problems',auth.isAuthenticated(), problem);
 
-router.use('/solution', solution);
+router.use('/solution',auth.isAuthenticated(), solution);
 
 
 export default router

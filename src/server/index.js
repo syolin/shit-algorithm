@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
 });
 
 //api router
-app.use('/api',auth.isAuthenticated(), api);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

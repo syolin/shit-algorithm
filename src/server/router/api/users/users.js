@@ -6,7 +6,7 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/',auth.isAuthenticated(), function (req, res) {
    const respond = users => {
         res.json({
             result: 'success',
@@ -26,7 +26,7 @@ router.get('/', function (req, res) {
        .catch(onError);
 });
 
-router.delete('/:userId',auth.checkAdmin(), function (req, res) {
+router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
     const respond = user => {
         res.json({
             result: 'success',
@@ -50,7 +50,7 @@ router.delete('/:userId',auth.checkAdmin(), function (req, res) {
     GET /api/users/:id
     해당 유저 정보
  */
-router.get('/search/:id',auth.checkAdmin(), function (req, res) {
+router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
 
     const param = xssFilters.inHTMLData(req.params.id);
 
@@ -74,7 +74,7 @@ router.get('/search/:id',auth.checkAdmin(), function (req, res) {
 });
 
 
-router.get('/non-account', auth.checkAdmin(), function (req, res) {
+router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {
     const respond = users => {
         res.json({
             result: 'success',
@@ -94,14 +94,14 @@ router.get('/non-account', auth.checkAdmin(), function (req, res) {
         .catch(onError);
 });
 
-router.get('/mypage', function (req, res) {
+router.get('/mypage',auth.isAuthenticated(), function (req, res) {
     res.json({
         result: 'success',
         user : req.user
     });
 });
 
-router.get('/my-info', function (req, res) {
+router.get('/my-info',auth.isAuthenticated(), function (req, res) {
     res.json({
         result: 'success',
         user : req.user
@@ -116,7 +116,7 @@ router.get('/my-info', function (req, res) {
 // import model from '../../../models/user.model';
 // const User = mongoose.model('User');
 
-router.get('/account/:user',auth.checkAdmin(), function (req, res) {
+router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
 
     const respond = user => {
         res.json({
