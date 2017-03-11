@@ -45,7 +45,7 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
         });
 
         // 뒷 문제를 앞으로 정렬
-        controller.updateSortNum(req.params.num);
+        // controller.updateSortNum(req.params.num);
     };
 
     const onError = error => {
