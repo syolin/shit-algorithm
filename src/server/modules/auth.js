@@ -30,6 +30,7 @@ const auth = {
                     try {
                         const decode = jwt.verify(token, secret);
                         req.user = decode;
+                        req.user.token = token
 
                         next();
                     } catch (error) {
@@ -81,8 +82,7 @@ const auth = {
                     });
                 }
             });
-    }
-
+    },
 };
 
 export default auth

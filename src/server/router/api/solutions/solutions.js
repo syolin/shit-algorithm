@@ -95,7 +95,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
     // 컴파일 콜백 함수
     const compileRequest = (problem, form, callback) => {
         const postUrl = 'http://121.186.23.245:9989/code/';
-        request.post({url:postUrl, form: form}, function (err, Response, body) {
+        request.post({url:postUrl, header: {'Authorization': req.headers.authorization}, form: form}, function (err, Response, body) {
             if (err) throw new Error(err);
 
             const resolve = JSON.parse(body);
@@ -144,11 +144,12 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
     // 실행 및 결과 함수
     const setRequest = problem => {
-
         // 정답일 경우 예외 처리
-        request.get('http://localhost:9999/api/solution/findsuccess/'+form.userId+'/'+problem.num, function (err, Response, body) {
+        console.log(req.headers.authorization)
+        request.get({url : 'http://localhost:9999/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
             const bodyJson = JSON.parse(body);
             if (bodyJson.result) {
+                console.log(bodyJson);
                 res.status(409).json({
                     result : 'error',
                     message : '이미 정답을 맞춘 문제입니다.'
@@ -156,7 +157,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
             } else {
                 compileRequest(problem, form, function (data) {
                     // 컴파일 한 파일을 실행후 결과 확인
-                    request.get(data.url, function (err, response, body) {
+                    request.get({url: data.url, header: {'Authorization': req.headers.authorization}}, function (err, response, body) {
                         if (err) {
                             res.status(409).json({
                                 result: 'error',
