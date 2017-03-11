@@ -90,14 +90,17 @@ router.put('/', function (req, res) {
         }
     };
 
-    const validation = problem => {
-        if (!form.problemName || !form.problemNum || !form.source || !form.explanation || isNaN(form.score) ||
-            !form.problemData.inputExample || !form.problemData.outputExample ||
-            !form.problemData.inputExample2 || !form.problemData.outputExample2 ||
-            isNaN(form.problemData.timeLimit) || isNaN(form.problemData.memoryLimit)) throw new Error('validation error');
+    if (!form.problemName || isNaN(form.problemNum) || !form.source || !form.explanation || isNaN(form.score) ||
+        isNaN(form.problemData.timeLimit) || isNaN(form.problemData.memoryLimit)) {
+        res.status(403).json({
+            result : 'error',
+            message : 'validation error'
+        });
 
-        return problem;
+        return;
     }
+
+
 
 
     const respond = problem => {
@@ -115,7 +118,6 @@ router.put('/', function (req, res) {
     }
 
     controller.updateOne(form)
-        .then(validation)
         .then(respond)
         .catch(onError);
 });
@@ -137,14 +139,15 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         }
     };
     // Validation
-    const validation = problem => {
-        if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation || isNaN(problemInfo.score) ||
-            !problemInfo.problemData.inputExample || !problemInfo.problemData.outputExample ||
-            !problemInfo.problemData.inputExample2 || !problemInfo.problemData.outputExample2 ||
-            isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) throw new Error('validation error');
+    if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation || isNaN(problemInfo.score) ||
+        isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) {
+        res.status(403).json({
+            result : 'error',
+            message : 'validation error'
+        });
 
-        return problem;
-    }
+        return;
+    };
 
     const respond = problem => {
         res.json({
