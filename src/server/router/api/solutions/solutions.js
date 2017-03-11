@@ -25,6 +25,26 @@ router.get('/',auth.isAuthenticated('admin'), function (req, res) {
         });
     };
 
+    solutionController.findAll(true)
+        .then(respond)
+        .catch(onError);
+});
+
+router.get('/normal', function (req, res) {
+    const respond = resolves => {
+        res.json({
+            result: 'success',
+            resolves: resolves
+        });
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
     solutionController.findAll()
         .then(respond)
         .catch(onError);

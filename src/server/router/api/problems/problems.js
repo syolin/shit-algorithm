@@ -28,6 +28,26 @@ router.get('/', function (req, res) {
         .catch(onError);
 });
 
+router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
+    const respond = problem => {
+        res.json({
+            result: 'success',
+            problem : problem
+        })
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
+    controller.deleteOne(req.params.num)
+        .then(respond)
+        .catch(onError);
+});
+
 router.get('/:num', function (req, res) {
 
     const problemNum = xssFilters.inHTMLData(req.params.num);

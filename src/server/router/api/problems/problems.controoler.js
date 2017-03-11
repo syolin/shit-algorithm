@@ -32,7 +32,9 @@ Problem.updateOne = (form) => {
     return Problem.update({num: form.problemNum}, form);
 };
 
-
+Problem.deleteOne = (num) => {
+    return Problem.remove({num : num});
+};
 
 
 

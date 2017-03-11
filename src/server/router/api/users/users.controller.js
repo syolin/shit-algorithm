@@ -52,6 +52,10 @@ User.passwordHash = password => {
     return passwordHash;
 };
 
+User.deleteOne = (userId) => {
+    return User.remove({userId : userId});
+};
+
 
 
 

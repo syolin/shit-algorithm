@@ -6,7 +6,7 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/',auth.isAuthenticated(), function (req, res) {
    const respond = users => {
         res.json({
             result: 'success',
@@ -21,9 +21,32 @@ router.get('/', function (req, res) {
        });
    };
 
-   controller.findAll()
+   let value = req.user.rating == '3' ? true : false;
+
+
+   controller.findAll(value)
        .then(respond)
        .catch(onError);
+});
+
+router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
+    const respond = user => {
+        res.json({
+            result: 'success',
+            user : user
+        })
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
+    controller.deleteOne(req.params.userId)
+        .then(respond)
+        .catch(onError);
 });
 
 /*

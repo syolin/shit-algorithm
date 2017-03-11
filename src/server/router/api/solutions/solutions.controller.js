@@ -23,8 +23,9 @@ Resolve.findSpecificResolve = (condition,value) => {
     return false;
 };
 
-Resolve.findAll = () => {
-    return Resolve.find().exec();
+Resolve.findAll = (auth) => {
+    if(auth) return Resolve.find().exec();
+    return Resolve.find('num userId resolveData.problemNum resolveData.result resolveData.date').exec();
 };
 
 Resolve.findOneByNum = num => {
