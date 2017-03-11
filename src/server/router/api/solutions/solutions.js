@@ -11,6 +11,9 @@ import auth from '../../../modules/auth';
 const router = express.Router();
 
 router.get('/',auth.isAuthenticated(), function (req, res) {
+
+    let value = req.user.rating == '3' ? true : false;
+
     const respond = resolves => {
         res.json({
             result: 'success',
@@ -24,8 +27,6 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
             message: error.message
         });
     };
-
-    let value = req.user.rating == '3' ? true : false;
 
     solutionController.findAll(value)
         .then(respond)
