@@ -8,7 +8,7 @@ import auth from '../../../modules/auth';
 const router = express.Router();
 
 
-router.get('/', function (req, res) {
+router.get('/',auth.isAuthenticated(), function (req, res) {
     const respond = problems => {
         res.json({
             result: 'success',
@@ -28,7 +28,7 @@ router.get('/', function (req, res) {
         .catch(onError);
 });
 
-router.delete('/:num',auth.checkAdmin(), function (req, res) {
+router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
 
     const respond = problem => {
         res.json({
@@ -49,7 +49,7 @@ router.delete('/:num',auth.checkAdmin(), function (req, res) {
         .catch(onError);
 });
 
-router.get('/:num', function (req, res) {
+router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
     const problemNum = xssFilters.inHTMLData(req.params.num);
 
@@ -73,7 +73,7 @@ router.get('/:num', function (req, res) {
         .catch(onError);
 });
 
-router.put('/', function (req, res) {
+router.put('/',auth.isAuthenticated(), function (req, res) {
     const body = req.body;
     const form = {
         problemNum : body.problemnum,
@@ -123,7 +123,7 @@ router.put('/', function (req, res) {
         .catch(onError);
 });
 
-router.post('/',auth.checkAdmin(), function (req, res) {
+router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const problemInfo = {
         problemName : body.problemname,

@@ -10,7 +10,7 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/',auth.isAuthenticated(), function (req, res) {
 
     let value = req.user.rating == '3' ? true : false;
 
@@ -56,7 +56,7 @@ router.get('/', function (req, res) {
 // });
 
 
-router.post('/', function (req, res) {
+router.post('/',auth.isAuthenticated(), function (req, res) {
 
     const form = {
         inputCode : req.body.inputcode,
@@ -236,7 +236,7 @@ router.post('/', function (req, res) {
 
 });
 
-router.get('/findsuccess/:userId/:num', function (req, res) {
+router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, res) {
     const userId = xssFilters.inHTMLData(req.params.userId);
     const num = xssFilters.inHTMLData(req.params.num);
 

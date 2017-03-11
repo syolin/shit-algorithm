@@ -23,9 +23,9 @@ router.get('/test', function (req, res) {
 
 router.use('/users', user);
 
-router.use('/problems',auth.isAuthenticated(), problem);
+router.use('/problems', problem);
 
-router.use('/solution',auth.isAuthenticated(), solution);
+router.use('/solution', solution);
 
 
 export default router
