@@ -69,6 +69,19 @@ const auth = {
 
             });
     },
+    checkAdmin : () => {
+        return compose()
+            .use((req, res, next) => {
+                if (req.user.rating >= 2) {
+                    next();
+                } else {
+                    res.status(403).json({
+                        result: 'error',
+                        message: 'not admin'
+                    });
+                }
+            });
+    }
 
 };
 

@@ -10,7 +10,7 @@ import auth from '../../../modules/auth';
 
 const router = express.Router();
 
-router.get('/',auth.isAuthenticated(), function (req, res) {
+router.get('/', function (req, res) {
 
     let value = req.user.rating == '3' ? true : false;
 

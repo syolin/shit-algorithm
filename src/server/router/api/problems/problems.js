@@ -28,7 +28,8 @@ router.get('/', function (req, res) {
         .catch(onError);
 });
 
-router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
+router.delete('/:num',auth.checkAdmin(), function (req, res) {
+
     const respond = problem => {
         res.json({
             result: 'success',
@@ -122,7 +123,7 @@ router.put('/', function (req, res) {
         .catch(onError);
 });
 
-router.post('/',auth.isAuthenticated('admin'), function (req, res) {
+router.post('/',auth.checkAdmin(), function (req, res) {
     const body = req.body;
     const problemInfo = {
         problemName : body.problemname,

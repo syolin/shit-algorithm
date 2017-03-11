@@ -20,6 +20,8 @@ import config from '../../webpack.config';
 // config.js
 import mongoConfig from './config';
 
+import auth from './modules/auth';
+
 const app = express();
 
 // view engine setup
@@ -60,11 +62,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-// client router
-app.use('/', router);
-
 //api router
-app.use('/api', api);
+app.use('/api',auth.isAuthenticated(), api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
