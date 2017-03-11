@@ -90,6 +90,16 @@ router.put('/', function (req, res) {
         }
     };
 
+    const validation = problem => {
+        if (!form.problemName || !form.problemNum || !form.source || !form.explanation || isNaN(form.score) ||
+            !form.problemData.inputExample || !form.problemData.outputExample ||
+            !form.problemData.inputExample2 || !form.problemData.outputExample2 ||
+            isNaN(form.problemData.timeLimit) || isNaN(form.problemData.memoryLimit)) throw new Error('validation error');
+
+        return problem;
+    }
+
+
     const respond = problem => {
         res.json({
             result: 'success',
@@ -105,6 +115,7 @@ router.put('/', function (req, res) {
     }
 
     controller.updateOne(form)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });

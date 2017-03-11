@@ -33,27 +33,27 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 
 });
-router.get('/test/:user/:num', function (req, res) {
-
-    const respond = users => {
-        res.json({
-            result: 'success',
-            users : users
-        })
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result: 'error',
-            message: error.message
-        });
-    };
-
-    solutionController.findSuccess(req.params.user, req.params.num)
-        .then(respond)
-        .catch(onError);
-
-});
+// router.get('/test/:user/:num', function (req, res) {
+//
+//     const respond = users => {
+//         res.json({
+//             result: 'success',
+//             users : users
+//         })
+//     };
+//
+//     const onError = error => {
+//         res.status(409).json({
+//             result: 'error',
+//             message: error.message
+//         });
+//     };
+//
+//     solutionController.findSuccess(req.params.user, req.params.num)
+//         .then(respond)
+//         .catch(onError);
+//
+// });
 
 
 router.post('/', function (req, res) {
