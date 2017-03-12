@@ -147,7 +147,8 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         // 정답일 경우 예외 처리
         request.get({url : 'http://localhost:9999/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
             const bodyJson = JSON.parse(body);
-            if (bodyJson.result) {
+            const testId = form.userId == 'test' ? false : true;
+            if (bodyJson.result && testId) {
                 res.status(409).json({
                     result : 'error',
                     message : '이미 정답을 맞춘 문제입니다.'
