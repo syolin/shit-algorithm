@@ -60,7 +60,7 @@ router.get('/captcha/:key/:input', function (req, res) {
 
         const valueJson = JSON.parse(value);
 
-        if(valueJson.result == 'true') {
+        if(valueJson.result == true) {
             res.json({
                 result : 'true'
             });
@@ -70,6 +70,8 @@ router.get('/captcha/:key/:input', function (req, res) {
                 message : valueJson.errorMessage
             });
         };
+
+        console.log(valueJson);
 
     });
 });
@@ -256,6 +258,53 @@ router.post('/signup', function(req, res) {
 
 });
 
+router.post('/failReset', function (req, res) {
+    const form = {
+        userId : xssFilters.inHTMLData(req.body.userid),
+        studentCode : xssFilters.inHTMLData(req.body.studentcode),
+        username : xssFilters.inHTMLData(req.body.username)
+    };
+
+    const validation = user => {
+        if (!form.userId || isNaN(form.studentCode) || !form.username) throw new Error('validation error');
+
+        return user;
+    };
+
+    const check = user => {
+        if(!user) throw new Error('not user');
+
+        if(form.studentCode != user.studentCode || form.username != user.username) throw new Error('information wrong');
+
+        return user;
+    };
+
+    const ratingUpdate = user => {
+        controller.failRating(user.userId, 1);
+    };
+
+    const respond = () => {
+
+        res.json({
+            result : 'success',
+        });
+    };
+
+    const onError = error => {
+        res.status(403).json({
+            result : 'error',
+            message : error.message
+        });
+    };
+
+    controller.findOneByUserId(form.userId)
+        .then(validation)
+        .then(check)
+        .then(ratingUpdate)
+        .then(respond)
+        .catch(onError);
+});
+
 /*
     POST /api/users/signin
     {
@@ -282,9 +331,15 @@ router.post('/signin', function (req, res) {
     const check = user => {
         if (!user) throw new Error('login fail');
 
+        if(user.failRating >= 5) {
+            throw new Error('fail rating excess');
+        };
 
         const passwordHash = controller.passwordHash(userInfo.password);
-        if (passwordHash != user.password) throw new Error('login fail');
+        if (passwordHash != user.password) {
+            throw new Error('login fail');
+            controller.failRating(userInfo.userId, 0);
+        };
 
         // 승인 처리 확인
         if(user.account == false)

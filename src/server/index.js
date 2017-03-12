@@ -31,10 +31,6 @@ app.set('view engine', 'jade');
 // JWT Setting
 app.set('jwt-secret', mongoConfig.secret);
 
-//Naver Api Key Setting
-app.set('naver-id', mongoConfig.naverApiId);
-app.set('naver-secret', mongoConfig.naverApiSecret);
-
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

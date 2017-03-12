@@ -47,6 +47,11 @@ User.findSpecificUser = condition => {
     return false;
 }
 
+User.failRating = (userId, exe) => {
+    if (exe == 0) User.updateOne({userId: userId}, {$inc : {failRating : 1}}, false, function(err, result){});
+    if (exe == 1) User.updateOne({userId: userId}, {$set : {failRating : 0}}, false, function(err, result){});
+};
+
 // Password Hash
 User.passwordHash = password => {
     const passwordHash = crypto.createHash("sha512").update(password).digest("hex");

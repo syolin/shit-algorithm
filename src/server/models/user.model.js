@@ -30,6 +30,10 @@ const UserSchema = new Schema({
     score: {
         type: Number,
         default: 0
+    },
+    failRating: {
+        type:Number,
+        default: 0
     }
 });
 

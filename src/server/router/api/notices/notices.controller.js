@@ -17,8 +17,7 @@ Notice.create = (noticeName, contents, type, date) => {
 };
 
 Notice.findAll = () => {
-    return Notice.find()
-        .select('num noticeName type date').sort({num:1});
+    return Notice.find().sort({num:1});
 };
 
 Notice.updateSortNum = (num) => {
