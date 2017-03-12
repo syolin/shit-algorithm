@@ -120,6 +120,7 @@ router.put('/',auth.isAuthenticated(), function (req, res) {
         source : body.source,
         explanation : body.explanation,
         score : body.score,
+        type : body.type,
         problemData : {
             inputExample : body.inputexample,
             outputExample : body.outputexample,
@@ -131,7 +132,7 @@ router.put('/',auth.isAuthenticated(), function (req, res) {
     };
 
     if (!form.problemName || isNaN(form.problemNum) || !form.source || !form.explanation || isNaN(form.score)
-        || isNaN(form.problemData.timeLimit) || isNaN(form.problemData.memoryLimit)) {
+        || !form.type || isNaN(form.problemData.timeLimit) || isNaN(form.problemData.memoryLimit)) {
         res.status(403).json({
             result : 'error',
             message : 'validation error'
@@ -178,6 +179,8 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         problemName : body.problemname,
         source : body.source,
         explanation : body.explanation,
+        score : body.score,
+        type : body.type,
         problemData : {
             inputExample : body.inputexample,
             outputExample : body.outputexample,
@@ -222,7 +225,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
      *
      *
      */
-    controller.create(problemInfo.problemName, problemInfo.source, problemInfo.explanation, problemInfo.score, problemInfo.problemData)
+    controller.create(problemInfo.problemName, problemInfo.source, problemInfo.explanation, problemInfo.score, problemInfo.type, problemInfo.problemData)
         .then(respond)
         .catch(onError);
 });

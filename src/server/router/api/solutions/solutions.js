@@ -193,9 +193,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                          */
                         let result;
 
-                        const resolveResultReplace = getResolve.result.replace(/￦n/gi, "\n");
-
-                        if (resolveResultReplace == data.example.output) {
+                        if (getResolve.result == data.example.output) {
 
                             result = 'success';
 

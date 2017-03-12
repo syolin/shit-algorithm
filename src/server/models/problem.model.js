@@ -53,6 +53,11 @@ const ProblemSchema = new Schema({
         type: Number,
         default: 0
     },
+    type: {
+        type: String,
+        required: true,
+        default: 'normal'
+    },
     problemData: {
         inputExample: String,
         outputExample: String,
