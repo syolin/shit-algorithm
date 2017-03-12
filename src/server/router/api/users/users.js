@@ -314,6 +314,8 @@ router.post('/failReset', function (req, res) {
  */
 router.post('/signin', function (req, res) {
 
+    const secret = req.app.get('jwt-secret');
+
     const userInfo = {
         userId : xssFilters.inHTMLData(req.body.userid),
         password : xssFilters.inHTMLData(req.body.password),

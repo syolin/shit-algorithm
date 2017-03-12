@@ -11,7 +11,7 @@ const router = express.Router();
 /*
     모든 공지 출력
  */
-router.get('/',auth.isAuthenticated(), function (req, res) {
+router.get('/', function (req, res) {
     const respond = notices => {
         res.json({
             result: 'success',
@@ -68,7 +68,7 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
 /*
     해당 공지 출력
  */
-router.get('/:num',auth.isAuthenticated(), function (req, res) {
+router.get('/:num', function (req, res) {
 
     const validation = index => {
         if (isNaN(req.params.num)) throw new Error("validation error");
