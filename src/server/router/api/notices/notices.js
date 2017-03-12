@@ -40,7 +40,10 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
         res.json({
             result: 'success',
             notice: notice
-        })
+        });
+
+        // 뒷 번호를 앞으로 정렬
+        // controller.updateSortNum(req.params.num);
     };
 
     const onError = error => {
@@ -129,10 +132,11 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const noticeInfo = {
         noticeName : body.noticename,
         contents : body.contents,
+        type : body.type,
         date : new Date()
     };
     // Validation
-    if (!noticeInfo.noticeName || !noticeInfo.contents) {
+    if (!noticeInfo.noticeName || !noticeInfo.contents || !noticeInfo.type) {
         res.status(403).json({
             result : 'error',
             message : 'validation error'

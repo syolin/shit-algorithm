@@ -51,7 +51,6 @@ const ProblemSchema = new Schema({
     },
     score: {
         type: Number,
-        required: true,
         default: 0
     },
     problemData: {

@@ -4,10 +4,11 @@ import model from '../../../models/notice.model';
 const Notice = mongoose.model('Notice');
 
 // 문제 등록
-Notice.create = (noticeName, contents, date) => {
+Notice.create = (noticeName, contents, type, date) => {
     const notice = new Notice({
         noticeName,
         contents,
+        type,
         date
     });
 
@@ -16,8 +17,11 @@ Notice.create = (noticeName, contents, date) => {
 
 Notice.findAll = () => {
     return Notice.find()
-        .select('num noticeName date')
-        .exec();
+        .select('num noticeName type date').sort({num:1});
+};
+
+Notice.updateSortNum = (num) => {
+    Notice.update({num: {$gt: num}}, {$inc: {num: -1}}, {multi: true},function(err, result){});
 };
 
 Notice.findOneByProblem = num => {

@@ -145,11 +145,9 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
     // 실행 및 결과 함수
     const setRequest = problem => {
         // 정답일 경우 예외 처리
-        console.log(req.headers.authorization)
         request.get({url : 'http://localhost:9999/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
             const bodyJson = JSON.parse(body);
             if (bodyJson.result) {
-                console.log(bodyJson);
                 res.status(409).json({
                     result : 'error',
                     message : '이미 정답을 맞춘 문제입니다.'
@@ -195,7 +193,9 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                          */
                         let result;
 
-                        if (getResolve.result == data.example.output) {
+                        const resolveResultReplace = getResolve.result.replace(/￦n/gi, "\n");
+
+                        if (resolveResultReplace == data.example.output) {
 
                             result = 'success';
 

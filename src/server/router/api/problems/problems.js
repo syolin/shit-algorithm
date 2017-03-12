@@ -130,8 +130,8 @@ router.put('/',auth.isAuthenticated(), function (req, res) {
         }
     };
 
-    if (!form.problemName || isNaN(form.problemNum) || !form.source || !form.explanation || isNaN(form.score) ||
-        isNaN(form.problemData.timeLimit) || isNaN(form.problemData.memoryLimit)) {
+    if (!form.problemName || isNaN(form.problemNum) || !form.source || !form.explanation || isNaN(form.score)
+        || isNaN(form.problemData.timeLimit) || isNaN(form.problemData.memoryLimit)) {
         res.status(403).json({
             result : 'error',
             message : 'validation error'
@@ -159,8 +159,18 @@ router.put('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 });
 
-/*
+/**
     문제 등록
+
+    problemname : 문제 이름
+    source : 출처
+    explantion : 문제 설명
+    inputexample : 입력 되는 값 및 예제
+    outputexample : 출력 검사 값 및 예제
+    inputexample2 : 입력 되는 값 및 예제
+    outputexample2 : 출력 검사 값 및 예제
+    timelimit : 시간 제한
+    memorylimit : 메모리 제한
  */
 router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
@@ -168,7 +178,6 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         problemName : body.problemname,
         source : body.source,
         explanation : body.explanation,
-        score : body.score,
         problemData : {
             inputExample : body.inputexample,
             outputExample : body.outputexample,
@@ -180,7 +189,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
     };
 
     // Validation
-    if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation || isNaN(problemInfo.score) ||
+    if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation ||
         isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) {
         res.status(403).json({
             result : 'error',
