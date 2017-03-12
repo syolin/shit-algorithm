@@ -25,11 +25,10 @@ const NoticeSchema = new Schema({
     },
     type: {
         type: String,
-        default : 'notice'
+        required: true
     },
     date: {
         type: Date,
-        required: true,
     }
 });
 

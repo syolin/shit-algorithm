@@ -135,8 +135,9 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         type : body.type,
         date : new Date()
     };
+
     // Validation
-    if (!noticeInfo.noticeName || !noticeInfo.contents) {
+    if (!noticeInfo.noticeName || !noticeInfo.contents || !noticeInfo.type) {
         res.status(403).json({
             result : 'error',
             message : 'validation error'
@@ -158,17 +159,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         });
     };
 
-    /**
-     *
-     *
-     *
-     *
-     *  Auto increment error 수정
-     *
-     *
-     *
-     */
-    controller.create(noticeInfo.noticeName, noticeInfo.contents, noticeInfo.date, noticeInfo.type)
+    controller.create(noticeInfo.noticeName, noticeInfo.contents, noticeInfo.type, noticeInfo.date)
         .then(respond)
         .catch(onError);
 });

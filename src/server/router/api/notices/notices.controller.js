@@ -5,6 +5,7 @@ const Notice = mongoose.model('Notice');
 
 // 문제 등록
 Notice.create = (noticeName, contents, type, date) => {
+    console.log(noticeName, contents, type, date)
     const notice = new Notice({
         noticeName,
         contents,
