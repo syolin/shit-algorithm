@@ -261,6 +261,12 @@ router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, re
     const userId = xssFilters.inHTMLData(req.params.userId);
     const num = xssFilters.inHTMLData(req.params.num);
 
+    const validation = index => {
+        if (isNaN(req.params.num) || !userId) throw new Error("validation error");
+
+        return index;
+    };
+
     const respond = resolves => {
 
         let result = false;
@@ -289,6 +295,7 @@ router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, re
     };
 
     solutionController.findSuccess(userId, num)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });

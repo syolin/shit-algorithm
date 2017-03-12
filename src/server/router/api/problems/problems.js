@@ -37,6 +37,11 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
  */
 router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
 
+    const validation = index => {
+        if (isNaN(req.params.num)) throw new Error("validation error");
+
+        return index;
+    };
 
     const respond = problem => {
         res.json({
@@ -56,6 +61,7 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
     };
 
     controller.deleteOne(req.params.num)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });
@@ -64,6 +70,12 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
     해당 문제 출력
  */
 router.get('/:num',auth.isAuthenticated(), function (req, res) {
+
+    const validation = index => {
+        if (isNaN(req.params.num)) throw new Error("validation error");
+
+        return index;
+    };
 
     const respond = problem => {
         res.json({
@@ -80,6 +92,7 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
     };
 
     controller.findOneByProblem(req.params.num)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });
@@ -89,6 +102,12 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
     테스트용
  */
 router.get('/updatesort/:num', auth.isAuthenticated('admin'), function (req, res) {
+
+    const validation = index => {
+        if (isNaN(req.params.num)) throw new Error("validation error");
+
+        return index;
+    };
 
     const respond = problem => {
         res.json({
@@ -105,6 +124,7 @@ router.get('/updatesort/:num', auth.isAuthenticated('admin'), function (req, res
     };
 
     controller.updateWantNum(req.params.num)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });

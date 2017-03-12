@@ -36,6 +36,12 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
  */
 router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
 
+    const validation = index => {
+        if (isNaN(req.params.num)) throw new Error("validation error");
+
+        return index;
+    };
+
     const respond = notice => {
         res.json({
             result: 'success',
@@ -54,6 +60,7 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
     };
 
     controller.deleteOne(req.params.num)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });
@@ -63,7 +70,11 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
  */
 router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
-    const noticeNum = xssFilters.inHTMLData(req.params.num);
+    const validation = index => {
+        if (isNaN(req.params.num)) throw new Error("validation error");
+
+        return index;
+    };
 
     const respond = notice => {
         res.json({
@@ -79,7 +90,8 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
         });
     };
 
-    controller.findOneByProblem(noticeNum)
+    controller.findOneByProblem(req.params.num)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });

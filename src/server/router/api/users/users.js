@@ -3,6 +3,7 @@ import xssFilters from 'xss-filters';
 
 import controller from './users.controller';
 import auth from '../../../modules/auth';
+import captcha from '../../../modules/captcha';
 
 const router = express.Router();
 
@@ -27,6 +28,50 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
     controller.findAll(value)
         .then(respond)
         .catch(onError);
+});
+
+router.get('/captcha', function (req,res) {
+    captcha.signKey(function (key) {
+        if (key == 'error') throw new Error('captcha error');
+        const path = captcha.signImage(key);
+        if (path == 'error') {
+            res.json({
+                result : 'error'
+            });
+        };
+        res.json({
+            result: 'success',
+            key : key,
+            path : captcha.signImage(key).path
+        });
+    });
+});
+
+router.get('/captcha/:key/:input', function (req, res) {
+    captcha.checkImage(req.params.key, req.params.input, function (value) {
+        if (value == 'error') {
+            res.status(403).json({
+                result : 'error',
+                message : 'api error'
+            });
+
+            return;
+        };
+
+        const valueJson = JSON.parse(value);
+
+        if(valueJson.result == 'true') {
+            res.json({
+                result : 'true'
+            });
+        } else {
+            res.status(403).json({
+                result : 'error',
+                message : valueJson.errorMessage
+            });
+        };
+
+    });
 });
 
 router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
@@ -55,7 +100,11 @@ router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
  */
 router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
 
-    const param = xssFilters.inHTMLData(req.params.id);
+    const validation = index => {
+        if (isNaN(req.params.num)) throw new Error("validation error");
+
+        return index;
+    };
 
     const respond = user => {
         res.json({
@@ -72,6 +121,7 @@ router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
     };
 
     controller.findOneByUserId(param)
+        .then(validation)
         .then(respond)
         .then(onError)
 });
@@ -121,6 +171,12 @@ router.get('/my-info',auth.isAuthenticated(), function (req, res) {
 
 router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
 
+    const validation = index => {
+        if (isNaN(req.params.num)) throw new Error("validation error");
+
+        return index;
+    };
+
     const respond = user => {
         res.json({
             result : 'success'
@@ -134,6 +190,7 @@ router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
     };
 
     controller.accountTrue(req.params.user)
+        .then(validation)
         .then(respond)
         .catch(onError);
 
@@ -208,21 +265,23 @@ router.post('/signup', function(req, res) {
  */
 router.post('/signin', function (req, res) {
 
-    const secret = req.app.get('jwt-secret');
-
     const userInfo = {
         userId : xssFilters.inHTMLData(req.body.userid),
-        password : xssFilters.inHTMLData(req.body.password)
+        password : xssFilters.inHTMLData(req.body.password),
+        captchaKey : xssFilters.inHTMLData(req.body.captchakey),
+        captchaInput : xssFilters.inHTMLData(req.body.captchainput)
     };
 
     const validation = user => {
-        if (!userInfo.userId || !userInfo.password) throw new Error('validation error');
+        if (!userInfo.userId || !userInfo.password || !userInfo.captchaInput || !userInfo.captchaKey) throw new Error('validation error');
 
         return user;
     };
 
+
     const check = user => {
         if (!user) throw new Error('login fail');
+
 
         const passwordHash = controller.passwordHash(userInfo.password);
         if (passwordHash != user.password) throw new Error('login fail');
