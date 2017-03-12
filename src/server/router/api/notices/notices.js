@@ -136,7 +136,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         date : new Date()
     };
     // Validation
-    if (!noticeInfo.noticeName || !noticeInfo.contents || !noticeInfo.type) {
+    if (!noticeInfo.noticeName || !noticeInfo.contents) {
         res.status(403).json({
             result : 'error',
             message : 'validation error'
@@ -168,7 +168,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
      *
      *
      */
-    controller.create(noticeInfo.noticeName, noticeInfo.contents, noticeInfo.date)
+    controller.create(noticeInfo.noticeName, noticeInfo.contents, noticeInfo.date, noticeInfo.type)
         .then(respond)
         .catch(onError);
 });

@@ -3,7 +3,7 @@ import autoIncrement from 'mongoose-auto-increment';
 
 import config from '../config';
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const connection = mongoose.createConnection(config.mongodbUri);
 
@@ -25,7 +25,7 @@ const NoticeSchema = new Schema({
     },
     type: {
         type: String,
-        required: true,
+        default : 'notice'
     },
     date: {
         type: Date,
