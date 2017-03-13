@@ -224,7 +224,7 @@ router.post('/signup', function(req, res) {
         if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode) /*|| isNaN(userInfo.rating)*/) throw new Error('validation error');
 
         var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
-        if (special_pattern.test(userInfo.userId) != true) throw new Error('validation error');
+        if (special_pattern.test(req.body.userid) == true || special_pattern.test(req.body.userid) == true) throw new Error('validation error');
 
         return user;
     }
