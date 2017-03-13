@@ -30,51 +30,51 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 });
 
-router.get('/captcha', function (req,res) {
-    captcha.signKey(function (key) {
-        if (key == 'error') throw new Error('captcha error');
-        const path = captcha.signImage(key);
-        if (path == 'error') {
-            res.json({
-                result : 'error'
-            });
-        };
-        res.json({
-            result: 'success',
-            key : key,
-            path : captcha.signImage(key).path
-        });
-    });
-});
-
-router.get('/captcha/:key/:input', function (req, res) {
-    captcha.checkImage(req.params.key, req.params.input, function (value) {
-        if (value == 'error') {
-            res.status(403).json({
-                result : 'error',
-                message : 'api error'
-            });
-
-            return;
-        };
-
-        const valueJson = JSON.parse(value);
-
-        if(valueJson.result == true) {
-            res.json({
-                result : 'true'
-            });
-        } else {
-            res.status(403).json({
-                result : 'error',
-                message : valueJson.errorMessage
-            });
-        };
-
-        console.log(valueJson);
-
-    });
-});
+// router.get('/captcha', function (req,res) {
+//     captcha.signKey(function (key) {
+//         if (key == 'error') throw new Error('captcha error');
+//         const path = captcha.signImage(key);
+//         if (path == 'error') {
+//             res.json({
+//                 result : 'error'
+//             });
+//         };
+//         res.json({
+//             result: 'success',
+//             key : key,
+//             path : captcha.signImage(key).path
+//         });
+//     });
+// });
+//
+// router.get('/captcha/:key/:input', function (req, res) {
+//     captcha.checkImage(req.params.key, req.params.input, function (value) {
+//         if (value == 'error') {
+//             res.status(403).json({
+//                 result : 'error',
+//                 message : 'api error'
+//             });
+//
+//             return;
+//         };
+//
+//         const valueJson = JSON.parse(value);
+//
+//         if(valueJson.result == true) {
+//             res.json({
+//                 result : 'true'
+//             });
+//         } else {
+//             res.status(403).json({
+//                 result : 'error',
+//                 message : valueJson.errorMessage
+//             });
+//         };
+//
+//         console.log(valueJson);
+//
+//     });
+// });
 
 router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
     const respond = user => {
@@ -222,6 +222,9 @@ router.post('/signup', function(req, res) {
     // Validation
     const validation = user => {
         if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode) /*|| isNaN(userInfo.rating)*/) throw new Error('validation error');
+
+        var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+        if (special_pattern.test(userInfo.userId) != true) throw new Error('validation error');
 
         return user;
     }

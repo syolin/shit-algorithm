@@ -72,6 +72,20 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         problemNum : req.body.problemnum
     };
 
+    let resolveInfo = {
+        userId : form.userId,
+        resolveData : {
+            language: form.lang,
+            problemNum: form.problemNum,
+            code: form.inputCode,
+            result: '',
+            compileName: '',
+            date: new Date(),
+            memory: 0,
+            time: 0
+        }
+    };
+
     const validation = problem => {
         if (!form.inputCode || !form.name || !form.lang || !form.userId || isNaN(form.problemNum)) throw new Error("validation error");
 
@@ -102,6 +116,12 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
             // 컴파일 에러가 있을경우 예외처리
             if (resolve.result != 'success') {
+
+                resolveInfo.resolveData.result = 'compile error',
+                resolveInfo.resolveData.compileName = resolve.compileBody.name;
+
+                solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
+
                 res.status(409).json({
                     result: 'compile error',
                     message: resolve.result
@@ -212,7 +232,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                         }
 
                         let resolveInfo = {
-                            userId : req.body.userid,
+                            userId : form.userId,
                             resolveData : {
                                 language: form.lang,
                                 problemNum: form.problemNum,
