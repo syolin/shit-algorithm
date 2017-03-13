@@ -118,7 +118,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
             if (resolve.result != 'success') {
 
                 resolveInfo.resolveData.result = 'compile error',
-                resolveInfo.resolveData.compileName = resolve.compileBody.name;
+                resolveInfo.resolveData.compileName = resolve.name;
 
                 solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
 
