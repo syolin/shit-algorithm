@@ -77,6 +77,13 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
 // });
 
 router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
+
+    const validation = index => {
+        if (req.params.id) throw new Error("validation error");
+
+        return index;
+    };
+
     const respond = user => {
         res.json({
             result: 'success',
@@ -92,6 +99,7 @@ router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
     };
 
     controller.deleteOne(req.params.userId)
+        .then(validation)
         .then(respond)
         .catch(onError);
 });
@@ -103,7 +111,7 @@ router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
 router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
 
     const validation = index => {
-        if (isNaN(req.params.num)) throw new Error("validation error");
+        if (req.params.id) throw new Error("validation error");
 
         return index;
     };
@@ -174,7 +182,7 @@ router.get('/my-info',auth.isAuthenticated(), function (req, res) {
 router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
 
     const validation = index => {
-        if (isNaN(req.params.num)) throw new Error("validation error");
+        if (!req.params.user) throw new Error("validation error");
 
         return index;
     };
@@ -187,7 +195,8 @@ router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
 
     const onError = error => {
         res.status(409).json({
-            result : error
+            result : 'error',
+            message : error
         });
     };
 
@@ -342,15 +351,17 @@ router.post('/signin', function (req, res) {
 
         const passwordHash = controller.passwordHash(userInfo.password);
         if (passwordHash != user.password) {
-            throw new Error('login fail');
             controller.failRating(userInfo.userId, 0);
+            throw new Error('login fail');
         };
 
         // 승인 처리 확인
-        if(user.account == false)
+        if(user.account == false) {
             throw new Error('account false');
-        else
+        } else {
+            controller.failRating(userInfo.userId, 0);
             return user;
+        }
     };
 
     const token = user => {

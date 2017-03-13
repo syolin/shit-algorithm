@@ -29,9 +29,9 @@ User.scoreUpdate = (userId,score) => {
 
 User.findAll = (auth) => {
     if (auth) return User.find()
-        .select('userId username studentCode score').sort({rating:1});
+        .select('userId username studentCode score failRating').sort({rating:1});
     return User.find()
-        .select('username studentCode score').sort({rating:1});
+        .select('username score').sort({rating:1});
 };
 
 // 유저 정보 검색
