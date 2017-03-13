@@ -130,7 +130,7 @@ router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
         });
     };
 
-    controller.findOneByUserId(param)
+    controller.findOneByUserId(req.params.id)
         .then(validation)
         .then(respond)
         .then(onError)
@@ -339,6 +339,10 @@ router.post('/signin', function (req, res) {
         if (!userInfo.userId || !userInfo.password || !userInfo.captchaInput || !userInfo.captchaKey) throw new Error('validation error');
 
         return user;
+    };
+
+    const captcha = user => {
+
     };
 
 
