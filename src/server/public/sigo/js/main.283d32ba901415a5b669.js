@@ -1,29 +1,28 @@
-webpackJsonp([1,2],{
-
-/***/ 127:
+webpackJsonp([1,2],Array(127).concat([
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue__ = __webpack_require__(398);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_index_index_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue__ = __webpack_require__(392);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue__ = __webpack_require__(405);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue__ = __webpack_require__(404);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue__ = __webpack_require__(407);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue__ = __webpack_require__(403);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue__ = __webpack_require__(406);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue__ = __webpack_require__(401);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue__ = __webpack_require__(403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue__);
 
 
@@ -84,26 +83,29 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 });
 
 /***/ }),
-
-/***/ 129:
+/* 128 */,
+/* 129 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 134:
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(380)
+__webpack_require__(383)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(160),
+  __webpack_require__(161),
   /* template */
-  __webpack_require__(427),
+  __webpack_require__(432),
   /* scopeId */
   "data-v-88f23c12",
   /* cssModules */
@@ -114,8 +116,28 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 156:
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -155,8 +177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 157:
+/* 157 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -178,7 +199,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var browser = typeof window !== 'undefined';
 if (browser) {
   window.Swiper = __webpack_require__(125);
-  __webpack_require__(361);
+  __webpack_require__(362);
 }
 /* harmony default export */ __webpack_exports__["default"] = {
   name: 'swiper',
@@ -219,8 +240,7 @@ if (browser) {
 };
 
 /***/ }),
-
-/***/ 158:
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -228,8 +248,8 @@ if (browser) {
 //
 //
 
-var debounce = __webpack_require__(385);
-var monacoLoader = __webpack_require__(431);
+var debounce = __webpack_require__(388);
+var monacoLoader = __webpack_require__(436);
 module.exports = {
 
   props: {
@@ -349,8 +369,7 @@ module.exports = {
 };
 
 /***/ }),
-
-/***/ 159:
+/* 159 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -427,14 +446,86 @@ const inBrowser = typeof window !== 'undefined';
 };
 
 /***/ }),
-
-/***/ 160:
+/* 160 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha__ = __webpack_require__(432);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+
+  name: 'PulseLoader',
+
+  props: {
+    loading: {
+      type: Boolean,
+      default: true
+    },
+    color: {
+      type: String,
+      default: '#5dc596'
+    },
+    size: {
+      type: String,
+      default: '15px'
+    },
+    margin: {
+      type: String,
+      default: '2px'
+    },
+    radius: {
+      type: String,
+      default: '100%'
+    }
+  },
+  data() {
+    return {
+      spinnerStyle: {
+        backgroundColor: this.color,
+        width: this.size,
+        height: this.size,
+        margin: this.margin,
+        borderRadius: this.radius,
+        display: 'inline-block',
+        animationName: 'v-pulseStretchDelay',
+        animationDuration: '0.75s',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'cubic-bezier(.2,.68,.18,1.08)',
+        animationFillMode: 'both'
+      },
+      spinnerDelay1: {
+        animationDelay: '0.12s'
+      },
+      spinnerDelay2: {
+        animationDelay: '0.24s'
+      },
+      spinnerDelay3: {
+        animationDelay: '0.36s'
+      }
+    };
+  }
+
+};
+
+/***/ }),
+/* 161 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha__ = __webpack_require__(437);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_recaptcha__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue__);
 //
 //
 //
@@ -561,11 +652,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
-  components: { VueRecaptcha: __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha___default.a },
+  components: {
+    VueRecaptcha: __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha___default.a,
+    PulseLoader: __WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue___default.a
+  },
+  props: {
+    loading: {
+      type: Boolean,
+      default: true
+    },
+    color: {
+      type: String,
+      default: '#5dc596'
+    },
+    size: {
+      type: String,
+      default: '15px'
+    },
+    margin: {
+      type: String,
+      default: '0 auto'
+    },
+    radius: {
+      type: String,
+      default: '100%'
+    }
+  },
   data() {
     return {
       loginState: false,
@@ -589,6 +711,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     };
   },
+  ready() {
+    alert('ready');
+  },
   created() {
     this.$Progress.start();
     //  hook the progress bar to start before we move router-view
@@ -604,15 +729,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       //  continue to next page
       next();
     });
-    const ROOT_URL = 'http://121.186.23.245:9999';
+    const ROOT_URL = 'https://algorithm.ayanami.kr/api';
     this.$http.defaults.baseURL = ROOT_URL;
-
     //      토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('/api/users/my-info').then(resInfo => {
+      this.$http.get('users/my-info').then(resInfo => {
         this.userRating = resInfo.data.user.rating;
         this.username = resInfo.data.user.username;
         this.loginState = true;
@@ -710,15 +834,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     submit() {
       let errMsg;
       if (this.signState === true) {
-        this.$http.post('api/users/signin', {
+        this.$http.post('users/signin', {
           userid: this.userid,
           password: this.password
         }).then(resSign => {
           this.userToken = resSign.data.token;
-          // 헤더 토큰 등록
           this.$http.defaults.headers.common.Authorization = this.userToken;
-          // 토큰 테스트
-          this.$http.get('/api/users/my-info')
+          // 헤더 토큰 등록
+          this.$http.get('users/my-info')
           // 로그인 성공
           .then(resInfo => {
             if (resInfo.status === 200) {
@@ -750,8 +873,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           } else if (err.response.data.message === 'validation error') {
             errMsg = '정보를 모두 입력해주세요';
           } else if (err.response.data.message === 'fail rating excess') {
-            errMsg = '비밀번호를 자주틀려 확인 정보를 입력해주세요';
-          } else if (err.response.data.message === 'fail rating excess') {
             errMsg = '5회 이상 틀려 확인정보를 입력해 주세요';
             this.infoSubmit = true;
           }
@@ -761,38 +882,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: 'error'
           }).then(() => {
             if (this.infoSubmit === true) {
-              alert('ss');
-              this.$swal({
-                input: 'text',
-                confirmButtonText: 'Next &rarr;',
-                showCancelButton: true,
-                animation: false,
-                progressSteps: ['1', '2', '3']
-              });
-              const steps = [{
-                title: 'Question 1',
-                text: 'Chaining swal2 modals is easy'
-              }, 'Question 2', 'Question 3'];
-              this.$swal.queue(steps).then(function (result) {
-                this.$swal.resetDefaults();
-                this.$swal({
-                  title: 'All done!',
-                  html: `Your answers: <pre> +
-                                  JSON.stringify(result) +
-                                  </pre>`,
-                  confirmButtonText: 'Lovely!',
-                  showCancelButton: false
-                });
-              }, function () {
-                this.$swal.resetDefaults();
-              });
+              this.failReset();
+              this.infoSubmit = '';
             }
           });
         });
       } else {
         // 회원가입
-        this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.post('/api/users/signup', {
+        this.$http.post('users/signup', {
           username: this.username,
           userid: this.userid,
           password: this.password,
@@ -817,26 +914,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
         });
       }
+    },
+    failReset() {
+      this.$swal.setDefaults({
+        input: 'text',
+        confirmButtonText: '다음',
+        cancelButtonText: '취소',
+        showCancelButton: true,
+        animation: true,
+        progressSteps: ['1', '2', '3']
+      });
+      const steps = ['아이디를 입력해주세요', '이름을 입력해주세요', '학번을 입력해주세요'];
+      this.$swal.queue(steps).then(result => {
+        this.$swal.resetDefaults();
+        this.$http.post('users/failReset', {
+          userid: result[0],
+          username: result[1],
+          studentcode: result[2]
+        }).then(() => {
+          this.$swal({
+            title: '확인 완료되었습니다',
+            text: '다시 로그인 해주세요',
+            type: 'success'
+          });
+        }).catch(() => {
+          this.$swal({
+            title: '확인 실패하였습니다',
+            text: '다시 시도해주세요',
+            type: 'error'
+          }).then(() => {
+            this.failReset();
+          });
+        });
+      });
     }
   }
 };
 
 /***/ }),
-
-/***/ 161:
+/* 162 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__member_vue__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__member_vue__ = __webpack_require__(393);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__member_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__member_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__problemmange_vue__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__problemmange_vue__ = __webpack_require__(396);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__problemmange_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__problemmange_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noticemanage_vue__ = __webpack_require__(392);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noticemanage_vue__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noticemanage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__noticemanage_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nonaccount_vue__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nonaccount_vue__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nonaccount_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__nonaccount_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__problemresult_vue__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__problemresult_vue__ = __webpack_require__(397);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__problemresult_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__problemresult_vue__);
 //
 //
@@ -886,6 +1015,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data() {
     return {
+      entering: false,
       memberState: true,
       nonaccountState: false,
       problemState: false,
@@ -904,7 +1034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('/api/users/my-info').then(resInfo => {
+      this.$http.get('users/my-info').then(resInfo => {
         this.userRating = resInfo.data.user.rating;
         if (this.userRating === 1) {
           this.$swal({
@@ -916,6 +1046,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
         } else {
           this.adminState = true;
+          this.entering = true;
         }
       }).catch(error => {
         this.$swal({
@@ -976,8 +1107,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 162:
+/* 163 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1005,7 +1135,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = {
 		data() {
 				return {
-						members: []
+						members: [],
+						enteringMember: false
 				};
 		},
 		created() {
@@ -1022,7 +1153,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								confirmButtonText: '삭제',
 								cancelButtonText: '취소'
 						}).then(() => {
-								this.$http.delete(`api/users/${userid}`).then(() => {
+								this.$http.delete(`users/${userid}`).then(() => {
 										this.$swal({
 												title: '삭제 완료',
 												text: `${userid} 님의 계정이 삭제되었습니다`,
@@ -1048,7 +1179,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				getMember() {
 						this.userToken = this.$cookie.get('userToken');
 						this.$http.defaults.headers.common.Authorization = this.userToken;
-						this.$http.get('api/users').then(res => {
+						this.$http.get('users').then(res => {
 								let i = 0;
 								while (i < res.data.users.length) {
 										this.members.push({
@@ -1059,6 +1190,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 										});
 										i += 1;
 								}
+								this.enteringMember = true;
 						}).catch(err => {
 								this.$swal({
 										title: '유저 로드 실패',
@@ -1071,14 +1203,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 163:
+/* 164 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -1103,7 +1232,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = {
   data() {
     return {
-      members: []
+      members: [],
+      entering: false
     };
   },
   created() {
@@ -1114,7 +1244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     account(userid, member) {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get(`api/users/account/${userid}`).then(res => {
+      this.$http.get(`users/account/${userid}`).then(res => {
         console.log(res);
         this.$swal({
           title: '승인 완료',
@@ -1133,7 +1263,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(() => {
-        this.$http.delete(`api/users/${userid}`).then(() => {
+        this.$http.delete(`users/${userid}`).then(() => {
           this.$swal({
             title: '삭제 완료',
             text: `${userid}님의 계정이 삭제되었습니다`,
@@ -1157,7 +1287,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     getMember() {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('api/users/non-account').then(res => {
+      this.$http.get('users/non-account').then(res => {
         let i = 0;
         while (i < res.data.users.length) {
           this.members.push({
@@ -1169,14 +1299,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
           i += 1;
         }
+        this.enteringNon = true;
       });
     }
   }
 };
 
 /***/ }),
-
-/***/ 164:
+/* 165 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1236,7 +1366,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       type: 'notice',
       noticeList: [],
       noticeModify: false,
-      lastNotice: 0
+      lastNotice: 0,
+      enteringNoticemanage: false
     };
   },
   created() {
@@ -1276,7 +1407,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     },
     modifyNotice(num) {
-      this.$http.get(`api/notices/${num}`).then(res => {
+      this.$http.get(`notices/${num}`).then(res => {
         this.noticeModify = !this.noticeModify;
         this.num = res.data.notice.num;
         this.name = res.data.notice.noticeName;
@@ -1299,7 +1430,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(() => {
-        this.$http.delete(`api/notices/${num}`).then(() => {
+        this.$http.delete(`notices/${num}`).then(() => {
           this.$swal({
             title: '삭제 완료',
             test: `${num}번 공지를 삭제하셨습니다`,
@@ -1323,7 +1454,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     loadNotice() {
       console.log('load');
-      this.$http.get('api/notices').then(res => {
+      this.$http.get('notices').then(res => {
         let i = 0;
         while (i < res.data.notices.length) {
           this.noticeList.push({
@@ -1335,6 +1466,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           this.lastNotice = res.data.notices[i].num;
           i += 1;
         }
+        this.enteringNoticemanage = true;
       }).catch(err => {
         this.$swal({
           title: '공지 로드 실패',
@@ -1345,7 +1477,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     addNotice() {
       console.log('add');
-      this.$http.post('api/notices', {
+      this.$http.post('notices', {
         noticename: this.name,
         contents: this.content,
         type: this.type
@@ -1373,8 +1505,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 165:
+/* 166 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1486,7 +1617,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       addMsg: '문제 등록하기',
       modifyState: false,
       lastNum: 0,
-      problemType: 'normal'
+      problemType: 'normal',
+      enteringProblemmanage: false
     };
   },
   created() {
@@ -1515,7 +1647,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).then(() => {
         this.userToken = this.$cookie.get('userToken');
         this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.delete(`api/problems/${num}`).then(() => {
+        this.$http.delete(`problems/${num}`).then(() => {
           this.$swal({
             title: '삭제 완료',
             text: `${num}번 문제를 삭제하셨습니다`,
@@ -1539,7 +1671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     modify() {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.put('api/problems', {
+      this.$http.put('problems', {
         problemnum: this.problemNum,
         problemname: this.problemName,
         source: this.source,
@@ -1572,7 +1704,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     modifyData(num) {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get(`api/problems/${num}`).then(res => {
+      this.$http.get(`problems/${num}`).then(res => {
         this.modifyState = !this.modifyState;
         this.problemName = res.data.problem.problemName;
         this.source = res.data.problem.source;
@@ -1597,7 +1729,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     solveListData(num) {
       this.solveList = [];
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('api/solution').then(res => {
+      this.$http.get('solution').then(res => {
         let i = 0;
         let username;
         let id;
@@ -1612,7 +1744,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             date = res.data.resolves[i].resolveData.date;
             code = res.data.resolves[i].resolveData.code;
             this.$http.defaults.headers.common.Authorization = this.userToken;
-            this.$http.get(`api/users/search/${id}`).then(userInfo => {
+            this.$http.get(`users/search/${id}`).then(userInfo => {
               username = userInfo.data.users.username;
               studentcode = userInfo.data.users.studentCode;
               this.solveList.push({
@@ -1645,7 +1777,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     add() {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.post('api/problems', {
+      this.$http.post('problems', {
         type: this.problemType,
         problemname: this.problemName,
         source: this.source,
@@ -1680,7 +1812,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       //토큰테스트
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('api/problems').then(res => {
+      this.$http.get('problems').then(res => {
         let i = 0;
         while (i < res.data.problems.length) {
           this.items.push({
@@ -1691,6 +1823,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           this.lastNum = res.data.problems[i].num;
           i += 1;
         }
+        this.enteringProblemmanage = true;
       }).catch(err => {
         this.$swal({
           title: '문제 로드 실패',
@@ -1703,8 +1836,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 166:
+/* 167 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1730,55 +1862,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
-	data() {
-		return {
-			problemData: [],
-			ratioData: []
-		};
-	},
-	created() {
-		this.ratio();
-	},
-	methods: {
-		ratio() {
-			this.userToken = this.$cookie.get('userToken');
-			this.$http.defaults.headers.common.Authorization = this.userToken;
-			this.$http.get('api/solution').then(res => {
-				let i = 0;
-				while (i < res.data.resolves.length) {
-					const date = res.data.resolves[i].resolveData.date.replace('T', ', ');
-					this.problemData.push({
-						userid: res.data.resolves[i].userId,
-						code: res.data.resolves[i].resolveData.code,
-						date: date.substring(0, date.length - 8),
-						lang: res.data.resolves[i].resolveData.language,
-						memory: res.data.resolves[i].resolveData.memory,
-						num: res.data.resolves[i].resolveData.problemNum,
-						result: res.data.resolves[i].resolveData.result,
-						time: res.data.resolves[i].resolveData.time
-					});
-					this.ratioData.push({
-						[i]: res.data.resolves[i].resolveData.problemNum
-					});
-					i += 1;
-				}
-				console.log(res);
-				console.log(this.ratioData);
-			});
-		}
-	}
+  data() {
+    return {
+      problemData: [],
+      ratioData: [],
+      enteringProblemresult: false
+    };
+  },
+  created() {
+    this.ratio();
+  },
+  methods: {
+    ratio() {
+      this.userToken = this.$cookie.get('userToken');
+      this.$http.defaults.headers.common.Authorization = this.userToken;
+      this.$http.get('solution').then(res => {
+        let i = 0;
+        while (i < res.data.resolves.length) {
+          const date = res.data.resolves[i].resolveData.date.replace('T', ', ');
+          this.problemData.push({
+            userid: res.data.resolves[i].userId,
+            code: res.data.resolves[i].resolveData.code,
+            date: date.substring(0, date.length - 8),
+            lang: res.data.resolves[i].resolveData.language,
+            memory: res.data.resolves[i].resolveData.memory,
+            num: res.data.resolves[i].resolveData.problemNum,
+            result: res.data.resolves[i].resolveData.result,
+            time: res.data.resolves[i].resolveData.time
+          });
+          this.ratioData.push({
+            [i]: res.data.resolves[i].resolveData.problemNum
+          });
+          i += 1;
+        }
+        this.problemResultmanage = true;
+      }).catch(err => {
+        this.$swal({
+          title: '문제 결과 로드 실패',
+          text: err,
+          type: 'error'
+        });
+      });
+    }
+  }
 };
 
 /***/ }),
-
-/***/ 167:
+/* 168 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timeline_vue__ = __webpack_require__(397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timeline_vue__ = __webpack_require__(400);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timeline_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__timeline_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_vue__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_vue__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__main_vue__);
 //
 //
@@ -1808,8 +1945,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 168:
+/* 169 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1929,8 +2065,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 169:
+/* 170 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2119,8 +2254,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 170:
+/* 171 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2188,42 +2322,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             username: '',
             studentcode: '',
             successCount: 0,
-            recentProblem: []
+            recentProblem: [],
+            entering: false
         };
     },
     beforeCreate() {
-        const ROOT_URL = 'http://121.186.23.245:9999';
-        this.$http.defaults.baseURL = ROOT_URL;
-
         //          토큰 테스트
         this.userToken = this.$cookie.get('userToken');
         if (this.userToken != null) {
             this.userToken = this.$cookie.get('userToken');
             this.$http.defaults.headers.common.Authorization = this.userToken;
-            this.$http.get('/api/users/my-info').then(resInfo => {
+            this.$http.get('users/my-info').then(resInfo => {
                 this.userid = resInfo.data.user.userId;
                 this.username = resInfo.data.user.username;
                 this.studentcode = resInfo.data.user.studentCode;
-                this.$http.get('api/solution').then(res => {
-                    let i = 0;
-                    while (i < res.data.resolves.length) {
-                        this.$http.get(`api/solution/findsuccess/${this.userid}/${i}`).then(resFind => {
-                            if (resFind.data.result === 'true') {
-                                this.successCount += 1;
-                            }
-                        }).catch(err => {
-                            this.$swal({
-                                title: '문제 정답 로드 실패',
-                                text: err,
-                                type: 'error'
-                            });
-                        });
-                        i += 1;
-                    }
-                    console.log(this.successCount);
+                this.$http.get(`solution/resultsuccess/${userid}`).then(res => {
+                    console.log(res);
+                    this.entering = true;
                 }).catch(err => {
                     this.$swal({
-                        title: '문제 결과 로드 실패',
+                        title: '문제 정답 로드 실패',
                         text: err,
                         type: 'error'
                     });
@@ -2250,8 +2368,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 171:
+/* 172 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2269,12 +2386,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 172:
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2300,11 +2435,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: 'notice',
   data() {
     return {
-      notices: []
+      notices: [],
+      entering: false
     };
   },
   created() {
-    this.$http.get('api/notices').then(res => {
+    this.$http.get('notices').then(res => {
       let i = 0;
       console.log(res);
       while (i < res.data.notices.length) {
@@ -2317,6 +2453,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
         i += 1;
       }
+      this.entering = true;
     }).catch(err => {
       alert(err);
     });
@@ -2331,8 +2468,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 173:
+/* 174 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2353,18 +2489,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       num: '',
       name: '',
       contents: '',
-      date: ''
+      date: '',
+      entering: false
     };
   },
   created() {
     const num = this.$route.params.num;
-    this.noticenum = num;
     console.log(num);
-    this.$http.get(`api/notices/${num}`).then(res => {
+    this.$http.get(`notices/${num}`).then(res => {
       this.num = res.data.notice.num;
       this.name = res.data.notice.noticeName;
       this.contents = res.data.notice.contents;
       this.date = res.data.notice.date;
+      this.entering = true;
     }).catch(err => {
       console.log(err);
     });
@@ -2372,18 +2509,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 174:
+/* 175 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2439,27 +2569,28 @@ let length;
       items: [],
       loadState: true,
       entering: false,
-      lineheight: 0
+      lineheight: ''
     };
+  },
+  ready() {
+    alert('ready');
   },
   created() {
     i = 0;
     end = 10;
-    const ROOT_URL = 'http://121.186.23.245:9999';
-    this.$http.defaults.baseURL = ROOT_URL;
     //토큰테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('/api/users/my-info').then(resInfo => {
+      this.$http.get('users/my-info').then(resInfo => {
         this.userid = resInfo.data.user.userId;
         this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.get('api/problems').then(res => {
+        this.$http.get('problems').then(res => {
           length = res.data.problems.length;
           //문제 결과 로드
           this.$http.defaults.headers.common.Authorization = this.userToken;
-          this.$http.get('api/solution').then(resRatio => {
+          this.$http.get('solution').then(resRatio => {
             //문제 개수 반복
             if (length < 10) {
               end = length;
@@ -2497,7 +2628,8 @@ let length;
               } else if (ratio !== 0) {
                 ratio = `${parseInt(ratio * 100, 10)} %`;
               }
-              this.lineheight = 45 * i;
+              //                    this.lineheight = document.getElementById('list').style.height;
+              console.log(this.lineheight);
               this.items.push({
                 num,
                 name,
@@ -2555,16 +2687,18 @@ let length;
     loadList() {
       //문제 로드
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('api/problems').then(res => {
+      this.$http.get('problems').then(res => {
         i = end;
         end += 10;
         if (i / 10 === parseInt(length / 10, 10)) {
           end = length;
           this.loadState = false;
+        } else if (end === length) {
+          this.loadState = false;
         }
         //문제 결과 로드
         this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.get('api/solution').then(resRatio => {
+        this.$http.get('solution').then(resRatio => {
           //문제 개수 반복
           while (i < end) {
             const num = res.data.problems[i].num;
@@ -2599,8 +2733,7 @@ let length;
             } else {
               ratio = `${ratio.toString().substring(2, 4)} %`;
             }
-            this.lineheight = 45 * i;
-            console.log(this.lineheight);
+            //                              this.lineheight = document.getElementById('list').style.height;
             this.items.push({
               num,
               name,
@@ -2634,7 +2767,7 @@ let length;
     },
     result(num) {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get(`api/solution/findsuccess/${this.userid}/${num}`).then(resresult => {
+      this.$http.get(`solution/findsuccess/${this.userid}/${num}`).then(resresult => {
         if (resresult.data.result === true) {
           this.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
         } else {
@@ -2650,13 +2783,12 @@ let length;
 };
 
 /***/ }),
-
-/***/ 175:
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor__ = __webpack_require__(430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor__ = __webpack_require__(435);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor__);
 //
 //
@@ -2729,7 +2861,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data() {
     return {
       userid: '',
-      problemUrl: '"../api/problems/"',
       urlParams: '',
       items: [],
       lang: 'c',
@@ -2756,18 +2887,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   created() {
-    const ROOT_URL = 'http://121.186.23.245:9999';
-    this.$http.defaults.baseURL = ROOT_URL;
     //      토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('/api/users/my-info').then(resInfo => {
+      this.$http.get('users/my-info').then(resInfo => {
         this.userid = resInfo.data.user.userId;
         const id = this.$route.params.num;
         this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.get(`/api/problems/${id}`).then(res => {
+        this.$http.get(`problems/${id}`).then(res => {
           this.items.push({
             num: res.data.problem.num,
             name: res.data.problem.problemName,
@@ -2802,14 +2931,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.solveMenu = false;
   },
   methods: {
-    enter() {
-      //		  const line = this.editor.getPosition();
-      //		  const endcolumn = this.editor.getSelection().endColumn;
-      //		  const range = new monaco.Range(line.lineNumber, endcolumn, line.lineNumber, endcolumn);
-      //		  const text = '￦n';
-      //		  const linechange = { range, text, forceMoveMarkers: true };
-      //		  this.editor.executeEdits('code', [linechange]);
-    },
     onMounted(editor) {
       this.editor = editor;
     },
@@ -2830,7 +2951,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return;
       }
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.post('/api/solution', {
+      this.$http.post('solution', {
         userid: this.userid,
         problemnum: this.items[0].num,
         inputcode: this.code,
@@ -2857,7 +2978,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return;
       }
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.post('/api/solution', {
+      this.$http.post('solution', {
         userid: this.userid,
         problemnum: this.items[0].num,
         inputcode: this.code,
@@ -2890,8 +3011,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-
-/***/ 176:
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2955,13 +3075,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+let i = 0;
+let end = 10;
+let length;
 /* harmony default export */ __webpack_exports__["default"] = {
   name: 'rank',
   data() {
     return {
       userToken: '',
-      users: []
+      users: [],
+      loadState: true,
+      entering: false
     };
   },
   created() {
@@ -2971,23 +3105,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       location.href = '/';
     }
   },
-
   beforeCreate() {
-    const ROOT_URL = 'http://121.186.23.245:9999';
-    this.$http.defaults.baseURL = ROOT_URL;
-
     //          토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('/api/users/my-info').then(resInfo => {
+      this.$http.get('users/my-info').then(resInfo => {
         this.userid = resInfo.data.user.userId;
-        this.$http.get('api/users').then(res => {
+        this.$http.get('users').then(res => {
           console.log(res);
-          const length = res.data.users.length;
-          let i = 0;
-          while (i < length) {
+          length = res.data.users.length;
+          if (length < 10) {
+            end = length;
+          }
+          while (i < end) {
             this.users.push({
               name: res.data.users[i].username,
               score: res.data.users[i].score
@@ -2998,6 +3130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           this.users.sort(function (a, b) {
             return b[sort] - a[sort];
           });
+          this.entering = true;
         }).catch(err => {
           console.log(err);
         });
@@ -3019,177 +3152,384 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         location.href = '/';
       });
     }
+  },
+  methods: {
+    loadList() {
+      this.$http.get('users').then(res => {
+        console.log(res);
+        i = end;
+        end += 10;
+        if (i / 10 === parseInt(length / 10, 10)) {
+          end = length;
+          this.loadState = false;
+        } else if (end === length) {
+          this.loadState = false;
+        }
+        while (i < end) {
+          this.users.push({
+            name: res.data.users[i].username,
+            score: res.data.users[i].score
+          });
+          i += 1;
+        }
+        const sort = 'score';
+        this.users.sort(function (a, b) {
+          return b[sort] - a[sort];
+        });
+      }).catch(err => {
+        console.log(err);
+      });
+    }
   }
 };
 
 /***/ }),
-
-/***/ 361:
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 362:
+/* 363 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 363:
+/* 364 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 364:
+/* 365 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 365:
+/* 366 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 366:
+/* 367 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 367:
+/* 368 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 368:
+/* 369 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 369:
+/* 370 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 370:
+/* 371 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 371:
+/* 372 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 372:
+/* 373 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 373:
+/* 374 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 374:
+/* 375 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 375:
+/* 376 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 376:
+/* 377 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 377:
+/* 378 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 378:
+/* 379 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 379:
+/* 380 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 380:
+/* 381 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 381:
+/* 382 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-
-/***/ 382:
+/* 383 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
+/* 384 */
+/***/ (function(module, exports) {
 
-/***/ 389:
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(366)
+__webpack_require__(368)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(161),
+  __webpack_require__(162),
   /* template */
-  __webpack_require__(413),
+  __webpack_require__(417),
   /* scopeId */
   "data-v-1fb4ac10",
   /* cssModules */
@@ -3200,19 +3540,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 390:
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(374)
+__webpack_require__(376)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(162),
+  __webpack_require__(163),
   /* template */
-  __webpack_require__(423),
+  __webpack_require__(427),
   /* scopeId */
   "data-v-608cdfa9",
   /* cssModules */
@@ -3223,19 +3562,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 391:
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(382)
+__webpack_require__(385)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(163),
+  __webpack_require__(164),
   /* template */
-  __webpack_require__(429),
+  __webpack_require__(434),
   /* scopeId */
   "data-v-90766562",
   /* cssModules */
@@ -3246,19 +3584,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 392:
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(381)
+__webpack_require__(384)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(164),
+  __webpack_require__(165),
   /* template */
-  __webpack_require__(428),
+  __webpack_require__(433),
   /* scopeId */
   "data-v-8fe46ee8",
   /* cssModules */
@@ -3269,19 +3606,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 393:
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(368)
+__webpack_require__(370)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(165),
+  __webpack_require__(166),
   /* template */
-  __webpack_require__(416),
+  __webpack_require__(420),
   /* scopeId */
   "data-v-3b8f64c8",
   /* cssModules */
@@ -3292,20 +3628,19 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 394:
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(371)
-__webpack_require__(372)
+__webpack_require__(373)
+__webpack_require__(374)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(166),
+  __webpack_require__(167),
   /* template */
-  __webpack_require__(419),
+  __webpack_require__(423),
   /* scopeId */
   "data-v-4886e8bd",
   /* cssModules */
@@ -3316,19 +3651,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 395:
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(370)
+__webpack_require__(372)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(167),
+  __webpack_require__(168),
   /* template */
-  __webpack_require__(418),
+  __webpack_require__(422),
   /* scopeId */
   "data-v-41509454",
   /* cssModules */
@@ -3339,20 +3673,19 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 396:
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(378)
-__webpack_require__(379)
+__webpack_require__(381)
+__webpack_require__(382)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(168),
+  __webpack_require__(169),
   /* template */
-  __webpack_require__(426),
+  __webpack_require__(431),
   /* scopeId */
   "data-v-7bcd82e5",
   /* cssModules */
@@ -3363,19 +3696,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 397:
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(367)
+__webpack_require__(369)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(169),
+  __webpack_require__(170),
   /* template */
-  __webpack_require__(415),
+  __webpack_require__(419),
   /* scopeId */
   "data-v-32d9b926",
   /* cssModules */
@@ -3386,20 +3718,19 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 398:
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(376)
-__webpack_require__(377)
+__webpack_require__(378)
+__webpack_require__(379)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(170),
+  __webpack_require__(171),
   /* template */
-  __webpack_require__(425),
+  __webpack_require__(429),
   /* scopeId */
   "data-v-637a59d0",
   /* cssModules */
@@ -3410,19 +3741,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 399:
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(365)
+__webpack_require__(367)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(171),
+  __webpack_require__(172),
   /* template */
-  __webpack_require__(412),
+  __webpack_require__(416),
   /* scopeId */
   "data-v-1f1cf6d0",
   /* cssModules */
@@ -3433,21 +3763,21 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 400:
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(362)
+__webpack_require__(364)
+__webpack_require__(363)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(172),
+  __webpack_require__(173),
   /* template */
-  __webpack_require__(409),
+  __webpack_require__(413),
   /* scopeId */
-  null,
+  "data-v-0a41af30",
   /* cssModules */
   null
 )
@@ -3456,19 +3786,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 401:
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(375)
+__webpack_require__(377)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(173),
+  __webpack_require__(174),
   /* template */
-  __webpack_require__(424),
+  __webpack_require__(428),
   /* scopeId */
   "data-v-6209be0c",
   /* cssModules */
@@ -3479,19 +3808,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 402:
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(369)
+__webpack_require__(371)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(174),
+  __webpack_require__(175),
   /* template */
-  __webpack_require__(417),
+  __webpack_require__(421),
   /* scopeId */
   "data-v-3f6ebf20",
   /* cssModules */
@@ -3502,19 +3830,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 403:
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(373)
+__webpack_require__(375)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(175),
+  __webpack_require__(176),
   /* template */
-  __webpack_require__(421),
+  __webpack_require__(425),
   /* scopeId */
   "data-v-572d1fb3",
   /* cssModules */
@@ -3525,19 +3852,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 404:
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(363)
+__webpack_require__(365)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(176),
+  __webpack_require__(177),
   /* template */
-  __webpack_require__(410),
+  __webpack_require__(414),
   /* scopeId */
   "data-v-0f75cc20",
   /* cssModules */
@@ -3548,15 +3874,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 405:
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(156),
   /* template */
-  __webpack_require__(422),
+  __webpack_require__(426),
   /* scopeId */
   null,
   /* cssModules */
@@ -3567,15 +3892,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 406:
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(157),
   /* template */
-  __webpack_require__(420),
+  __webpack_require__(424),
   /* scopeId */
   null,
   /* cssModules */
@@ -3586,15 +3910,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 407:
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(158),
   /* template */
-  __webpack_require__(414),
+  __webpack_require__(418),
   /* scopeId */
   null,
   /* cssModules */
@@ -3605,19 +3928,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 408:
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(364)
+__webpack_require__(366)
 
-var Component = __webpack_require__(8)(
+var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(159),
   /* template */
-  __webpack_require__(411),
+  __webpack_require__(415),
   /* scopeId */
   null,
   /* cssModules */
@@ -3628,8 +3950,29 @@ module.exports = Component.exports
 
 
 /***/ }),
+/* 412 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 409:
+
+/* styles */
+__webpack_require__(380)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(160),
+  /* template */
+  __webpack_require__(430),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 413 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3668,12 +4011,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 410:
+/* 414 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.entering) ? _c('div', {
     attrs: {
       "id": "index"
     }
@@ -3705,7 +4047,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "id": "subder"
       }
     }, [_c('span', [_vm._v(_vm._s(user.score))])])])])])])
-  })], 2), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])])
+  })], 2), _vm._v(" "), _vm._m(4), _vm._v(" "), (_vm.loadState) ? _c('button', {
+    staticClass: "ui button",
+    on: {
+      "click": _vm.loadList
+    }
+  }, [_c('i', {
+    staticClass: "large chevron down icon"
+  })]) : _vm._e()])])]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h2', {
     staticClass: "ui center aligned header",
@@ -3721,16 +4070,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "rank1"
   }, [_c('div', {
-    staticClass: "onerank"
-  }, [_vm._v("\n                        2등 : 아이티\n                    ")])]), _vm._v(" "), _c('div', {
+    staticClass: "rankge1"
+  }, [_c('img', {
+    attrs: {
+      "src": "image1.jpg"
+    }
+  })]), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("Seil")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v("MASTER")])]), _vm._v(" "), _c('div', {
     staticClass: "rank2"
   }, [_c('div', {
-    staticClass: "tworank"
-  }, [_vm._v("\n                        1등 : 솔루션\n                    ")])]), _vm._v(" "), _c('div', {
+    staticClass: "rankge2"
+  }, [_c('img', {
+    attrs: {
+      "src": "image1.jpg"
+    }
+  })]), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("Pices")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v("KING")])]), _vm._v(" "), _c('div', {
     staticClass: "rank3"
   }, [_c('div', {
-    staticClass: "thrrank"
-  }, [_vm._v("\n                        3등 : 시스템\n                    ")])])])
+    staticClass: "rankge3"
+  }, [_c('img', {
+    attrs: {
+      "src": "image1.jpg"
+    }
+  })]), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("Center")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v("HERO")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "ui top attached tabular menu"
@@ -3777,17 +4150,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('i', {
     staticClass: "huge chevron circle up icon"
   })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "ui button"
-  }, [_c('i', {
-    staticClass: "large chevron down icon"
-  })])
 }]}
 
 /***/ }),
-
-/***/ 411:
+/* 415 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3798,8 +4164,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 412:
+/* 416 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3809,12 +4174,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 413:
+/* 417 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.entering) ? _c('div', {
     attrs: {
       "id": "admin"
     }
@@ -3859,12 +4223,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("문제결과")])]), _vm._v(" "), _c('div', {
     staticClass: "twelve wide stretched column"
-  }, [(_vm.memberState) ? _c('member') : _vm._e(), _vm._v(" "), (_vm.nonaccountState) ? _c('nonaccount') : _vm._e(), _vm._v(" "), (_vm.problemState) ? _c('problemmanage') : _vm._e(), _vm._v(" "), (_vm.listState) ? _c('notice') : _vm._e(), _vm._v(" "), (_vm.problemresultState) ? _c('problemresult') : _vm._e()], 1)])]) : _vm._e()])])
+  }, [(_vm.memberState) ? _c('member') : _vm._e(), _vm._v(" "), (_vm.nonaccountState) ? _c('nonaccount') : _vm._e(), _vm._v(" "), (_vm.problemState) ? _c('problemmanage') : _vm._e(), _vm._v(" "), (_vm.listState) ? _c('notice') : _vm._e(), _vm._v(" "), (_vm.problemresultState) ? _c('problemresult') : _vm._e()], 1)])]) : _vm._e()])]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 414:
+/* 418 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3872,8 +4235,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 415:
+/* 419 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4158,12 +4520,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-
-/***/ 416:
+/* 420 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.enteringProblemmanage) ? _c('div', {
     staticClass: "probleminput"
   }, [_c('button', {
     on: {
@@ -4773,12 +5134,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('ul', {
       key: list
     }, [_c('li', [_vm._v("이름 : " + _vm._s(list.username))]), _vm._v(" "), _c('li', [_vm._v("학번 : " + _vm._s(list.studentcode))]), _vm._v(" "), _c('li', [_vm._v("결과 : " + _vm._s(list.result))]), _vm._v(" "), _c('li', [_vm._v("날짜 : " + _vm._s(list.date))]), _vm._v(" "), _c('li', [_vm._v("코드 : " + _vm._s(list.code))])])
-  }))], 1)])])
+  }))], 1)])]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 417:
+/* 421 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4824,9 +5184,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "ui bottom attached tab segment active",
     style: ({
       'max-height': _vm.lineheight + 'px',
-      'min-height': _vm.lineheight + 'px'
+      'min-height': _vm.lineheight + 'px',
+      'overflow': 'hidden'
     }),
     attrs: {
+      "id": "list",
       "data-tab": "first"
     }
   }, [_c('transition-group', {
@@ -4854,39 +5216,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                            이름 : "), _c('span', [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('div', {
       staticClass: "description"
     }, [_c('p', [_vm._v("소스 : "), _c('span', [_vm._v(_vm._s(item.source))]), _vm._v("\n                            난이도 : "), _c('span', [_vm._v("난이도")]), _vm._v("\n                            점수 : "), _c('span', [_vm._v(_vm._s(item.score))]), _vm._v("\n                            성공 : "), _c('span', [_vm._v(_vm._s(item.success))]), _vm._v("\n                            실패 : "), _c('span', [_vm._v(_vm._s(item.fail))]), _vm._v("\n                            정답률 : "), _c('span', [_vm._v(_vm._s(item.ratio))])])])])])])
-  }))], 1), _vm._v(" "), _c('div', {
-    staticClass: "ui pagination menu"
-  }, [_vm._m(1), _vm._v(" "), _c('a', {
-    staticClass: "active item",
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v(" 1 ")]), _vm._v(" "), _c('a', {
-    staticClass: "active item",
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v(" 2 ")]), _vm._v(" "), _c('a', {
-    staticClass: "active item",
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v(" 3 ")]), _vm._v(" "), _c('a', {
-    staticClass: "active item",
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v(" 4 ")]), _vm._v(" "), (_vm.loadState) ? _c('a', {
-    staticClass: "active item",
-    attrs: {
-      "href": "#"
-    },
+  }))], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), (_vm.loadState) ? _c('button', {
+    staticClass: "ui button",
     on: {
       "click": _vm.loadList
     }
   }, [_c('i', {
-    staticClass: "angle right icon"
-  })]) : _vm._e()])])]) : _vm._e()
+    staticClass: "large chevron down icon"
+  })]) : _vm._e()])]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h2', {
     staticClass: "ui center aligned header"
@@ -4895,18 +5232,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Manage your account settings and set e-mail preferences.")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
-    staticClass: "active item",
     attrs: {
       "href": "#"
     }
   }, [_c('i', {
-    staticClass: "angle left icon"
+    staticClass: "huge chevron circle up icon"
   })])
 }]}
 
 /***/ }),
-
-/***/ 418:
+/* 422 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4922,21 +5257,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 419:
+/* 423 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.enteringProblemresult) ? _c('div', {
     staticClass: "probleminput"
   }, [_c('ul', [_vm._l((_vm.problemData), function(data) {
     return _c('li', [_c('p', [_vm._v("ID : " + _vm._s(data.userid))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Num : " + _vm._s(data.num))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("language : " + _vm._s(data.lang))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Date : " + _vm._s(data.date))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Code : " + _vm._s(data.code))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Result : " + _vm._s(data.result))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Time : " + _vm._s(data.time))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Memory : " + _vm._s(data.memory))]), _c('br'), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), _c('br')], 2)])
+  }), _vm._v(" "), _c('br')], 2)]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 420:
+/* 424 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4948,8 +5281,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 421:
+/* 425 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5044,8 +5376,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-
-/***/ 422:
+/* 426 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5055,12 +5386,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 423:
+/* 427 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.enteringMember) ? _c('div', {
     staticClass: "member"
   }, [_c('ul', [_vm._l((_vm.members), function(member) {
     return _c('li', [_vm._v("\n            아이디: "), _c('span', [_vm._v(_vm._s(member.userid))]), _c('br'), _vm._v("\n            이름: "), _c('span', [_vm._v(_vm._s(member.username))]), _c('br'), _vm._v("\n            학번 : "), _c('span', [_vm._v(_vm._s(member.studentcode))]), _c('br'), _vm._v("\n            점수 : "), _c('span', [_vm._v(_vm._s(member.score))]), _c('br'), _vm._v(" "), _c('button', {
@@ -5070,33 +5400,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("유저 삭제")]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), _c('br')], 2)])
+  }), _vm._v(" "), _c('br')], 2)]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 424:
+/* 428 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    directives: [{
+      name: "i",
+      rawName: "v-i",
+      value: (_vm.entering),
+      expression: "entering"
+    }],
     staticClass: "openNotice"
   }, [_c('p', [_vm._v("번호 : " + _vm._s(_vm.num))]), _vm._v(" "), _c('p', [_vm._v("제목 : " + _vm._s(_vm.name))]), _vm._v(" "), _c('p', [_vm._v("내용 : " + _vm._s(_vm.contents))]), _vm._v(" "), _c('p', [_vm._v("날짜 : " + _vm._s(_vm.date))])])
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 425:
+/* 429 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.entering) ? _c('div', {
     attrs: {
       "id": "mypage"
     }
-  }, [_c('div', {
+  }, [_vm._m(0)]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "myinfo"
   }, [_c('div', {
     attrs: {
@@ -5130,12 +5464,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "header"
   }, [_vm._v("최근 푼 문제")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "description"
-  }, [_c('p', [_c('span', [_vm._v("1")]), _vm._v(" : 번 문제")])])])])])])])])])
+  }, [_c('p', [_c('span', [_vm._v("1")]), _vm._v(" : 번 문제")])])])])])])])])
 }]}
 
 /***/ }),
+/* 430 */
+/***/ (function(module, exports) {
 
-/***/ 426:
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.loading),
+      expression: "loading"
+    }],
+    staticClass: "v-spinner"
+  }, [_c('div', {
+    staticClass: "v-pulse v-pulse1",
+    style: ([_vm.spinnerStyle, _vm.spinnerDelay1])
+  }), _c('div', {
+    staticClass: "v-pulse v-pulse2",
+    style: ([_vm.spinnerStyle, _vm.spinnerDelay2])
+  }), _c('div', {
+    staticClass: "v-pulse v-pulse3",
+    style: ([_vm.spinnerStyle, _vm.spinnerDelay3])
+  })])
+},staticRenderFns: []}
+
+/***/ }),
+/* 431 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5211,8 +5569,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 427:
+/* 432 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5220,7 +5577,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "app"
     }
-  }, [_c('div', {
+  }, [_c('pulse-loader', {
+    attrs: {
+      "color": _vm.color,
+      "size": _vm.size,
+      "margin": _vm.margin,
+      "radius": _vm.radius
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "ui secondary menu",
     class: {
       menu_show: _vm.scrollMenu
@@ -5298,12 +5662,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "ui modal"
+  }, [_c('div', {
+    staticClass: "conclo"
   }, [_c('i', {
     staticClass: "close icon",
     on: {
       "click": _vm.closeModal
     }
-  }), _vm._v(" "), (_vm.signState) ? _c('div', {
+  })]), _vm._v(" "), (_vm.signState) ? _c('div', {
     staticClass: "login_form"
   }, [_c('div', {
     staticClass: "description"
@@ -5402,9 +5768,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "container"
   }, [_c('div', {
     staticClass: "culnmn"
+  }, [_c('div', {
+    staticClass: "signhead"
   }, [_c('h1', {
     staticClass: "ui grey header"
-  }, [_vm._v("회원가입")]), _vm._v(" "), _c('form', {
+  }, [_vm._v("회원가입")])]), _vm._v(" "), _c('form', {
     staticClass: "ui large form"
   }, [_c('div', {
     staticClass: "field"
@@ -5582,12 +5950,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-
-/***/ 428:
+/* 433 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.enteringNoticemanage) ? _c('div', {
     staticClass: "noticemanage"
   }, [_c('button', {
     on: {
@@ -5775,18 +6142,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "click": _vm.modify
       }
     }, [_vm._v("수정하기")])]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), _c('br')], 2)])])
+  }), _vm._v(" "), _c('br')], 2)])]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 429:
+/* 434 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.enteringNon) ? _c('div', {
     staticClass: "nonaccount"
-  }, [_vm._v("\n  nonaccount\n  "), _c('ul', [_vm._l((_vm.members), function(member) {
+  }, [_c('ul', [_vm._l((_vm.members), function(member) {
     return _c('li', [_vm._v("\n      아이디: "), _c('span', [_vm._v(_vm._s(member.userid))]), _c('br'), _vm._v("\n      이름: "), _c('span', [_vm._v(_vm._s(member.username))]), _c('br'), _vm._v("\n      학번 : "), _c('span', [_vm._v(_vm._s(member.studentcode))]), _c('br'), _vm._v("\n      등급 : "), _c('span', [_vm._v(_vm._s(member.rating))]), _c('br'), _vm._v("\n      승인여부 : "), _c('span', [_vm._v(_vm._s(member.account))]), _c('br'), _vm._v(" "), _c('button', {
       on: {
         "click": function($event) {
@@ -5800,12 +6166,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("유저삭제")]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), _c('br')], 2)])
+  }), _vm._v(" "), _c('br')], 2)]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
-
-/***/ 436:
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5884,6 +6255,5 @@ new __WEBPACK_IMPORTED_MODULE_8_vue___default.a({
 });
 
 /***/ })
-
-},[436]);
-//# sourceMappingURL=main.5602dbdaada5a7f1e392.js.map
+]),[441]);
+//# sourceMappingURL=main.283d32ba901415a5b669.js.map
