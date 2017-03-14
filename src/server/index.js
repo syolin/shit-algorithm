@@ -9,6 +9,8 @@ import webpack from 'webpack';
 import mongoose from 'mongoose';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import http from 'http';
+import https from 'https';
 
 // router
 import router from './router/client/index';
@@ -31,15 +33,20 @@ app.set('view engine', 'jade');
 // JWT Setting
 app.set('jwt-secret', mongoConfig.secret);
 
-// uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+// uncomment after placing your favicon in /public
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/notice',express.static(path.join(__dirname, 'public')));
+app.use('/notice/:num',express.static(path.join(__dirname, 'public')));
+app.use('/problems',express.static(path.join(__dirname, 'public')));
+app.use('/problems/:num',express.static(path.join(__dirname, 'public')));
+app.use('/rank',express.static(path.join(__dirname, 'public')));
+app.use('/admin',express.static(path.join(__dirname, 'public')));
 
-app.use(express.static('./etc'));
 
 const compiler = webpack(config);
 
@@ -84,5 +91,7 @@ app.use(function(err, req, res, next) {
     })
 });
 
-app.listen(9999);
+http.createServer(app).listen(80);
+https.createServer(app).listen(443);
+
 export default app
