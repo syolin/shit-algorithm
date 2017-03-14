@@ -363,7 +363,7 @@ router.post('/signin', function (req, res) {
         if(user.account == false) {
             throw new Error('account false');
         } else {
-            controller.failRating(userInfo.userId, 0);
+            controller.failRating(userInfo.userId, 1);
             return user;
         }
     };
