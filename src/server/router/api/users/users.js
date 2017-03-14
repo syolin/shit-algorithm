@@ -111,7 +111,7 @@ router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
 router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
 
     const validation = index => {
-        if (req.params.id) throw new Error("validation error");
+        if (!req.params.id) throw new Error("validation error");
 
         return index;
     };
