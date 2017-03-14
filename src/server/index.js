@@ -15,7 +15,6 @@ import https from 'https';
 // router
 import router from './router/client/index';
 import api from './router/api/index';
-import apiUsers from './router/api/users/users';
 // webpack config
 import config from '../../webpack.config';
 
