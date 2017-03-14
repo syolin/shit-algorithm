@@ -37,6 +37,101 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 
 });
+/*
+ 문제 정답 결과 출력
+ */
+router.get('/resultsuccess/:userId', function (req, res) {
+
+    const userId = xssFilters.inHTMLData(req.params.userId);
+
+    const validation = index => {
+        if (!userId) throw new Error("validation error");
+
+        return index;
+    };
+
+    const respond = resolves => {
+
+        let successCount = resolves.length;
+
+        res.json({
+            result : successCount
+        });
+
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
+    solutionController.findSpecificResolve("success", userId)
+        .then(validation)
+        .then(respond)
+        .catch(onError);
+});
+
+router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, res) {
+    const userId = xssFilters.inHTMLData(req.params.userId);
+    const num = xssFilters.inHTMLData(req.params.num);
+
+    const validation = index => {
+        if (isNaN(req.params.num) || !userId) throw new Error("validation error");
+
+        return index;
+    };
+
+    const respond = resolves => {
+
+        let result = false;
+
+        for(let i=0; i < resolves.length; i++) {
+            if (resolves[i].resolveData.result == 'success') {
+                result = true;
+            }
+        };
+
+        if (userId == 'test') {
+            result = false;
+        };
+
+        res.json({
+            result : result
+        });
+
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
+    solutionController.findSuccess(userId, num)
+        .then(validation)
+        .then(respond)
+        .catch(onError);
+});
+
+// router.get('/:name', function (req, res) {
+//
+//     const url = 'http://121.186.23.245:9989/code/' + req.params.name;
+//     request(url, function (err, response, body) {
+//         if (err) body=err;
+//         res.send(body);
+//     });
+// });
+// router.get('/:name/:scanf', function (req, res) {
+//
+//     const url = 'http://121.186.23.245:9989/code/' + req.params.name + '/' + req.params.scanf;
+//     request(url, function (err, response, body) {
+//         if (err) body=err;
+//         res.send(body);
+//     });
+// });
 // router.get('/test/:user/:num', function (req, res) {
 //
 //     const respond = users => {
@@ -274,67 +369,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
 });
 
-/*
-    문제 정답 결과 출력
- */
-router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, res) {
-    const userId = xssFilters.inHTMLData(req.params.userId);
-    const num = xssFilters.inHTMLData(req.params.num);
 
-    const validation = index => {
-        if (isNaN(req.params.num) || !userId) throw new Error("validation error");
-
-        return index;
-    };
-
-    const respond = resolves => {
-
-        let result = false;
-
-        for(let i=0; i < resolves.length; i++) {
-            if (resolves[i].resolveData.result == 'success') {
-                result = true;
-            }
-        };
-
-        if (userId == 'test') {
-            result = false;
-        };
-
-        res.json({
-            result : result
-        });
-
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result: 'error',
-            message: error.message
-        });
-    };
-
-    solutionController.findSuccess(userId, num)
-        .then(validation)
-        .then(respond)
-        .catch(onError);
-});
-
-// router.get('/:name', function (req, res) {
-//
-//     const url = 'http://121.186.23.245:9989/code/' + req.params.name;
-//     request(url, function (err, response, body) {
-//         if (err) body=err;
-//         res.send(body);
-//     });
-// });
-// router.get('/:name/:scanf', function (req, res) {
-//
-//     const url = 'http://121.186.23.245:9989/code/' + req.params.name + '/' + req.params.scanf;
-//     request(url, function (err, response, body) {
-//         if (err) body=err;
-//         res.send(body);
-//     });
-// });
 export default router
 

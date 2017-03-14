@@ -11,6 +11,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import http from 'http';
 import https from 'https';
+import httpsRedrect from 'express-https-redirect';
+
 
 // router
 import router from './router/client/index';
@@ -24,6 +26,8 @@ import mongoConfig from './config';
 import auth from './modules/auth';
 
 const app = express();
+
+app.use('/',httpsRedrect(true));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -69,6 +73,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
     next();
 });
+
 
 //api router
 app.use('/api', api);
