@@ -76,7 +76,7 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
 //     });
 // });
 
-router.delete('/:userId',auth.isAuthenticated('admin'), function (req, res) {
+router.delete('/:id',auth.isAuthenticated('admin'), function (req, res) {
 
     const validation = index => {
         if (!req.params.id) throw new Error("validation error");

@@ -16,6 +16,7 @@ const router = express.Router();
  */
 router.get('/',auth.isAuthenticated(), function (req, res) {
 
+    // 어드민 체크
     let value = req.user.rating == '3' ? true : false;
 
     const respond = resolves => {
@@ -52,6 +53,7 @@ router.get('/resultsuccess/:userId', function (req, res) {
 
     const respond = resolves => {
 
+        // 결과 출력 개수
         let successCount = resolves.length;
 
         res.json({
@@ -85,14 +87,17 @@ router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, re
 
     const respond = resolves => {
 
+        // 결과 값
         let result = false;
 
+        // 출력 값중 성공 결과 체크 및 결과 true
         for(let i=0; i < resolves.length; i++) {
             if (resolves[i].resolveData.result == 'success') {
                 result = true;
             }
         };
 
+        // userId 는 예외 처리
         if (userId == 'test') {
             result = false;
         };
@@ -156,6 +161,12 @@ router.get('/findsuccess/:userId/:num',auth.isAuthenticated(), function (req, re
 
 /*
     문제 제출
+
+    inputcode : 입력 받은 코드
+    name : 컴파일 할 이름
+    lang : 언어
+    userid : 컴파일을 시도한 아이디
+    problemnum : 컴파일을 시도할 문제
  */
 router.post('/',auth.isAuthenticated(), function (req, res) {
 
