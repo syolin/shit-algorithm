@@ -244,10 +244,11 @@ router.post('/signup', function(req, res) {
         url: 'https://www.google.com/recaptcha/api/siteverify',
         form: {secret: '6LejvBgUAAAAAOVYE7DeBDxi-9Lev1dlmT7ca0fY', response: captcha}
         }, function (err, response, body) {
-        if (body.success == 'false') {
+        const bodyJson = JSON.parse(body);
+        if (bodyJson.success == 'false') {
             throw new Error('captcha wrong');
         }
-        console.log(body.success, body);
+        console.log(body.success, bodyJson);
     });
 
     // 아이디 체크 및 데이터 입력
