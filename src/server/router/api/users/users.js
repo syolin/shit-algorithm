@@ -248,7 +248,7 @@ router.post('/signup', function(req, res) {
         if (bodyJson.success == 'false') {
             throw new Error('captcha wrong');
         }
-        console.log(body.success, bodyJson);
+        console.log(bodyJson.success,(bodyJson==false), bodyJson);
     });
 
     // 아이디 체크 및 데이터 입력
