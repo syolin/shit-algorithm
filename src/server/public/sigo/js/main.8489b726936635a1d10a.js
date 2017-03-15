@@ -1,81 +1,100 @@
-webpackJsonp([1,2],Array(127).concat([
-/* 127 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+webpackJsonp([1,2],Array(128).concat([
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(438);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue__ = __webpack_require__(398);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_index_index_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue__ = __webpack_require__(405);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue__ = __webpack_require__(407);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue__ = __webpack_require__(406);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue__ = __webpack_require__(401);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue__ = __webpack_require__(403);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue__ = __webpack_require__(404);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue__ = __webpack_require__(402);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _vue = __webpack_require__(64);
 
+var _vue2 = _interopRequireDefault(_vue);
 
+var _vueRouter = __webpack_require__(440);
 
+var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
+var _index = __webpack_require__(400);
 
+var _index2 = _interopRequireDefault(_index);
 
+var _admin = __webpack_require__(394);
 
+var _admin2 = _interopRequireDefault(_admin);
 
+var _problems = __webpack_require__(407);
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+var _problems2 = _interopRequireDefault(_problems);
 
-/* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
+var _rank = __webpack_require__(409);
+
+var _rank2 = _interopRequireDefault(_rank);
+
+var _solve = __webpack_require__(408);
+
+var _solve2 = _interopRequireDefault(_solve);
+
+var _mypage = __webpack_require__(403);
+
+var _mypage2 = _interopRequireDefault(_mypage);
+
+var _notice = __webpack_require__(405);
+
+var _notice2 = _interopRequireDefault(_notice);
+
+var _opennotice = __webpack_require__(406);
+
+var _opennotice2 = _interopRequireDefault(_opennotice);
+
+var _notfound = __webpack_require__(404);
+
+var _notfound2 = _interopRequireDefault(_notfound);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vueRouter2.default);
+
+exports.default = new _vueRouter2.default({
   mode: 'history',
   routes: [{
     path: '/',
     name: 'index',
-    component: __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue___default.a
+    component: _index2.default
   }, {
     path: '/admin',
     name: 'admin',
-    component: __WEBPACK_IMPORTED_MODULE_3__components_admin_admin_vue___default.a
+    component: _admin2.default
   }, {
     path: '/problems',
     name: 'problems',
-    component: __WEBPACK_IMPORTED_MODULE_4__components_problems_problems_vue___default.a
+    component: _problems2.default
   }, {
     path: '/rank',
     name: 'rank',
-    component: __WEBPACK_IMPORTED_MODULE_5__components_rank_rank_vue___default.a
+    component: _rank2.default
   }, {
     path: '/problems/:num',
     name: 'solve',
-    component: __WEBPACK_IMPORTED_MODULE_6__components_problems_solve_vue___default.a
+    component: _solve2.default
   }, {
     path: '/mypage',
     name: 'mypage',
-    component: __WEBPACK_IMPORTED_MODULE_7__components_mypage_mypage_vue___default.a
+    component: _mypage2.default
   }, {
     path: '/notice',
     name: 'notice',
-    component: __WEBPACK_IMPORTED_MODULE_8__components_notice_notice_vue___default.a
+    component: _notice2.default
   }, {
     path: '/notices/:num',
     name: 'openNotice',
-    component: __WEBPACK_IMPORTED_MODULE_9__components_notice_opennotice_vue___default.a
+    component: _opennotice2.default
   }, {
     path: '/404',
     name: '404',
-    component: __WEBPACK_IMPORTED_MODULE_10__components_notfound_notfound_vue___default.a
+    component: _notfound2.default
   }, {
     path: '/*',
     redirect: { name: '404' }
@@ -83,29 +102,83 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 });
 
 /***/ }),
-/* 128 */,
 /* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vue = __webpack_require__(64);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vuex = __webpack_require__(51);
+
+var _vuex2 = _interopRequireDefault(_vuex);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vuex2.default);
+
+var state = {
+  loadingState: false
+};
+
+var mutations = {
+  loadingOn: function loadingOn(state) {
+    state.loadingState = true;
+  },
+  loadingOff: function loadingOff(state) {
+    state.loadingState = false;
+  }
+};
+
+var actions = {
+  loadingOn: function loadingOn(_ref) {
+    var commit = _ref.commit;
+    return commit('loadingOn');
+  },
+  loadingOff: function loadingOff(_ref2) {
+    var commit = _ref2.commit;
+    return commit('loadingOff');
+  }
+};
+
+exports.default = new _vuex2.default.Store({
+  state: state,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+/* 130 */,
+/* 131 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 130 */,
-/* 131 */,
 /* 132 */,
 /* 133 */,
-/* 134 */
+/* 134 */,
+/* 135 */,
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(383)
+__webpack_require__(385)
+__webpack_require__(384)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(161),
+  __webpack_require__(162),
   /* template */
-  __webpack_require__(432),
+  __webpack_require__(434),
   /* scopeId */
   "data-v-88f23c12",
   /* cssModules */
@@ -116,8 +189,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 135 */,
-/* 136 */,
 /* 137 */,
 /* 138 */,
 /* 139 */,
@@ -137,11 +208,16 @@ module.exports = Component.exports
 /* 153 */,
 /* 154 */,
 /* 155 */,
-/* 156 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 156 */,
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -149,22 +225,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
   name: 'swiper-slide',
-  ready() {
+  ready: function ready() {
     this.update();
   },
-  mounted() {
+  mounted: function mounted() {
     this.update();
   },
-  updated() {
+  updated: function updated() {
     this.update();
   },
-  attached() {
+  attached: function attached() {
     this.update();
   },
+
   methods: {
-    update() {
+    update: function update() {
       if (this.$parent && this.$parent.swiper) {
         this.$parent.swiper.update(true);
         if (this.$parent.options.loop) {
@@ -177,11 +254,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 157 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -198,29 +279,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var browser = typeof window !== 'undefined';
 if (browser) {
-  window.Swiper = __webpack_require__(125);
-  __webpack_require__(362);
+  window.Swiper = __webpack_require__(126);
+  __webpack_require__(363);
 }
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
   name: 'swiper',
   props: {
     options: {
       type: Object,
-      default() {
+      default: function _default() {
         return {
           autoplay: 3500
         };
       }
     }
   },
-  ready() {
+  ready: function ready() {
     if (!this.swiper && browser) {
       this.swiper = new Swiper(this.$el, this.options);
     }
   },
-  mounted() {
+  mounted: function mounted() {
     var self = this;
-    var mount = function () {
+    var mount = function mount() {
       if (!self.swiper && browser) {
         delete self.options.notNextTick;
         self.swiper = new Swiper(self.$el, self.options);
@@ -228,10 +309,10 @@ if (browser) {
     };
     this.options.notNextTick ? mount() : this.$nextTick(mount);
   },
-  updated() {
+  updated: function updated() {
     this.swiper.update();
   },
-  beforeDestroy() {
+  beforeDestroy: function beforeDestroy() {
     if (!!this.swiper) {
       this.swiper.destroy();
       delete this.swiper;
@@ -240,7 +321,7 @@ if (browser) {
 };
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -248,8 +329,8 @@ if (browser) {
 //
 //
 
-var debounce = __webpack_require__(388);
-var monacoLoader = __webpack_require__(436);
+var debounce = __webpack_require__(390);
+var monacoLoader = __webpack_require__(438);
 module.exports = {
 
   props: {
@@ -369,11 +450,15 @@ module.exports = {
 };
 
 /***/ }),
-/* 159 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 //
 //
 //
@@ -385,14 +470,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-const inBrowser = typeof window !== 'undefined';
-/* harmony default export */ __webpack_exports__["default"] = {
+var inBrowser = typeof window !== 'undefined';
+exports.default = {
     name: 'VueProgress',
-    serverCacheKey: () => 'Progress',
+    serverCacheKey: function serverCacheKey() {
+        return 'Progress';
+    },
     computed: {
-        style() {
-            let location = this.progress.options.location;
-            let style = {
+        style: function style() {
+            var location = this.progress.options.location;
+            var style = {
                 'background-color': this.progress.options.canSuccess ? this.progress.options.color : this.progress.options.failedColor,
                 'opacity': this.progress.options.show ? 1 : 0
             };
@@ -419,7 +506,7 @@ const inBrowser = typeof window !== 'undefined';
             }
             return style;
         },
-        progress() {
+        progress: function progress() {
             if (inBrowser) {
                 return window.VueProgressBarEventBus.RADON_LOADING_BAR;
             } else {
@@ -446,11 +533,15 @@ const inBrowser = typeof window !== 'undefined';
 };
 
 /***/ }),
-/* 160 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -461,7 +552,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
 
   name: 'PulseLoader',
 
@@ -487,7 +578,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: '100%'
     }
   },
-  data() {
+  data: function data() {
     return {
       spinnerStyle: {
         backgroundColor: this.color,
@@ -513,27 +604,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     };
   }
-
 };
 
 /***/ }),
-/* 161 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha__ = __webpack_require__(437);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_recaptcha__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue__ = __webpack_require__(412);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
 //
 //
 //
@@ -658,13 +742,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+var _vueRecaptcha = __webpack_require__(439);
 
+var _vueRecaptcha2 = _interopRequireDefault(_vueRecaptcha);
 
+var _PulseLoader = __webpack_require__(414);
 
-/* harmony default export */ __webpack_exports__["default"] = {
+var _PulseLoader2 = _interopRequireDefault(_PulseLoader);
+
+var _vuex = __webpack_require__(51);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
   components: {
-    VueRecaptcha: __WEBPACK_IMPORTED_MODULE_0_vue_recaptcha___default.a,
-    PulseLoader: __WEBPACK_IMPORTED_MODULE_1_vue_spinner_src_PulseLoader_vue___default.a
+    VueRecaptcha: _vueRecaptcha2.default,
+    PulseLoader: _PulseLoader2.default
   },
   props: {
     loading: {
@@ -688,7 +781,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: '100%'
     }
   },
-  data() {
+  data: function data() {
     return {
       loginState: false,
       signState: true,
@@ -711,55 +804,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     };
   },
-  ready() {
-    alert('ready');
+  mounted: function mounted() {
+    console.log('ss');
   },
-  created() {
-    this.$Progress.start();
-    //  hook the progress bar to start before we move router-view
-    this.$router.beforeEach((to, from, next) => {
-      //  does the page we want to go to have a meta.progress object
+
+  computed: {
+    loadingState: function loadingState() {
+      return this.$store.state.loadingState;
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    this.$router.beforeEach(function (to, from, next) {
       if (to.meta.progress !== undefined) {
-        const meta = to.meta.progress;
-        // parse meta tags
-        this.$Progress.parseMeta(meta);
+        var meta = to.meta.progress;
+        _this.$Progress.parseMeta(meta);
       }
-      //  start the progress bar
-      this.$Progress.start();
-      //  continue to next page
+      _this.$store.dispatch('loadingOn');
+      _this.$Progress.start();
       next();
     });
-    const ROOT_URL = 'https://algorithm.ayanami.kr/api';
+    this.$Progress.finish();
+    var ROOT_URL = 'https://algorithm.ayanami.kr/api';
     this.$http.defaults.baseURL = ROOT_URL;
     //      토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('users/my-info').then(resInfo => {
-        this.userRating = resInfo.data.user.rating;
-        this.username = resInfo.data.user.username;
-        this.loginState = true;
-      }).catch(error => {
-        this.$swal({
+      this.$http.get('users/my-info').then(function (resInfo) {
+        _this.userRating = resInfo.data.user.rating;
+        _this.username = resInfo.data.user.username;
+        _this.loginState = true;
+      }).catch(function (error) {
+        _this.$swal({
           title: '유저 조회 실패',
           text: error,
           type: 'error'
         });
       });
     }
-    this.$router.afterEach((to, from) => {
-      //  finish the progress bar
-      this.$Progress.finish();
-    });
-    this.$Progress.finish();
     window.addEventListener('scroll', this.scrollFunction);
   },
-  destroyed() {
+  destroyed: function destroyed() {
     window.removeEventListener('scroll', this.scrollFunction);
   },
-  methods: {
-    scrollFunction() {
+
+  methods: _extends({}, (0, _vuex.mapActions)(['loadingOn', 'loadingOff']), {
+    scrollFunction: function scrollFunction() {
       this.scrolled = window.scrollY;
       if (this.scrolled > 200) {
         this.scrollMenu = true;
@@ -767,7 +860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.scrollMenu = false;
       }
     },
-    problemLoginCheck() {
+    problemLoginCheck: function problemLoginCheck() {
       if (this.$cookie.get('userToken') == null) {
         this.$swal('입장 불가', '로그인을 하셨나요?', 'error');
       } else {
@@ -776,7 +869,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       }
     },
-    rankLoginCheck() {
+    rankLoginCheck: function rankLoginCheck() {
       if (this.$cookie.get('userToken') == null) {
         this.$swal('입장 불가', '로그인을 하셨나요?', 'error');
       } else {
@@ -785,22 +878,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       }
     },
-    cookieDel() {
+    cookieDel: function cookieDel() {
       // 쿠키 삭제
       this.$cookie.delete('userToken');
       this.$cookie.delete('userRating');
       this.$cookie.delete('userName');
     },
-    isNumber(number) {
-      const evt = number || window.event;
-      const charCode = evt.which ? evt.which : evt.keyCode;
+    isNumber: function isNumber(number) {
+      var evt = number || window.event;
+      var charCode = evt.which ? evt.which : evt.keyCode;
       if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
         evt.preventDefault();
         return false;
       }
       return true;
     },
-    logout() {
+    logout: function logout() {
       this.$swal({
         title: '로그아웃합니다',
         text: '이 상자는 2초후에 사라집니다',
@@ -812,60 +905,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
       this.loginState = false;
     },
+
     // 폼 모달
-    openModal() {
+    openModal: function openModal() {
       $('.ui.modal').modal('show');
     },
-    closeModal() {
+    closeModal: function closeModal() {
       $('.ui.modal').modal('hide');
     },
-    onloadCallback() {
+    onloadCallback: function onloadCallback() {
       alert('grecaptcha is ready!');
     },
-    onVerify(response) {
-      console.log(`Verify:  + ${response}`);
+    onVerify: function onVerify(response) {
+      console.log('Verify:  + ' + response);
     },
-    onExpired() {
+    onExpired: function onExpired() {
       console.log('Expired');
     },
-    resetRecaptcha() {
+    resetRecaptcha: function resetRecaptcha() {
       this.$refs.recaptcha.reset(); // Direct call reset method
     },
-    submit() {
-      let errMsg;
+    submit: function submit() {
+      var _this2 = this;
+
+      var errMsg = void 0;
       if (this.signState === true) {
         this.$http.post('users/signin', {
           userid: this.userid,
           password: this.password
-        }).then(resSign => {
-          this.userToken = resSign.data.token;
-          this.$http.defaults.headers.common.Authorization = this.userToken;
+        }).then(function (resSign) {
+          _this2.userToken = resSign.data.token;
+          _this2.$http.defaults.headers.common.Authorization = _this2.userToken;
           // 헤더 토큰 등록
-          this.$http.get('users/my-info')
+          _this2.$http.get('users/my-info')
           // 로그인 성공
-          .then(resInfo => {
+          .then(function (resInfo) {
             if (resInfo.status === 200) {
-              this.loginState = true;
-              this.username = resInfo.data.user.username;
-              this.closeModal();
-              this.loginState = true;
-              this.userRating = resInfo.data.user.rating;
+              _this2.loginState = true;
+              _this2.username = resInfo.data.user.username;
+              _this2.closeModal();
+              _this2.loginState = true;
+              _this2.userRating = resInfo.data.user.rating;
               // Cookie : 이름 , 내용 , 만료기간 , 도메인
-              this.$cookie.set('userToken', this.userToken, 1);
+              _this2.$cookie.set('userToken', _this2.userToken, 1);
               // 쿠키 값 출력
-              this.$swal('로그인 성공', '안녕하세요!', 'success');
+              _this2.$swal('로그인 성공', '안녕하세요!', 'success');
             }
           })
           // 토큰인증 실패
-          .catch(err => {
-            this.closeModal();
-            this.$swal({
+          .catch(function (err) {
+            _this2.closeModal();
+            _this2.$swal({
               title: '로그인 실패',
               text: err,
               type: 'error'
             });
           });
-        }).catch(err => {
+        }).catch(function (err) {
           if (err.response.data.message === 'account false') {
             errMsg = '관리자의 승인을 기다려주세요';
           } else if (err.response.data.message === 'login fail') {
@@ -874,16 +970,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             errMsg = '정보를 모두 입력해주세요';
           } else if (err.response.data.message === 'fail rating excess') {
             errMsg = '5회 이상 틀려 확인정보를 입력해 주세요';
-            this.infoSubmit = true;
+            _this2.infoSubmit = true;
           }
-          this.$swal({
+          _this2.$swal({
             title: '로그인 실패',
             text: errMsg,
             type: 'error'
-          }).then(() => {
-            if (this.infoSubmit === true) {
-              this.failReset();
-              this.infoSubmit = '';
+          }).then(function () {
+            if (_this2.infoSubmit === true) {
+              _this2.failReset();
+              _this2.infoSubmit = '';
             }
           });
         });
@@ -894,20 +990,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           userid: this.userid,
           password: this.password,
           studentcode: this.studentcode
-        }).then(resRegister => {
-          this.closeModal();
-          const username = resRegister.data.username;
-          this.$swal({
+        }).then(function (resRegister) {
+          _this2.closeModal();
+          var username = resRegister.data.username;
+          _this2.$swal({
             title: '회원가입 성공',
-            text: `안녕하세요 ${username}님`,
+            text: '\uC548\uB155\uD558\uC138\uC694 ' + username + '\uB2D8',
             type: 'success'
           });
-        }).catch(error => {
-          this.closeModal();
+        }).catch(function (error) {
+          _this2.closeModal();
           if (error.response.data.message === 'validation error') {
             errMsg = '정보를 제대로 기입해주세요';
           }
-          this.$swal({
+          _this2.$swal({
             title: '회원가입 실패',
             text: errMsg,
             type: 'error'
@@ -915,7 +1011,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       }
     },
-    failReset() {
+    failReset: function failReset() {
+      var _this3 = this;
+
       this.$swal.setDefaults({
         input: 'text',
         confirmButtonText: '다음',
@@ -924,96 +1022,76 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         animation: true,
         progressSteps: ['1', '2', '3']
       });
-      const steps = ['아이디를 입력해주세요', '이름을 입력해주세요', '학번을 입력해주세요'];
-      this.$swal.queue(steps).then(result => {
-        this.$swal.resetDefaults();
-        this.$http.post('users/failReset', {
+      var steps = ['아이디를 입력해주세요', '이름을 입력해주세요', '학번을 입력해주세요'];
+      this.$swal.queue(steps).then(function (result) {
+        _this3.$swal.resetDefaults();
+        _this3.$http.post('users/failReset', {
           userid: result[0],
           username: result[1],
           studentcode: result[2]
-        }).then(() => {
-          this.$swal({
+        }).then(function () {
+          _this3.$swal({
             title: '확인 완료되었습니다',
             text: '다시 로그인 해주세요',
             type: 'success'
           });
-        }).catch(() => {
-          this.$swal({
+        }).catch(function () {
+          _this3.$swal({
             title: '확인 실패하였습니다',
             text: '다시 시도해주세요',
             type: 'error'
-          }).then(() => {
-            this.failReset();
+          }).then(function () {
+            _this3.failReset();
           });
         });
       });
     }
-  }
+  })
 };
 
 /***/ }),
-/* 162 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__member_vue__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__member_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__member_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__problemmange_vue__ = __webpack_require__(396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__problemmange_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__problemmange_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noticemanage_vue__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noticemanage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__noticemanage_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nonaccount_vue__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nonaccount_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__nonaccount_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__problemresult_vue__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__problemresult_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__problemresult_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _member = __webpack_require__(395);
 
+var _member2 = _interopRequireDefault(_member);
 
+var _problemmange = __webpack_require__(398);
 
+var _problemmange2 = _interopRequireDefault(_problemmange);
 
-/* harmony default export */ __webpack_exports__["default"] = {
+var _noticemanage = __webpack_require__(397);
+
+var _noticemanage2 = _interopRequireDefault(_noticemanage);
+
+var _nonaccount = __webpack_require__(396);
+
+var _nonaccount2 = _interopRequireDefault(_nonaccount);
+
+var _problemresult = __webpack_require__(399);
+
+var _problemresult2 = _interopRequireDefault(_problemresult);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
   name: 'admin',
   components: {
-    member: __WEBPACK_IMPORTED_MODULE_0__member_vue___default.a,
-    problemmanage: __WEBPACK_IMPORTED_MODULE_1__problemmange_vue___default.a,
-    notice: __WEBPACK_IMPORTED_MODULE_2__noticemanage_vue___default.a,
-    nonaccount: __WEBPACK_IMPORTED_MODULE_3__nonaccount_vue___default.a,
-    problemresult: __WEBPACK_IMPORTED_MODULE_4__problemresult_vue___default.a
+    member: _member2.default,
+    problemmanage: _problemmange2.default,
+    notice: _noticemanage2.default,
+    nonaccount: _nonaccount2.default,
+    problemresult: _problemresult2.default
   },
-  data() {
+  data: function data() {
     return {
       entering: false,
       memberState: true,
@@ -1029,31 +1107,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       userToken: ''
     };
   },
-  beforeCreate() {
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+  beforeCreate: function beforeCreate() {
+    var _this = this;
+
     //          토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('users/my-info').then(resInfo => {
-        this.userRating = resInfo.data.user.rating;
-        if (this.userRating === 1) {
-          this.$swal({
+      this.$http.get('users/my-info').then(function (resInfo) {
+        _this.userRating = resInfo.data.user.rating;
+        if (_this.userRating === 1) {
+          _this.$swal({
             title: '입장 실패',
             text: '어드민이 아닙니다',
             type: 'error'
-          }).then(() => {
+          }).then(function () {
             location.href = '/';
           });
         } else {
-          this.adminState = true;
-          this.entering = true;
+          _this.adminState = true;
+          _this.entering = true;
         }
-      }).catch(error => {
-        this.$swal({
+      }).catch(function (error) {
+        _this.$swal({
           title: '유저 정보 조회 실패',
           text: error,
           type: 'error'
-        }).then(() => {
+        }).then(function () {
           location.href = '/';
         });
       });
@@ -1062,41 +1145,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         title: '입장 실패',
         text: '로그인을 해주세요',
         type: 'error'
-      }).then(() => {
+      }).then(function () {
         location.href = '/';
       });
     }
   },
+
   methods: {
-    click_problem() {
+    click_problem: function click_problem() {
       this.memberState = false;
       this.problemState = true;
       this.listState = false;
       this.nonaccountState = false;
       this.problemresultState = false;
     },
-    click_member() {
+    click_member: function click_member() {
       this.memberState = true;
       this.problemState = false;
       this.listState = false;
       this.nonaccountState = false;
       this.problemresultState = false;
     },
-    click_nonaccount() {
+    click_nonaccount: function click_nonaccount() {
       this.nonaccountState = true;
       this.memberState = false;
       this.problemState = false;
       this.listState = false;
       this.problemresultState = false;
     },
-    click_list() {
+    click_list: function click_list() {
       this.memberState = false;
       this.problemState = false;
       this.listState = true;
       this.nonaccountState = false;
       this.problemresultState = false;
     },
-    click_result() {
+    click_result: function click_result() {
       this.memberState = false;
       this.problemState = false;
       this.listState = false;
@@ -1104,14 +1188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.problemresultState = true;
     }
   }
-};
-
-/***/ }),
-/* 163 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+}; //
 //
 //
 //
@@ -1130,85 +1207,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
-		data() {
-				return {
-						members: [],
-						enteringMember: false
-				};
-		},
-		created() {
-				//토큰테스트
-				this.getMember();
-		},
-		methods: {
-				deleteuser(userid, member) {
-						this.$swal({
-								title: '유저 삭제',
-								text: '정말로 삭제하시겠습니까?',
-								type: 'question',
-								showCancelButton: true,
-								confirmButtonText: '삭제',
-								cancelButtonText: '취소'
-						}).then(() => {
-								this.$http.delete(`users/${userid}`).then(() => {
-										this.$swal({
-												title: '삭제 완료',
-												text: `${userid} 님의 계정이 삭제되었습니다`,
-												type: 'success'
-										});
-										this.members.splice(this.members.indexOf(member), 1);
-								}).catch(err => {
-										this.$swal({
-												title: '삭제 실패',
-												text: err,
-												type: 'error'
-										});
-								});
-						}).catch(() => {
-								this.$swal({
-										title: '삭제 실패',
-										text: err,
-										type: 'error'
-								});
-						});
-				},
-				//            문제리스트
-				getMember() {
-						this.userToken = this.$cookie.get('userToken');
-						this.$http.defaults.headers.common.Authorization = this.userToken;
-						this.$http.get('users').then(res => {
-								let i = 0;
-								while (i < res.data.users.length) {
-										this.members.push({
-												userid: res.data.users[i].userId,
-												username: res.data.users[i].username,
-												studentcode: res.data.users[i].studentCode,
-												score: res.data.users[i].score
-										});
-										i += 1;
-								}
-								this.enteringMember = true;
-						}).catch(err => {
-								this.$swal({
-										title: '유저 로드 실패',
-										text: err,
-										type: 'error'
-								});
-						});
-				}
-		}
-};
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 164 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -1229,32 +1249,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
-  data() {
+exports.default = {
+  data: function data() {
     return {
       members: [],
-      entering: false
+      enteringMember: false
     };
   },
-  created() {
-    this.userToken = this.$cookie.get('userToken');
-    console.log(this.userToken);
+  created: function created() {
+    //토큰테스트
     this.getMember();
   },
+  beforeCreate: function beforeCreate() {
+    this.$Progress.start();
+  },
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+
   methods: {
-    account(userid, member) {
-      this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get(`users/account/${userid}`).then(res => {
-        console.log(res);
-        this.$swal({
-          title: '승인 완료',
-          text: `${userid}님을 승인하였습니다`,
-          type: 'success'
-        });
-        this.members.splice(this.members.indexOf(member), 1);
-      });
-    },
-    deletenonuser(userid, member) {
+    deleteuser: function deleteuser(userid, member) {
+      var _this = this;
+
       this.$swal({
         title: '유저 삭제',
         text: '정말로 삭제하시겠습니까?',
@@ -1262,35 +1278,165 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         showCancelButton: true,
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
-      }).then(() => {
-        this.$http.delete(`users/${userid}`).then(() => {
-          this.$swal({
+      }).then(function () {
+        _this.$http.delete('users/' + userid).then(function () {
+          _this.$swal({
             title: '삭제 완료',
-            text: `${userid}님의 계정이 삭제되었습니다`,
+            text: userid + ' \uB2D8\uC758 \uACC4\uC815\uC774 \uC0AD\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
-          this.members.splice(this.members.indexOf(member), 1);
-        }).catch(err => {
-          this.$swal({
+          _this.members.splice(_this.members.indexOf(member), 1);
+        }).catch(function (err) {
+          _this.$swal({
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
-      }).catch(() => {
-        this.$swal({
+      }).catch(function () {
+        _this.$swal({
           title: '삭제 실패',
           text: err,
           type: 'error'
         });
       });
     },
-    getMember() {
+
+    //            문제리스트
+    getMember: function getMember() {
+      var _this2 = this;
+
+      this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('users/non-account').then(res => {
-        let i = 0;
+      this.$http.get('users').then(function (res) {
+        var i = 0;
         while (i < res.data.users.length) {
-          this.members.push({
+          _this2.members.push({
+            userid: res.data.users[i].userId,
+            username: res.data.users[i].username,
+            studentcode: res.data.users[i].studentCode,
+            score: res.data.users[i].score
+          });
+          i += 1;
+        }
+        _this2.enteringMember = true;
+      }).catch(function (err) {
+        _this2.$swal({
+          title: '유저 로드 실패',
+          text: err,
+          type: 'error'
+        });
+      });
+    }
+  }
+};
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+exports.default = {
+  data: function data() {
+    return {
+      members: [],
+      enteringNon: false
+    };
+  },
+  created: function created() {
+    this.userToken = this.$cookie.get('userToken');
+    console.log(this.userToken);
+    this.getMember();
+  },
+  beforeCreate: function beforeCreate() {
+    this.$Progress.start();
+  },
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+
+  methods: {
+    account: function account(userid, member) {
+      var _this = this;
+
+      this.$http.defaults.headers.common.Authorization = this.userToken;
+      this.$http.get('users/account/' + userid).then(function (res) {
+        console.log(res);
+        _this.$swal({
+          title: '승인 완료',
+          text: userid + '\uB2D8\uC744 \uC2B9\uC778\uD558\uC600\uC2B5\uB2C8\uB2E4',
+          type: 'success'
+        });
+        _this.members.splice(_this.members.indexOf(member), 1);
+      });
+    },
+    deletenonuser: function deletenonuser(userid, member) {
+      var _this2 = this;
+
+      this.$swal({
+        title: '유저 삭제',
+        text: '정말로 삭제하시겠습니까?',
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonText: '삭제',
+        cancelButtonText: '취소'
+      }).then(function () {
+        _this2.$http.delete('users/' + userid).then(function () {
+          _this2.$swal({
+            title: '삭제 완료',
+            text: userid + '\uB2D8\uC758 \uACC4\uC815\uC774 \uC0AD\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4',
+            type: 'success'
+          });
+          _this2.members.splice(_this2.members.indexOf(member), 1);
+        }).catch(function (err) {
+          _this2.$swal({
+            title: '삭제 실패',
+            text: err,
+            type: 'error'
+          });
+        });
+      }).catch(function () {
+        _this2.$swal({
+          title: '삭제 실패',
+          text: err,
+          type: 'error'
+        });
+      });
+    },
+    getMember: function getMember() {
+      var _this3 = this;
+
+      this.$http.defaults.headers.common.Authorization = this.userToken;
+      this.$http.get('users/non-account').then(function (res) {
+        var i = 0;
+        while (i < res.data.users.length) {
+          _this3.members.push({
             userid: res.data.users[i].userId,
             username: res.data.users[i].username,
             studentcode: res.data.users[i].studentCode,
@@ -1299,18 +1445,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           });
           i += 1;
         }
-        this.enteringNon = true;
+        _this3.enteringNon = true;
       });
     }
   }
 };
 
 /***/ }),
-/* 165 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -1354,9 +1504,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
   name: 'noticemanage',
-  data() {
+  data: function data() {
     return {
       noticeAddState: false,
       noticeMsg: '공지 등록하기',
@@ -1370,35 +1520,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       enteringNoticemanage: false
     };
   },
-  created() {
+  created: function created() {
     this.loadNotice();
   },
+  beforeCreate: function beforeCreate() {
+    this.$Progress.start();
+  },
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+
   methods: {
-    modify() {
-      this.$http.put('api/notices', {
+    modify: function modify() {
+      var _this = this;
+
+      this.$http.put('notices', {
         num: this.num,
-        noticename: this.problemNum,
-        contents: this.problemName,
-        type: this.source
-      }).then(() => {
-        this.$swal({
+        noticeName: this.name,
+        contents: this.content,
+        type: this.type
+      }).then(function () {
+        _this.$swal({
           title: '수정 성공',
           text: '공지를 수정하였습니다',
           type: 'success'
         });
-      }).catch(err => {
-        let errMsgs;
+      }).catch(function (err) {
+        var errMsgs = void 0;
         if (err.response.data.message === 'validation error') {
           errMsgs = '모든 정보를 입력해주세요';
         }
-        this.$swal({
-          title: '수정 실페',
+        _this.$swal({
+          title: '수정 실패',
           text: errMsgs,
           type: 'error'
         });
       });
     },
-    noticeAdd() {
+    noticeAdd: function noticeAdd() {
       this.noticeAddState = !this.noticeAddState;
       if (this.noticeAddState) {
         this.noticeMsg = '닫기';
@@ -1406,95 +1565,102 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.noticeMsg = '공지 등록하기';
       }
     },
-    modifyNotice(num) {
-      this.$http.get(`notices/${num}`).then(res => {
-        this.noticeModify = !this.noticeModify;
-        this.num = res.data.notice.num;
-        this.name = res.data.notice.noticeName;
-        this.content = res.data.notice.contents;
-        this.type = res.data.notice.type;
-      }).catch(err => {
-        this.$swal({
+    modifyNotice: function modifyNotice(num) {
+      var _this2 = this;
+
+      this.$http.get('notices/' + num).then(function (res) {
+        _this2.noticeModify = !_this2.noticeModify;
+        _this2.num = res.data.notice.num;
+        _this2.name = res.data.notice.noticeName;
+        _this2.content = res.data.notice.contents;
+        _this2.type = res.data.notice.type;
+      }).catch(function (err) {
+        _this2.$swal({
           title: '공지 조회 실패',
           text: err,
           type: 'error'
         });
       });
     },
-    deleteNotice(num, notice) {
+    deleteNotice: function deleteNotice(num, notice) {
+      var _this3 = this;
+
       this.$swal({
-        title: '문제 삭제',
+        title: '공 삭제',
         text: '정말로 삭제하시겠습니까?',
         type: 'question',
         showCancelButton: true,
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
-      }).then(() => {
-        this.$http.delete(`notices/${num}`).then(() => {
-          this.$swal({
+      }).then(function () {
+        _this3.$http.delete('notices/' + num).then(function () {
+          _this3.$swal({
             title: '삭제 완료',
-            test: `${num}번 공지를 삭제하셨습니다`,
+            test: num + '\uBC88 \uACF5\uC9C0\uB97C \uC0AD\uC81C\uD558\uC168\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
-          this.noticeList.splice(this.noticeList.indexOf(notice), 1);
-        }).catch(err => {
-          this.$swal({
+          _this3.noticeList.splice(_this3.noticeList.indexOf(notice), 1);
+        }).catch(function (err) {
+          _this3.$swal({
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
-      }).catch(() => {
-        this.$swal({
+      }).catch(function () {
+        _this3.$swal({
           title: '삭제 실패',
           text: err,
           type: 'error'
         });
       });
     },
-    loadNotice() {
-      console.log('load');
-      this.$http.get('notices').then(res => {
-        let i = 0;
+    loadNotice: function loadNotice() {
+      var _this4 = this;
+
+      this.$http.get('notices').then(function (res) {
+        var i = 0;
         while (i < res.data.notices.length) {
-          this.noticeList.push({
+          _this4.noticeList.push({
             name: res.data.notices[i].noticeName,
             content: res.data.notices[i].contents,
             type: res.data.notices[i].type,
             num: res.data.notices[i].num
           });
-          this.lastNotice = res.data.notices[i].num;
+          _this4.lastNotice = res.data.notices[i].num;
           i += 1;
         }
-        this.enteringNoticemanage = true;
-      }).catch(err => {
-        this.$swal({
+        _this4.enteringNoticemanage = true;
+      }).catch(function (err) {
+        _this4.$swal({
           title: '공지 로드 실패',
           text: err.response.data.message,
           type: 'error'
         });
       });
     },
-    addNotice() {
+    addNotice: function addNotice() {
+      var _this5 = this;
+
       console.log('add');
       this.$http.post('notices', {
         noticename: this.name,
         contents: this.content,
         type: this.type
-      }).then(() => {
-        this.$swal('등록 성공', '공지를 등록하였습니다', 'success');
-        this.noticeList.push({
-          num: this.lastNotice + 1,
-          name: this.name,
-          content: this.content,
-          type: this.type
+      }).then(function () {
+        _this5.$swal('등록 성공', '공지를 등록하였습니다', 'success');
+        _this5.noticeList.push({
+          num: _this5.lastNotice + 1,
+          name: _this5.name,
+          content: _this5.content,
+          type: _this5.type
         });
-      }).catch(err => {
-        let errMsg;
+      }).catch(function (err) {
+        var errMsg = void 0;
         if (err.response.data.message === 'validation error') {
           errMsg = '정보를 모두 입력해주세요';
         }
-        this.$swal({
+        _this5.$swal({
           title: '등록 실패',
           text: errMsg,
           type: 'error'
@@ -1505,11 +1671,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 166 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 167 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
 //
 //
 //
@@ -1596,8 +1768,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
-  data() {
+exports.default = {
+  data: function data() {
     return {
       items: [],
       problemData: [],
@@ -1621,14 +1793,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       enteringProblemmanage: false
     };
   },
-  created() {
+  created: function created() {
     //토큰테스트
     this.userToken = this.$cookie.get('userToken');
     this.$http.defaults.headers.common.Authorization = this.userToken;
     this.fetchData();
   },
+  beforeCreate: function beforeCreate() {
+    this.$Progress.start();
+  },
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+
   methods: {
-    openAdd() {
+    openAdd: function openAdd() {
       this.addState = !this.addState;
       if (this.addState) {
         this.addMsg = '닫기';
@@ -1636,7 +1815,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.addMsg = '문제 등록하기';
       }
     },
-    deleteData(num, item) {
+    deleteData: function deleteData(num, item) {
+      var _this = this;
+
       this.$swal({
         title: '문제 삭제',
         text: '정말로 삭제하시겠습니까?',
@@ -1644,32 +1825,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         showCancelButton: true,
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
-      }).then(() => {
-        this.userToken = this.$cookie.get('userToken');
-        this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.delete(`problems/${num}`).then(() => {
-          this.$swal({
+      }).then(function () {
+        _this.userToken = _this.$cookie.get('userToken');
+        _this.$http.defaults.headers.common.Authorization = _this.userToken;
+        _this.$http.delete('problems/' + num).then(function () {
+          _this.$swal({
             title: '삭제 완료',
-            text: `${num}번 문제를 삭제하셨습니다`,
+            text: num + '\uBC88 \uBB38\uC81C\uB97C \uC0AD\uC81C\uD558\uC168\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
-          this.items.splice(this.items.indexOf(item), 1);
-        }).catch(err => {
-          this.$swal({
+          _this.items.splice(_this.items.indexOf(item), 1);
+        }).catch(function (err) {
+          _this.$swal({
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
-      }).catch(() => {
-        this.$swal({
+      }).catch(function () {
+        _this.$swal({
           title: '삭제 실패',
           text: err,
           type: 'error'
         });
       });
     },
-    modify() {
+    modify: function modify() {
+      var _this2 = this;
+
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.put('problems', {
         problemnum: this.problemNum,
@@ -1684,98 +1867,104 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         memorylimit: this.memoryLimit,
         score: this.score,
         type: this.type
-      }).then(() => {
-        this.$swal({
+      }).then(function () {
+        _this2.$swal({
           title: '수정 성공',
           text: '문제를 수정하였습니다',
           type: 'success'
         });
-      }).catch(err => {
-        let errMsgs;
+      }).catch(function (err) {
+        var errMsgs = void 0;
         if (err.response.data.message === 'validation error') {
           errMsgs = '모든 정보를 입력해주세요';
         }
-        this.$swal({
+        _this2.$swal({
           title: '수정 실페',
           text: errMsgs,
           type: 'error'
         });
       });
     },
-    modifyData(num) {
+    modifyData: function modifyData(num) {
+      var _this3 = this;
+
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get(`problems/${num}`).then(res => {
-        this.modifyState = !this.modifyState;
-        this.problemName = res.data.problem.problemName;
-        this.source = res.data.problem.source;
-        this.inputExample = res.data.problem.problemData.inputExample;
-        this.inputExample2 = res.data.problem.problemData.inputExample2;
-        this.outputExample = res.data.problem.problemData.outputExample;
-        this.outputExample2 = res.data.problem.problemData.outputExample2;
-        this.memoryLimit = res.data.problem.problemData.memoryLimit;
-        this.timeLimit = res.data.problem.problemData.memoryLimit;
-        this.problemNum = res.data.problem.num;
-        this.score = res.data.problem.score;
-        this.explanation = res.data.problem.explanation;
-        this.type = res.data.problem.type;
-      }).catch(err => {
-        this.$swal({
+      this.$http.get('problems/' + num).then(function (res) {
+        _this3.modifyState = !_this3.modifyState;
+        _this3.problemName = res.data.problem.problemName;
+        _this3.source = res.data.problem.source;
+        _this3.inputExample = res.data.problem.problemData.inputExample;
+        _this3.inputExample2 = res.data.problem.problemData.inputExample2;
+        _this3.outputExample = res.data.problem.problemData.outputExample;
+        _this3.outputExample2 = res.data.problem.problemData.outputExample2;
+        _this3.memoryLimit = res.data.problem.problemData.memoryLimit;
+        _this3.timeLimit = res.data.problem.problemData.memoryLimit;
+        _this3.problemNum = res.data.problem.num;
+        _this3.score = res.data.problem.score;
+        _this3.explanation = res.data.problem.explanation;
+        _this3.type = res.data.problem.type;
+      }).catch(function (err) {
+        _this3.$swal({
           title: '문제 조회 실패',
           text: err,
           type: 'error'
         });
       });
     },
-    solveListData(num) {
+    solveListData: function solveListData(num) {
+      var _this4 = this;
+
       this.solveList = [];
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('solution').then(res => {
-        let i = 0;
-        let username;
-        let id;
-        let studentcode;
-        let result;
-        let date;
-        let code;
+      this.$http.get('solution').then(function (res) {
+        var i = 0;
+        var username = void 0;
+        var id = void 0;
+        var studentcode = void 0;
+        var result = void 0;
+        var date = void 0;
+        var code = void 0;
         while (i < res.data.resolves.length) {
           if (res.data.resolves[i].resolveData.problemNum === num) {
             id = res.data.resolves[i].userId;
             result = res.data.resolves[i].resolveData.result;
             date = res.data.resolves[i].resolveData.date;
             code = res.data.resolves[i].resolveData.code;
-            this.$http.defaults.headers.common.Authorization = this.userToken;
-            this.$http.get(`users/search/${id}`).then(userInfo => {
+            _this4.$http.defaults.headers.common.Authorization = _this4.userToken;
+            _this4.$http.get('users/search/' + id).then(function (userInfo) {
               username = userInfo.data.users.username;
               studentcode = userInfo.data.users.studentCode;
-              this.solveList.push({
-                username,
-                studentcode,
-                result,
-                date,
-                code
+              _this4.solveList.push({
+                username: username,
+                studentcode: studentcode,
+                result: result,
+                date: date,
+                code: code
               });
             });
           }
           i += 1;
         }
-      }).catch(err => {
-        this.$swal({
+      }).catch(function (err) {
+        _this4.$swal({
           title: '결과 로드 실패',
           text: err,
           type: 'error'
         });
       });
     },
-    isNumber(number) {
-      const evt = number || window.event;
-      const charCode = evt.which ? evt.which : evt.keyCode;
+    isNumber: function isNumber(number) {
+      var evt = number || window.event;
+      var charCode = evt.which ? evt.which : evt.keyCode;
       if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
         evt.preventDefault();
         return false;
       }
       return true;
     },
-    add() {
+    add: function add() {
+      var _this5 = this;
+
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.post('problems', {
         type: this.problemType,
@@ -1789,43 +1978,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         timelimit: this.timeLimit,
         memorylimit: this.memoryLimit,
         score: this.score
-      }).then(() => {
-        this.$swal('등록 성공', '문제를 등록하였습니다', 'success');
-        this.items.push({
-          num: this.lastNum + 1,
-          name: this.problemName,
-          source: this.source
+      }).then(function () {
+        _this5.$swal('등록 성공', '문제를 등록하였습니다', 'success');
+        _this5.items.push({
+          num: _this5.lastNum + 1,
+          name: _this5.problemName,
+          source: _this5.source
         });
-      }).catch(err => {
-        let errMsg;
+      }).catch(function (err) {
+        var errMsg = void 0;
         if (err.response.data.message === 'validation error') {
           errMsg = '정보가 부족합니다';
         }
-        this.$swal({
+        _this5.$swal({
           title: '등록 실패',
           text: errMsg,
           type: 'error'
         });
       });
     },
-    fetchData() {
+    fetchData: function fetchData() {
+      var _this6 = this;
+
       //토큰테스트
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('problems').then(res => {
-        let i = 0;
+      this.$http.get('problems').then(function (res) {
+        var i = 0;
         while (i < res.data.problems.length) {
-          this.items.push({
+          _this6.items.push({
             num: res.data.problems[i].num,
             name: res.data.problems[i].problemName,
             source: res.data.problems[i].source
           });
-          this.lastNum = res.data.problems[i].num;
+          _this6.lastNum = res.data.problems[i].num;
           i += 1;
         }
-        this.enteringProblemmanage = true;
-      }).catch(err => {
-        this.$swal({
+        _this6.enteringProblemmanage = true;
+      }).catch(function (err) {
+        _this6.$swal({
           title: '문제 로드 실패',
           text: err,
           type: 'error'
@@ -1836,11 +2027,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 167 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 168 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -1861,26 +2059,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = {
-  data() {
+exports.default = {
+  data: function data() {
     return {
       problemData: [],
       ratioData: [],
       enteringProblemresult: false
     };
   },
-  created() {
+  created: function created() {
     this.ratio();
   },
+  beforeCreate: function beforeCreate() {
+    this.$Progress.start();
+  },
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+
   methods: {
-    ratio() {
+    ratio: function ratio() {
+      var _this = this;
+
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('solution').then(res => {
-        let i = 0;
+      this.$http.get('solution').then(function (res) {
+        var i = 0;
         while (i < res.data.resolves.length) {
-          const date = res.data.resolves[i].resolveData.date.replace('T', ', ');
-          this.problemData.push({
+          var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
+          _this.problemData.push({
             userid: res.data.resolves[i].userId,
             code: res.data.resolves[i].resolveData.code,
             date: date.substring(0, date.length - 8),
@@ -1890,14 +2097,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             result: res.data.resolves[i].resolveData.result,
             time: res.data.resolves[i].resolveData.time
           });
-          this.ratioData.push({
-            [i]: res.data.resolves[i].resolveData.problemNum
-          });
+          _this.ratioData.push(_defineProperty({}, i, res.data.resolves[i].resolveData.problemNum));
           i += 1;
         }
-        this.problemResultmanage = true;
-      }).catch(err => {
-        this.$swal({
+        _this.enteringProblemresult = true;
+      }).catch(function (err) {
+        _this.$swal({
           title: '문제 결과 로드 실패',
           text: err,
           type: 'error'
@@ -1908,15 +2113,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 168 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timeline_vue__ = __webpack_require__(400);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__timeline_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__timeline_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_vue__ = __webpack_require__(399);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__main_vue__);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _timeline = __webpack_require__(402);
+
+var _timeline2 = _interopRequireDefault(_timeline);
+
+var _main = __webpack_require__(401);
+
+var _main2 = _interopRequireDefault(_main);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -1930,26 +2146,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
   name: 'index',
   components: {
-    parallax: __WEBPACK_IMPORTED_MODULE_1__main_vue___default.a,
-    timeline: __WEBPACK_IMPORTED_MODULE_0__timeline_vue___default.a
+    parallax: _main2.default,
+    timeline: _timeline2.default
   },
-  data() {
+  data: function data() {
     return {};
+  },
+  beforeCreate: function beforeCreate() {
+    this.loadState = true;
+    this.$Progress.start();
+  },
+  mounted: function mounted() {
+    this.loadState = false;
+    this.$Progress.finish();
   }
 };
 
 /***/ }),
-/* 169 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -2050,9 +2275,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
   name: 'parallax',
-  data() {
+  data: function data() {
     return {
       swiperOption: {
         parallax: true,
@@ -2065,18 +2290,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 170 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -2235,30 +2457,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
   name: 'sigo',
-  data() {
-    return {
-      userCount: ''
-    };
+  data: function data() {
+    return {};
   },
-  created() {
-    //      const ROOT_URL = 'http://121.186.23.245:9999';
-    //      this.$http.defaults.baseURL = ROOT_URL;
-    //      this.$http.get('./api/users')
-    //        .then((resUserInfo) => {
-    //          this.userCount = resUserInfo.data.users.length;
-    //        <!--});-->
-    //      console.log(this.userCount);
-  }
+  created: function created() {}
 };
 
 /***/ }),
-/* 171 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 //
 //
 //
@@ -2313,9 +2529,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
     name: 'index',
-    data() {
+    data: function data() {
         return {
             userToken: '',
             userid: '',
@@ -2326,32 +2542,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             entering: false
         };
     },
-    beforeCreate() {
+    updated: function updated() {
+        this.$Progress.finish();
+    },
+    beforeCreate: function beforeCreate() {
+        var _this = this;
+
         //          토큰 테스트
         this.userToken = this.$cookie.get('userToken');
         if (this.userToken != null) {
             this.userToken = this.$cookie.get('userToken');
             this.$http.defaults.headers.common.Authorization = this.userToken;
-            this.$http.get('users/my-info').then(resInfo => {
-                this.userid = resInfo.data.user.userId;
-                this.username = resInfo.data.user.username;
-                this.studentcode = resInfo.data.user.studentCode;
-                this.$http.get(`solution/resultsuccess/${userid}`).then(res => {
+            this.$http.get('users/my-info').then(function (resInfo) {
+                _this.userid = resInfo.data.user.userId;
+                _this.username = resInfo.data.user.username;
+                _this.studentcode = resInfo.data.user.studentCode;
+                _this.$http.get('solution/resultsuccess/' + userid).then(function (res) {
                     console.log(res);
-                    this.entering = true;
-                }).catch(err => {
-                    this.$swal({
+                    _this.entering = true;
+                }).catch(function (err) {
+                    _this.$swal({
                         title: '문제 정답 로드 실패',
                         text: err,
                         type: 'error'
                     });
                 });
-            }).catch(error => {
-                this.$swal({
+            }).catch(function (error) {
+                _this.$swal({
                     title: '유저 조회 실패',
                     text: error,
                     type: 'error'
-                }).then(() => {
+                }).then(function () {
                     location.href = '/';
                 });
             });
@@ -2360,7 +2581,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: '입장 실패',
                 text: '로그인을 해주세요',
                 type: 'error'
-            }).then(() => {
+            }).then(function () {
                 location.href = '/';
             });
         }
@@ -2368,111 +2589,160 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 172 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = {
-  data() {
+exports.default = {
+  data: function data() {
     return {};
   }
 };
 
 /***/ }),
-/* 173 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-/* harmony default export */ __webpack_exports__["default"] = {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vuex = __webpack_require__(51);
+
+exports.default = {
   name: 'notice',
-  data() {
+  data: function data() {
     return {
       notices: [],
       entering: false
     };
   },
-  created() {
-    this.$http.get('notices').then(res => {
-      let i = 0;
-      console.log(res);
+  updated: function updated() {
+    this.$store.dispatch('loadingOff');
+    console.log(this.$store.state.loadingState);
+    this.$Progress.finish();
+  },
+  created: function created() {
+    var _this = this;
+
+    this.$http.get('notices').then(function (res) {
+      var i = 0;
       while (i < res.data.notices.length) {
+        var date = res.data.notices[i].date.replace('T', ', ');
+        date = date.substring(0, date.length - 8);
         if (res.data.notices[i].type === 'notice') {
-          this.notices.push({
+          _this.notices.push({
             num: res.data.notices[i].num,
             noticename: res.data.notices[i].noticeName,
-            date: res.data.notices[i].date
+            date: date
           });
         }
         i += 1;
       }
-      this.entering = true;
-    }).catch(err => {
+      _this.entering = true;
+    }).catch(function (err) {
       alert(err);
     });
   },
+
   methods: {
-    open(num) {
+    open: function open(num) {
       this.$router.push({
-        path: `notices/${num}`
+        path: 'notices/' + num
       });
     }
   }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
-/* 174 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2482,9 +2752,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = {
+exports.default = {
   name: 'openNotice',
-  data() {
+  data: function data() {
     return {
       num: '',
       name: '',
@@ -2493,27 +2763,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       entering: false
     };
   },
-  created() {
-    const num = this.$route.params.num;
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+  created: function created() {
+    var _this = this;
+
+    var num = this.$route.params.num;
     console.log(num);
-    this.$http.get(`notices/${num}`).then(res => {
-      this.num = res.data.notice.num;
-      this.name = res.data.notice.noticeName;
-      this.contents = res.data.notice.contents;
-      this.date = res.data.notice.date;
-      this.entering = true;
-    }).catch(err => {
+    this.$http.get('notices/' + num).then(function (res) {
+      _this.num = res.data.notice.num;
+      _this.name = res.data.notice.noticeName;
+      _this.contents = res.data.notice.contents;
+      _this.date = res.data.notice.date.replace('T', ', ');
+      _this.date = _this.date.substring(0, _this.date.length - 8);
+      _this.entering = true;
+    }).catch(function (err) {
       console.log(err);
     });
   }
 };
 
 /***/ }),
-/* 175 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2558,12 +2871,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-let i = 0;
-let end = 10;
-let length;
-/* harmony default export */ __webpack_exports__["default"] = {
+var i = 0;
+var end = 10;
+var length = void 0;
+exports.default = {
   name: 'index',
-  data() {
+  data: function data() {
     return {
       test: 'test',
       items: [],
@@ -2572,10 +2885,12 @@ let length;
       lineheight: ''
     };
   },
-  ready() {
-    alert('ready');
+  updated: function updated() {
+    this.$Progress.finish();
   },
-  created() {
+  created: function created() {
+    var _this = this;
+
     i = 0;
     end = 10;
     //토큰테스트
@@ -2583,28 +2898,28 @@ let length;
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('users/my-info').then(resInfo => {
-        this.userid = resInfo.data.user.userId;
-        this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.get('problems').then(res => {
+      this.$http.get('users/my-info').then(function (resInfo) {
+        _this.userid = resInfo.data.user.userId;
+        _this.$http.defaults.headers.common.Authorization = _this.userToken;
+        _this.$http.get('problems').then(function (res) {
           length = res.data.problems.length;
           //문제 결과 로드
-          this.$http.defaults.headers.common.Authorization = this.userToken;
-          this.$http.get('solution').then(resRatio => {
+          _this.$http.defaults.headers.common.Authorization = _this.userToken;
+          _this.$http.get('solution').then(function (resRatio) {
             //문제 개수 반복
             if (length < 10) {
               end = length;
             }
             while (i < end) {
-              const num = res.data.problems[i].num;
-              const name = res.data.problems[i].problemName;
-              const source = res.data.problems[i].source;
-              const score = res.data.problems[i].score;
-              let count = 0;
-              let success = 0;
-              let fail = 0;
-              let ratio = 0;
-              let j = 0;
+              var num = res.data.problems[i].num;
+              var name = res.data.problems[i].problemName;
+              var source = res.data.problems[i].source;
+              var score = res.data.problems[i].score;
+              var count = 0;
+              var success = 0;
+              var fail = 0;
+              var ratio = 0;
+              var j = 0;
               //문제 결과 수 반복
               while (j < resRatio.data.resolves.length) {
                 //문제 번호 === 문제 결과 번호
@@ -2622,51 +2937,50 @@ let length;
               //결과 수정
               ratio = success / count;
               if (isNaN(ratio)) {
-                ratio = `${0} %`;
+                ratio = 0 + ' %';
               } else if (ratio === 0) {
-                ratio = `${0} %`;
+                ratio = 0 + ' %';
               } else if (ratio !== 0) {
-                ratio = `${parseInt(ratio * 100, 10)} %`;
+                ratio = parseInt(ratio * 100, 10) + ' %';
               }
-              //                    this.lineheight = document.getElementById('list').style.height;
-              console.log(this.lineheight);
-              this.items.push({
-                num,
-                name,
-                source,
-                score,
-                success,
-                fail,
-                count,
-                ratio
+              _this.lineheight = 55 * i;
+              _this.items.push({
+                num: num,
+                name: name,
+                source: source,
+                score: score,
+                success: success,
+                fail: fail,
+                count: count,
+                ratio: ratio
               });
               i += 1;
             }
-            this.entering = true;
-          }).catch(err => {
-            this.$swal({
+            _this.entering = true;
+          }).catch(function (err) {
+            _this.$swal({
               title: '문제 기록 로드 실패',
               text: err,
               type: 'error'
-            }).then(() => {
+            }).then(function () {
               location.href = '/';
             });
           });
-        }).catch(err => {
-          this.$swal({
+        }).catch(function (err) {
+          _this.$swal({
             title: '문제 로드 실패',
             text: err,
             type: 'error'
-          }).then(() => {
+          }).then(function () {
             location.href = '/';
           });
         });
-      }).catch(error => {
-        this.$swal({
+      }).catch(function (error) {
+        _this.$swal({
           title: '입장 실패',
           text: '유저 조회 실패',
           type: 'error'
-        }).then(() => {
+        }).then(function () {
           location.href = '/';
         });
       });
@@ -2675,41 +2989,44 @@ let length;
         title: '입장 실패',
         text: '로그인을 해주세요',
         type: 'error'
-      }).then(() => {
+      }).then(function () {
         location.href = '/';
       });
     }
   },
+
   methods: {
-    shuffle() {
+    shuffle: function shuffle() {
       this.items = _.shuffle(this.items);
     },
-    loadList() {
+    loadList: function loadList() {
+      var _this2 = this;
+
       //문제 로드
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('problems').then(res => {
+      this.$http.get('problems').then(function (res) {
         i = end;
         end += 10;
         if (i / 10 === parseInt(length / 10, 10)) {
           end = length;
-          this.loadState = false;
+          _this2.loadState = false;
         } else if (end === length) {
-          this.loadState = false;
+          _this2.loadState = false;
         }
         //문제 결과 로드
-        this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.get('solution').then(resRatio => {
+        _this2.$http.defaults.headers.common.Authorization = _this2.userToken;
+        _this2.$http.get('solution').then(function (resRatio) {
           //문제 개수 반복
           while (i < end) {
-            const num = res.data.problems[i].num;
-            const name = res.data.problems[i].problemName;
-            const source = res.data.problems[i].source;
-            const score = res.data.problems[i].score;
-            let count = 0;
-            let success = 0;
-            let fail = 0;
-            let ratio = 0;
-            let j = 0;
+            var num = res.data.problems[i].num;
+            var name = res.data.problems[i].problemName;
+            var source = res.data.problems[i].source;
+            var score = res.data.problems[i].score;
+            var count = 0;
+            var success = 0;
+            var fail = 0;
+            var ratio = 0;
+            var j = 0;
             //문제 결과 수 반복
             while (j < resRatio.data.resolves.length) {
               //문제 번호 === 문제 결과 번호
@@ -2727,138 +3044,86 @@ let length;
             //결과 수정
             ratio = success / count;
             if (isNaN(ratio)) {
-              ratio = `${0} %`;
+              ratio = 0 + ' %';
             } else if (ratio === 0) {
-              ratio = `${0} %`;
+              ratio = 0 + ' %';
             } else {
-              ratio = `${ratio.toString().substring(2, 4)} %`;
+              ratio = ratio.toString().substring(2, 4) + ' %';
             }
-            //                              this.lineheight = document.getElementById('list').style.height;
-            this.items.push({
-              num,
-              name,
-              source,
-              score,
-              success,
-              fail,
-              count,
-              ratio
+            _this2.lineheight = 55 * i;
+            _this2.items.push({
+              num: num,
+              name: name,
+              source: source,
+              score: score,
+              success: success,
+              fail: fail,
+              count: count,
+              ratio: ratio
             });
             i += 1;
           }
-        }).catch(err => {
-          this.$swal({
+        }).catch(function (err) {
+          _this2.$swal({
             title: '문제 기록 로드 실패',
             text: err,
             type: 'error'
-          }).then(() => {
+          }).then(function () {
             location.href = '/';
           });
         });
-      }).catch(err => {
-        this.$swal({
+      }).catch(function (err) {
+        _this2.$swal({
           title: '문제 로드 실패',
           text: err,
           type: 'error'
-        }).then(() => {
+        }).then(function () {
           location.href = '/';
         });
       });
     },
-    result(num) {
+    result: function result(num) {
+      var _this3 = this;
+
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get(`solution/findsuccess/${this.userid}/${num}`).then(resresult => {
+      this.$http.get('solution/findsuccess/' + this.userid + '/' + num).then(function (resresult) {
         if (resresult.data.result === true) {
-          this.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
+          _this3.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
         } else {
-          this.$router.push({
-            path: `problems/${num}`
+          _this3.$router.push({
+            path: 'problems/' + num
           });
         }
-      }).catch(err => {
-        this.$swal('결과 조회 실패', err, 'error');
+      }).catch(function (err) {
+        _this3.$swal('결과 조회 실패', err, 'error');
       });
     }
   }
 };
 
 /***/ }),
-/* 176 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor__ = __webpack_require__(435);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-/* harmony default export */ __webpack_exports__["default"] = {
+var _vueMonacoEditor = __webpack_require__(437);
+
+var _vueMonacoEditor2 = _interopRequireDefault(_vueMonacoEditor);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
   name: 'solve',
   components: {
-    MonacoEditor: __WEBPACK_IMPORTED_MODULE_0_vue_monaco_editor___default.a
+    MonacoEditor: _vueMonacoEditor2.default
   },
-  data() {
+  data: function data() {
     return {
       userid: '',
       urlParams: '',
@@ -2868,7 +3133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       scanf: null,
       codeResult: '',
       compileResult: '',
-      code: '',
+      code: 'int main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}',
       runState: false,
       runMsg: '실행 결과가 이곳에 나타납니다',
       options: {
@@ -2886,18 +3151,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     };
   },
-  created() {
+  created: function created() {
+    var _this = this;
+
     //      토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('users/my-info').then(resInfo => {
-        this.userid = resInfo.data.user.userId;
-        const id = this.$route.params.num;
-        this.$http.defaults.headers.common.Authorization = this.userToken;
-        this.$http.get(`problems/${id}`).then(res => {
-          this.items.push({
+      this.$http.get('users/my-info').then(function (resInfo) {
+        _this.userid = resInfo.data.user.userId;
+        var id = _this.$route.params.num;
+        _this.$http.defaults.headers.common.Authorization = _this.userToken;
+        _this.$http.get('problems/' + id).then(function (res) {
+          _this.items.push({
             num: res.data.problem.num,
             name: res.data.problem.problemName,
             source: res.data.problem.source,
@@ -2908,12 +3175,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             memorylimit: res.data.problem.problemData.memoryLimit
           });
         });
-      }).catch(error => {
-        this.$swal({
+      }).catch(function (error) {
+        _this.$swal({
           title: '유저 조회 실패',
           text: error,
           type: 'error'
-        }).then(() => {
+        }).then(function () {
           location.href = '/';
         });
       });
@@ -2922,29 +3189,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         title: '입장 실패',
         text: '로그인을 해주세요',
         type: 'error'
-      }).then(() => {
+      }).then(function () {
         location.href = '/';
       });
     }
   },
-  destroy() {
+  destroy: function destroy() {
     this.solveMenu = false;
   },
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+
   methods: {
-    onMounted(editor) {
+    onMounted: function onMounted(editor) {
       this.editor = editor;
     },
-    onCodeChange(editor) {
+    onCodeChange: function onCodeChange(editor) {
       this.code = editor.getValue();
-      console.log(this.code);
     },
-    codeReset() {
+    codeReset: function codeReset() {
       this.editor.setValue('');
       this.code = '';
       this.runMsg = '실행 결과가 이곳에 나타납니다';
       this.codeResult = '';
     },
-    codeRun() {
+    codeRun: function codeRun() {
+      var _this2 = this;
+
       if (this.code.replace(/^\s*/, '') === '') {
         this.$swal('컴파일오류', '코드를 입력해주세요', 'error');
         this.runMsg = 'ERROR';
@@ -2958,20 +3230,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: 'problem',
         lang: this.lang,
         mode: true
-      }).then(resSubmit => {
-        this.codeResult = resSubmit.data.result;
-        this.runMsg = '실행 결과 ';
-      }).catch(err => {
+      }).then(function (resSubmit) {
+        _this2.codeResult = resSubmit.data.result;
+        _this2.runMsg = '실행 결과 ';
+      }).catch(function (err) {
         if (err.response.data.result === 'compile error') {
-          this.runMsg = '컴파일 에러';
-          this.codeResult = err.response.data.message;
+          _this2.runMsg = '컴파일 에러';
+          _this2.codeResult = err.response.data.message;
         } else if (err.response.data.result === 'error') {
-          this.runMsg = '에러';
-          this.codeResult = err.response.data.message;
+          _this2.runMsg = '에러';
+          _this2.codeResult = err.response.data.message;
         }
       });
     },
-    codeSubmit() {
+    codeSubmit: function codeSubmit() {
+      var _this3 = this;
+
       if (this.code.replace(/^\s*/, '') === '') {
         this.$swal('컴파일오류', '코드를 입력해주세요', 'error');
         this.runMsg = 'ERROR';
@@ -2984,23 +3258,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         inputcode: this.code,
         name: 'problem',
         lang: this.lang
-      }).then(resSubmit => {
-        const result = resSubmit.data.result;
+      }).then(function (resSubmit) {
+        var result = resSubmit.data.result;
         if (result === 'success') {
-          this.runMsg = 'SUCCESS';
-          this.$swal({
+          _this3.runMsg = 'SUCCESS';
+          _this3.$swal({
             title: '정답',
             text: '다른 문제도 풀어보세요',
             type: 'success'
-          }).then(() => {
+          }).then(function () {
             location.href = '/problems';
           });
         } else {
-          this.runMsg = 'FAIL';
-          this.$swal('실패', '다시 도전해 보세요', 'error');
+          _this3.runMsg = 'FAIL';
+          _this3.$swal('실패', '다시 도전해 보세요', 'error');
         }
-      }).catch(err => {
-        this.$swal({
+      }).catch(function (err) {
+        _this3.$swal({
           title: '문제 제출 실패',
           text: err,
           type: 'error'
@@ -3008,14 +3282,91 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     }
   }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
-/* 177 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3085,61 +3436,87 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-let i = 0;
-let end = 10;
-let length;
-/* harmony default export */ __webpack_exports__["default"] = {
+var i = 0;
+var end = 10;
+var length = void 0;
+exports.default = {
   name: 'rank',
-  data() {
+  data: function data() {
     return {
       userToken: '',
-      users: [],
+      data: [],
       loadState: true,
-      entering: false
+      entering: false,
+      ranker: [],
+      users: []
     };
   },
-  created() {
+  created: function created() {
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken == null) {
       alert('로그인 해주세요');
       location.href = '/';
     }
   },
-  beforeCreate() {
+  beforeCreate: function beforeCreate() {
+    var _this = this;
+
     //          토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('users/my-info').then(resInfo => {
-        this.userid = resInfo.data.user.userId;
-        this.$http.get('users').then(res => {
-          console.log(res);
+      this.$http.get('users/my-info').then(function (resInfo) {
+        _this.userid = resInfo.data.user.userId;
+        _this.$http.get('users').then(function (res) {
+          i = 0;
           length = res.data.users.length;
           if (length < 10) {
             end = length;
           }
-          while (i < end) {
-            this.users.push({
+          while (i < length) {
+            _this.data.push({
               name: res.data.users[i].username,
               score: res.data.users[i].score
             });
             i += 1;
           }
-          const sort = 'score';
-          this.users.sort(function (a, b) {
+          var sort = 'score';
+          _this.data.sort(function (a, b) {
             return b[sort] - a[sort];
           });
-          this.entering = true;
-        }).catch(err => {
-          console.log(err);
+          i = 0;
+          while (i < end) {
+            _this.users.push({
+              name: _this.data[i].name,
+              score: _this.data[i].score
+            });
+            i += 1;
+          }
+          i = 0;
+          while (i < 3) {
+            _this.ranker.push({
+              name: _this.users[i].name,
+              score: _this.users[i].score
+            });
+            i += 1;
+          }
+          _this.entering = true;
+        }).catch(function (err) {
+          _this.$swal({
+            title: '유저 정보 조회 실패',
+            text: err,
+            type: 'error'
+          }).then(function () {
+            location.href = '/';
+          });
         });
-      }).catch(error => {
-        this.$swal({
+      }).catch(function (error) {
+        _this.$swal({
           title: '유저 조회 실패',
           text: error,
           type: 'error'
-        }).then(() => {
+        }).then(function () {
           location.href = '/';
         });
       });
@@ -3148,43 +3525,51 @@ let length;
         title: '입장 실패',
         text: '로그인을 해주세요',
         type: 'error'
-      }).then(() => {
+      }).then(function () {
         location.href = '/';
       });
     }
   },
+  updated: function updated() {
+    this.$Progress.finish();
+  },
+
   methods: {
-    loadList() {
-      this.$http.get('users').then(res => {
-        console.log(res);
+    loadList: function loadList() {
+      var _this2 = this;
+
+      this.$http.get('users').then(function (res) {
         i = end;
         end += 10;
         if (i / 10 === parseInt(length / 10, 10)) {
           end = length;
-          this.loadState = false;
+          _this2.loadState = false;
         } else if (end === length) {
-          this.loadState = false;
+          _this2.loadState = false;
         }
+        console.log(i);
+        console.log(end);
         while (i < end) {
-          this.users.push({
-            name: res.data.users[i].username,
-            score: res.data.users[i].score
+          _this2.users.push({
+            name: _this2.data[i].name,
+            score: _this2.data[i].score
           });
           i += 1;
         }
-        const sort = 'score';
-        this.users.sort(function (a, b) {
-          return b[sort] - a[sort];
+      }).catch(function (err) {
+        _this2.$swal({
+          title: '유저 로드 실패',
+          text: err,
+          type: 'error'
+        }).then(function () {
+          location.href = '/';
         });
-      }).catch(err => {
-        console.log(err);
       });
     }
   }
 };
 
 /***/ }),
-/* 178 */,
 /* 179 */,
 /* 180 */,
 /* 181 */,
@@ -3368,12 +3753,7 @@ let length;
 /* 359 */,
 /* 360 */,
 /* 361 */,
-/* 362 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 362 */,
 /* 363 */
 /***/ (function(module, exports) {
 
@@ -3512,70 +3892,38 @@ let length;
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 386 */,
-/* 387 */,
+/* 386 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 388 */,
 /* 389 */,
 /* 390 */,
 /* 391 */,
-/* 392 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(368)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(162),
-  /* template */
-  __webpack_require__(417),
-  /* scopeId */
-  "data-v-1fb4ac10",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 393 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(376)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(163),
-  /* template */
-  __webpack_require__(427),
-  /* scopeId */
-  "data-v-608cdfa9",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 392 */,
+/* 393 */,
 /* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(385)
+__webpack_require__(369)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(164),
+  __webpack_require__(163),
   /* template */
-  __webpack_require__(434),
+  __webpack_require__(419),
   /* scopeId */
-  "data-v-90766562",
+  "data-v-1fb4ac10",
   /* cssModules */
   null
 )
@@ -3589,15 +3937,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(384)
+__webpack_require__(377)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(165),
+  __webpack_require__(164),
   /* template */
-  __webpack_require__(433),
+  __webpack_require__(429),
   /* scopeId */
-  "data-v-8fe46ee8",
+  "data-v-608cdfa9",
   /* cssModules */
   null
 )
@@ -3611,15 +3959,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(370)
+__webpack_require__(387)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(166),
+  __webpack_require__(165),
   /* template */
-  __webpack_require__(420),
+  __webpack_require__(436),
   /* scopeId */
-  "data-v-3b8f64c8",
+  "data-v-90766562",
   /* cssModules */
   null
 )
@@ -3633,16 +3981,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(373)
-__webpack_require__(374)
+__webpack_require__(386)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(167),
+  __webpack_require__(166),
   /* template */
-  __webpack_require__(423),
+  __webpack_require__(435),
   /* scopeId */
-  "data-v-4886e8bd",
+  "data-v-8fe46ee8",
   /* cssModules */
   null
 )
@@ -3656,15 +4003,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(372)
+__webpack_require__(371)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(168),
+  __webpack_require__(167),
   /* template */
   __webpack_require__(422),
   /* scopeId */
-  "data-v-41509454",
+  "data-v-3b8f64c8",
   /* cssModules */
   null
 )
@@ -3678,16 +4025,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(381)
-__webpack_require__(382)
+__webpack_require__(374)
+__webpack_require__(375)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(169),
+  __webpack_require__(168),
   /* template */
-  __webpack_require__(431),
+  __webpack_require__(425),
   /* scopeId */
-  "data-v-7bcd82e5",
+  "data-v-4886e8bd",
   /* cssModules */
   null
 )
@@ -3701,15 +4048,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(369)
+__webpack_require__(373)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(170),
+  __webpack_require__(169),
   /* template */
-  __webpack_require__(419),
+  __webpack_require__(424),
   /* scopeId */
-  "data-v-32d9b926",
+  "data-v-41509454",
   /* cssModules */
   null
 )
@@ -3723,16 +4070,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(378)
-__webpack_require__(379)
+__webpack_require__(382)
+__webpack_require__(383)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(171),
+  __webpack_require__(170),
   /* template */
-  __webpack_require__(429),
+  __webpack_require__(433),
   /* scopeId */
-  "data-v-637a59d0",
+  "data-v-7bcd82e5",
   /* cssModules */
   null
 )
@@ -3746,15 +4093,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(367)
+__webpack_require__(370)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(172),
+  __webpack_require__(171),
   /* template */
-  __webpack_require__(416),
+  __webpack_require__(421),
   /* scopeId */
-  "data-v-1f1cf6d0",
+  "data-v-32d9b926",
   /* cssModules */
   null
 )
@@ -3768,16 +4115,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(364)
-__webpack_require__(363)
+__webpack_require__(379)
+__webpack_require__(380)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(173),
+  __webpack_require__(172),
   /* template */
-  __webpack_require__(413),
+  __webpack_require__(431),
   /* scopeId */
-  "data-v-0a41af30",
+  "data-v-637a59d0",
   /* cssModules */
   null
 )
@@ -3791,15 +4138,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(377)
+__webpack_require__(368)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(174),
+  __webpack_require__(173),
   /* template */
-  __webpack_require__(428),
+  __webpack_require__(418),
   /* scopeId */
-  "data-v-6209be0c",
+  "data-v-1f1cf6d0",
   /* cssModules */
   null
 )
@@ -3813,15 +4160,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(371)
+__webpack_require__(365)
+__webpack_require__(364)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(175),
+  __webpack_require__(174),
   /* template */
-  __webpack_require__(421),
+  __webpack_require__(415),
   /* scopeId */
-  "data-v-3f6ebf20",
+  "data-v-0a41af30",
   /* cssModules */
   null
 )
@@ -3835,15 +4183,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(375)
+__webpack_require__(378)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(176),
+  __webpack_require__(175),
   /* template */
-  __webpack_require__(425),
+  __webpack_require__(430),
   /* scopeId */
-  "data-v-572d1fb3",
+  "data-v-6209be0c",
   /* cssModules */
   null
 )
@@ -3857,15 +4205,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(365)
+__webpack_require__(372)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(177),
+  __webpack_require__(176),
   /* template */
-  __webpack_require__(414),
+  __webpack_require__(423),
   /* scopeId */
-  "data-v-0f75cc20",
+  "data-v-3f6ebf20",
   /* cssModules */
   null
 )
@@ -3877,13 +4225,17 @@ module.exports = Component.exports
 /* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(376)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(156),
+  __webpack_require__(177),
   /* template */
-  __webpack_require__(426),
+  __webpack_require__(427),
   /* scopeId */
-  null,
+  "data-v-572d1fb3",
   /* cssModules */
   null
 )
@@ -3895,13 +4247,17 @@ module.exports = Component.exports
 /* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(366)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(157),
+  __webpack_require__(178),
   /* template */
-  __webpack_require__(424),
+  __webpack_require__(416),
   /* scopeId */
-  null,
+  "data-v-0f75cc20",
   /* cssModules */
   null
 )
@@ -3915,9 +4271,9 @@ module.exports = Component.exports
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(158),
+  __webpack_require__(157),
   /* template */
-  __webpack_require__(418),
+  __webpack_require__(428),
   /* scopeId */
   null,
   /* cssModules */
@@ -3931,15 +4287,11 @@ module.exports = Component.exports
 /* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(366)
-
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(159),
+  __webpack_require__(158),
   /* template */
-  __webpack_require__(415),
+  __webpack_require__(426),
   /* scopeId */
   null,
   /* cssModules */
@@ -3953,15 +4305,11 @@ module.exports = Component.exports
 /* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(380)
-
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(160),
+  __webpack_require__(159),
   /* template */
-  __webpack_require__(430),
+  __webpack_require__(420),
   /* scopeId */
   null,
   /* cssModules */
@@ -3973,19 +4321,67 @@ module.exports = Component.exports
 
 /***/ }),
 /* 413 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(367)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(160),
+  /* template */
+  __webpack_require__(417),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 414 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(381)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(161),
+  /* template */
+  __webpack_require__(432),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 415 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.entering) ? _c('div', {
     attrs: {
       "id": "notice"
     }
   }, [_c('div', {
+    staticClass: "noticen"
+  }, [_c('div', {
+    staticClass: "not-main"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active",
     attrs: {
       "data-tab": "first"
     }
-  }, [_c('transition-group', {
+  }, [_vm._m(2), _vm._v(" "), _c('transition-group', {
     attrs: {
       "name": "noticeList"
     }
@@ -4003,15 +4399,84 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_c('p', {
-      staticClass: "header"
-    }, [_c('span', [_vm._v(_vm._s(notice.num))]), _vm._v("번 ")]), _vm._v(" "), _c('a', {
-      staticClass: "ui disabled header"
-    }, [_vm._v("\n                            이름 : "), _c('span', [_vm._v(_vm._s(notice.noticename))]), _vm._v("\n                            날짜 : "), _c('span', [_vm._v(_vm._s(notice.date))])])])])])
-  }))], 1)])
-},staticRenderFns: []}
+      staticClass: "header",
+      attrs: {
+        "id": "pollist"
+      }
+    }, [_c('span', [_vm._v(_vm._s(notice.num))])]), _vm._v(" "), _c('a', {
+      staticClass: "ui header",
+      attrs: {
+        "id": "destent"
+      }
+    }, [_c('span', [_vm._v(_vm._s(notice.noticename))])]), _vm._v(" "), _c('p', {
+      staticClass: "notdate"
+    }, [_c('span', [_vm._v(_vm._s(notice.date))])])])])])
+  }))], 1), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])])]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h2', {
+    staticClass: "ui center aligned header",
+    attrs: {
+      "id": "not-head"
+    }
+  }, [_vm._v(" 공지사항\n              "), _c('div', {
+    staticClass: "sub header"
+  }, [_vm._v("SIGO의 알림를 외칩니다!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "ui top attached tabular menu"
+  }, [_c('p', {
+    staticClass: "item active",
+    attrs: {
+      "data-tab": "first",
+      "id": "item"
+    }
+  }, [_vm._v("목록")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "ui items"
+  }, [_c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "ui top attached tabular menu",
+    attrs: {
+      "id": "pob"
+    }
+  }, [_c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemone"
+    }
+  }, [_vm._v("번호")]), _vm._v(" "), _c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemtwo"
+    }
+  }, [_vm._v("제목")]), _vm._v(" "), _c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemthr"
+    }
+  }, [_vm._v("날짜")])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "huge chevron circle up icon"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    staticClass: "ui button"
+  }, [_c('i', {
+    staticClass: "large chevron down icon"
+  })])
+}]}
 
 /***/ }),
-/* 414 */
+/* 416 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4023,9 +4488,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "ranksys"
   }, [_c('div', {
     staticClass: "rank-main"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "rank-top"
+  }, [_c('div', {
+    staticClass: "rank1"
+  }, [_vm._m(1), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("2등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v(_vm._s(_vm.ranker[1].name))]), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v("2st")])]), _vm._v(" "), _c('div', {
+    staticClass: "rank2"
+  }, [_vm._m(2), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("1등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v(_vm._s(_vm.ranker[0].name))]), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v("1st")])]), _vm._v(" "), _c('div', {
+    staticClass: "rank3"
+  }, [_vm._m(3), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("3등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v(_vm._s(_vm.ranker[2].name))]), _vm._v(" "), _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v("3st")])])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active"
-  }, [_vm._m(3), _vm._v(" "), _vm._l((_vm.users), function(user, rank) {
+  }, [_vm._m(5), _vm._v(" "), _vm._l((_vm.users), function(user, rank) {
     return _c('div', {
       staticClass: "propol"
     }, [_c('div', {
@@ -4039,7 +4530,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "id": "pollist"
       }
-    }, [_c('span', [_vm._v(_vm._s(rank))]), _vm._v("등")]), _vm._v(" "), _c('p', {
+    }, [_c('span', [_vm._v(_vm._s(rank + 1))]), _vm._v("등")]), _vm._v(" "), _c('p', {
       staticClass: "ui disabled header"
     }, [_c('span', [_vm._v(_vm._s(user.name))])]), _vm._v(" "), _c('p', {
       staticClass: "sub header",
@@ -4047,7 +4538,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "id": "subder"
       }
     }, [_c('span', [_vm._v(_vm._s(user.score))])])])])])])
-  })], 2), _vm._v(" "), _vm._m(4), _vm._v(" "), (_vm.loadState) ? _c('button', {
+  })], 2), _vm._v(" "), _vm._m(6), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
       "click": _vm.loadList
@@ -4061,49 +4552,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "rankhead"
     }
-  }, [_vm._v(" 랭킹 시스템\n        "), _c('div', {
+  }, [_vm._v(" 랭킹 시스템\n                "), _c('div', {
     staticClass: "sub header"
   }, [_vm._v("1등을 목표로 문제를 풀면서 친구들을 이겨보세요!")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "rank-top"
-  }, [_c('div', {
-    staticClass: "rank1"
-  }, [_c('div', {
     staticClass: "rankge1"
   }, [_c('img', {
     attrs: {
       "src": "image1.jpg"
     }
-  })]), _vm._v(" "), _c('p', {
-    staticClass: "rant1"
-  }, [_vm._v("Seil")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v("MASTER")])]), _vm._v(" "), _c('div', {
-    staticClass: "rank2"
-  }, [_c('div', {
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "rankge2"
   }, [_c('img', {
     attrs: {
       "src": "image1.jpg"
     }
-  })]), _vm._v(" "), _c('p', {
-    staticClass: "rant1"
-  }, [_vm._v("Pices")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v("KING")])]), _vm._v(" "), _c('div', {
-    staticClass: "rank3"
-  }, [_c('div', {
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "rankge3"
   }, [_c('img', {
     attrs: {
       "src": "image1.jpg"
     }
-  })]), _vm._v(" "), _c('p', {
-    staticClass: "rant1"
-  }, [_vm._v("Center")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v("HERO")])])])
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "ui top attached tabular menu"
@@ -4126,22 +4601,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "pob"
     }
+  }, [_c('div', {
+    staticClass: "ui grid"
+  }, [_c('div', {
+    staticClass: "two wide column"
   }, [_c('p', {
     staticClass: "item",
     attrs: {
       "id": "ltemone"
     }
-  }, [_vm._v("등수")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("등수")])]), _vm._v(" "), _c('div', {
+    staticClass: "four wide column"
+  }, [_c('p', {
     staticClass: "item",
     attrs: {
       "id": "ltemtwo"
     }
-  }, [_vm._v("이름")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("학번")])]), _vm._v(" "), _c('div', {
+    staticClass: "five wide column"
+  }, [_c('p', {
     staticClass: "item",
     attrs: {
       "id": "ltemthr"
     }
-  }, [_vm._v("점수")])])])])])
+  }, [_vm._v("이름")])]), _vm._v(" "), _c('div', {
+    staticClass: "five wide column"
+  }, [_c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemfou"
+    }
+  }, [_vm._v("점수")])])])])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     attrs: {
@@ -4153,7 +4643,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 415 */
+/* 417 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4164,7 +4654,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 416 */
+/* 418 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4174,7 +4664,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 417 */
+/* 419 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4211,7 +4701,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.click_list
     }
-  }, [_vm._v("개시판관리")]), _vm._v(" "), _c('a', {
+  }, [_vm._v("게시판관리")]), _vm._v(" "), _c('a', {
     staticClass: "item",
     on: {
       "click": _vm.click_problem
@@ -4227,7 +4717,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 418 */
+/* 420 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4235,15 +4725,58 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 419 */
+/* 421 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "timeline"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "footer"
+    }
   }, [_c('div', {
+    staticClass: "fomain"
+  }, [_c('div', {
+    staticClass: "ui grid"
+  }, [_vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "three wide column"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "five wide column",
+    attrs: {
+      "id": "two"
+    }
+  }, [_c('div', {
+    staticClass: "footlist1"
+  }, [_vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "ui middle aligned animated list"
+  }, [_c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/problems"
+    }
+  }, [_vm._v("문제")])], 1)])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6)])]), _vm._v(" "), _c('div', {
+    staticClass: "footlist2"
+  }, [_vm._m(7), _vm._v(" "), _c('div', {
+    staticClass: "ui middle aligned animated list"
+  }, [_c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/rank"
+    }
+  }, [_vm._v("랭킹")])], 1)])]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)])])]), _vm._v(" "), _vm._m(10)])]), _vm._v(" "), _vm._m(11)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     attrs: {
       "id": "content"
     }
@@ -4341,15 +4874,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "hr"
   }), _vm._v(" "), _c('button', {
     staticClass: "fluid ui button"
-  }, [_vm._v("더 보기")])])])])])])]), _vm._v(" "), _c('div', {
-    attrs: {
-      "id": "footer"
-    }
-  }, [_c('div', {
-    staticClass: "fomain"
-  }, [_c('div', {
-    staticClass: "ui grid"
-  }, [_c('div', {
+  }, [_vm._v("더 보기")])])])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "three wide column",
     attrs: {
       "id": "one"
@@ -4362,20 +4889,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "leftp"
     }
-  }, [_vm._v("서울아이티고등학교 학생들이 만든 알고리즘 사이트 입니다.")])]), _vm._v(" "), _c('div', {
-    staticClass: "three wide column"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "five wide column",
-    attrs: {
-      "id": "two"
-    }
-  }, [_c('div', {
-    staticClass: "footlist1"
-  }, [_c('div', {
+  }, [_vm._v("서울아이티고등학교 학생들이 만든 알고리즘 사이트 입니다.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "foheader"
-  }, [_c('h3', [_vm._v("문제풀이")])]), _vm._v(" "), _c('div', {
-    staticClass: "ui middle aligned animated list"
-  }, [_c('div', {
+  }, [_c('h3', [_vm._v("문제풀이")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "item"
   }, [_c('div', {
     staticClass: "content"
@@ -4385,7 +4905,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("문제")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("출처")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "item"
   }, [_c('div', {
     staticClass: "content"
@@ -4395,7 +4917,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("출처")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("단계")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "item"
   }, [_c('div', {
     staticClass: "content"
@@ -4405,7 +4929,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("단계")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("최근문제")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "item"
   }, [_c('div', {
     staticClass: "content"
@@ -4415,23 +4941,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("최근문제")])])])]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("기타")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "footlist2"
-  }, [_c('div', {
+  }, [_vm._v("기타")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "foheader"
-  }, [_c('h3', [_vm._v("랭킹")])]), _vm._v(" "), _c('div', {
-    staticClass: "ui middle aligned animated list"
-  }, [_c('div', {
+  }, [_c('h3', [_vm._v("랭킹")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "item"
   }, [_c('div', {
     staticClass: "content"
@@ -4441,7 +4957,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("랭킹")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("페이지")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "item"
   }, [_c('div', {
     staticClass: "content"
@@ -4451,17 +4969,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("페이지")])])])]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("아이템")])])])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("아이템")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "five wide column",
     attrs: {
       "id": "three"
@@ -4475,10 +4985,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('a', {
     staticClass: "item",
     attrs: {
-      "href": "#",
+      "href": "https://www.facebook.com/%EC%84%9C%EC%9A%B8%EC%95%84%EC%9D%B4%ED%8B%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90-SIGO-1529061383780127/",
       "id": "saws"
     }
-  }, [_vm._v("문의 하기")])])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("문의 하기")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "footsub"
   }, [_c('div', {
     staticClass: "fosub"
@@ -4486,46 +4998,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "ddd"
   }, [_c('a', {
     attrs: {
-      "href": "#"
+      "href": "https://www.facebook.com/%EC%84%9C%EC%9A%B8%EC%95%84%EC%9D%B4%ED%8B%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90-SIGO-1529061383780127/"
     }
   }, [_c('i', {
     staticClass: "big facebook icon"
   })]), _vm._v(" "), _c('a', {
     attrs: {
-      "href": "#"
+      "href": "https://github.com/shitKorea/shit-algorithm"
     }
   }, [_c('i', {
     staticClass: "big github icon"
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "big twitter icon"
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "big youtube icon"
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "big google Plus icon"
   })])]), _vm._v(" "), _c('div', {
     staticClass: "ccc"
-  }, [_c('p', [_vm._v("2017 SiGO. All rights reserved.")])])])])])])
+  }, [_c('p', [_vm._v("2017 SiGO. All rights reserved.")])])])])
 }]}
 
 /***/ }),
-/* 420 */
+/* 422 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.enteringProblemmanage) ? _c('div', {
     staticClass: "probleminput"
+  }, [_c('div', {
+    staticClass: "problem"
   }, [_c('button', {
     on: {
       "click": _vm.openAdd
@@ -5124,11 +5620,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "click": _vm.modify
       }
     }, [_vm._v("수정하기")])]) : _vm._e()])
-  }), _vm._v(" "), _c('br')], 2)]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('br')], 2)])]), _vm._v(" "), _c('div', {
     staticClass: "solveList"
   }, [_c('transition-group', {
     attrs: {
-      "name": "problemmanage"
+      "name": "problemmanage",
+      "tag": "div"
     }
   }, _vm._l((_vm.solveList), function(list) {
     return _c('ul', {
@@ -5138,7 +5635,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 421 */
+/* 423 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5156,7 +5653,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data-tab": "first",
       "id": "item"
     }
-  }, [_vm._v("문제")]), _vm._v(" "), _c('a', {
+  }, [_vm._v("최근 문제")]), _vm._v(" "), _c('a', {
     staticClass: "item",
     attrs: {
       "data-tab": "second"
@@ -5166,21 +5663,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "data-tab": "third"
     }
-  }, [_vm._v("단계")]), _vm._v(" "), _c('a', {
+  }, [_vm._v("난이도")]), _vm._v(" "), _c('a', {
     staticClass: "item",
     attrs: {
-      "data-tab": "four"
-    }
-  }, [_vm._v("최근 문제")]), _vm._v(" "), _c('a', {
-    staticClass: "item",
-    attrs: {
-      "data-tab": "five"
-    }
-  }, [_vm._v("기타")]), _vm._v(" "), _c('button', {
+      "data-tab": "fourth"
+    },
     on: {
       "click": _vm.shuffle
     }
-  }, [_vm._v("Shuffle")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("랜덤문제")])]), _vm._v(" "), _c('div', {
+    staticClass: "ui bottom attached tab segment active",
+    style: ({
+      'max-height': _vm.lineheight + 'px'
+    }),
+    attrs: {
+      "data-tab": "first"
+    }
+  }, [_vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active",
     style: ({
       'max-height': _vm.lineheight + 'px',
@@ -5209,14 +5708,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.result(item.num)
         }
       }
+    }, [_c('div', {
+      staticClass: "ui grid"
+    }, [_c('div', {
+      staticClass: "three wide column"
     }, [_c('p', {
       staticClass: "header"
-    }, [_c('span', [_vm._v(_vm._s(item.num))]), _vm._v("번 문제")]), _vm._v(" "), _c('a', {
+    }, [_c('span', [_vm._v(_vm._s(item.num))])])]), _vm._v(" "), _c('div', {
+      staticClass: "five wide column"
+    }, [_c('a', {
       staticClass: "ui disabled header"
-    }, [_vm._v("\n                            이름 : "), _c('span', [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('div', {
+    }, [_c('span', [_vm._v(_vm._s(item.name))])])]), _vm._v(" "), _c('div', {
+      staticClass: "eight wide column"
+    }, [_c('div', {
       staticClass: "description"
-    }, [_c('p', [_vm._v("소스 : "), _c('span', [_vm._v(_vm._s(item.source))]), _vm._v("\n                            난이도 : "), _c('span', [_vm._v("난이도")]), _vm._v("\n                            점수 : "), _c('span', [_vm._v(_vm._s(item.score))]), _vm._v("\n                            성공 : "), _c('span', [_vm._v(_vm._s(item.success))]), _vm._v("\n                            실패 : "), _c('span', [_vm._v(_vm._s(item.fail))]), _vm._v("\n                            정답률 : "), _c('span', [_vm._v(_vm._s(item.ratio))])])])])])])
-  }))], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), (_vm.loadState) ? _c('button', {
+    }, [_c('p', [_c('span', [_vm._v(_vm._s(item.source))]), _vm._v(" "), _c('span', [_vm._v("난이도")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.score))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.success))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.fail))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.ratio))])])])])])])])])
+  }))], 1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
       "click": _vm.loadList
@@ -5229,7 +5736,61 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "ui center aligned header"
   }, [_vm._v(" 문제풀기\n            "), _c('div', {
     staticClass: "sub header"
-  }, [_vm._v("Manage your account settings and set e-mail preferences.")])])
+  }, [_vm._v("프로그래밍 문제를 풀고 맞추어 보는 곳 입니다.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "ui items",
+    attrs: {
+      "id": "mnit"
+    }
+  }, [_c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "ui top attached tabular menu",
+    attrs: {
+      "id": "pob"
+    }
+  }, [_c('div', {
+    staticClass: "ui grid"
+  }, [_c('div', {
+    staticClass: "three wide column"
+  }, [_c('p', {
+    attrs: {
+      "id": "ltemone"
+    }
+  }, [_vm._v("번호")])]), _vm._v(" "), _c('div', {
+    staticClass: "five wide column"
+  }, [_c('p', {
+    attrs: {
+      "id": "ltemtwo"
+    }
+  }, [_vm._v("문제 이름")])]), _vm._v(" "), _c('div', {
+    staticClass: "two wide column"
+  }, [_c('p', {
+    attrs: {
+      "id": "ltemthr"
+    }
+  }, [_vm._v("푼 횟수")])]), _vm._v(" "), _c('div', {
+    staticClass: "two wide column"
+  }, [_c('p', {
+    attrs: {
+      "id": "ltemfou"
+    }
+  }, [_vm._v("정답자 수")])]), _vm._v(" "), _c('div', {
+    staticClass: "two wide column"
+  }, [_c('p', {
+    attrs: {
+      "id": "ltemfiv"
+    }
+  }, [_vm._v("틀린사람 수")])]), _vm._v(" "), _c('div', {
+    staticClass: "two wide column"
+  }, [_c('p', {
+    attrs: {
+      "id": "ltemsix"
+    }
+  }, [_vm._v("정답률")])])])])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     attrs: {
@@ -5241,7 +5802,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 422 */
+/* 424 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5257,7 +5818,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 423 */
+/* 425 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5269,7 +5830,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 424 */
+/* 426 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5281,7 +5842,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 425 */
+/* 427 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5304,7 +5865,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }), _vm._v(" "), _c('div', {
       staticClass: "solve_sidebar"
-    }, [_vm._m(0, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    }, [_vm._m(0, true), _vm._v(" "), _c('div', {
       staticClass: "solve_explain"
     }, [_vm._v("\n                " + _vm._s(item.explanation) + "\n            ")]), _vm._v(" "), _c('div', {
       staticClass: "solve_inputex"
@@ -5368,7 +5929,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "pageicon"
   }, [_c('a', {
     attrs: {
-      "href": "#"
+      "href": "/problems"
     }
   }, [_c('i', {
     staticClass: "big reply icon"
@@ -5376,7 +5937,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 426 */
+/* 428 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5386,7 +5947,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 427 */
+/* 429 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5404,11 +5965,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 428 */
+/* 430 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.entering) ? _c('div', {
+    staticClass: "openNotice"
+  }, [_c('p', [_vm._v("번호 : " + _vm._s(_vm.num))]), _vm._v(" "), _c('p', [_vm._v("제목 : " + _vm._s(_vm.name))]), _vm._v(" "), _c('p', [_vm._v("내용 : " + _vm._s(_vm.contents))]), _vm._v(" "), _c('p', [_vm._v("날짜 : " + _vm._s(_vm.date))]), _vm._v(" "), _c('div', {
     directives: [{
       name: "i",
       rawName: "v-i",
@@ -5416,11 +5979,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "entering"
     }],
     staticClass: "openNotice"
-  }, [_c('p', [_vm._v("번호 : " + _vm._s(_vm.num))]), _vm._v(" "), _c('p', [_vm._v("제목 : " + _vm._s(_vm.name))]), _vm._v(" "), _c('p', [_vm._v("내용 : " + _vm._s(_vm.contents))]), _vm._v(" "), _c('p', [_vm._v("날짜 : " + _vm._s(_vm.date))])])
-},staticRenderFns: []}
+  }, [_c('div', {
+    staticClass: "notipoll"
+  }, [_c('div', {
+    staticClass: "notipen"
+  }, [_c('div', {
+    staticClass: "noti-head"
+  }, [_c('p', [_vm._v(_vm._s(_vm.name))])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "noti-main"
+  }, [_c('p', [_vm._v(_vm._s(_vm.contents))])])]), _vm._v(" "), _c('div', {
+    staticClass: "noti-tag"
+  }, [_c('div', {
+    staticClass: "noti1"
+  }, [_c('p', [_vm._v(_vm._s(_vm.num))])]), _vm._v(" "), _c('div', {
+    staticClass: "noti2"
+  }, [_c('p', [_vm._v(_vm._s(_vm.date))])])])])]), _vm._v(" "), _vm._m(0)]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "pageicon"
+  }, [_c('a', {
+    attrs: {
+      "href": "/notice"
+    }
+  }, [_c('i', {
+    staticClass: "big reply icon"
+  })])])
+}]}
 
 /***/ }),
-/* 429 */
+/* 431 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5468,7 +6055,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 430 */
+/* 432 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5493,7 +6080,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 431 */
+/* 433 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5569,7 +6156,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 432 */
+/* 434 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5577,14 +6164,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "app"
     }
-  }, [_c('pulse-loader', {
-    attrs: {
-      "color": _vm.color,
-      "size": _vm.size,
-      "margin": _vm.margin,
-      "radius": _vm.radius
-    }
-  }), _vm._v(" "), _c('div', {
+  }, [_c('div', {
     staticClass: "ui secondary menu",
     class: {
       menu_show: _vm.scrollMenu
@@ -5603,7 +6183,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/"
     }
-  }, [_vm._v("MAIN")])], 1)]), _vm._v(" "), _c('ul', {
+  }, [_vm._v(_vm._s(_vm.$store.state.loadingState))])], 1)]), _vm._v(" "), _c('ul', {
     attrs: {
       "id": "submn"
     }
@@ -5621,7 +6201,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.problemLoginCheck
     }
-  }, [_vm._v("리스트")])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("문제")])]), _vm._v(" "), _c('li', [_c('a', {
     class: {
       menu_show_font: _vm.scrolled > 200
     },
@@ -5664,12 +6244,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "ui modal"
   }, [_c('div', {
     staticClass: "conclo"
-  }, [_c('i', {
-    staticClass: "close icon",
-    on: {
-      "click": _vm.closeModal
-    }
-  })]), _vm._v(" "), (_vm.signState) ? _c('div', {
+  }), _vm._v(" "), (_vm.signState) ? _c('div', {
     staticClass: "login_form"
   }, [_c('div', {
     staticClass: "description"
@@ -5911,11 +6486,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "sitekey": "6LejvBgUAAAAAE_F7SjXLPzPiyroAqAdXvBhk7IG"
     }
-  }), _vm._v(" "), _c('button', {
-    on: {
-      "click": _vm.resetRecaptcha
-    }
-  }, [_vm._v(" Reset ReCAPTCHA ")])], 1)])]), _vm._v(" "), _c('div', {
+  })], 1)])]), _vm._v(" "), _c('div', {
     attrs: {
       "id": "html_element"
     }
@@ -5950,7 +6521,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 433 */
+/* 435 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6146,7 +6717,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 434 */
+/* 436 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6170,90 +6741,108 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 435 */,
-/* 436 */,
 /* 437 */,
 /* 438 */,
 /* 439 */,
 /* 440 */,
-/* 441 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 441 */,
+/* 442 */,
+/* 443 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_typer__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_typer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_typer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_cookie__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_cookie__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_awesome_swiper__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_awesome_swiper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_awesome_swiper__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_semantic_ui_dist_semantic_min__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_semantic_ui_dist_semantic_min___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_semantic_ui_dist_semantic_min__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_semantic_ui_dist_semantic_min_css__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_semantic_ui_dist_semantic_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_semantic_ui_dist_semantic_min_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__router__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__App_vue__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_vue_sweetalert__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_vue_sweetalert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_vue_sweetalert__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vue_progressbar__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vue_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_vue_progressbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_babel_polyfill__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_babel_polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_babel_polyfill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_lodash__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_lodash__);
 
 
+var _vueTyper = __webpack_require__(139);
 
+var _vueTyper2 = _interopRequireDefault(_vueTyper);
 
+var _axios = __webpack_require__(127);
 
+var _axios2 = _interopRequireDefault(_axios);
 
+var _vueCookie = __webpack_require__(135);
 
+var _vueCookie2 = _interopRequireDefault(_vueCookie);
 
+var _vueAwesomeSwiper = __webpack_require__(134);
 
+var _vueAwesomeSwiper2 = _interopRequireDefault(_vueAwesomeSwiper);
 
+var _jquery = __webpack_require__(63);
 
+var _jquery2 = _interopRequireDefault(_jquery);
 
+__webpack_require__(133);
 
+__webpack_require__(131);
 
+var _vuex = __webpack_require__(51);
 
+var _vuex2 = _interopRequireDefault(_vuex);
 
-window.$ = __WEBPACK_IMPORTED_MODULE_4_jquery___default.a;
+var _vue = __webpack_require__(64);
 
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_14_lodash___default.a);
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_cookie___default.a);
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_12_vue_progressbar___default.a, {
-	color: 'rgb(143, 255, 199)',
+var _vue2 = _interopRequireDefault(_vue);
+
+var _router = __webpack_require__(128);
+
+var _router2 = _interopRequireDefault(_router);
+
+var _App = __webpack_require__(136);
+
+var _App2 = _interopRequireDefault(_App);
+
+var _index = __webpack_require__(129);
+
+var _index2 = _interopRequireDefault(_index);
+
+var _vueSweetalert = __webpack_require__(138);
+
+var _vueSweetalert2 = _interopRequireDefault(_vueSweetalert);
+
+var _vueProgressbar = __webpack_require__(137);
+
+var _vueProgressbar2 = _interopRequireDefault(_vueProgressbar);
+
+__webpack_require__(130);
+
+var _lodash = __webpack_require__(132);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.$ = _jquery2.default;
+
+_vue2.default.use(_lodash2.default);
+_vue2.default.use(_vueCookie2.default);
+_vue2.default.use(_vueProgressbar2.default, {
+	color: 'rgb(247, 119, 97)',
 	failedColor: 'red',
-	height: '2px',
+	thickness: '4px',
 	transition: {
-		speed: '.7s',
+		speed: '.1ms',
 		opacity: '1s'
 	}
 });
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_axios___default.a);
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_awesome_swiper___default.a);
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_0_vue_typer___default.a);
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_11_vue_sweetalert___default.a);
+_vue2.default.use(_vuex2.default);
+_vue2.default.use(_axios2.default);
+_vue2.default.use(_vueAwesomeSwiper2.default);
+_vue2.default.use(_vueTyper2.default);
+_vue2.default.use(_vueSweetalert2.default);
 
-__WEBPACK_IMPORTED_MODULE_8_vue___default.a.prototype.$http = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
+_vue2.default.prototype.$http = _axios2.default;
 
 /* eslint-disable no-new */
-new __WEBPACK_IMPORTED_MODULE_8_vue___default.a({
+new _vue2.default({
 	el: '#app',
-	router: __WEBPACK_IMPORTED_MODULE_9__router__["a" /* default */],
+	store: _index2.default,
+	router: _router2.default,
 	template: '<App/>',
-	components: { App: __WEBPACK_IMPORTED_MODULE_10__App_vue___default.a }
+	components: { App: _App2.default }
 });
 
 /***/ })
-]),[441]);
-//# sourceMappingURL=main.283d32ba901415a5b669.js.map
+]),[443]);
+//# sourceMappingURL=main.8489b726936635a1d10a.js.map
