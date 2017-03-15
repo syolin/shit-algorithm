@@ -205,10 +205,12 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         return problem;
     };
 
-    // 코드 제출 결과에 System 함수를 배제하기 위한 예외 처리
+    // 코드 제출 결과에 파일 또는 시스템 함수를 배제하기 위한 예외 처리
     const security = problem => {
-        if (form.inputCode.indexOf("system") != -1) throw new Error("코드 내부에 system 을 사용할 수 없습니다.");
-
+        const commands = ['system','fcloseall','fdopen','fgetc','fgetchar','fgetpos','fgets','fopen','fprintf','fputc','fputchar','fread','freopen','fscanf','fseek','fsetpos','ftell','fwrite','getc','getw','putw','rename','rewind','tmpfile','tmpnam','unlink'];
+        for (let command in commands) {
+            if (form.inputCode.indexOf(command) != -1) throw new Error("런타임 에러");
+        }
         return problem;
     };
 

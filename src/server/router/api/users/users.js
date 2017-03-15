@@ -1,5 +1,6 @@
 import express from 'express';
 import xssFilters from 'xss-filters';
+import request from 'request';
 
 import controller from './users.controller';
 import auth from '../../../modules/auth';
@@ -225,6 +226,7 @@ router.post('/signup', function(req, res) {
         userId : xssFilters.inHTMLData(req.body.userid),
         password : xssFilters.inHTMLData(req.body.password),
         studentCode : xssFilters.inHTMLData(req.body.studentcode),
+        captchaResponse : req.body.captcha
         // rating : xssFilters.inHTMLData(req.body.rating)
     };
 
@@ -237,6 +239,16 @@ router.post('/signup', function(req, res) {
 
         return user;
     }
+
+    const captcha = request.post({
+        url: 'https://www.google.com/recaptcha/api/siteverify',
+        form: {secret: '6LejvBgUAAAAAOVYE7DeBDxi-9Lev1dlmT7ca0fY', response: captcha}
+        }, function (err, response, body) {
+        if (body.success == 'false') {
+            throw new Error('captcha wrong');
+        }
+        console.log(body.success, body);
+    });
 
     // 아이디 체크 및 데이터 입력
     const create = user => {
@@ -264,6 +276,7 @@ router.post('/signup', function(req, res) {
 
     controller.findOneByUserId(userInfo.userId)
         .then(validation)
+        .then(captcha)
         .then(create)
         .then(respond)
         .catch(onError);
