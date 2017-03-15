@@ -245,10 +245,10 @@ router.post('/signup', function(req, res) {
         form: {secret: '6LejvBgUAAAAAOVYE7DeBDxi-9Lev1dlmT7ca0fY', response: captcha}
         }, function (err, response, body) {
         const bodyJson = JSON.parse(body);
-        if (bodyJson.success == 'false') {
+        if (!bodyJson.success) {
             throw new Error('captcha wrong');
         }
-        console.log(bodyJson.success,(bodyJson==false), bodyJson);
+        console.log(bodyJson.success,(!bodyJson), bodyJson);
     });
 
     // 아이디 체크 및 데이터 입력
