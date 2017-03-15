@@ -240,16 +240,18 @@ router.post('/signup', function(req, res) {
         return user;
     }
 
-    const captcha = request.post({
-        url: 'https://www.google.com/recaptcha/api/siteverify',
-        form: {secret: '6LejvBgUAAAAAOVYE7DeBDxi-9Lev1dlmT7ca0fY', response: captcha}
-        }, function (err, response, body) {
-        const bodyJson = JSON.parse(body);
-        if (!bodyJson.success) {
-            throw new Error('captcha wrong');
-        }
-        console.log(bodyJson.success,(!bodyJson), bodyJson);
-    });
+    // const captcha = (user, callback) => {
+    //     request.post({
+    //         url: 'https://www.google.com/recaptcha/api/siteverify',
+    //         form: {secret: '6LejvBgUAAAAAOVYE7DeBDxi-9Lev1dlmT7ca0fY', response: captcha}
+    //     }, function (err, response, body) {
+    //         const bodyJson = JSON.parse(body);
+    //         console.log(bodyJson.success,(!bodyJson), bodyJson);
+    //         callback(bodyJson.success);
+    //     });
+    //
+    //
+    // };
 
     // 아이디 체크 및 데이터 입력
     const create = user => {
@@ -277,7 +279,6 @@ router.post('/signup', function(req, res) {
 
     controller.findOneByUserId(userInfo.userId)
         .then(validation)
-        .then(captcha)
         .then(create)
         .then(respond)
         .catch(onError);
