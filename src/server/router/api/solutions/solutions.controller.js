@@ -36,7 +36,7 @@ Resolve.findSuccess = (user, num) => {
  */
 Resolve.findSpecificResolve = (condition,value) => {
     if (condition == "num") return Resolve.find({'resolveData.problemNum' : value});
-    if (condition == "success") return Resolve.find({'resolveData.result': 'success', userId: value});
+    if (condition == "success") return Resolve.find({'resolveData.result': 'success', userId: value}).select('resolveData.problemNum resolveData.result resolveData.date');
 
     return false;
 };
