@@ -790,6 +790,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 var _vueRecaptcha = __webpack_require__(442);
 
@@ -2987,7 +2988,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
 
 var i = 0;
 var end = 10;
@@ -3481,12 +3481,6 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4623,25 +4617,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "rant1"
   }, [_vm._v("2등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
     staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[1].name))]), _vm._v(" "), _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v("2st")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.ranker[1].name))])]), _vm._v(" "), _c('div', {
     staticClass: "rank2"
   }, [_vm._m(2), _vm._v(" "), _c('p', {
     staticClass: "rant1"
   }, [_vm._v("1등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
     staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[0].name))]), _vm._v(" "), _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v("1st")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.ranker[0].name))])]), _vm._v(" "), _c('div', {
     staticClass: "rank3"
   }, [_vm._m(3), _vm._v(" "), _c('p', {
     staticClass: "rant1"
   }, [_vm._v("3등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
     staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[2].name))]), _vm._v(" "), _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v("3st")])])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.ranker[2].name))])])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active"
   }, [_vm._m(5), _vm._v(" "), _c('transition-group', {
     attrs: {
@@ -4715,7 +4703,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "ui top attached tabular menu"
-  }, [_c('a', {
+  }, [_c('p', {
     staticClass: "item active",
     attrs: {
       "data-tab": "first",
@@ -4737,28 +4725,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "ui grid"
   }, [_c('div', {
-    staticClass: "two wide column"
+    staticClass: "three wide column"
   }, [_c('p', {
     staticClass: "item",
     attrs: {
       "id": "ltemone"
     }
   }, [_vm._v("등수")])]), _vm._v(" "), _c('div', {
-    staticClass: "four wide column"
-  }, [_c('p', {
-    staticClass: "item",
-    attrs: {
-      "id": "ltemtwo"
-    }
-  }, [_vm._v("학번")])]), _vm._v(" "), _c('div', {
-    staticClass: "five wide column"
+    staticClass: "six wide column"
   }, [_c('p', {
     staticClass: "item",
     attrs: {
       "id": "ltemthr"
     }
   }, [_vm._v("이름")])]), _vm._v(" "), _c('div', {
-    staticClass: "five wide column"
+    staticClass: "seven wide column"
   }, [_c('p', {
     staticClass: "item",
     attrs: {
@@ -5007,7 +4988,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "hr"
   }), _vm._v(" "), _c('button', {
     staticClass: "fluid ui button"
-  }, [_vm._v("더 보기")])])])])])])])
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("더 보기")])])])])])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "three wide column",
@@ -5038,30 +5023,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("출처")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("단계")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
   }, [_vm._v("최근문제")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -5074,7 +5035,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("기타")])])])])
+  }, [_vm._v("출처")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("난이도")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("랜덤문제")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "foheader"
@@ -5143,7 +5128,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "big github icon"
   })])]), _vm._v(" "), _c('div', {
     staticClass: "ccc"
-  }, [_c('p', [_vm._v("2017 SiGO. All rights reserved.")])])])])
+  }, [_c('p', [_vm._v("2017 SIGO. All rights reserved.")])])])])
 }]}
 
 /***/ }),
@@ -5855,7 +5840,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "eight wide column"
     }, [_c('div', {
       staticClass: "description"
-    }, [_c('p', [_c('span', [_vm._v(_vm._s(item.source))]), _vm._v(" "), _c('span', [_vm._v("난이도")]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.score))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.success))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.fail))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.ratio))])])])])])])])])
+    }, [_c('div', {
+      staticClass: "ui grid"
+    }, [_c('div', {
+      staticClass: "four wide column"
+    }, [_c('span', [_vm._v(_vm._s(item.score))])]), _vm._v(" "), _c('div', {
+      staticClass: "four wide column"
+    }, [_c('span', [_vm._v(_vm._s(item.success))])]), _vm._v(" "), _c('div', {
+      staticClass: "four wide column"
+    }, [_c('span', [_vm._v(_vm._s(item.fail))])]), _vm._v(" "), _c('div', {
+      staticClass: "four wide column"
+    }, [_c('span', [_vm._v(_vm._s(item.ratio))])])])])])])])])])
   }))], 1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
@@ -6132,7 +6127,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.entering) ? _c('div', {
     staticClass: "openNotice"
-  }, [_c('p', [_vm._v("번호 : " + _vm._s(_vm.num))]), _vm._v(" "), _c('p', [_vm._v("제목 : " + _vm._s(_vm.name))]), _vm._v(" "), _c('p', [_vm._v("내용 : " + _vm._s(_vm.contents))]), _vm._v(" "), _c('p', [_vm._v("날짜 : " + _vm._s(_vm.date))]), _vm._v(" "), _c('div', {
+  }, [_c('div', {
     directives: [{
       name: "i",
       rawName: "v-i",
@@ -6378,9 +6373,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "ui modal"
-  }, [_c('div', {
-    staticClass: "conclo"
-  }), _vm._v(" "), (_vm.signState) ? _c('div', {
+  }, [(_vm.signState) ? _c('div', {
     staticClass: "login_form"
   }, [_c('div', {
     staticClass: "description"
@@ -6992,4 +6985,4 @@ new _vue2.default({
 
 /***/ })
 ]),[446]);
-//# sourceMappingURL=main.5efd71c5c8f9dc617373.js.map
+//# sourceMappingURL=main.d50bd983219fb8fc2539.js.map
