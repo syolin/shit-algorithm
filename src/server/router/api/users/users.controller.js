@@ -61,13 +61,14 @@ User.findAll = (auth) => {
 
 /**
  * 해당 유저 정보 출력
+ * @param boolean auth
  * @param string userId
  * @returns {Promise}
  */
-User.findOneByUserId = userId => {
-    return User.findOne({
-        userId
-    }).exec();
+User.findOneByUserId = (auth, userId) => {
+    if (auth) return User.findOne({ userId }).select('userId username studentCode account rating score failRating').exec();
+
+    return User.findOne({ userId }).select('username score');
 };
 
 /**

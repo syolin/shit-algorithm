@@ -109,7 +109,9 @@ router.delete('/:id',auth.isAuthenticated('admin'), function (req, res) {
     GET /api/users/:id
     해당 유저 정보
  */
-router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
+router.get('/search/:id',auth.isAuthenticated(), function (req, res) {
+
+    let value = req.user.rating == '3' ? true : false;
 
     const validation = index => {
         if (!req.params.id) throw new Error("validation error");
@@ -131,7 +133,7 @@ router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
         });
     };
 
-    controller.findOneByUserId(req.params.id)
+    controller.findOneByUserId(value, req.params.id)
         .then(validation)
         .then(respond)
         .then(onError)
