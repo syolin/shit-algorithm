@@ -9,47 +9,47 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(64);
+var _vue = __webpack_require__(63);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(440);
+var _vueRouter = __webpack_require__(443);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _index = __webpack_require__(400);
+var _index = __webpack_require__(403);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _admin = __webpack_require__(394);
+var _admin = __webpack_require__(397);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _problems = __webpack_require__(407);
+var _problems = __webpack_require__(410);
 
 var _problems2 = _interopRequireDefault(_problems);
 
-var _rank = __webpack_require__(409);
+var _rank = __webpack_require__(412);
 
 var _rank2 = _interopRequireDefault(_rank);
 
-var _solve = __webpack_require__(408);
+var _solve = __webpack_require__(411);
 
 var _solve2 = _interopRequireDefault(_solve);
 
-var _mypage = __webpack_require__(403);
+var _mypage = __webpack_require__(406);
 
 var _mypage2 = _interopRequireDefault(_mypage);
 
-var _notice = __webpack_require__(405);
+var _notice = __webpack_require__(408);
 
 var _notice2 = _interopRequireDefault(_notice);
 
-var _opennotice = __webpack_require__(406);
+var _opennotice = __webpack_require__(409);
 
 var _opennotice2 = _interopRequireDefault(_opennotice);
 
-var _notfound = __webpack_require__(404);
+var _notfound = __webpack_require__(407);
 
 var _notfound2 = _interopRequireDefault(_notfound);
 
@@ -112,13 +112,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(64);
+var _vue = __webpack_require__(63);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(51);
+var _vuex = __webpack_require__(64);
 
 var _vuex2 = _interopRequireDefault(_vuex);
+
+var _getters = __webpack_require__(158);
+
+var getters = _interopRequireWildcard(_getters);
+
+var _actions = __webpack_require__(157);
+
+var actions = _interopRequireWildcard(_actions);
+
+var _mutations = __webpack_require__(159);
+
+var mutations = _interopRequireWildcard(_mutations);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -128,31 +142,14 @@ var state = {
   loadingState: false
 };
 
-var mutations = {
-  loadingOn: function loadingOn(state) {
-    state.loadingState = true;
-  },
-  loadingOff: function loadingOff(state) {
-    state.loadingState = false;
-  }
-};
-
-var actions = {
-  loadingOn: function loadingOn(_ref) {
-    var commit = _ref.commit;
-    return commit('loadingOn');
-  },
-  loadingOff: function loadingOff(_ref2) {
-    var commit = _ref2.commit;
-    return commit('loadingOff');
-  }
-};
-
-exports.default = new _vuex2.default.Store({
+var store = new _vuex2.default.Store({
   state: state,
+  getters: getters,
   actions: actions,
   mutations: mutations
 });
+
+exports.default = store;
 
 /***/ }),
 /* 130 */,
@@ -171,14 +168,14 @@ exports.default = new _vuex2.default.Store({
 
 
 /* styles */
-__webpack_require__(385)
-__webpack_require__(384)
+__webpack_require__(388)
+__webpack_require__(387)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(162),
+  __webpack_require__(165),
   /* template */
-  __webpack_require__(434),
+  __webpack_require__(437),
   /* scopeId */
   "data-v-88f23c12",
   /* cssModules */
@@ -210,6 +207,57 @@ module.exports = Component.exports
 /* 155 */,
 /* 156 */,
 /* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var loadingOn = exports.loadingOn = function loadingOn(_ref) {
+  var commit = _ref.commit;
+  return commit('loadingOn');
+};
+var loadingOff = exports.loadingOff = function loadingOff(_ref2) {
+  var commit = _ref2.commit;
+  return commit('loadingOff');
+};
+
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getterLoadingState = exports.getterLoadingState = function getterLoadingState(state) {
+  return state.getterLoadingState;
+};
+
+/***/ }),
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var loadingOn = exports.loadingOn = function loadingOn(state) {
+  state.loadingState = true;
+};
+
+var loadingOff = exports.loadingOff = function loadingOff(state) {
+  state.loadingState = false;
+};
+
+/***/ }),
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -254,7 +302,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 158 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -280,7 +328,7 @@ Object.defineProperty(exports, "__esModule", {
 var browser = typeof window !== 'undefined';
 if (browser) {
   window.Swiper = __webpack_require__(126);
-  __webpack_require__(363);
+  __webpack_require__(366);
 }
 exports.default = {
   name: 'swiper',
@@ -321,7 +369,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 159 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -329,8 +377,8 @@ exports.default = {
 //
 //
 
-var debounce = __webpack_require__(390);
-var monacoLoader = __webpack_require__(438);
+var debounce = __webpack_require__(393);
+var monacoLoader = __webpack_require__(441);
 module.exports = {
 
   props: {
@@ -450,7 +498,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 160 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -533,7 +581,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 161 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -554,7 +602,7 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = {
 
-  name: 'PulseLoader',
+  name: 'BounceLoader',
 
   props: {
     loading: {
@@ -567,7 +615,7 @@ exports.default = {
     },
     size: {
       type: String,
-      default: '15px'
+      default: '60px'
     },
     margin: {
       type: String,
@@ -582,32 +630,31 @@ exports.default = {
     return {
       spinnerStyle: {
         backgroundColor: this.color,
-        width: this.size,
         height: this.size,
-        margin: this.margin,
+        width: this.size,
         borderRadius: this.radius,
-        display: 'inline-block',
-        animationName: 'v-pulseStretchDelay',
-        animationDuration: '0.75s',
-        animationIterationCount: 'infinite',
-        animationTimingFunction: 'cubic-bezier(.2,.68,.18,1.08)',
-        animationFillMode: 'both'
-      },
-      spinnerDelay1: {
-        animationDelay: '0.12s'
-      },
-      spinnerDelay2: {
-        animationDelay: '0.24s'
-      },
-      spinnerDelay3: {
-        animationDelay: '0.36s'
+        opacity: 0.6,
+        position: 'absolute',
+        top: 0,
+        left: 0
       }
     };
+  },
+
+  computed: {
+    spinnerBasicStyle: function spinnerBasicStyle() {
+      return {
+        height: this.size,
+        width: this.size,
+        position: 'relative'
+      };
+    }
   }
+
 };
 
 /***/ }),
-/* 162 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -741,23 +788,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
-var _vueRecaptcha = __webpack_require__(439);
+var _vueRecaptcha = __webpack_require__(442);
 
 var _vueRecaptcha2 = _interopRequireDefault(_vueRecaptcha);
 
-var _PulseLoader = __webpack_require__(414);
+var _BounceLoader = __webpack_require__(417);
 
-var _PulseLoader2 = _interopRequireDefault(_PulseLoader);
+var _BounceLoader2 = _interopRequireDefault(_BounceLoader);
 
-var _vuex = __webpack_require__(51);
+var _vuex = __webpack_require__(64);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   components: {
     VueRecaptcha: _vueRecaptcha2.default,
-    PulseLoader: _PulseLoader2.default
+    BounceLoader: _BounceLoader2.default
   },
   props: {
     loading: {
@@ -804,15 +853,12 @@ exports.default = {
       }
     };
   },
-  mounted: function mounted() {
-    console.log('ss');
-  },
 
-  computed: {
+  computed: _extends({}, (0, _vuex.mapGetters)(['getterLoadingState']), {
     loadingState: function loadingState() {
       return this.$store.state.loadingState;
     }
-  },
+  }),
   created: function created() {
     var _this = this;
 
@@ -821,7 +867,9 @@ exports.default = {
         var meta = to.meta.progress;
         _this.$Progress.parseMeta(meta);
       }
-      _this.$store.dispatch('loadingOn');
+      if (to.name !== 'index') {
+        _this.$store.commit('loadingOn');
+      }
       _this.$Progress.start();
       next();
     });
@@ -1050,7 +1098,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 163 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1060,23 +1108,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _member = __webpack_require__(395);
+var _member = __webpack_require__(398);
 
 var _member2 = _interopRequireDefault(_member);
 
-var _problemmange = __webpack_require__(398);
+var _problemmange = __webpack_require__(401);
 
 var _problemmange2 = _interopRequireDefault(_problemmange);
 
-var _noticemanage = __webpack_require__(397);
+var _noticemanage = __webpack_require__(400);
 
 var _noticemanage2 = _interopRequireDefault(_noticemanage);
 
-var _nonaccount = __webpack_require__(396);
+var _nonaccount = __webpack_require__(399);
 
 var _nonaccount2 = _interopRequireDefault(_nonaccount);
 
-var _problemresult = __webpack_require__(399);
+var _problemresult = __webpack_require__(402);
 
 var _problemresult2 = _interopRequireDefault(_problemresult);
 
@@ -1108,19 +1156,25 @@ exports.default = {
     };
   },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this = this;
+
+    this.$Progress.start();
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   },
   beforeCreate: function beforeCreate() {
-    var _this = this;
+    var _this2 = this;
 
     //          토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/my-info').then(function (resInfo) {
-        _this.userRating = resInfo.data.user.rating;
-        if (_this.userRating === 1) {
-          _this.$swal({
+        _this2.userRating = resInfo.data.user.rating;
+        if (_this2.userRating === 1) {
+          _this2.$swal({
             title: '입장 실패',
             text: '어드민이 아닙니다',
             type: 'error'
@@ -1128,11 +1182,11 @@ exports.default = {
             location.href = '/';
           });
         } else {
-          _this.adminState = true;
-          _this.entering = true;
+          _this2.adminState = true;
+          _this2.entering = true;
         }
       }).catch(function (error) {
-        _this.$swal({
+        _this2.$swal({
           title: '유저 정보 조회 실패',
           text: error,
           type: 'error'
@@ -1220,7 +1274,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 164 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1260,16 +1314,18 @@ exports.default = {
     //토큰테스트
     this.getMember();
   },
-  beforeCreate: function beforeCreate() {
-    this.$Progress.start();
-  },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   },
 
   methods: {
     deleteuser: function deleteuser(userid, member) {
-      var _this = this;
+      var _this2 = this;
 
       this.$swal({
         title: '유저 삭제',
@@ -1279,22 +1335,22 @@ exports.default = {
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(function () {
-        _this.$http.delete('users/' + userid).then(function () {
-          _this.$swal({
+        _this2.$http.delete('users/' + userid).then(function () {
+          _this2.$swal({
             title: '삭제 완료',
             text: userid + ' \uB2D8\uC758 \uACC4\uC815\uC774 \uC0AD\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
-          _this.members.splice(_this.members.indexOf(member), 1);
+          _this2.members.splice(_this2.members.indexOf(member), 1);
         }).catch(function (err) {
-          _this.$swal({
+          _this2.$swal({
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
-        _this.$swal({
+        _this2.$swal({
           title: '삭제 실패',
           text: err,
           type: 'error'
@@ -1304,14 +1360,14 @@ exports.default = {
 
     //            문제리스트
     getMember: function getMember() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users').then(function (res) {
         var i = 0;
         while (i < res.data.users.length) {
-          _this2.members.push({
+          _this3.members.push({
             userid: res.data.users[i].userId,
             username: res.data.users[i].username,
             studentcode: res.data.users[i].studentCode,
@@ -1319,9 +1375,9 @@ exports.default = {
           });
           i += 1;
         }
-        _this2.enteringMember = true;
+        _this3.enteringMember = true;
       }).catch(function (err) {
-        _this2.$swal({
+        _this3.$swal({
           title: '유저 로드 실패',
           text: err,
           type: 'error'
@@ -1332,7 +1388,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 165 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1371,33 +1427,33 @@ exports.default = {
   },
   created: function created() {
     this.userToken = this.$cookie.get('userToken');
-    console.log(this.userToken);
     this.getMember();
   },
-  beforeCreate: function beforeCreate() {
-    this.$Progress.start();
-  },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   },
 
   methods: {
     account: function account(userid, member) {
-      var _this = this;
+      var _this2 = this;
 
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/account/' + userid).then(function (res) {
-        console.log(res);
-        _this.$swal({
+        _this2.$swal({
           title: '승인 완료',
           text: userid + '\uB2D8\uC744 \uC2B9\uC778\uD558\uC600\uC2B5\uB2C8\uB2E4',
           type: 'success'
         });
-        _this.members.splice(_this.members.indexOf(member), 1);
+        _this2.members.splice(_this2.members.indexOf(member), 1);
       });
     },
     deletenonuser: function deletenonuser(userid, member) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$swal({
         title: '유저 삭제',
@@ -1407,22 +1463,22 @@ exports.default = {
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(function () {
-        _this2.$http.delete('users/' + userid).then(function () {
-          _this2.$swal({
+        _this3.$http.delete('users/' + userid).then(function () {
+          _this3.$swal({
             title: '삭제 완료',
             text: userid + '\uB2D8\uC758 \uACC4\uC815\uC774 \uC0AD\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
-          _this2.members.splice(_this2.members.indexOf(member), 1);
+          _this3.members.splice(_this3.members.indexOf(member), 1);
         }).catch(function (err) {
-          _this2.$swal({
+          _this3.$swal({
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
-        _this2.$swal({
+        _this3.$swal({
           title: '삭제 실패',
           text: err,
           type: 'error'
@@ -1430,13 +1486,13 @@ exports.default = {
       });
     },
     getMember: function getMember() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/non-account').then(function (res) {
         var i = 0;
         while (i < res.data.users.length) {
-          _this3.members.push({
+          _this4.members.push({
             userid: res.data.users[i].userId,
             username: res.data.users[i].username,
             studentcode: res.data.users[i].studentCode,
@@ -1445,14 +1501,14 @@ exports.default = {
           });
           i += 1;
         }
-        _this3.enteringNon = true;
+        _this4.enteringNon = true;
       });
     }
   }
 };
 
 /***/ }),
-/* 166 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1523,16 +1579,18 @@ exports.default = {
   created: function created() {
     this.loadNotice();
   },
-  beforeCreate: function beforeCreate() {
-    this.$Progress.start();
-  },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   },
 
   methods: {
     modify: function modify() {
-      var _this = this;
+      var _this2 = this;
 
       this.$http.put('notices', {
         num: this.num,
@@ -1540,7 +1598,7 @@ exports.default = {
         contents: this.content,
         type: this.type
       }).then(function () {
-        _this.$swal({
+        _this2.$swal({
           title: '수정 성공',
           text: '공지를 수정하였습니다',
           type: 'success'
@@ -1550,7 +1608,7 @@ exports.default = {
         if (err.response.data.message === 'validation error') {
           errMsgs = '모든 정보를 입력해주세요';
         }
-        _this.$swal({
+        _this2.$swal({
           title: '수정 실패',
           text: errMsgs,
           type: 'error'
@@ -1566,16 +1624,16 @@ exports.default = {
       }
     },
     modifyNotice: function modifyNotice(num) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$http.get('notices/' + num).then(function (res) {
-        _this2.noticeModify = !_this2.noticeModify;
-        _this2.num = res.data.notice.num;
-        _this2.name = res.data.notice.noticeName;
-        _this2.content = res.data.notice.contents;
-        _this2.type = res.data.notice.type;
+        _this3.noticeModify = !_this3.noticeModify;
+        _this3.num = res.data.notice.num;
+        _this3.name = res.data.notice.noticeName;
+        _this3.content = res.data.notice.contents;
+        _this3.type = res.data.notice.type;
       }).catch(function (err) {
-        _this2.$swal({
+        _this3.$swal({
           title: '공지 조회 실패',
           text: err,
           type: 'error'
@@ -1583,7 +1641,7 @@ exports.default = {
       });
     },
     deleteNotice: function deleteNotice(num, notice) {
-      var _this3 = this;
+      var _this4 = this;
 
       this.$swal({
         title: '공 삭제',
@@ -1593,22 +1651,22 @@ exports.default = {
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(function () {
-        _this3.$http.delete('notices/' + num).then(function () {
-          _this3.$swal({
+        _this4.$http.delete('notices/' + num).then(function () {
+          _this4.$swal({
             title: '삭제 완료',
             test: num + '\uBC88 \uACF5\uC9C0\uB97C \uC0AD\uC81C\uD558\uC168\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
-          _this3.noticeList.splice(_this3.noticeList.indexOf(notice), 1);
+          _this4.noticeList.splice(_this4.noticeList.indexOf(notice), 1);
         }).catch(function (err) {
-          _this3.$swal({
+          _this4.$swal({
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
-        _this3.$swal({
+        _this4.$swal({
           title: '삭제 실패',
           text: err,
           type: 'error'
@@ -1616,23 +1674,23 @@ exports.default = {
       });
     },
     loadNotice: function loadNotice() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.$http.get('notices').then(function (res) {
         var i = 0;
         while (i < res.data.notices.length) {
-          _this4.noticeList.push({
+          _this5.noticeList.push({
             name: res.data.notices[i].noticeName,
             content: res.data.notices[i].contents,
             type: res.data.notices[i].type,
             num: res.data.notices[i].num
           });
-          _this4.lastNotice = res.data.notices[i].num;
+          _this5.lastNotice = res.data.notices[i].num;
           i += 1;
         }
-        _this4.enteringNoticemanage = true;
+        _this5.enteringNoticemanage = true;
       }).catch(function (err) {
-        _this4.$swal({
+        _this5.$swal({
           title: '공지 로드 실패',
           text: err.response.data.message,
           type: 'error'
@@ -1640,27 +1698,26 @@ exports.default = {
       });
     },
     addNotice: function addNotice() {
-      var _this5 = this;
+      var _this6 = this;
 
-      console.log('add');
       this.$http.post('notices', {
         noticename: this.name,
         contents: this.content,
         type: this.type
       }).then(function () {
-        _this5.$swal('등록 성공', '공지를 등록하였습니다', 'success');
-        _this5.noticeList.push({
-          num: _this5.lastNotice + 1,
-          name: _this5.name,
-          content: _this5.content,
-          type: _this5.type
+        _this6.$swal('등록 성공', '공지를 등록하였습니다', 'success');
+        _this6.noticeList.push({
+          num: _this6.lastNotice + 1,
+          name: _this6.name,
+          content: _this6.content,
+          type: _this6.type
         });
       }).catch(function (err) {
         var errMsg = void 0;
         if (err.response.data.message === 'validation error') {
           errMsg = '정보를 모두 입력해주세요';
         }
-        _this5.$swal({
+        _this6.$swal({
           title: '등록 실패',
           text: errMsg,
           type: 'error'
@@ -1671,7 +1728,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 167 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1799,11 +1856,13 @@ exports.default = {
     this.$http.defaults.headers.common.Authorization = this.userToken;
     this.fetchData();
   },
-  beforeCreate: function beforeCreate() {
-    this.$Progress.start();
-  },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   },
 
   methods: {
@@ -1816,7 +1875,7 @@ exports.default = {
       }
     },
     deleteData: function deleteData(num, item) {
-      var _this = this;
+      var _this2 = this;
 
       this.$swal({
         title: '문제 삭제',
@@ -1826,24 +1885,24 @@ exports.default = {
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(function () {
-        _this.userToken = _this.$cookie.get('userToken');
-        _this.$http.defaults.headers.common.Authorization = _this.userToken;
-        _this.$http.delete('problems/' + num).then(function () {
-          _this.$swal({
+        _this2.userToken = _this2.$cookie.get('userToken');
+        _this2.$http.defaults.headers.common.Authorization = _this2.userToken;
+        _this2.$http.delete('problems/' + num).then(function () {
+          _this2.$swal({
             title: '삭제 완료',
             text: num + '\uBC88 \uBB38\uC81C\uB97C \uC0AD\uC81C\uD558\uC168\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
-          _this.items.splice(_this.items.indexOf(item), 1);
+          _this2.items.splice(_this2.items.indexOf(item), 1);
         }).catch(function (err) {
-          _this.$swal({
+          _this2.$swal({
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
-        _this.$swal({
+        _this2.$swal({
           title: '삭제 실패',
           text: err,
           type: 'error'
@@ -1851,7 +1910,7 @@ exports.default = {
       });
     },
     modify: function modify() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.put('problems', {
@@ -1868,7 +1927,7 @@ exports.default = {
         score: this.score,
         type: this.type
       }).then(function () {
-        _this2.$swal({
+        _this3.$swal({
           title: '수정 성공',
           text: '문제를 수정하였습니다',
           type: 'success'
@@ -1878,7 +1937,7 @@ exports.default = {
         if (err.response.data.message === 'validation error') {
           errMsgs = '모든 정보를 입력해주세요';
         }
-        _this2.$swal({
+        _this3.$swal({
           title: '수정 실페',
           text: errMsgs,
           type: 'error'
@@ -1886,25 +1945,25 @@ exports.default = {
       });
     },
     modifyData: function modifyData(num) {
-      var _this3 = this;
+      var _this4 = this;
 
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('problems/' + num).then(function (res) {
-        _this3.modifyState = !_this3.modifyState;
-        _this3.problemName = res.data.problem.problemName;
-        _this3.source = res.data.problem.source;
-        _this3.inputExample = res.data.problem.problemData.inputExample;
-        _this3.inputExample2 = res.data.problem.problemData.inputExample2;
-        _this3.outputExample = res.data.problem.problemData.outputExample;
-        _this3.outputExample2 = res.data.problem.problemData.outputExample2;
-        _this3.memoryLimit = res.data.problem.problemData.memoryLimit;
-        _this3.timeLimit = res.data.problem.problemData.memoryLimit;
-        _this3.problemNum = res.data.problem.num;
-        _this3.score = res.data.problem.score;
-        _this3.explanation = res.data.problem.explanation;
-        _this3.type = res.data.problem.type;
+        _this4.modifyState = !_this4.modifyState;
+        _this4.problemName = res.data.problem.problemName;
+        _this4.source = res.data.problem.source;
+        _this4.inputExample = res.data.problem.problemData.inputExample;
+        _this4.inputExample2 = res.data.problem.problemData.inputExample2;
+        _this4.outputExample = res.data.problem.problemData.outputExample;
+        _this4.outputExample2 = res.data.problem.problemData.outputExample2;
+        _this4.memoryLimit = res.data.problem.problemData.memoryLimit;
+        _this4.timeLimit = res.data.problem.problemData.memoryLimit;
+        _this4.problemNum = res.data.problem.num;
+        _this4.score = res.data.problem.score;
+        _this4.explanation = res.data.problem.explanation;
+        _this4.type = res.data.problem.type;
       }).catch(function (err) {
-        _this3.$swal({
+        _this4.$swal({
           title: '문제 조회 실패',
           text: err,
           type: 'error'
@@ -1912,7 +1971,7 @@ exports.default = {
       });
     },
     solveListData: function solveListData(num) {
-      var _this4 = this;
+      var _this5 = this;
 
       this.solveList = [];
       this.$http.defaults.headers.common.Authorization = this.userToken;
@@ -1930,11 +1989,11 @@ exports.default = {
             result = res.data.resolves[i].resolveData.result;
             date = res.data.resolves[i].resolveData.date;
             code = res.data.resolves[i].resolveData.code;
-            _this4.$http.defaults.headers.common.Authorization = _this4.userToken;
-            _this4.$http.get('users/search/' + id).then(function (userInfo) {
+            _this5.$http.defaults.headers.common.Authorization = _this5.userToken;
+            _this5.$http.get('users/search/' + id).then(function (userInfo) {
               username = userInfo.data.users.username;
               studentcode = userInfo.data.users.studentCode;
-              _this4.solveList.push({
+              _this5.solveList.push({
                 username: username,
                 studentcode: studentcode,
                 result: result,
@@ -1946,7 +2005,7 @@ exports.default = {
           i += 1;
         }
       }).catch(function (err) {
-        _this4.$swal({
+        _this5.$swal({
           title: '결과 로드 실패',
           text: err,
           type: 'error'
@@ -1963,7 +2022,7 @@ exports.default = {
       return true;
     },
     add: function add() {
-      var _this5 = this;
+      var _this6 = this;
 
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.post('problems', {
@@ -1979,18 +2038,18 @@ exports.default = {
         memorylimit: this.memoryLimit,
         score: this.score
       }).then(function () {
-        _this5.$swal('등록 성공', '문제를 등록하였습니다', 'success');
-        _this5.items.push({
-          num: _this5.lastNum + 1,
-          name: _this5.problemName,
-          source: _this5.source
+        _this6.$swal('등록 성공', '문제를 등록하였습니다', 'success');
+        _this6.items.push({
+          num: _this6.lastNum + 1,
+          name: _this6.problemName,
+          source: _this6.source
         });
       }).catch(function (err) {
         var errMsg = void 0;
         if (err.response.data.message === 'validation error') {
           errMsg = '정보가 부족합니다';
         }
-        _this5.$swal({
+        _this6.$swal({
           title: '등록 실패',
           text: errMsg,
           type: 'error'
@@ -1998,7 +2057,7 @@ exports.default = {
       });
     },
     fetchData: function fetchData() {
-      var _this6 = this;
+      var _this7 = this;
 
       //토큰테스트
       this.userToken = this.$cookie.get('userToken');
@@ -2006,17 +2065,17 @@ exports.default = {
       this.$http.get('problems').then(function (res) {
         var i = 0;
         while (i < res.data.problems.length) {
-          _this6.items.push({
+          _this7.items.push({
             num: res.data.problems[i].num,
             name: res.data.problems[i].problemName,
             source: res.data.problems[i].source
           });
-          _this6.lastNum = res.data.problems[i].num;
+          _this7.lastNum = res.data.problems[i].num;
           i += 1;
         }
-        _this6.enteringProblemmanage = true;
+        _this7.enteringProblemmanage = true;
       }).catch(function (err) {
-        _this6.$swal({
+        _this7.$swal({
           title: '문제 로드 실패',
           text: err,
           type: 'error'
@@ -2027,7 +2086,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 168 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2070,16 +2129,18 @@ exports.default = {
   created: function created() {
     this.ratio();
   },
-  beforeCreate: function beforeCreate() {
-    this.$Progress.start();
-  },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   },
 
   methods: {
     ratio: function ratio() {
-      var _this = this;
+      var _this2 = this;
 
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
@@ -2087,7 +2148,7 @@ exports.default = {
         var i = 0;
         while (i < res.data.resolves.length) {
           var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
-          _this.problemData.push({
+          _this2.problemData.push({
             userid: res.data.resolves[i].userId,
             code: res.data.resolves[i].resolveData.code,
             date: date.substring(0, date.length - 8),
@@ -2097,12 +2158,12 @@ exports.default = {
             result: res.data.resolves[i].resolveData.result,
             time: res.data.resolves[i].resolveData.time
           });
-          _this.ratioData.push(_defineProperty({}, i, res.data.resolves[i].resolveData.problemNum));
+          _this2.ratioData.push(_defineProperty({}, i, res.data.resolves[i].resolveData.problemNum));
           i += 1;
         }
-        _this.enteringProblemresult = true;
+        _this2.enteringProblemresult = true;
       }).catch(function (err) {
-        _this.$swal({
+        _this2.$swal({
           title: '문제 결과 로드 실패',
           text: err,
           type: 'error'
@@ -2113,7 +2174,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 169 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2123,11 +2184,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _timeline = __webpack_require__(402);
+var _timeline = __webpack_require__(405);
 
 var _timeline2 = _interopRequireDefault(_timeline);
 
-var _main = __webpack_require__(401);
+var _main = __webpack_require__(404);
 
 var _main2 = _interopRequireDefault(_main);
 
@@ -2155,18 +2216,18 @@ exports.default = {
   data: function data() {
     return {};
   },
-  beforeCreate: function beforeCreate() {
-    this.loadState = true;
-    this.$Progress.start();
-  },
-  mounted: function mounted() {
-    this.loadState = false;
-    this.$Progress.finish();
+  created: function created() {
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   }
 };
 
 /***/ }),
-/* 170 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2290,7 +2351,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 171 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2461,19 +2522,18 @@ exports.default = {
   name: 'sigo',
   data: function data() {
     return {};
-  },
-  created: function created() {}
+  }
 };
 
 /***/ }),
-/* 172 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -2530,66 +2590,70 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    name: 'index',
-    data: function data() {
-        return {
-            userToken: '',
-            userid: '',
-            username: '',
-            studentcode: '',
-            successCount: 0,
-            recentProblem: [],
-            entering: false
-        };
-    },
-    updated: function updated() {
-        this.$Progress.finish();
-    },
-    beforeCreate: function beforeCreate() {
-        var _this = this;
+  name: 'index',
+  data: function data() {
+    return {
+      userToken: '',
+      userid: '',
+      username: '',
+      studentcode: '',
+      successCount: 0,
+      recentProblem: [],
+      entering: false
+    };
+  },
+  updated: function updated() {
+    var _this = this;
 
-        //          토큰 테스트
-        this.userToken = this.$cookie.get('userToken');
-        if (this.userToken != null) {
-            this.userToken = this.$cookie.get('userToken');
-            this.$http.defaults.headers.common.Authorization = this.userToken;
-            this.$http.get('users/my-info').then(function (resInfo) {
-                _this.userid = resInfo.data.user.userId;
-                _this.username = resInfo.data.user.username;
-                _this.studentcode = resInfo.data.user.studentCode;
-                _this.$http.get('solution/resultsuccess/' + userid).then(function (res) {
-                    console.log(res);
-                    _this.entering = true;
-                }).catch(function (err) {
-                    _this.$swal({
-                        title: '문제 정답 로드 실패',
-                        text: err,
-                        type: 'error'
-                    });
-                });
-            }).catch(function (error) {
-                _this.$swal({
-                    title: '유저 조회 실패',
-                    text: error,
-                    type: 'error'
-                }).then(function () {
-                    location.href = '/';
-                });
-            });
-        } else {
-            this.$swal({
-                title: '입장 실패',
-                text: '로그인을 해주세요',
-                type: 'error'
-            }).then(function () {
-                location.href = '/';
-            });
-        }
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
+  },
+  beforeCreate: function beforeCreate() {
+    var _this2 = this;
+
+    //          토큰 테스트
+    this.userToken = this.$cookie.get('userToken');
+    if (this.userToken != null) {
+      this.userToken = this.$cookie.get('userToken');
+      this.$http.defaults.headers.common.Authorization = this.userToken;
+      this.$http.get('users/my-info').then(function (resInfo) {
+        _this2.userid = resInfo.data.user.userId;
+        _this2.username = resInfo.data.user.username;
+        _this2.studentcode = resInfo.data.user.studentCode;
+        _this2.$http.get('solution/resultsuccess/' + userid).then(function (res) {
+          _this2.entering = true;
+        }).catch(function (err) {
+          _this2.$swal({
+            title: '문제 정답 로드 실패',
+            text: err,
+            type: 'error'
+          });
+        });
+      }).catch(function (error) {
+        _this2.$swal({
+          title: '유저 조회 실패',
+          text: error,
+          type: 'error'
+        }).then(function () {
+          location.href = '/';
+        });
+      });
+    } else {
+      this.$swal({
+        title: '입장 실패',
+        text: '로그인을 해주세요',
+        type: 'error'
+      }).then(function () {
+        location.href = '/';
+      });
     }
+  }
 };
 
 /***/ }),
-/* 173 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2611,7 +2675,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 174 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2620,32 +2684,83 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-var _vuex = __webpack_require__(51);
-
+var i = 0;
+var end = 10;
+var length = void 0;
 exports.default = {
   name: 'notice',
   data: function data() {
     return {
       notices: [],
-      entering: false
+      entering: false,
+      loadState: true
     };
   },
   updated: function updated() {
-    this.$store.dispatch('loadingOff');
-    console.log(this.$store.state.loadingState);
-    this.$Progress.finish();
-  },
-  created: function created() {
     var _this = this;
 
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
+  },
+  created: function created() {
+    var _this2 = this;
+
     this.$http.get('notices').then(function (res) {
-      var i = 0;
-      while (i < res.data.notices.length) {
+      i = 0;
+      length = res.data.notices.length;
+      if (length < 10) {
+        end = length;
+      }
+      while (i < end) {
         var date = res.data.notices[i].date.replace('T', ', ');
         date = date.substring(0, date.length - 8);
         if (res.data.notices[i].type === 'notice') {
-          _this.notices.push({
+          _this2.notices.push({
             num: res.data.notices[i].num,
             noticename: res.data.notices[i].noticeName,
             date: date
@@ -2653,9 +2768,13 @@ exports.default = {
         }
         i += 1;
       }
-      _this.entering = true;
+      _this2.entering = true;
     }).catch(function (err) {
-      alert(err);
+      _this2.$swal({
+        title: '공지 로드 실패',
+        text: err,
+        type: 'error'
+      });
     });
   },
 
@@ -2664,53 +2783,44 @@ exports.default = {
       this.$router.push({
         path: 'notices/' + num
       });
+    },
+    loadList: function loadList() {
+      var _this3 = this;
+
+      this.$http.get('notices').then(function (res) {
+        i = end;
+        end += 10;
+        if (i / 10 === parseInt(length / 10, 10)) {
+          end = length;
+          _this3.loadState = false;
+        } else if (end === length) {
+          _this3.loadState = false;
+        }
+        while (i < end) {
+          var date = res.data.notices[i].date.replace('T', ', ');
+          date = date.substring(0, date.length - 8);
+          _this3.notices.push({
+            num: res.data.notices[i].num,
+            noticename: res.data.notices[i].noticeName,
+            date: date
+          });
+          i += 1;
+        }
+      }).catch(function (err) {
+        _this3.$swal({
+          title: '공지 로드 실패',
+          text: err,
+          type: 'error'
+        }).then(function () {
+          location.href = '/';
+        });
+      });
     }
   }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
-/* 175 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2764,28 +2874,36 @@ exports.default = {
     };
   },
   updated: function updated() {
-    this.$Progress.finish();
-  },
-  created: function created() {
     var _this = this;
 
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
+  },
+  created: function created() {
+    var _this2 = this;
+
     var num = this.$route.params.num;
-    console.log(num);
     this.$http.get('notices/' + num).then(function (res) {
-      _this.num = res.data.notice.num;
-      _this.name = res.data.notice.noticeName;
-      _this.contents = res.data.notice.contents;
-      _this.date = res.data.notice.date.replace('T', ', ');
-      _this.date = _this.date.substring(0, _this.date.length - 8);
-      _this.entering = true;
+      _this2.num = res.data.notice.num;
+      _this2.name = res.data.notice.noticeName;
+      _this2.contents = res.data.notice.contents;
+      _this2.date = res.data.notice.date.replace('T', ', ');
+      _this2.date = _this2.date.substring(0, _this2.date.length - 8);
+      _this2.entering = true;
     }).catch(function (err) {
-      console.log(err);
+      _this2.$swal({
+        title: _this2.num + '\uBC88 \uACF5\uC9C0 \uB85C\uB4DC \uC2E4\uD328',
+        text: err,
+        type: 'error'
+      });
     });
   }
 };
 
 /***/ }),
-/* 176 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2884,9 +3002,6 @@ exports.default = {
       entering: false,
       lineheight: ''
     };
-  },
-  updated: function updated() {
-    this.$Progress.finish();
   },
   created: function created() {
     var _this = this;
@@ -2994,13 +3109,21 @@ exports.default = {
       });
     }
   },
+  updated: function updated() {
+    var _this2 = this;
+
+    this.$nextTick(function () {
+      _this2.$store.commit('loadingOff');
+      _this2.$Progress.finish();
+    });
+  },
 
   methods: {
     shuffle: function shuffle() {
       this.items = _.shuffle(this.items);
     },
     loadList: function loadList() {
-      var _this2 = this;
+      var _this3 = this;
 
       //문제 로드
       this.$http.defaults.headers.common.Authorization = this.userToken;
@@ -3009,13 +3132,13 @@ exports.default = {
         end += 10;
         if (i / 10 === parseInt(length / 10, 10)) {
           end = length;
-          _this2.loadState = false;
+          _this3.loadState = false;
         } else if (end === length) {
-          _this2.loadState = false;
+          _this3.loadState = false;
         }
         //문제 결과 로드
-        _this2.$http.defaults.headers.common.Authorization = _this2.userToken;
-        _this2.$http.get('solution').then(function (resRatio) {
+        _this3.$http.defaults.headers.common.Authorization = _this3.userToken;
+        _this3.$http.get('solution').then(function (resRatio) {
           //문제 개수 반복
           while (i < end) {
             var num = res.data.problems[i].num;
@@ -3050,8 +3173,8 @@ exports.default = {
             } else {
               ratio = ratio.toString().substring(2, 4) + ' %';
             }
-            _this2.lineheight = 55 * i;
-            _this2.items.push({
+            _this3.lineheight = 55 * i;
+            _this3.items.push({
               num: num,
               name: name,
               source: source,
@@ -3064,7 +3187,7 @@ exports.default = {
             i += 1;
           }
         }).catch(function (err) {
-          _this2.$swal({
+          _this3.$swal({
             title: '문제 기록 로드 실패',
             text: err,
             type: 'error'
@@ -3073,7 +3196,7 @@ exports.default = {
           });
         });
       }).catch(function (err) {
-        _this2.$swal({
+        _this3.$swal({
           title: '문제 로드 실패',
           text: err,
           type: 'error'
@@ -3083,26 +3206,26 @@ exports.default = {
       });
     },
     result: function result(num) {
-      var _this3 = this;
+      var _this4 = this;
 
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('solution/findsuccess/' + this.userid + '/' + num).then(function (resresult) {
         if (resresult.data.result === true) {
-          _this3.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
+          _this4.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
         } else {
-          _this3.$router.push({
+          _this4.$router.push({
             path: 'problems/' + num
           });
         }
       }).catch(function (err) {
-        _this3.$swal('결과 조회 실패', err, 'error');
+        _this4.$swal('결과 조회 실패', err, 'error');
       });
     }
   }
 };
 
 /***/ }),
-/* 177 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3112,7 +3235,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vueMonacoEditor = __webpack_require__(437);
+var _vueMonacoEditor = __webpack_require__(440);
 
 var _vueMonacoEditor2 = _interopRequireDefault(_vueMonacoEditor);
 
@@ -3198,7 +3321,12 @@ exports.default = {
     this.solveMenu = false;
   },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this2 = this;
+
+    this.$nextTick(function () {
+      _this2.$store.commit('loadingOff');
+      _this2.$Progress.finish();
+    });
   },
 
   methods: {
@@ -3215,7 +3343,7 @@ exports.default = {
       this.codeResult = '';
     },
     codeRun: function codeRun() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.code.replace(/^\s*/, '') === '') {
         this.$swal('컴파일오류', '코드를 입력해주세요', 'error');
@@ -3231,20 +3359,20 @@ exports.default = {
         lang: this.lang,
         mode: true
       }).then(function (resSubmit) {
-        _this2.codeResult = resSubmit.data.result;
-        _this2.runMsg = '실행 결과 ';
+        _this3.codeResult = resSubmit.data.result;
+        _this3.runMsg = '실행 결과 ';
       }).catch(function (err) {
         if (err.response.data.result === 'compile error') {
-          _this2.runMsg = '컴파일 에러';
-          _this2.codeResult = err.response.data.message;
+          _this3.runMsg = '컴파일 에러';
+          _this3.codeResult = err.response.data.message;
         } else if (err.response.data.result === 'error') {
-          _this2.runMsg = '에러';
-          _this2.codeResult = err.response.data.message;
+          _this3.runMsg = '에러';
+          _this3.codeResult = err.response.data.message;
         }
       });
     },
     codeSubmit: function codeSubmit() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (this.code.replace(/^\s*/, '') === '') {
         this.$swal('컴파일오류', '코드를 입력해주세요', 'error');
@@ -3261,8 +3389,8 @@ exports.default = {
       }).then(function (resSubmit) {
         var result = resSubmit.data.result;
         if (result === 'success') {
-          _this3.runMsg = 'SUCCESS';
-          _this3.$swal({
+          _this4.runMsg = 'SUCCESS';
+          _this4.$swal({
             title: '정답',
             text: '다른 문제도 풀어보세요',
             type: 'success'
@@ -3270,11 +3398,11 @@ exports.default = {
             location.href = '/problems';
           });
         } else {
-          _this3.runMsg = 'FAIL';
-          _this3.$swal('실패', '다시 도전해 보세요', 'error');
+          _this4.runMsg = 'FAIL';
+          _this4.$swal('실패', '다시 도전해 보세요', 'error');
         }
       }).catch(function (err) {
-        _this3.$swal({
+        _this4.$swal({
           title: '문제 제출 실패',
           text: err,
           type: 'error'
@@ -3344,7 +3472,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 178 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3353,6 +3481,8 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
 //
 //
 //
@@ -3451,13 +3581,6 @@ exports.default = {
       users: []
     };
   },
-  created: function created() {
-    this.userToken = this.$cookie.get('userToken');
-    if (this.userToken == null) {
-      alert('로그인 해주세요');
-      location.href = '/';
-    }
-  },
   beforeCreate: function beforeCreate() {
     var _this = this;
 
@@ -3531,33 +3654,36 @@ exports.default = {
     }
   },
   updated: function updated() {
-    this.$Progress.finish();
+    var _this2 = this;
+
+    this.$nextTick(function () {
+      _this2.$store.commit('loadingOff');
+      _this2.$Progress.finish();
+    });
   },
 
   methods: {
     loadList: function loadList() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$http.get('users').then(function (res) {
         i = end;
         end += 10;
         if (i / 10 === parseInt(length / 10, 10)) {
           end = length;
-          _this2.loadState = false;
+          _this3.loadState = false;
         } else if (end === length) {
-          _this2.loadState = false;
+          _this3.loadState = false;
         }
-        console.log(i);
-        console.log(end);
         while (i < end) {
-          _this2.users.push({
-            name: _this2.data[i].name,
-            score: _this2.data[i].score
+          _this3.users.push({
+            name: _this3.data[i].name,
+            score: _this3.data[i].score
           });
           i += 1;
         }
       }).catch(function (err) {
-        _this2.$swal({
+        _this3.$swal({
           title: '유저 로드 실패',
           text: err,
           type: 'error'
@@ -3570,9 +3696,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 179 */,
-/* 180 */,
-/* 181 */,
 /* 182 */,
 /* 183 */,
 /* 184 */,
@@ -3754,24 +3877,9 @@ exports.default = {
 /* 360 */,
 /* 361 */,
 /* 362 */,
-/* 363 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 364 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 365 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 363 */,
+/* 364 */,
+/* 365 */,
 /* 366 */
 /***/ (function(module, exports) {
 
@@ -3904,92 +4012,44 @@ exports.default = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 388 */,
-/* 389 */,
-/* 390 */,
+/* 388 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 390 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 391 */,
 /* 392 */,
 /* 393 */,
-/* 394 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(369)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(163),
-  /* template */
-  __webpack_require__(419),
-  /* scopeId */
-  "data-v-1fb4ac10",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 395 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(377)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(164),
-  /* template */
-  __webpack_require__(429),
-  /* scopeId */
-  "data-v-608cdfa9",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 396 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(387)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(165),
-  /* template */
-  __webpack_require__(436),
-  /* scopeId */
-  "data-v-90766562",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 394 */,
+/* 395 */,
+/* 396 */,
 /* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(386)
+__webpack_require__(372)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(166),
   /* template */
-  __webpack_require__(435),
+  __webpack_require__(422),
   /* scopeId */
-  "data-v-8fe46ee8",
+  "data-v-1fb4ac10",
   /* cssModules */
   null
 )
@@ -4003,15 +4063,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(371)
+__webpack_require__(381)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(167),
   /* template */
-  __webpack_require__(422),
+  __webpack_require__(433),
   /* scopeId */
-  "data-v-3b8f64c8",
+  "data-v-608cdfa9",
   /* cssModules */
   null
 )
@@ -4025,16 +4085,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(374)
-__webpack_require__(375)
+__webpack_require__(390)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(168),
   /* template */
-  __webpack_require__(425),
+  __webpack_require__(439),
   /* scopeId */
-  "data-v-4886e8bd",
+  "data-v-90766562",
   /* cssModules */
   null
 )
@@ -4048,15 +4107,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(373)
+__webpack_require__(389)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(169),
   /* template */
-  __webpack_require__(424),
+  __webpack_require__(438),
   /* scopeId */
-  "data-v-41509454",
+  "data-v-8fe46ee8",
   /* cssModules */
   null
 )
@@ -4070,16 +4129,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(382)
-__webpack_require__(383)
+__webpack_require__(374)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(170),
   /* template */
-  __webpack_require__(433),
+  __webpack_require__(425),
   /* scopeId */
-  "data-v-7bcd82e5",
+  "data-v-3b8f64c8",
   /* cssModules */
   null
 )
@@ -4093,15 +4151,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(370)
+__webpack_require__(377)
+__webpack_require__(378)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(171),
   /* template */
-  __webpack_require__(421),
+  __webpack_require__(428),
   /* scopeId */
-  "data-v-32d9b926",
+  "data-v-4886e8bd",
   /* cssModules */
   null
 )
@@ -4115,16 +4174,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(379)
-__webpack_require__(380)
+__webpack_require__(376)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(172),
   /* template */
-  __webpack_require__(431),
+  __webpack_require__(427),
   /* scopeId */
-  "data-v-637a59d0",
+  "data-v-41509454",
   /* cssModules */
   null
 )
@@ -4138,15 +4196,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(368)
+__webpack_require__(385)
+__webpack_require__(386)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(173),
   /* template */
-  __webpack_require__(418),
+  __webpack_require__(436),
   /* scopeId */
-  "data-v-1f1cf6d0",
+  "data-v-7bcd82e5",
   /* cssModules */
   null
 )
@@ -4160,16 +4219,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(365)
-__webpack_require__(364)
+__webpack_require__(373)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(174),
   /* template */
-  __webpack_require__(415),
+  __webpack_require__(424),
   /* scopeId */
-  "data-v-0a41af30",
+  "data-v-32d9b926",
   /* cssModules */
   null
 )
@@ -4183,15 +4241,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(378)
+__webpack_require__(383)
+__webpack_require__(384)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(175),
   /* template */
-  __webpack_require__(430),
+  __webpack_require__(435),
   /* scopeId */
-  "data-v-6209be0c",
+  "data-v-637a59d0",
   /* cssModules */
   null
 )
@@ -4205,15 +4264,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(372)
+__webpack_require__(371)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(176),
   /* template */
-  __webpack_require__(423),
+  __webpack_require__(421),
   /* scopeId */
-  "data-v-3f6ebf20",
+  "data-v-1f1cf6d0",
   /* cssModules */
   null
 )
@@ -4227,15 +4286,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(376)
+__webpack_require__(368)
+__webpack_require__(367)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(177),
   /* template */
-  __webpack_require__(427),
+  __webpack_require__(418),
   /* scopeId */
-  "data-v-572d1fb3",
+  "data-v-0a41af30",
   /* cssModules */
   null
 )
@@ -4249,15 +4309,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(366)
+__webpack_require__(382)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(178),
   /* template */
-  __webpack_require__(416),
+  __webpack_require__(434),
   /* scopeId */
-  "data-v-0f75cc20",
+  "data-v-6209be0c",
   /* cssModules */
   null
 )
@@ -4269,13 +4329,17 @@ module.exports = Component.exports
 /* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(375)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(157),
+  __webpack_require__(179),
   /* template */
-  __webpack_require__(428),
+  __webpack_require__(426),
   /* scopeId */
-  null,
+  "data-v-3f6ebf20",
   /* cssModules */
   null
 )
@@ -4287,13 +4351,17 @@ module.exports = Component.exports
 /* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(379)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(158),
+  __webpack_require__(180),
   /* template */
-  __webpack_require__(426),
+  __webpack_require__(430),
   /* scopeId */
-  null,
+  "data-v-572d1fb3",
   /* cssModules */
   null
 )
@@ -4305,13 +4373,17 @@ module.exports = Component.exports
 /* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(369)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(159),
+  __webpack_require__(181),
   /* template */
-  __webpack_require__(420),
+  __webpack_require__(419),
   /* scopeId */
-  null,
+  "data-v-0f75cc20",
   /* cssModules */
   null
 )
@@ -4323,15 +4395,11 @@ module.exports = Component.exports
 /* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(367)
-
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(160),
   /* template */
-  __webpack_require__(417),
+  __webpack_require__(432),
   /* scopeId */
   null,
   /* cssModules */
@@ -4345,15 +4413,11 @@ module.exports = Component.exports
 /* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(381)
-
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(161),
   /* template */
-  __webpack_require__(432),
+  __webpack_require__(429),
   /* scopeId */
   null,
   /* cssModules */
@@ -4365,6 +4429,68 @@ module.exports = Component.exports
 
 /***/ }),
 /* 415 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(162),
+  /* template */
+  __webpack_require__(423),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 416 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(370)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(163),
+  /* template */
+  __webpack_require__(420),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 417 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(380)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(164),
+  /* template */
+  __webpack_require__(431),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 418 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4411,7 +4537,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('span', [_vm._v(_vm._s(notice.noticename))])]), _vm._v(" "), _c('p', {
       staticClass: "notdate"
     }, [_c('span', [_vm._v(_vm._s(notice.date))])])])])])
-  }))], 1), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])])]) : _vm._e()
+  }))], 1), _vm._v(" "), _vm._m(3), _vm._v(" "), (_vm.loadState) ? _c('button', {
+    staticClass: "ui button",
+    on: {
+      "click": _vm.loadList
+    }
+  }, [_c('i', {
+    staticClass: "large chevron down icon"
+  })]) : _vm._e()])])]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h2', {
     staticClass: "ui center aligned header",
@@ -4467,16 +4600,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('i', {
     staticClass: "huge chevron circle up icon"
   })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "ui button"
-  }, [_c('i', {
-    staticClass: "large chevron down icon"
-  })])
 }]}
 
 /***/ }),
-/* 416 */
+/* 419 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4516,8 +4643,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "rant2"
   }, [_vm._v("3st")])])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active"
-  }, [_vm._m(5), _vm._v(" "), _vm._l((_vm.users), function(user, rank) {
+  }, [_vm._m(5), _vm._v(" "), _c('transition-group', {
+    attrs: {
+      "name": "flip-list, ranklist",
+      "tag": "ul"
+    }
+  }, _vm._l((_vm.users), function(user, rank) {
     return _c('div', {
+      key: user,
       staticClass: "propol"
     }, [_c('div', {
       staticClass: "ui items"
@@ -4538,7 +4671,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "id": "subder"
       }
     }, [_c('span', [_vm._v(_vm._s(user.score))])])])])])])
-  })], 2), _vm._v(" "), _vm._m(6), _vm._v(" "), (_vm.loadState) ? _c('button', {
+  }))], 1), _vm._v(" "), _vm._m(6), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
       "click": _vm.loadList
@@ -4643,7 +4776,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 417 */
+/* 420 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4654,7 +4787,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 418 */
+/* 421 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4664,7 +4797,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 419 */
+/* 422 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4717,7 +4850,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 420 */
+/* 423 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4725,7 +4858,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 421 */
+/* 424 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5014,7 +5147,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 422 */
+/* 425 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5635,7 +5768,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 423 */
+/* 426 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5802,11 +5935,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 424 */
+/* 427 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticStyle: {
+      "margin-bottom": "1000px"
+    },
     attrs: {
       "id": "index"
     }
@@ -5818,7 +5954,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 425 */
+/* 428 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5830,7 +5966,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 426 */
+/* 429 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5842,7 +5978,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 427 */
+/* 430 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5937,7 +6073,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 428 */
+/* 431 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.loading),
+      expression: "loading"
+    }],
+    staticClass: "v-spinner"
+  }, [_c('div', {
+    staticClass: "v-bounce v-bounce1",
+    style: (_vm.spinnerBasicStyle)
+  }, [_c('div', {
+    staticClass: "v-bounce v-bounce2",
+    style: (_vm.spinnerStyle)
+  }), _c('div', {
+    staticClass: "v-bounce v-bounce3",
+    style: (_vm.spinnerStyle)
+  })])])
+},staticRenderFns: []}
+
+/***/ }),
+/* 432 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5947,7 +6108,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 429 */
+/* 433 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5965,7 +6126,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 430 */
+/* 434 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6007,7 +6168,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 431 */
+/* 435 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6055,32 +6216,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 432 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.loading),
-      expression: "loading"
-    }],
-    staticClass: "v-spinner"
-  }, [_c('div', {
-    staticClass: "v-pulse v-pulse1",
-    style: ([_vm.spinnerStyle, _vm.spinnerDelay1])
-  }), _c('div', {
-    staticClass: "v-pulse v-pulse2",
-    style: ([_vm.spinnerStyle, _vm.spinnerDelay2])
-  }), _c('div', {
-    staticClass: "v-pulse v-pulse3",
-    style: ([_vm.spinnerStyle, _vm.spinnerDelay3])
-  })])
-},staticRenderFns: []}
-
-/***/ }),
-/* 433 */
+/* 436 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6156,7 +6292,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 434 */
+/* 437 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6508,6 +6644,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("\n                                    로그인하기\n                                ")])])])])])])])]) : _vm._e(), _vm._v(" "), _c('vue-progress-bar'), _vm._v(" "), _c('transition', {
     attrs: {
+      "name": "spinner",
+      "mode": "out-in"
+    }
+  }, [(_vm.loadingState) ? _c('div', {
+    staticClass: "openSpinner"
+  }, [_c('bounce-loader', {
+    attrs: {
+      "loading": _vm.loading
+    }
+  })], 1) : _vm._e()]), _vm._v(" "), _c('transition', {
+    attrs: {
       "name": "sigoPage",
       "mode": "out-in"
     }
@@ -6521,7 +6668,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 435 */
+/* 438 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6717,7 +6864,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 436 */
+/* 439 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6741,13 +6888,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 437 */,
-/* 438 */,
-/* 439 */,
 /* 440 */,
 /* 441 */,
 /* 442 */,
-/* 443 */
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6769,7 +6916,7 @@ var _vueAwesomeSwiper = __webpack_require__(134);
 
 var _vueAwesomeSwiper2 = _interopRequireDefault(_vueAwesomeSwiper);
 
-var _jquery = __webpack_require__(63);
+var _jquery = __webpack_require__(62);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -6777,11 +6924,11 @@ __webpack_require__(133);
 
 __webpack_require__(131);
 
-var _vuex = __webpack_require__(51);
+var _vuex = __webpack_require__(64);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _vue = __webpack_require__(64);
+var _vue = __webpack_require__(63);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -6844,5 +6991,5 @@ new _vue2.default({
 });
 
 /***/ })
-]),[443]);
-//# sourceMappingURL=main.8489b726936635a1d10a.js.map
+]),[446]);
+//# sourceMappingURL=main.5efd71c5c8f9dc617373.js.map
