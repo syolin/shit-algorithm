@@ -274,7 +274,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
     // 실행 및 결과 함수
     const setRequest = problem => {
         // 정답일 경우 예외 처리
-        request.get({url : 'https://algorithm.ayanami.kr/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
+        request.get({url : 'https://algorithm.seoulit.kr/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
             const bodyJson = JSON.parse(body || null);
             if (bodyJson.result) {
                 res.status(409).json({
