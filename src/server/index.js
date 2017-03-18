@@ -27,7 +27,7 @@ import auth from './modules/auth';
 
 const app = express();
 
-// app.use('/',httpsRedrect(true));
+app.use('/',httpsRedrect(true));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,6 +47,7 @@ app.use('/notice',express.static(path.join(__dirname, 'public')));
 app.use('/notice/:num',express.static(path.join(__dirname, 'public')));
 app.use('/problems',express.static(path.join(__dirname, 'public')));
 app.use('/problems/:num',express.static(path.join(__dirname, 'public')));
+app.use('/solution/:num',express.static(path.join(__dirname, 'public')));
 app.use('/rank',express.static(path.join(__dirname, 'public')));
 app.use('/admin',express.static(path.join(__dirname, 'public')));
 

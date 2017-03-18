@@ -1368,6 +1368,13 @@ li[data-v-3b8f64c8]{
     top:170px;
     z-index:100;
 }
+.solveList li[data-v-3b8f64c8]{
+    margin: 0;
+}
+.solveList ul[data-v-3b8f64c8]{
+    border-bottom: 1px solid black;
+    padding: 25px 0;
+}
 .problemmanage-enter-active[data-v-3b8f64c8] {
     transition: all 1s ease;
 }
@@ -2346,9 +2353,8 @@ hr[data-v-6209be0c]{
       align-items: center;
 }
 img[data-v-1f1cf6d0]{
-  margin-left:-300px;
-  width:40%;
-  height:80%;
+  width:450px;
+  height:700px;
 }
 span[data-v-1f1cf6d0]{
   color: white;
@@ -2605,4 +2611,4 @@ body {
   z-index: 999999;
 }
 
-/*# sourceMappingURL=main.b3cb6345af13b65d0e4d5706512bd86e.css.map*/
+/*# sourceMappingURL=main.145e3030697129fd5035bbf0ca58a46d.css.map*/

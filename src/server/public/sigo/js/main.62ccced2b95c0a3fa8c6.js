@@ -1234,7 +1234,7 @@ exports.default = {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/my-info').then(function (resInfo) {
         _this2.userRating = resInfo.data.user.rating;
-        if (_this2.userRating === 1) {
+        if (_this2.userRating !== 3) {
           _this2.$swal({
             title: '입장 실패',
             text: '어드민이 아닙니다',
@@ -2946,9 +2946,10 @@ exports.default = {
       }, 500);
     },
     open: function open(num) {
-      this.$router.push({
-        path: 'notices/' + num
-      });
+      location.href = 'https://algorithm.seoulit.kr/notices/' + num;
+      //        this.$router.push({e
+      //          path: `notices/${num}`,
+      //        });
     },
     loadList: function loadList() {
       var _this3 = this;
@@ -3385,9 +3386,10 @@ exports.default = {
         if (resresult.data.result === true) {
           _this4.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
         } else {
-          _this4.$router.push({
-            path: 'problems/' + num
-          });
+          location.href = 'https://algorithm.seoulit.kr/problems/' + num;
+          //              this.$router.push({
+          //                path: `problems/${num}`,
+          //              });
         }
       }).catch(function (err) {
         _this4.$swal('결과 조회 실패', err, 'error');
@@ -3509,8 +3511,8 @@ exports.default = {
       this.code = editor.getValue();
     },
     codeReset: function codeReset() {
-      this.editor.setValue('');
-      this.code = '';
+      this.editor.setValue('int main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}');
+      this.code = 'int main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}';
       this.runMsg = '실행 결과가 이곳에 나타납니다';
       this.codeResult = '';
     },
@@ -3522,7 +3524,6 @@ exports.default = {
         this.runMsg = 'ERROR';
         return;
       }
-      this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.post('solution', {
         userid: this.userid,
         problemnum: this.items[0].num,
@@ -3551,7 +3552,6 @@ exports.default = {
         this.runMsg = 'ERROR';
         return;
       }
-      this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.post('solution', {
         userid: this.userid,
         problemnum: this.items[0].num,
@@ -7017,4 +7017,4 @@ new _vue2.default({
 
 /***/ })
 ]),[453]);
-//# sourceMappingURL=main.edc062e18fe451b8293c.js.map
+//# sourceMappingURL=main.62ccced2b95c0a3fa8c6.js.map
