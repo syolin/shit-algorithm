@@ -209,9 +209,9 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
     // 코드 제출 결과에 파일 또는 시스템 함수를 배제하기 위한 예외 처리
     const security = problem => {
         const commands = ['system','fcloseall','fdopen','fgetc','fgetchar','fgetpos','fopen','fputc','fputchar','fread','freopen','fseek','fsetpos','ftell','fwrite','getc','getw','putw','rename','rewind','tmpfile','tmpnam','unlink'];
-        for (let command in commands) {
-            if (form.inputCode.indexOf(command) != -1) throw new Error("런타임 에러");
-        }
+        // for (let command in commands) {
+        //     if (form.inputCode.indexOf(command) != -1) throw new Error("런타임 에러");
+        // }
         return problem;
     };
 
