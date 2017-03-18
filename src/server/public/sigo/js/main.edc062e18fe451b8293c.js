@@ -1,5 +1,46 @@
-webpackJsonp([1,2],Array(128).concat([
-/* 128 */
+webpackJsonp([1,2],Array(93).concat([
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "sigo/img/bg.91b13c4.jpg";
+
+/***/ }),
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13,45 +54,49 @@ var _vue = __webpack_require__(63);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(443);
+var _vueRouter = __webpack_require__(450);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _index = __webpack_require__(403);
+var _index = __webpack_require__(408);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _admin = __webpack_require__(397);
+var _admin = __webpack_require__(402);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _problems = __webpack_require__(410);
+var _problems = __webpack_require__(416);
 
 var _problems2 = _interopRequireDefault(_problems);
 
-var _rank = __webpack_require__(412);
+var _rank = __webpack_require__(418);
 
 var _rank2 = _interopRequireDefault(_rank);
 
-var _solve = __webpack_require__(411);
+var _solve = __webpack_require__(417);
 
 var _solve2 = _interopRequireDefault(_solve);
 
-var _mypage = __webpack_require__(406);
+var _mypage = __webpack_require__(412);
 
 var _mypage2 = _interopRequireDefault(_mypage);
 
-var _notice = __webpack_require__(408);
+var _notice = __webpack_require__(414);
 
 var _notice2 = _interopRequireDefault(_notice);
 
-var _opennotice = __webpack_require__(409);
+var _opennotice = __webpack_require__(415);
 
 var _opennotice2 = _interopRequireDefault(_opennotice);
 
-var _notfound = __webpack_require__(407);
+var _notfound = __webpack_require__(413);
 
 var _notfound2 = _interopRequireDefault(_notfound);
+
+var _monitor = __webpack_require__(411);
+
+var _monitor2 = _interopRequireDefault(_monitor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -93,16 +138,20 @@ exports.default = new _vueRouter2.default({
     component: _opennotice2.default
   }, {
     path: '/404',
-    name: '404',
+    name: 'notfound',
     component: _notfound2.default
   }, {
+    path: '/monitor',
+    name: 'monitor',
+    component: _monitor2.default
+  }, {
     path: '/*',
-    redirect: { name: '404' }
+    redirect: { name: 'notfound' }
   }]
 });
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -120,15 +169,15 @@ var _vuex = __webpack_require__(64);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _getters = __webpack_require__(158);
+var _getters = __webpack_require__(159);
 
 var getters = _interopRequireWildcard(_getters);
 
-var _actions = __webpack_require__(157);
+var _actions = __webpack_require__(158);
 
 var actions = _interopRequireWildcard(_actions);
 
-var _mutations = __webpack_require__(159);
+var _mutations = __webpack_require__(160);
 
 var mutations = _interopRequireWildcard(_mutations);
 
@@ -152,30 +201,30 @@ var store = new _vuex2.default.Store({
 exports.default = store;
 
 /***/ }),
-/* 130 */,
-/* 131 */
+/* 131 */,
+/* 132 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 132 */,
 /* 133 */,
 /* 134 */,
 /* 135 */,
-/* 136 */
+/* 136 */,
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(388)
-__webpack_require__(387)
+__webpack_require__(391)
+__webpack_require__(390)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(165),
+  __webpack_require__(166),
   /* template */
-  __webpack_require__(437),
+  __webpack_require__(444),
   /* scopeId */
   "data-v-88f23c12",
   /* cssModules */
@@ -186,7 +235,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 137 */,
 /* 138 */,
 /* 139 */,
 /* 140 */,
@@ -206,7 +254,8 @@ module.exports = Component.exports
 /* 154 */,
 /* 155 */,
 /* 156 */,
-/* 157 */
+/* 157 */,
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -225,7 +274,7 @@ var loadingOff = exports.loadingOff = function loadingOff(_ref2) {
 };
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -239,7 +288,7 @@ var getterLoadingState = exports.getterLoadingState = function getterLoadingStat
 };
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -257,7 +306,7 @@ var loadingOff = exports.loadingOff = function loadingOff(state) {
 };
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -302,7 +351,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -327,8 +376,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var browser = typeof window !== 'undefined';
 if (browser) {
-  window.Swiper = __webpack_require__(126);
-  __webpack_require__(366);
+  window.Swiper = __webpack_require__(127);
+  __webpack_require__(368);
 }
 exports.default = {
   name: 'swiper',
@@ -369,7 +418,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -377,8 +426,8 @@ exports.default = {
 //
 //
 
-var debounce = __webpack_require__(393);
-var monacoLoader = __webpack_require__(441);
+var debounce = __webpack_require__(396);
+var monacoLoader = __webpack_require__(448);
 module.exports = {
 
   props: {
@@ -498,7 +547,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -581,7 +630,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -654,7 +703,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -791,12 +840,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-var _vueRecaptcha = __webpack_require__(442);
+var _vueRecaptcha = __webpack_require__(449);
 
 var _vueRecaptcha2 = _interopRequireDefault(_vueRecaptcha);
 
-var _BounceLoader = __webpack_require__(417);
+var _BounceLoader = __webpack_require__(423);
 
 var _BounceLoader2 = _interopRequireDefault(_BounceLoader);
 
@@ -860,22 +921,14 @@ exports.default = {
       return this.$store.state.loadingState;
     }
   }),
-  created: function created() {
+  beforeCreate: function beforeCreate() {
     var _this = this;
 
-    this.$router.beforeEach(function (to, from, next) {
-      if (to.meta.progress !== undefined) {
-        var meta = to.meta.progress;
-        _this.$Progress.parseMeta(meta);
-      }
-      if (to.name !== 'index') {
-        _this.$store.commit('loadingOn');
-      }
-      _this.$Progress.start();
-      next();
-    });
-    this.$Progress.finish();
-    var ROOT_URL = 'https://algorithm.ayanami.kr/api';
+    this.$Progress.start();
+    if (this.$route.name !== 'index') {
+      this.$store.commit('loadingOn');
+    }
+    var ROOT_URL = 'https://algorithm.seoulit.kr/api';
     this.$http.defaults.baseURL = ROOT_URL;
     //      토큰 테스트
     this.userToken = this.$cookie.get('userToken');
@@ -894,6 +947,13 @@ exports.default = {
         });
       });
     }
+    this.$router.beforeEach(function (to, from, next) {
+      next();
+      if (to.name !== 'index') {
+        _this.$store.commit('loadingOn');
+      }
+      _this.$Progress.start();
+    });
     window.addEventListener('scroll', this.scrollFunction);
   },
   destroyed: function destroyed() {
@@ -1099,7 +1159,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1109,23 +1169,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _member = __webpack_require__(398);
+var _member = __webpack_require__(403);
 
 var _member2 = _interopRequireDefault(_member);
 
-var _problemmange = __webpack_require__(401);
+var _problemmange = __webpack_require__(406);
 
 var _problemmange2 = _interopRequireDefault(_problemmange);
 
-var _noticemanage = __webpack_require__(400);
+var _noticemanage = __webpack_require__(405);
 
 var _noticemanage2 = _interopRequireDefault(_noticemanage);
 
-var _nonaccount = __webpack_require__(399);
+var _nonaccount = __webpack_require__(404);
 
 var _nonaccount2 = _interopRequireDefault(_nonaccount);
 
-var _problemresult = __webpack_require__(402);
+var _problemresult = __webpack_require__(407);
 
 var _problemresult2 = _interopRequireDefault(_problemresult);
 
@@ -1275,7 +1335,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1389,7 +1449,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1509,7 +1569,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1729,7 +1789,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2087,7 +2147,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2175,7 +2235,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2185,11 +2245,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _timeline = __webpack_require__(405);
+var _timeline = __webpack_require__(410);
 
 var _timeline2 = _interopRequireDefault(_timeline);
 
-var _main = __webpack_require__(404);
+var _main = __webpack_require__(409);
 
 var _main2 = _interopRequireDefault(_main);
 
@@ -2228,7 +2288,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2352,7 +2412,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2361,6 +2421,36 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2522,12 +2612,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   name: 'sigo',
   data: function data() {
-    return {};
+    return {
+      timeline: []
+    };
   }
 };
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2545,7 +2637,33 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
+
+exports.default = {
+  name: 'monitor',
+  data: function data() {
+    return {};
+  },
+  created: function created() {},
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
+  }
+};
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //
 //
 //
@@ -2600,7 +2718,8 @@ exports.default = {
       studentcode: '',
       successCount: 0,
       recentProblem: [],
-      entering: false
+      entering: false,
+      score: 0
     };
   },
   updated: function updated() {
@@ -2617,19 +2736,41 @@ exports.default = {
     //          토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
-      this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/my-info').then(function (resInfo) {
-        _this2.userid = resInfo.data.user.userId;
         _this2.username = resInfo.data.user.username;
-        _this2.studentcode = resInfo.data.user.studentCode;
-        _this2.$http.get('solution/resultsuccess/' + userid).then(function (res) {
+        _this2.studentcode = resInfo.data.user.studentcode;
+        _this2.userid = resInfo.data.user.userId;
+        _this2.$http.get('users/search/' + _this2.userid).then(function (res) {
+          _this2.score = res.data.users.score;
           _this2.entering = true;
         }).catch(function (err) {
           _this2.$swal({
             title: '문제 정답 로드 실패',
             text: err,
             type: 'error'
+          }).then(function () {
+            location.href = '/';
+          });
+        });
+        _this2.$http.get('solution/resultsuccess/' + _this2.userid).then(function (res) {
+          var i = res.data.resolves.length - 5;
+          while (i < res.data.resolves.length) {
+            var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
+            date = date.substring(0, date.length - 8);
+            _this2.recentProblem.push({
+              num: res.data.resolves[i].resolveData.problemNum,
+              date: date
+            });
+            i += 1;
+          }
+        }).catch(function (err) {
+          _this2.$swal({
+            title: '문제 결과 조회 실패',
+            text: err,
+            type: 'error'
+          }).then(function () {
+            location.href = '/';
           });
         });
       }).catch(function (error) {
@@ -2654,7 +2795,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 176 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2663,6 +2804,9 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
 //
 //
 //
@@ -2672,11 +2816,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   data: function data() {
     return {};
+  },
+  beforeCreate: function beforeCreate() {
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
   }
 };
 
 /***/ }),
-/* 177 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2685,6 +2837,12 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2775,11 +2933,18 @@ exports.default = {
         title: '공지 로드 실패',
         text: err,
         type: 'error'
+      }).then(function (res) {
+        location.href = '/';
       });
     });
   },
 
   methods: {
+    scrollUp: function scrollUp() {
+      $('html, body').stop().animate({
+        scrollTop: 0
+      }, 500);
+    },
     open: function open(num) {
       this.$router.push({
         path: 'notices/' + num
@@ -2821,16 +2986,15 @@ exports.default = {
 };
 
 /***/ }),
-/* 178 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-//
 //
 //
 //
@@ -2864,47 +3028,47 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  name: 'openNotice',
-  data: function data() {
-    return {
-      num: '',
-      name: '',
-      contents: '',
-      date: '',
-      entering: false
-    };
-  },
-  updated: function updated() {
-    var _this = this;
+    name: 'openNotice',
+    data: function data() {
+        return {
+            num: '',
+            name: '',
+            contents: '',
+            date: '',
+            entering: false
+        };
+    },
+    updated: function updated() {
+        var _this = this;
 
-    this.$nextTick(function () {
-      _this.$store.commit('loadingOff');
-      _this.$Progress.finish();
-    });
-  },
-  created: function created() {
-    var _this2 = this;
+        this.$nextTick(function () {
+            _this.$store.commit('loadingOff');
+            _this.$Progress.finish();
+        });
+    },
+    created: function created() {
+        var _this2 = this;
 
-    var num = this.$route.params.num;
-    this.$http.get('notices/' + num).then(function (res) {
-      _this2.num = res.data.notice.num;
-      _this2.name = res.data.notice.noticeName;
-      _this2.contents = res.data.notice.contents;
-      _this2.date = res.data.notice.date.replace('T', ', ');
-      _this2.date = _this2.date.substring(0, _this2.date.length - 8);
-      _this2.entering = true;
-    }).catch(function (err) {
-      _this2.$swal({
-        title: _this2.num + '\uBC88 \uACF5\uC9C0 \uB85C\uB4DC \uC2E4\uD328',
-        text: err,
-        type: 'error'
-      });
-    });
-  }
+        var num = this.$route.params.num;
+        this.$http.get('notices/' + num).then(function (res) {
+            _this2.num = res.data.notice.num;
+            _this2.name = res.data.notice.noticeName;
+            _this2.contents = res.data.notice.contents;
+            _this2.date = res.data.notice.date.replace('T', ', ');
+            _this2.date = _this2.date.substring(0, _this2.date.length - 8);
+            _this2.entering = true;
+        }).catch(function (err) {
+            _this2.$swal({
+                title: _this2.num + '\uBC88 \uACF5\uC9C0 \uB85C\uB4DC \uC2E4\uD328',
+                text: err,
+                type: 'error'
+            });
+        });
+    }
 };
 
 /***/ }),
-/* 179 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2913,6 +3077,9 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
 //
 //
 //
@@ -3119,6 +3286,11 @@ exports.default = {
   },
 
   methods: {
+    scrollUp: function scrollUp() {
+      $('html, body').stop().animate({
+        scrollTop: 0
+      }, 500);
+    },
     shuffle: function shuffle() {
       this.items = _.shuffle(this.items);
     },
@@ -3225,7 +3397,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 180 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3235,7 +3407,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vueMonacoEditor = __webpack_require__(440);
+var _vueMonacoEditor = __webpack_require__(447);
 
 var _vueMonacoEditor2 = _interopRequireDefault(_vueMonacoEditor);
 
@@ -3403,8 +3575,8 @@ exports.default = {
         }
       }).catch(function (err) {
         _this4.$swal({
-          title: '문제 제출 실패',
-          text: err,
+          title: '실패',
+          text: '다시 도전해 보세요',
           type: 'error'
         });
       });
@@ -3472,7 +3644,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 181 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3481,6 +3653,10 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
 //
 //
 //
@@ -3657,6 +3833,11 @@ exports.default = {
   },
 
   methods: {
+    scrollUp: function scrollUp() {
+      $('html, body').stop().animate({
+        scrollTop: 0
+      }, 500);
+    },
     loadList: function loadList() {
       var _this3 = this;
 
@@ -3690,8 +3871,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 182 */,
-/* 183 */,
 /* 184 */,
 /* 185 */,
 /* 186 */,
@@ -3874,18 +4053,8 @@ exports.default = {
 /* 363 */,
 /* 364 */,
 /* 365 */,
-/* 366 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 367 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 366 */,
+/* 367 */,
 /* 368 */
 /***/ (function(module, exports) {
 
@@ -4024,120 +4193,40 @@ exports.default = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 391 */,
-/* 392 */,
-/* 393 */,
+/* 391 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 394 */,
 /* 395 */,
 /* 396 */,
-/* 397 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(372)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(166),
-  /* template */
-  __webpack_require__(422),
-  /* scopeId */
-  "data-v-1fb4ac10",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 398 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(381)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(167),
-  /* template */
-  __webpack_require__(433),
-  /* scopeId */
-  "data-v-608cdfa9",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 399 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(390)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(168),
-  /* template */
-  __webpack_require__(439),
-  /* scopeId */
-  "data-v-90766562",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 397 */,
+/* 398 */,
+/* 399 */,
 /* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(389)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(169),
-  /* template */
-  __webpack_require__(438),
-  /* scopeId */
-  "data-v-8fe46ee8",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+module.exports = __webpack_require__.p + "sigo/img/logo.40a1189.png";
 
 /***/ }),
 /* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(374)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(170),
-  /* template */
-  __webpack_require__(425),
-  /* scopeId */
-  "data-v-3b8f64c8",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+module.exports = __webpack_require__.p + "sigo/img/sigo_404.70233b0.png";
 
 /***/ }),
 /* 402 */
@@ -4145,16 +4234,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(377)
-__webpack_require__(378)
+__webpack_require__(375)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(171),
+  __webpack_require__(167),
   /* template */
-  __webpack_require__(428),
+  __webpack_require__(429),
   /* scopeId */
-  "data-v-4886e8bd",
+  "data-v-1fb4ac10",
   /* cssModules */
   null
 )
@@ -4168,15 +4256,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(376)
+__webpack_require__(384)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(172),
+  __webpack_require__(168),
   /* template */
-  __webpack_require__(427),
+  __webpack_require__(440),
   /* scopeId */
-  "data-v-41509454",
+  "data-v-608cdfa9",
   /* cssModules */
   null
 )
@@ -4190,16 +4278,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(385)
-__webpack_require__(386)
+__webpack_require__(393)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(173),
+  __webpack_require__(169),
   /* template */
-  __webpack_require__(436),
+  __webpack_require__(446),
   /* scopeId */
-  "data-v-7bcd82e5",
+  "data-v-90766562",
   /* cssModules */
   null
 )
@@ -4213,15 +4300,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(373)
+__webpack_require__(392)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(174),
+  __webpack_require__(170),
   /* template */
-  __webpack_require__(424),
+  __webpack_require__(445),
   /* scopeId */
-  "data-v-32d9b926",
+  "data-v-8fe46ee8",
   /* cssModules */
   null
 )
@@ -4235,16 +4322,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(383)
-__webpack_require__(384)
+__webpack_require__(377)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(175),
+  __webpack_require__(171),
   /* template */
-  __webpack_require__(435),
+  __webpack_require__(432),
   /* scopeId */
-  "data-v-637a59d0",
+  "data-v-3b8f64c8",
   /* cssModules */
   null
 )
@@ -4258,15 +4344,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(371)
+__webpack_require__(380)
+__webpack_require__(381)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(176),
+  __webpack_require__(172),
   /* template */
-  __webpack_require__(421),
+  __webpack_require__(435),
   /* scopeId */
-  "data-v-1f1cf6d0",
+  "data-v-4886e8bd",
   /* cssModules */
   null
 )
@@ -4280,16 +4367,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(368)
-__webpack_require__(367)
+__webpack_require__(379)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(177),
+  __webpack_require__(173),
   /* template */
-  __webpack_require__(418),
+  __webpack_require__(434),
   /* scopeId */
-  "data-v-0a41af30",
+  "data-v-41509454",
   /* cssModules */
   null
 )
@@ -4303,15 +4389,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(382)
+__webpack_require__(388)
+__webpack_require__(389)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(178),
+  __webpack_require__(174),
   /* template */
-  __webpack_require__(434),
+  __webpack_require__(443),
   /* scopeId */
-  "data-v-6209be0c",
+  "data-v-7bcd82e5",
   /* cssModules */
   null
 )
@@ -4325,15 +4412,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(375)
+__webpack_require__(376)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(179),
+  __webpack_require__(175),
   /* template */
-  __webpack_require__(426),
+  __webpack_require__(431),
   /* scopeId */
-  "data-v-3f6ebf20",
+  "data-v-32d9b926",
   /* cssModules */
   null
 )
@@ -4347,15 +4434,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(379)
+__webpack_require__(371)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(180),
+  __webpack_require__(176),
   /* template */
-  __webpack_require__(430),
+  __webpack_require__(425),
   /* scopeId */
-  "data-v-572d1fb3",
+  "data-v-0e30bda6",
   /* cssModules */
   null
 )
@@ -4369,15 +4456,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(369)
+__webpack_require__(386)
+__webpack_require__(387)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(181),
+  __webpack_require__(177),
   /* template */
-  __webpack_require__(419),
+  __webpack_require__(442),
   /* scopeId */
-  "data-v-0f75cc20",
+  "data-v-637a59d0",
   /* cssModules */
   null
 )
@@ -4389,13 +4477,17 @@ module.exports = Component.exports
 /* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(374)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(160),
+  __webpack_require__(178),
   /* template */
-  __webpack_require__(432),
+  __webpack_require__(428),
   /* scopeId */
-  null,
+  "data-v-1f1cf6d0",
   /* cssModules */
   null
 )
@@ -4407,13 +4499,18 @@ module.exports = Component.exports
 /* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(370)
+__webpack_require__(369)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(161),
+  __webpack_require__(179),
   /* template */
-  __webpack_require__(429),
+  __webpack_require__(424),
   /* scopeId */
-  null,
+  "data-v-0a41af30",
   /* cssModules */
   null
 )
@@ -4425,13 +4522,17 @@ module.exports = Component.exports
 /* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(385)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(162),
+  __webpack_require__(180),
   /* template */
-  __webpack_require__(423),
+  __webpack_require__(441),
   /* scopeId */
-  null,
+  "data-v-6209be0c",
   /* cssModules */
   null
 )
@@ -4445,15 +4546,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(370)
+__webpack_require__(378)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(163),
+  __webpack_require__(181),
   /* template */
-  __webpack_require__(420),
+  __webpack_require__(433),
   /* scopeId */
-  null,
+  "data-v-3f6ebf20",
   /* cssModules */
   null
 )
@@ -4467,13 +4568,53 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(380)
+__webpack_require__(382)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(164),
+  __webpack_require__(182),
   /* template */
-  __webpack_require__(431),
+  __webpack_require__(437),
+  /* scopeId */
+  "data-v-572d1fb3",
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 418 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(372)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(183),
+  /* template */
+  __webpack_require__(426),
+  /* scopeId */
+  "data-v-0f75cc20",
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 419 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(161),
+  /* template */
+  __webpack_require__(439),
   /* scopeId */
   null,
   /* cssModules */
@@ -4484,7 +4625,87 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 418 */
+/* 420 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(162),
+  /* template */
+  __webpack_require__(436),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 421 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(163),
+  /* template */
+  __webpack_require__(430),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 422 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(373)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(164),
+  /* template */
+  __webpack_require__(427),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 423 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(383)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(165),
+  /* template */
+  __webpack_require__(438),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 424 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4501,13 +4722,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "data-tab": "first"
     }
-  }, [_vm._m(2), _vm._v(" "), _c('transition-group', {
+  }, [_vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "notice_wrap"
+  }, [_c('transition-group', {
     attrs: {
-      "name": "noticeList"
+      "name": "noticeList",
+      "tag": "div"
     }
   }, _vm._l((_vm.notices), function(notice) {
     return _c('div', {
-      key: _vm.notices,
+      key: notice,
       staticClass: "ui items"
     }, [_c('div', {
       staticClass: "item"
@@ -4531,7 +4755,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('span', [_vm._v(_vm._s(notice.noticename))])]), _vm._v(" "), _c('p', {
       staticClass: "notdate"
     }, [_c('span', [_vm._v(_vm._s(notice.date))])])])])])
-  }))], 1), _vm._v(" "), _vm._m(3), _vm._v(" "), (_vm.loadState) ? _c('button', {
+  }))], 1)]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "huge chevron circle up icon",
+    on: {
+      "click": _vm.scrollUp
+    }
+  })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
       "click": _vm.loadList
@@ -4545,7 +4778,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "not-head"
     }
-  }, [_vm._v(" 공지사항\n              "), _c('div', {
+  }, [_vm._v(" 공지사항\n        "), _c('div', {
     staticClass: "sub header"
   }, [_vm._v("SIGO의 알림를 외칩니다!")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4586,19 +4819,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "ltemthr"
     }
   }, [_vm._v("날짜")])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
+}]}
+
+/***/ }),
+/* 425 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     attrs: {
-      "href": "#"
+      "id": "monitor"
     }
-  }, [_c('i', {
-    staticClass: "huge chevron circle up icon"
+  }, [_c('div', {
+    staticClass: "button"
   })])
 }]}
 
 /***/ }),
-/* 419 */
-/***/ (function(module, exports) {
+/* 426 */
+/***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.entering) ? _c('div', {
@@ -4659,7 +4900,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "id": "subder"
       }
     }, [_c('span', [_vm._v(_vm._s(user.score))])])])])])])
-  }))], 1), _vm._v(" "), _vm._m(6), _vm._v(" "), (_vm.loadState) ? _c('button', {
+  }))], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "huge chevron circle up icon",
+    on: {
+      "click": _vm.scrollUp
+    }
+  })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
       "click": _vm.loadList
@@ -4673,7 +4923,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "rankhead"
     }
-  }, [_vm._v(" 랭킹 시스템\n                "), _c('div', {
+  }, [_vm._v(" 랭킹 시스템\n        "), _c('div', {
     staticClass: "sub header"
   }, [_vm._v("1등을 목표로 문제를 풀면서 친구들을 이겨보세요!")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4681,7 +4931,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "rankge1"
   }, [_c('img', {
     attrs: {
-      "src": "image1.jpg"
+      "src": __webpack_require__(93)
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4689,7 +4939,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "rankge2"
   }, [_c('img', {
     attrs: {
-      "src": "image1.jpg"
+      "src": __webpack_require__(93)
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4697,7 +4947,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "rankge3"
   }, [_c('img', {
     attrs: {
-      "src": "image1.jpg"
+      "src": __webpack_require__(93)
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4746,18 +4996,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "ltemfou"
     }
   }, [_vm._v("점수")])])])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "huge chevron circle up icon"
-  })])
 }]}
 
 /***/ }),
-/* 420 */
+/* 427 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4768,17 +5010,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 421 */
-/***/ (function(module, exports) {
+/* 428 */
+/***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "notfound"
-  }, [_vm._v("\n404 NOT FOUND\n")])
-},staticRenderFns: []}
+  }, [_c('div', {
+    staticClass: "notfound_container"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(401),
+      "alt": ""
+    }
+  }), _vm._v(" "), _c('span', [_vm._v("페이지가 존재하지 않습니다.")])])])
+}]}
 
 /***/ }),
-/* 422 */
+/* 429 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4831,7 +5082,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 423 */
+/* 430 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4839,13 +5090,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 424 */
+/* 431 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "timeline"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
     attrs: {
       "id": "footer"
     }
@@ -4853,149 +5106,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "fomain"
   }, [_c('div', {
     staticClass: "ui grid"
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "three wide column"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "five wide column",
-    attrs: {
-      "id": "two"
-    }
   }, [_c('div', {
-    staticClass: "footlist1"
-  }, [_vm._m(2), _vm._v(" "), _c('div', {
-    staticClass: "ui middle aligned animated list"
-  }, [_c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('router-link', {
-    attrs: {
-      "to": "/problems"
-    }
-  }, [_vm._v("문제")])], 1)])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6)])]), _vm._v(" "), _c('div', {
-    staticClass: "footlist2"
-  }, [_vm._m(7), _vm._v(" "), _c('div', {
-    staticClass: "ui middle aligned animated list"
-  }, [_c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('router-link', {
-    attrs: {
-      "to": "/rank"
-    }
-  }, [_vm._v("랭킹")])], 1)])]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)])])]), _vm._v(" "), _vm._m(10)])]), _vm._v(" "), _vm._m(11)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "content"
-    }
-  }, [_c('div', {
-    staticClass: "ui grid",
-    attrs: {
-      "id": "micon"
-    }
-  }, [_c('div', {
-    staticClass: "five wide column"
-  }, [_c('i', {
-    staticClass: "massive write icon"
-  }), _vm._v(" "), _c('h1', {
-    staticClass: "ui header"
-  }, [_vm._v("제일 많이 푼 문제\n                 "), _c('div', {
-    staticClass: "sub header"
-  }, [_c('p', [_vm._v("100번 문제")]), _vm._v(" "), _c('p', {
-    staticClass: "iconpol"
-  }, [_c('i', {
-    staticClass: "caret right icon"
-  }), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("풀러가기")])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "six wide column"
-  }, [_c('i', {
-    staticClass: "massive thumbs  up icon"
-  }), _vm._v(" "), _c('h1', {
-    staticClass: "ui header"
-  }, [_vm._v("인기있는 문제\n                 "), _c('div', {
-    staticClass: "sub header"
-  }, [_c('p', [_vm._v("100번 문제")]), _vm._v(" "), _c('p', {
-    staticClass: "iconpol"
-  }, [_c('i', {
-    staticClass: "caret right icon"
-  }), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("풀러가기")])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "five wide column"
-  }, [_c('i', {
-    staticClass: "massive student icon"
-  }), _vm._v(" "), _c('h1', {
-    staticClass: "ui header"
-  }, [_vm._v("도전 해볼만한 문제\n                 "), _c('div', {
-    staticClass: "sub header"
-  }, [_c('p', [_vm._v("100번 문제")]), _vm._v(" "), _c('p', {
-    staticClass: "iconpol"
-  }, [_c('i', {
-    staticClass: "caret right icon"
-  }), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("풀러가기")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "mainproblom"
-  }, [_c('h3', {
-    staticClass: "ui header"
-  }, [_vm._v("뉴스피드")]), _vm._v(" "), _c('div', {
-    staticClass: "ui card"
-  }, [_c('div', {
-    staticClass: "ui grid"
-  }, [_c('div', {
-    staticClass: "fifteen wide column",
-    attrs: {
-      "id": "eleven"
-    }
-  }, [_c('div', {
-    staticClass: "prolist"
-  }, [_c('div', {
-    staticClass: "navlist"
-  }, [_c('p', {
-    staticClass: "pheader"
-  }, [_vm._v("OOO님이 100번 문제를 풀었습니다!")]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('a', [_vm._v("나도 풀어보기")])])]), _vm._v(" "), _c('hr', {
-    staticClass: "hr"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "navlist"
-  }, [_c('p', {
-    staticClass: "pheader"
-  }, [_vm._v("OOO님이 100번 문제를 첫 번째로 풀었습니다!")]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('a', [_vm._v("나도 풀러가기")])])]), _vm._v(" "), _c('hr', {
-    staticClass: "hr"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "navlist"
-  }, [_c('p', {
-    staticClass: "pheader"
-  }, [_vm._v("OOO님이 100번 문제를 10번 풀었습니다!")]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('a', [_vm._v("2014.10.04")])])]), _vm._v(" "), _c('hr', {
-    staticClass: "hr"
-  }), _vm._v(" "), _c('button', {
-    staticClass: "fluid ui button"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("더 보기")])])])])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "three wide column",
+    staticClass: "six wide column",
     attrs: {
       "id": "one"
     }
@@ -5003,93 +5115,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "lefth"
     }
-  }, [_vm._v("\n                SIGO는?\n              ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("\n            SIGO는?\n          ")]), _vm._v(" "), _c('p', {
     attrs: {
       "id": "leftp"
     }
-  }, [_vm._v("서울아이티고등학교 학생들이 만든 알고리즘 사이트 입니다.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "foheader"
-  }, [_c('h3', [_vm._v("문제풀이")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("최근문제")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("출처")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("난이도")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("랜덤문제")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "foheader"
-  }, [_c('h3', [_vm._v("랭킹")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("페이지")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("아이템")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_vm._v("서울아이티고등학교 학생들이 만든 "), _c('br'), _vm._v(" 알고리즘 사이트 입니다.")])]), _vm._v(" "), _c('div', {
     staticClass: "five wide column",
     attrs: {
       "id": "three"
@@ -5098,17 +5128,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "footlist1"
   }, [_c('div', {
     staticClass: "foheader"
-  }, [_c('h3', [_vm._v("문의하기")]), _vm._v(" "), _c('p', [_vm._v(" 불편한점이나 개선되어야할 점, 버그 등은 문의해주세요.")])]), _vm._v(" "), _c('div', {
+  }, [_c('h3', [_vm._v("개발자 문의하기")]), _vm._v(" "), _c('p', [_vm._v(" 불편한점이나 개선되어야할 점, 버그 등은 문의해주세요.")])]), _vm._v(" "), _c('div', {
     staticClass: "ui list"
   }, [_c('a', {
     staticClass: "item",
     attrs: {
-      "href": "https://www.facebook.com/%EC%84%9C%EC%9A%B8%EC%95%84%EC%9D%B4%ED%8B%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90-SIGO-1529061383780127/",
+      "href": "https://www.facebook.com/shitsigo/messages/",
       "id": "saws"
     }
-  }, [_vm._v("문의 하기")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_vm._v("문의 하기")])])])])])]), _vm._v(" "), _c('div', {
     staticClass: "footsub"
   }, [_c('div', {
     staticClass: "fosub"
@@ -5116,7 +5144,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "ddd"
   }, [_c('a', {
     attrs: {
-      "href": "https://www.facebook.com/%EC%84%9C%EC%9A%B8%EC%95%84%EC%9D%B4%ED%8B%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90-SIGO-1529061383780127/"
+      "href": "https://www.facebook.com/shitsigo/"
     }
   }, [_c('i', {
     staticClass: "big facebook icon"
@@ -5128,11 +5156,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "big github icon"
   })])]), _vm._v(" "), _c('div', {
     staticClass: "ccc"
-  }, [_c('p', [_vm._v("2017 SIGO. All rights reserved.")])])])])
+  }, [_c('p', [_vm._v("2017 SIGO. All rights reserved.")])])])])])])
 }]}
 
 /***/ }),
-/* 425 */
+/* 432 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5753,7 +5781,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 426 */
+/* 433 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5771,17 +5799,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data-tab": "first",
       "id": "item"
     }
-  }, [_vm._v("최근 문제")]), _vm._v(" "), _c('a', {
-    staticClass: "item",
-    attrs: {
-      "data-tab": "second"
-    }
-  }, [_vm._v("출처")]), _vm._v(" "), _c('a', {
+  }, [_vm._v("일반 문제")]), _vm._v(" "), _c('a', {
     staticClass: "item",
     attrs: {
       "data-tab": "third"
     }
-  }, [_vm._v("난이도")]), _vm._v(" "), _c('a', {
+  }, [_vm._v("대회 문제")]), _vm._v(" "), _c('a', {
     staticClass: "item",
     attrs: {
       "data-tab": "fourth"
@@ -5845,13 +5868,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('div', {
       staticClass: "four wide column"
     }, [_c('span', [_vm._v(_vm._s(item.score))])]), _vm._v(" "), _c('div', {
-      staticClass: "four wide column"
+      staticClass: "four wide column",
+      attrs: {
+        "id": "second"
+      }
     }, [_c('span', [_vm._v(_vm._s(item.success))])]), _vm._v(" "), _c('div', {
-      staticClass: "four wide column"
+      staticClass: "four wide column",
+      attrs: {
+        "id": "three"
+      }
     }, [_c('span', [_vm._v(_vm._s(item.fail))])]), _vm._v(" "), _c('div', {
-      staticClass: "four wide column"
+      staticClass: "four wide column",
+      attrs: {
+        "id": "fooo"
+      }
     }, [_c('span', [_vm._v(_vm._s(item.ratio))])])])])])])])])])
-  }))], 1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), (_vm.loadState) ? _c('button', {
+  }))], 1)]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "huge chevron circle up icon",
+    on: {
+      "click": _vm.scrollUp
+    }
+  })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
       "click": _vm.loadList
@@ -5862,7 +5903,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h2', {
     staticClass: "ui center aligned header"
-  }, [_vm._v(" 문제풀기\n            "), _c('div', {
+  }, [_vm._v(" 문제풀기\n      "), _c('div', {
     staticClass: "sub header"
   }, [_vm._v("프로그래밍 문제를 풀고 맞추어 보는 곳 입니다.")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5919,37 +5960,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "ltemsix"
     }
   }, [_vm._v("정답률")])])])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "huge chevron circle up icon"
-  })])
 }]}
 
 /***/ }),
-/* 427 */
+/* 434 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticStyle: {
-      "margin-bottom": "1000px"
-    },
     attrs: {
       "id": "index"
     }
   }, [_c('div', {
     staticClass: "sigo_container"
-  }, [_c('parallax')], 1), _vm._v(" "), _c('div', {
-    staticClass: "sigo_container"
-  }, [_c('timeline')], 1)])
+  }, [_c('parallax'), _vm._v(" "), _c('timeline')], 1)])
 },staticRenderFns: []}
 
 /***/ }),
-/* 428 */
+/* 435 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5961,7 +5989,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 429 */
+/* 436 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5973,7 +6001,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 430 */
+/* 437 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6068,7 +6096,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 431 */
+/* 438 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6093,7 +6121,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 432 */
+/* 439 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6103,7 +6131,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 433 */
+/* 440 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6121,20 +6149,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 434 */
+/* 441 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.entering) ? _c('div', {
+  return _c('div', {
     staticClass: "openNotice"
-  }, [_c('div', {
-    directives: [{
-      name: "i",
-      rawName: "v-i",
-      value: (_vm.entering),
-      expression: "entering"
-    }],
-    staticClass: "openNotice"
+  }, [(_vm.entering) ? _c('div', {
+    staticClass: "notice"
   }, [_c('div', {
     staticClass: "notipoll"
   }, [_c('div', {
@@ -6149,7 +6171,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "noti1"
   }, [_c('p', [_vm._v(_vm._s(_vm.num))])]), _vm._v(" "), _c('div', {
     staticClass: "noti2"
-  }, [_c('p', [_vm._v(_vm._s(_vm.date))])])])])]), _vm._v(" "), _vm._m(0)]) : _vm._e()
+  }, [_c('p', [_vm._v(_vm._s(_vm.date))])])])])]) : _vm._e(), _vm._v(" "), _vm._m(0)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "pageicon"
@@ -6163,7 +6185,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 435 */
+/* 442 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6171,9 +6193,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "mypage"
     }
-  }, [_vm._m(0)]) : _vm._e()
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_c('div', {
     staticClass: "myinfo"
   }, [_c('div', {
     attrs: {
@@ -6191,7 +6211,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "header"
   }, [_vm._v("내 정보")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "description"
-  }, [_c('p', [_vm._v("내 아이디 : "), _c('span', [_vm._v("testting")])]), _vm._v(" "), _c('p', [_vm._v("내 이름 : "), _c('span', [_vm._v("아이티")])]), _vm._v(" "), _c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10214")])])])])]), _vm._v(" "), _c('div', {
+  }, [_c('p', [_vm._v("내 아이디 : "), _c('span', [_vm._v(_vm._s(_vm.userid))])]), _vm._v(" "), _c('p', [_vm._v("내 이름 : "), _c('span', [_vm._v(_vm._s(_vm.username))])]), _vm._v(" "), _c('p', [_vm._v("학번 : "), _c('span', [_vm._v(_vm._s(_vm.studentcode))])])])])]), _vm._v(" "), _c('div', {
     staticClass: "card"
   }, [_c('div', {
     staticClass: "content"
@@ -6199,19 +6219,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "header"
   }, [_vm._v("내 활동")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "description"
-  }, [_c('p', [_vm._v("내 점수 : "), _c('span', [_vm._v("1,212")])]), _vm._v(" "), _c('p', [_vm._v("문제 푼 수 : "), _c('span', [_vm._v("12")])])])])]), _vm._v(" "), _c('div', {
+  }, [_c('p', [_vm._v("내 점수 : "), _c('span', [_vm._v(_vm._s(_vm.score))])]), _vm._v(" "), _c('p', [_vm._v("문제 푼 수 : "), _c('span', [_vm._v(_vm._s(_vm.successCount))])])])])]), _vm._v(" "), _c('div', {
     staticClass: "card"
   }, [_c('div', {
     staticClass: "content"
   }, [_c('div', {
     staticClass: "header"
-  }, [_vm._v("최근 푼 문제")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "description"
-  }, [_c('p', [_c('span', [_vm._v("1")]), _vm._v(" : 번 문제")])])])])])])])])
-}]}
+  }, [_vm._v("최근 푼 문제")]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._l((_vm.recentProblem), function(i) {
+    return _c('div', {
+      staticClass: "description"
+    }, [_c('p', [_c('span', [_vm._v(_vm._s(i.num))]), _vm._v(" : 번 문제 "), _c('span', [_vm._v(_vm._s(i.date))])])])
+  })], 2)])])])])])]) : _vm._e()
+},staticRenderFns: []}
 
 /***/ }),
-/* 436 */
+/* 443 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6287,8 +6309,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 437 */
-/***/ (function(module, exports) {
+/* 444 */
+/***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -6314,7 +6336,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/"
     }
-  }, [_vm._v(_vm._s(_vm.$store.state.loadingState))])], 1)]), _vm._v(" "), _c('ul', {
+  }, [_c('img', {
+    staticStyle: {
+      "width": "10%",
+      "height": "10%",
+      "padding-top": "50px"
+    },
+    attrs: {
+      "src": __webpack_require__(400),
+      "alt": ""
+    }
+  })])], 1)]), _vm._v(" "), _c('ul', {
     attrs: {
       "id": "submn"
     }
@@ -6367,7 +6399,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.openModal
     }
-  }, [_vm._v("SIGN")])]) : _vm._e()])]), _vm._v(" "), (_vm.loginState == false) ? _c('div', {
+  }, [_vm._v("로그인")])]) : _vm._e()])]), _vm._v(" "), (_vm.loginState == false) ? _c('div', {
     attrs: {
       "id": "sign"
     }
@@ -6455,14 +6487,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.submit
     }
-  }, [_vm._v("\n                                        로그인\n                                    ")])]), _vm._v(" "), _c('button', {
+  }, [_vm._v("\n                    로그인\n                  ")])]), _vm._v(" "), _c('button', {
     staticClass: "ui button black signButton",
     on: {
       "click": function($event) {
         _vm.signState = false
       }
     }
-  }, [_vm._v("\n                                    회원가입하기\n                                ")])])])])])]) : _c('div', {
+  }, [_vm._v("\n                  회원가입하기\n                ")])])])])])]) : _c('div', {
     staticClass: "register_form"
   }, [_c('div', {
     staticClass: "description"
@@ -6628,14 +6660,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.submit($event)
       }
     }
-  }, [_vm._v("\n                                        회원가입\n                                    ")])]), _vm._v(" "), _c('button', {
+  }, [_vm._v("\n                    회원가입\n                  ")])]), _vm._v(" "), _c('button', {
     staticClass: "ui button black signButton",
     on: {
       "click": function($event) {
         _vm.signState = true
       }
     }
-  }, [_vm._v("\n                                    로그인하기\n                                ")])])])])])])])]) : _vm._e(), _vm._v(" "), _c('vue-progress-bar'), _vm._v(" "), _c('transition', {
+  }, [_vm._v("\n                  로그인하기\n                ")])])])])])])])]) : _vm._e(), _vm._v(" "), _c('vue-progress-bar'), _vm._v(" "), _c('transition', {
     attrs: {
       "name": "spinner",
       "mode": "out-in"
@@ -6661,7 +6693,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 438 */
+/* 445 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6857,7 +6889,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 439 */
+/* 446 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6881,31 +6913,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 440 */,
-/* 441 */,
-/* 442 */,
-/* 443 */,
-/* 444 */,
-/* 445 */,
-/* 446 */
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _vueTyper = __webpack_require__(139);
+var _vueTyper = __webpack_require__(140);
 
 var _vueTyper2 = _interopRequireDefault(_vueTyper);
 
-var _axios = __webpack_require__(127);
+var _axios = __webpack_require__(128);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _vueCookie = __webpack_require__(135);
+var _vueCookie = __webpack_require__(136);
 
 var _vueCookie2 = _interopRequireDefault(_vueCookie);
 
-var _vueAwesomeSwiper = __webpack_require__(134);
+var _vueAwesomeSwiper = __webpack_require__(135);
 
 var _vueAwesomeSwiper2 = _interopRequireDefault(_vueAwesomeSwiper);
 
@@ -6913,9 +6945,9 @@ var _jquery = __webpack_require__(62);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-__webpack_require__(133);
+__webpack_require__(134);
 
-__webpack_require__(131);
+__webpack_require__(132);
 
 var _vuex = __webpack_require__(64);
 
@@ -6925,29 +6957,29 @@ var _vue = __webpack_require__(63);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _router = __webpack_require__(128);
+var _router = __webpack_require__(129);
 
 var _router2 = _interopRequireDefault(_router);
 
-var _App = __webpack_require__(136);
+var _App = __webpack_require__(137);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _index = __webpack_require__(129);
+var _index = __webpack_require__(130);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _vueSweetalert = __webpack_require__(138);
+var _vueSweetalert = __webpack_require__(139);
 
 var _vueSweetalert2 = _interopRequireDefault(_vueSweetalert);
 
-var _vueProgressbar = __webpack_require__(137);
+var _vueProgressbar = __webpack_require__(138);
 
 var _vueProgressbar2 = _interopRequireDefault(_vueProgressbar);
 
-__webpack_require__(130);
+__webpack_require__(131);
 
-var _lodash = __webpack_require__(132);
+var _lodash = __webpack_require__(133);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -6984,5 +7016,5 @@ new _vue2.default({
 });
 
 /***/ })
-]),[446]);
-//# sourceMappingURL=main.d50bd983219fb8fc2539.js.map
+]),[453]);
+//# sourceMappingURL=main.edc062e18fe451b8293c.js.map
