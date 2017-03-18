@@ -956,206 +956,86 @@ rgb(35,131,109)
     /*margin-top: 10%;*/
 /*}*/
 
-
-/*콘덴트영역*/
-#micon[data-v-32d9b926]{
-    margin: 0px 77px;
-}
-#eleven[data-v-32d9b926] {
-    width: 100% !important;
-}
-.iconpol[data-v-32d9b926]{
-    margin-left: -20px;
-}
-.iconpol a[data-v-32d9b926]{
-    color: rgb(48,200,164);
-}
-.iconpol a[data-v-32d9b926]:hover{
-    color: rgb(35,131,109);
-}
-.sub.header p[data-v-32d9b926]{
-    font-size: 18px;
-    margin: 0;
-}
-.meta a[data-v-32d9b926]{
-    color: rgb(48,200,164) !important
-}
-.meta a[data-v-32d9b926]:hover{
-    color: rgb(35,131,109) !important
-}
-h3.ui.header[data-v-32d9b926] {
-    font-size: 30px;
-    font-weight: 500;
-    margin: 25px;
-    /*color:rgb(50,156,130);*/
-}
-h1.ui.header[data-v-32d9b926]{
-    font-size: 33px;
-    font-weight: 500;
-    margin-top: 0;
-}
-hr.hr[data-v-32d9b926] {
-    border: 1px solid rgb(230, 230, 230);
-    margin: 0px;
-}
-p.pheader[data-v-32d9b926] {
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 17px;
-    margin: 0;
-}
-a.header[data-v-32d9b926]:hover {
-    font-size: 17px;
-}
-.navlist[data-v-32d9b926]:hover {
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 17px;
-}
-.content .header[data-v-32d9b926] {
-    margin-left: 35%;
-}
-.navlist[data-v-32d9b926] {
-    padding: 13px 0px 13px 30px;
-}
-.mainproblom[data-v-32d9b926] {
-    margin: 0px 77px;
-    margin-top: 70px;
-}
-.ui.card[data-v-32d9b926] {
-    width: 100%;
-}
-.ui.grid[data-v-32d9b926]{
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: justify;
-        justify-content: space-between;
-    width: 70%;
-    margin: 0 auto;
-}
-.fluid.ui.button[data-v-32d9b926] {
-    border-radius: 0px 0px 4px 4px;
-    background-color: white;
-}
-.fluid.ui.button a[data-v-32d9b926]{
-  color: rgb(121,121,121);
-}
-.navlist[data-v-32d9b926]:hover {
-    background-color: rgb(249, 249, 249);
-}
-.fluid.ui.button[data-v-32d9b926]:hover {
-    background-color: rgb(249, 249, 249);
-}
-.prolist[data-v-32d9b926] {
-    border: 1px solid rgb(230, 230, 230);
-    border-radius: 5px;
-}
-.massive.write.icon[data-v-32d9b926]{
-    background: #1e7e7b;
-    color: white;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding-top: 26px;
-    font-size: 90px;
-    margin-bottom: 30px;
-}
-.massive.thumbs.up.icon[data-v-32d9b926]{
-    background: #1e7e7b;
-    color: white;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding-top: 26px;
-    font-size: 90px;
-    margin-bottom: 30px;
-}
-.massive.student.icon[data-v-32d9b926]{
-    background: #1e7e7b;
-    color: white;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding-top: 26px;
-    font-size: 90px;
-    margin-bottom: 30px;
-}
-
-
-
-
 /*풋터 영역*/
-.item .content a[data-v-32d9b926] {
-    color: rgb(175, 175, 175)
+#footer[data-v-32d9b926]{
+  background: #1F1F1F;
 }
-.item .content a[data-v-32d9b926]:hover {
-    color: rgb(221, 221, 221)
+.footer[data-v-32d9b926]{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  padding: 20px 200px 20px 200px;
 }
-.fosub .ddd a[data-v-32d9b926] {
-    color: rgb(48,200,164)
+.left[data-v-32d9b926]{
+  width: 100%;
+  color: rgb(124,207,177);
 }
-.fosub .ddd a[data-v-32d9b926]:hover {
-    color: rgb(35,131,109)
+.right[data-v-32d9b926]{
+  width: 100%;
+  text-align: right;
 }
-div.one[data-v-32d9b926] {
-    margin: 0px 20px 0px 20px;
+.tople[data-v-32d9b926]{
+  display: -ms-flexbox;
+  display: flex;
 }
-.ui.middle.aligned.animated.list[data-v-32d9b926] {
-    text-align: start;
+.tople a[data-v-32d9b926]{
+  margin-right: 15px;
+  margin-top: 7px;
 }
-.fomain[data-v-32d9b926] {
-    margin: 0px 77px;
-    font-family: sans-serif;
-    padding: 30px 0px;
+.tople p[data-v-32d9b926]{
+  margin-right: 20px;
+  font-size: 20px;
 }
-.fosub[data-v-32d9b926] {
-    font-family: sans-serif;
-    font-weight: 100;
-    margin: 0px 77px;
-    padding: 10px 0px;
-    color: white;
+.botle[data-v-32d9b926]{
+  margin-top: -10px;
 }
-.footsub[data-v-32d9b926] {
-    background: #1F1F1F;
-    padding: 15px;
-    padding-left: 0;
+.foico[data-v-32d9b926]{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
 }
-.footlist1[data-v-32d9b926] {
-    padding-right: 120px;
+.big.facebook.f.icon[data-v-32d9b926]{
+  width: 50px;
+  height: 50px;
+  background-color: rgb(62,62,62);
+  border-radius: 50%;
+  color: #1F1F1F;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  margin-right: 20px;
+  margin-top: 5px;
 }
-.ddd[data-v-32d9b926] {
-    margin-left: 47%;
+.big.facebook.f.icon[data-v-32d9b926]:hover{
+  background-color: rgb(101,101,101);
 }
-.ccc[data-v-32d9b926] {
-    margin-left: 42.4%;
-    margin-top: 15px;
+.big.git.icon[data-v-32d9b926]{
+  width: 50px;
+  height: 50px;
+  background-color: rgb(62,62,62);
+  border-radius: 50%;
+  color: #1F1F1F;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  margin-top: 5px;
 }
-#saws[data-v-32d9b926] {
-    color: rgb(48,200,164)
+.big.git.icon[data-v-32d9b926]:hover{
+  background-color: rgb(101,101,101);
 }
-#saws[data-v-32d9b926]:hover {
-    color: rgb(35,131,109)
+a[data-v-32d9b926]{
+  color: rgb(175,175,175);
 }
-#lefth[data-v-32d9b926] {
-    font-size: 30px;
-}
-#leftp[data-v-32d9b926] {
-    font-size: 20px;
-    font-weight: 100;
-}
-#one[data-v-32d9b926] {
-    color: white;
-}
-#two[data-v-32d9b926] {
-    display: -ms-flexbox;
-    display: flex;
-    color: white;
-    text-align: start;
-}
-#three[data-v-32d9b926] {
-    text-align: start;
-    color: white;
-}
-#footer[data-v-32d9b926] {
-    background: #1f1f1f;
+a[data-v-32d9b926]:hover{
+  color: rgb(221,221,221);
 }
 
 .typed{
@@ -2277,6 +2157,7 @@ body[data-v-0a41af30] {
 
 hr[data-v-6209be0c]{
   margin-bottom: 20px;
+  border-color:rgb(37,115,85);
 }
 .openNotice[data-v-6209be0c]{
   margin-top: 70px;
@@ -2286,6 +2167,7 @@ hr[data-v-6209be0c]{
 .notipen[data-v-6209be0c]{
   border: 3px solid;
   border-color: rgb(37,115,85);
+  border-color: none;
   width: 1040px;
   height: 520px;
   border-radius: 20px;
@@ -2611,4 +2493,4 @@ body {
   z-index: 999999;
 }
 
-/*# sourceMappingURL=main.145e3030697129fd5035bbf0ca58a46d.css.map*/
+/*# sourceMappingURL=main.7220d1f2335d13280e196ae6315cb29d.css.map*/

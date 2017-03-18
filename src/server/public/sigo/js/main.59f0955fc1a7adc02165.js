@@ -133,7 +133,7 @@ exports.default = new _vueRouter2.default({
     name: 'notice',
     component: _notice2.default
   }, {
-    path: '/notices/:num',
+    path: '/notice/:num',
     name: 'openNotice',
     component: _opennotice2.default
   }, {
@@ -2447,167 +2447,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
   name: 'sigo',
@@ -2946,8 +2785,8 @@ exports.default = {
       }, 500);
     },
     open: function open(num) {
-      location.href = 'https://algorithm.seoulit.kr/notices/' + num;
-      //        this.$router.push({e
+      location.href = 'https://algorithm.seoulit.kr/notice/' + num;
+      //        this.$router.push({
       //          path: `notices/${num}`,
       //        });
     },
@@ -4220,13 +4059,13 @@ exports.default = {
 /* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "sigo/img/logo.40a1189.png";
+module.exports = __webpack_require__.p + "sigo/img/sigo_404.70233b0.png";
 
 /***/ }),
 /* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "sigo/img/sigo_404.70233b0.png";
+module.exports = __webpack_require__.p + "sigo/img/sigoing.957a786.png";
 
 /***/ }),
 /* 402 */
@@ -5022,7 +4861,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "notfound_container"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(401),
+      "src": __webpack_require__(400),
       "alt": ""
     }
   }), _vm._v(" "), _c('span', [_vm._v("페이지가 존재하지 않습니다.")])])])
@@ -5103,60 +4942,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "footer"
     }
   }, [_c('div', {
-    staticClass: "fomain"
+    staticClass: "footer"
   }, [_c('div', {
-    staticClass: "ui grid"
+    staticClass: "left"
   }, [_c('div', {
-    staticClass: "six wide column",
+    staticClass: "tople"
+  }, [_c('p', [_vm._v("SIGO")]), _vm._v(" "), _c('a', {
     attrs: {
-      "id": "one"
+      "href": "#"
     }
-  }, [_c('h3', {
+  }, [_vm._v("공지사항")]), _vm._v(" "), _c('a', {
     attrs: {
-      "id": "lefth"
+      "href": "#"
     }
-  }, [_vm._v("\n            SIGO는?\n          ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("문제")]), _vm._v(" "), _c('a', {
     attrs: {
-      "id": "leftp"
+      "href": "#"
     }
-  }, [_vm._v("서울아이티고등학교 학생들이 만든 "), _c('br'), _vm._v(" 알고리즘 사이트 입니다.")])]), _vm._v(" "), _c('div', {
-    staticClass: "five wide column",
+  }, [_vm._v("랭킹")]), _vm._v(" "), _c('a', {
     attrs: {
-      "id": "three"
+      "href": "#"
     }
+  }, [_vm._v("마이페이지")])]), _vm._v(" "), _c('div', {
+    staticClass: "botle"
+  }, [_c('p', [_vm._v("© 2017 SIGO. All rights reserved.")])])]), _vm._v(" "), _c('div', {
+    staticClass: "right"
   }, [_c('div', {
-    staticClass: "footlist1"
-  }, [_c('div', {
-    staticClass: "foheader"
-  }, [_c('h3', [_vm._v("개발자 문의하기")]), _vm._v(" "), _c('p', [_vm._v(" 불편한점이나 개선되어야할 점, 버그 등은 문의해주세요.")])]), _vm._v(" "), _c('div', {
-    staticClass: "ui list"
-  }, [_c('a', {
-    staticClass: "item",
-    attrs: {
-      "href": "https://www.facebook.com/shitsigo/messages/",
-      "id": "saws"
-    }
-  }, [_vm._v("문의 하기")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "footsub"
-  }, [_c('div', {
-    staticClass: "fosub"
-  }, [_c('div', {
-    staticClass: "ddd"
+    staticClass: "foico"
   }, [_c('a', {
     attrs: {
       "href": "https://www.facebook.com/shitsigo/"
     }
   }, [_c('i', {
-    staticClass: "big facebook icon"
+    staticClass: "big facebook f icon"
   })]), _vm._v(" "), _c('a', {
     attrs: {
       "href": "https://github.com/shitKorea/shit-algorithm"
     }
   }, [_c('i', {
-    staticClass: "big github icon"
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "ccc"
-  }, [_c('p', [_vm._v("2017 SIGO. All rights reserved.")])])])])])])
+    staticClass: "big git icon"
+  })])])])])])])
 }]}
 
 /***/ }),
@@ -6343,7 +6168,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "padding-top": "50px"
     },
     attrs: {
-      "src": __webpack_require__(400),
+      "src": __webpack_require__(401),
       "alt": ""
     }
   })])], 1)]), _vm._v(" "), _c('ul', {
@@ -7017,4 +6842,4 @@ new _vue2.default({
 
 /***/ })
 ]),[453]);
-//# sourceMappingURL=main.62ccced2b95c0a3fa8c6.js.map
+//# sourceMappingURL=main.59f0955fc1a7adc02165.js.map
