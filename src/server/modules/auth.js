@@ -9,6 +9,7 @@ const auth = {
                     username: user.username,
                     userId: user.userId,
                     studentCode: user.studentCode,
+                    score: user.score,
                     rating: user.rating
                 },
                 secret,
