@@ -52,6 +52,7 @@ const auth = {
                     userId: req.user.userId,
                     username: req.user.username,
                     studentCode: req.user.studentCode,
+                    score: req.user.score,
                     rating: req.user.rating
                 };
 
