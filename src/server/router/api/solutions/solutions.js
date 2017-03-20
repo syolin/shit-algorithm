@@ -41,7 +41,7 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
 /*
  문제 정답 결과 출력
  */
-router.get('/resultsuccess/:userId',auth.isAuthenticated(), function (req, res) {
+router.get('/resultsuccess',auth.isAuthenticated(), function (req, res) {
 
     const userId = xssFilters.inHTMLData(req.params.userId);
 
@@ -70,7 +70,7 @@ router.get('/resultsuccess/:userId',auth.isAuthenticated(), function (req, res) 
         });
     };
 
-    solutionController.findSpecificResolve("success", userId)
+    solutionController.findSpecificResolve("success", req.user.userId)
         .then(validation)
         .then(respond)
         .catch(onError);
