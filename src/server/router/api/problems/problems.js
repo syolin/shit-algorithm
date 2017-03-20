@@ -14,6 +14,9 @@ const router = express.Router();
     모든 문제 출력
  */
 router.get('/',auth.isAuthenticated(), function (req, res) {
+
+    let value = req.user.rating == '3' ? true : false;
+
     const respond = problems => {
         res.json({
             result: 'success',
@@ -28,7 +31,7 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         });
     };
 
-    controller.findAll("normal")
+    controller.findAll("normal", value)
         .then(respond)
         .catch(onError);
 });
@@ -39,31 +42,35 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
 router.get('/contest',auth.isAuthenticated(), function (req, res) {
 
     const contest = problems => {
-        const userData = userController.findOneByUserId(req.user.userId);
+        const check = (user) => {
+            console.log("1 : "+user.contestAccount);
+            if (!user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+        };
 
-        if (!userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+        const respond = problems => {
+            res.json({
+                result: 'success',
+                problems : problems
+            });
+        };
+
+        const onError = error => {
+            res.status(409).json({
+                result : 'error',
+                message: error.message
+            });
+        };
+
+        userController.findOneByUserId(req.user.userId)
+            .then(check)
+            .then(respond)
+            .catch(onError);
 
         return problems;
     }
 
-    const respond = problems => {
-        res.json({
-            result: 'success',
-            problems : problems
-        });
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result : 'error',
-            message: error.message
-        });
-    };
-
     controller.findAll("contest")
         .then(contest)
-        .then(respond)
-        .catch(onError);
 });
 /*
     해당 문제 삭제
@@ -105,38 +112,44 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
 router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
     const contest = problem => {
-        const userData = userController.findOneByUserId(req.user.userId);
 
-        console.log("1 : "+userData.contestAccount,",",problem.type);
-        if (problem.type == "contest" && !userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+        const check = (user) => {
+            console.log("1 : "+user.contestAccount,",",problem.type);
+            if (problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+        };
+
+        const validation = index => {
+            if (isNaN(req.params.num)) throw new Error("validation error");
+
+            return index;
+        };
+
+        const respond = problem => {
+            res.json({
+                result: 'success',
+                problem: problem
+            });
+        };
+
+        const onError = error => {
+            res.status(409).json({
+                result : 'error',
+                message : error.message
+            });
+        };
+
+        userController.findOneByUserId(req.user.userId)
+            .then(check)
+            .then(validation)
+            .then(respond)
+            .catch(onError);
+
         return problem;
-    }
-
-    const validation = index => {
-        if (isNaN(req.params.num)) throw new Error("validation error");
-
-        return index;
     };
 
-    const respond = problem => {
-        res.json({
-            result: 'success',
-            problem: problem
-        });
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result : 'error',
-            message : error.message
-        });
-    };
 
     controller.findOneByProblem(req.params.num)
-        .then(contest)
-        .then(validation)
-        .then(respond)
-        .catch(onError);
+        .then(contest);
 });
 
 

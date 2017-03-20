@@ -30,9 +30,10 @@ Problem.create = (problemName, source, explanation, score, type, problemData) =>
  * 모든 문제 출력
  * @returns
  */
-Problem.findAll = (type) => {
-    return Problem.find({type: type})
-        .select('num problemName source score type').sort({num:1});
+Problem.findAll = (type, auth) => {
+    if (auth) return Problem.find({type: type}).select('num problemName source score type').sort({num:1});
+
+    return Problem.find().select('num problemName source score type').sort({num:1});
 }
 
 /**
@@ -54,13 +55,6 @@ Problem.updateSortNum = (num) => {
     Problem.update({num: {$gt: num}}, {$inc: {num: -1}}, {multi: true},function(err, result){});
 };
 
-/**
- * 테스트용 updateNum
- * @param number num
- */
-Problem.updateWantNum = (num) => {
-    return Problem.update({num: {$gt: num}}, {$inc: {num: -1}}, {multi: true});
-};
 
 /**
  * 문제 수정

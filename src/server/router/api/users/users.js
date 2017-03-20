@@ -121,7 +121,7 @@ router.get('/contest/:bool', auth.isAuthenticated('admin'), function (req, res) 
         });
     };
 
-    controller.contentUpdate(req.params.bool)
+    controller.contestUpdate(req.params.bool)
         .then(respond)
         .catch(onError);
 });

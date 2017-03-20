@@ -194,201 +194,206 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
     };
 
     const contest = problem => {
-        const userData = userController.findOneByUserId(req.user.userId);
-        if (problem.type == "contest" && !userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+        const check = (user) => {
+            console.log("1 : "+user.contestAccount,",",problem.type);
+            if (problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+        };
 
-        return problem;
-    }
+        const validation = problem => {
+            if (!form.inputCode || !form.name || !form.lang || !form.userId || isNaN(form.problemNum)) throw new Error("validation error");
 
-    const validation = problem => {
-        if (!form.inputCode || !form.name || !form.lang || !form.userId || isNaN(form.problemNum)) throw new Error("validation error");
+            return problem;
+        };
 
-        return problem;
-    };
+        // Not Found 예외 처리
+        const earlyData = problem => {
+            if (!problem) throw new Error("해당 문제가 없습니다.");
 
-    // Not Found 예외 처리
-    const earlyData = problem => {
-        if (!problem) throw new Error("해당 문제가 없습니다.");
+            return problem;
+        };
 
-        return problem;
-    };
+        // 코드 제출 결과에 파일 또는 시스템 함수를 배제하기 위한 예외 처리
+        const security = problem => {
+            const commands = ['system','fcloseall','fdopen','fgetc','fgetchar','fgetpos','fopen','fputc','fputchar','fread','freopen','fseek','fsetpos','ftell','fwrite','getc','getw','putw','rename','rewind','tmpfile','tmpnam','unlink'];
+            // for (let command in commands) {
+            //     if (form.inputCode.indexOf(command) != -1) throw new Error("런타임 에러");
+            // }
+            return problem;
+        };
 
-    // 코드 제출 결과에 파일 또는 시스템 함수를 배제하기 위한 예외 처리
-    const security = problem => {
-        const commands = ['system','fcloseall','fdopen','fgetc','fgetchar','fgetpos','fopen','fputc','fputchar','fread','freopen','fseek','fsetpos','ftell','fwrite','getc','getw','putw','rename','rewind','tmpfile','tmpnam','unlink'];
-        // for (let command in commands) {
-        //     if (form.inputCode.indexOf(command) != -1) throw new Error("런타임 에러");
-        // }
-        return problem;
-    };
+        // 컴파일 콜백 함수
+        const compileRequest = (problem, form, callback) => {
+            const postUrl = 'http://121.186.23.245:9989/code/';
+            request.post({url:postUrl, header: {'Authorization': req.headers.authorization}, form: form}, function (err, Response, body) {
+                if (err) throw new Error(err);
 
-    // 컴파일 콜백 함수
-    const compileRequest = (problem, form, callback) => {
-        const postUrl = 'http://121.186.23.245:9989/code/';
-        request.post({url:postUrl, header: {'Authorization': req.headers.authorization}, form: form}, function (err, Response, body) {
-            if (err) throw new Error(err);
+                const resolve = JSON.parse(body);
 
-            const resolve = JSON.parse(body);
+                // 컴파일 에러가 있을경우 예외처리
+                if (resolve.result != 'success') {
 
-            // 컴파일 에러가 있을경우 예외처리
-            if (resolve.result != 'success') {
+                    resolveInfo.resolveData.result = 'compile error',
+                        resolveInfo.resolveData.compileName = resolve.name;
 
-                resolveInfo.resolveData.result = 'compile error',
-                resolveInfo.resolveData.compileName = resolve.name;
+                    solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
 
-                solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
+                    res.status(409).json({
+                        result: 'compile error',
+                        message: resolve.result
+                    });
+                    return;
+                }
 
-                res.status(409).json({
-                    result: 'compile error',
-                    message: resolve.result
+                const solutionApiUrl = 'http://121.186.23.245:9989/code/'+ resolve.name;
+
+                /*
+                 두번쨰 예제가 있을 경우, 두번째 예제로 정답을 체크
+                 */
+                let example;
+
+                if (req.body.mode) {
+                    example = {
+                        input : problem.problemData.inputExample,
+                        output : problem.problemData.outputExample
+                    };
+                } else {
+                    example = {
+                        input : problem.problemData.inputExample2 ? problem.problemData.inputExample2 : problem.problemData.inputExample,
+                        output : problem.problemData.outputExample2 ? problem.problemData.outputExample2 : problem.problemData.outputExample
+                    };
+                }
+
+                let url = example.input ? solutionApiUrl +'/'+ example.input : solutionApiUrl;
+
+                callback({
+                    form : form,
+                    compileBody : resolve,
+                    example : example,
+                    score : problem.score,
+                    type : problem.type,
+                    url : url
                 });
-                return;
-            }
 
-            const solutionApiUrl = 'http://121.186.23.245:9989/code/'+ resolve.name;
+            });
+        };
 
-            /*
-                두번쨰 예제가 있을 경우, 두번째 예제로 정답을 체크
-             */
-            let example;
 
-            if (req.body.mode) {
-                example = {
-                    input : problem.problemData.inputExample,
-                    output : problem.problemData.outputExample
-                };
-            } else {
-                example = {
-                    input : problem.problemData.inputExample2 ? problem.problemData.inputExample2 : problem.problemData.inputExample,
-                    output : problem.problemData.outputExample2 ? problem.problemData.outputExample2 : problem.problemData.outputExample
-                };
-            }
+        // 실행 및 결과 함수
+        const setRequest = problem => {
+            // 정답일 경우 예외 처리
+            request.get({url : 'https://algorithm.seoulit.kr/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
+                const bodyJson = JSON.parse(body || null);
+                if (bodyJson.result) {
+                    res.status(409).json({
+                        result : 'error',
+                        message : '이미 정답을 맞춘 문제입니다.'
+                    });
+                } else {
+                    compileRequest(problem, form, function (data) {
+                        // 컴파일 한 파일을 실행후 결과 확인
+                        request.get({url: data.url, header: {'Authorization': req.headers.authorization}}, function (err, response, body) {
+                            if (err) {
+                                res.status(409).json({
+                                    result: 'error',
+                                    message: err
+                                });
+                                return;
+                            };
 
-            let url = example.input ? solutionApiUrl +'/'+ example.input : solutionApiUrl;
+                            // if (body.code.indexOf("ECONNRESET") != -1) throw new Error("한글에러");
 
-            callback({
-                form : form,
-                compileBody : resolve,
-                example : example,
-                score : problem.score,
-                type : problem.type,
-                url : url
+                            // 제대로 값이 불러와지지 않았다면 null
+                            const getResolve = JSON.parse(body || null);
+
+
+                            // not found 예외 처리
+                            if (getResolve.result.indexOf("not found") != -1) {
+                                res.status(409).json({
+                                    result: 'error',
+                                    message: 'compile error'
+                                });
+                                return;
+                            };
+
+
+                            // 제출 하지 않고, 결과만 요청
+                            if (req.body.mode) {
+                                res.json({
+                                    result: getResolve.result
+                                });
+                                return;
+                            };
+
+                            /*
+                             정답 체크 후 응답
+                             */
+                            let result;
+
+                            if (getResolve.result == data.example.output) {
+
+                                result = 'success';
+
+                                userController.scoreUpdate(form.userId, data.score, problem.type);
+
+                                res.json({
+                                    result: result
+                                });
+                            } else {
+
+                                result = 'fail';
+
+                                res.json({
+                                    result: result
+                                });
+                            }
+
+                            let resolveInfo = {
+                                userId : form.userId,
+                                resolveData : {
+                                    language: form.lang,
+                                    problemNum: form.problemNum,
+                                    code: form.inputCode,
+                                    result: result,
+                                    compileName: data.compileBody.name,
+                                    date: new Date(),
+                                    memory: 0,
+                                    time: 0
+                                }
+                            };
+
+                            // 디비에 결과 저장
+                            solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
+
+                        });
+                    })
+                }
             });
 
-        });
-    };
+
+        };
+
+        const onError = error => {
+            res.status(409).json({
+                result: 'error',
+                message: error.message
+            });
+        };
 
 
-    // 실행 및 결과 함수
-    const setRequest = problem => {
-        // 정답일 경우 예외 처리
-        request.get({url : 'https://algorithm.seoulit.kr/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
-            const bodyJson = JSON.parse(body || null);
-            if (bodyJson.result) {
-                res.status(409).json({
-                    result : 'error',
-                    message : '이미 정답을 맞춘 문제입니다.'
-                });
-            } else {
-                compileRequest(problem, form, function (data) {
-                    // 컴파일 한 파일을 실행후 결과 확인
-                    request.get({url: data.url, header: {'Authorization': req.headers.authorization}}, function (err, response, body) {
-                        if (err) {
-                            res.status(409).json({
-                                result: 'error',
-                                message: err
-                            });
-                            return;
-                        };
+        userController.findOneByUserId(req.user.userId)
+            .then(check)
+            .then(validation)
+            .then(earlyData)
+            .then(security)
+            // .then(compileRequest)  키지마세
+            .then(setRequest)
+            .catch(onError);
 
-                        // if (body.code.indexOf("ECONNRESET") != -1) throw new Error("한글에러");
-
-                        // 제대로 값이 불러와지지 않았다면 null
-                        const getResolve = JSON.parse(body || null);
-
-
-                        // not found 예외 처리
-                        if (getResolve.result.indexOf("not found") != -1) {
-                            res.status(409).json({
-                                result: 'error',
-                                message: 'compile error'
-                            });
-                            return;
-                        };
-
-
-                        // 제출 하지 않고, 결과만 요청
-                        if (req.body.mode) {
-                            res.json({
-                                result: getResolve.result
-                            });
-                            return;
-                        };
-
-                        /*
-                            정답 체크 후 응답
-                         */
-                        let result;
-
-                        if (getResolve.result == data.example.output) {
-
-                            result = 'success';
-
-                            userController.scoreUpdate(form.userId, data.score, problem.type);
-
-                            res.json({
-                                result: result
-                            });
-                        } else {
-
-                            result = 'fail';
-
-                            res.json({
-                                result: result
-                            });
-                        }
-
-                        let resolveInfo = {
-                            userId : form.userId,
-                            resolveData : {
-                                language: form.lang,
-                                problemNum: form.problemNum,
-                                code: form.inputCode,
-                                result: result,
-                                compileName: data.compileBody.name,
-                                date: new Date(),
-                                memory: 0,
-                                time: 0
-                            }
-                        };
-
-                        // 디비에 결과 저장
-                        solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
-
-                    });
-                })
-            }
-        });
-
-
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result: 'error',
-            message: error.message
-        });
+        return problem;
     };
 
     problemController.findOneByProblem(form.problemNum)
-        .then(contest)
-        .then(validation)
-        .then(earlyData)
-        .then(security)
-        // .then(compileRequest)  키지마세
-        .then(setRequest)
-        .catch(onError);
-
+        .then(contest);
 
 });
 

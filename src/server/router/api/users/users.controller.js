@@ -46,10 +46,10 @@ User.scoreUpdate = (userId,score,type) => {
     User.updateOne({userId: userId, type: type}, {$inc :{score: score}},false,function(err, result){})
 };
 
-User.contentUpdate = (bool) => {
-    if (bool) return User.update({contestAccount: false}, {contestAccount: true});
+User.contestUpdate = (bool) => {
+    if (bool) return User.update({contestAccount: false}, {$inc : {contestAccount: true}},{multi: true});
 
-    return User.update({contestAccount: true}, {contestAccount: false});
+    // return User.update({contestAccount: true}, {contestAccount: false});
 };
 
 /**
@@ -59,7 +59,7 @@ User.contentUpdate = (bool) => {
  */
 User.findAll = (auth) => {
     if (auth) return User.find({account: true})
-        .select('userId username studentCode score contestScore failRating').sort({rating:1});
+        .select('userId username studentCode score contestScore contestAccount failRating').sort({rating:1});
     return User.find({account: true})
         .select('username score contestScore').sort({rating:1});
 };
