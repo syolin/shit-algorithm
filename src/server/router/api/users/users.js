@@ -105,6 +105,27 @@ router.delete('/:id',auth.isAuthenticated('admin'), function (req, res) {
         .catch(onError);
 });
 
+router.get('/contest/:bool', auth.isAuthenticated('admin'), function (req, res) {
+
+    const respond = bool => {
+        res.json({
+            result: 'success',
+            message : bool
+        });
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    };
+
+    controller.contentUpdate(req.params.bool)
+        .then(respond)
+        .catch(onError);
+});
+
 /*
     GET /api/users/:id
     해당 유저 정보
@@ -134,7 +155,7 @@ router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
     controller.findOneByUserId(req.params.id)
         .then(validation)
         .then(respond)
-        .then(onError)
+        .catch(onError)
 });
 
 router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {

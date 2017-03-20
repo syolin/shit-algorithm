@@ -193,6 +193,14 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         }
     };
 
+    const contest = problem => {
+        const userData = userController.findOneByUserId(req.user.userId);
+
+        if (problem.type == "contest" && !userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+
+        return problem;
+    }
+
     const validation = problem => {
         if (!form.inputCode || !form.name || !form.lang || !form.userId || isNaN(form.problemNum)) throw new Error("validation error");
 
@@ -264,6 +272,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                 compileBody : resolve,
                 example : example,
                 score : problem.score,
+                type : problem.type,
                 url : url
             });
 
@@ -326,7 +335,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
                             result = 'success';
 
-                            userController.scoreUpdate(form.userId, data.score);
+                            userController.scoreUpdate(form.userId, data.score, problem.type);
 
                             res.json({
                                 result: result

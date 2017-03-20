@@ -30,8 +30,8 @@ Problem.create = (problemName, source, explanation, score, type, problemData) =>
  * 모든 문제 출력
  * @returns
  */
-Problem.findAll = () => {
-    return Problem.find()
+Problem.findAll = (type) => {
+    return Problem.find({type: type})
         .select('num problemName source score type').sort({num:1});
 }
 

@@ -42,8 +42,14 @@ User.accountTrue = userId => {
  * @param string userId
  * @param number score
  */
-User.scoreUpdate = (userId,score) => {
-    User.updateOne({userId: userId}, {$inc :{score: score}},false,function(err, result){})
+User.scoreUpdate = (userId,score,type) => {
+    User.updateOne({userId: userId, type: type}, {$inc :{score: score}},false,function(err, result){})
+};
+
+User.contentUpdate = (bool) => {
+    if (bool) return User.update({contestAccount: false}, {contestAccount: true});
+
+    return User.update({contestAccount: true}, {contestAccount: false});
 };
 
 /**
@@ -53,9 +59,9 @@ User.scoreUpdate = (userId,score) => {
  */
 User.findAll = (auth) => {
     if (auth) return User.find({account: true})
-        .select('userId username studentCode score failRating').sort({rating:1});
+        .select('userId username studentCode score contestScore failRating').sort({rating:1});
     return User.find({account: true})
-        .select('username score').sort({rating:1});
+        .select('username score contestScore').sort({rating:1});
 };
 
 
@@ -78,7 +84,7 @@ User.findOneByUserId = (userId) => {
  * @returns {boolean}
  */
 User.findSpecificUser = condition => {
-    if(condition == 'account') return User.find({account : false}).select('username userId studentCode account rating score');
+    if(condition == 'account') return User.find({account : false}).select('username userId studentCode account rating score contestScore');
 
     return false;
 }

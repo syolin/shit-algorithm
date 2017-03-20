@@ -34,6 +34,15 @@ const UserSchema = new Schema({
     failRating: {
         type:Number,
         default: 0
+    },
+    // 대회용
+    contestScore: {
+        type: Number,
+        default: 0
+    },
+    contestAccount: {
+        type: Boolean,
+        default: false
     }
 });
 

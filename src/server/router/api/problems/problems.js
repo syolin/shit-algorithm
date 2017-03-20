@@ -3,6 +3,7 @@ import xssFilters from 'xss-filters';
 import request from 'request';
 
 import controller from './problems.controoler';
+import userController from '../users/users.controller';
 
 import auth from '../../../modules/auth';
 
@@ -27,11 +28,43 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         });
     };
 
-    controller.findAll()
+    controller.findAll("normal")
         .then(respond)
         .catch(onError);
 });
 
+/**
+ * 대회용
+ */
+router.get('/contest',auth.isAuthenticated(), function (req, res) {
+
+    const contest = problems => {
+        const userData = userController.findOneByUserId(req.user.userId);
+
+        if (!userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+
+        return problems;
+    }
+
+    const respond = problems => {
+        res.json({
+            result: 'success',
+            problems : problems
+        });
+    };
+
+    const onError = error => {
+        res.status(409).json({
+            result : 'error',
+            message: error.message
+        });
+    };
+
+    controller.findAll("contest")
+        .then(contest)
+        .then(respond)
+        .catch(onError);
+});
 /*
     해당 문제 삭제
  */
@@ -70,6 +103,14 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
     해당 문제 출력
  */
 router.get('/:num',auth.isAuthenticated(), function (req, res) {
+
+    const contest = problem => {
+        const userData = userController.findOneByUserId(req.user.userId);
+
+        if (problem.type == "contest" && !userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+
+        return problem;
+    }
 
     const validation = index => {
         if (isNaN(req.params.num)) throw new Error("validation error");
