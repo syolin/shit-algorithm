@@ -52,9 +52,9 @@ User.scoreUpdate = (userId,score) => {
  * @returns {Aggregate|*|Query|Array.<T>}
  */
 User.findAll = (auth) => {
-    if (auth) return User.find()
+    if (auth) return User.find({account: true})
         .select('userId username studentCode score failRating').sort({rating:1});
-    return User.find()
+    return User.find({account: true})
         .select('username score').sort({rating:1});
 };
 
