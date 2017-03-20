@@ -137,11 +137,6 @@ router.get('/search/:id',auth.isAuthenticated('admin'), function (req, res) {
         .then(onError)
 });
 
-router.get('/id/:id', auth.isAuthenticated(), function (req, res) {
-    
-});
-
-
 router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {
     const respond = users => {
         res.json({
@@ -160,13 +155,6 @@ router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {
     controller.findSpecificUser('account')
         .then(respond)
         .catch(onError);
-});
-
-router.get('/mypage',auth.isAuthenticated(), function (req, res) {
-    res.json({
-        result: 'success',
-        user : req.user
-    });
 });
 
 router.get('/my-info',auth.isAuthenticated(), function (req, res) {

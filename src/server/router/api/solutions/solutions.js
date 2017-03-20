@@ -175,7 +175,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         inputCode : req.body.inputcode,
         name : req.body.name,
         lang : req.body.lang,
-        userId : req.body.userid,
+        userId : req.user.userId
         problemNum : req.body.problemnum
     };
 
