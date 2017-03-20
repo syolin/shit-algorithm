@@ -195,10 +195,8 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
     const contest = problem => {
         const userData = userController.findOneByUserId(req.user.userId);
-        console.log("3 : "+userData);
-
         if (problem.type == "contest" && !userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
-        console.log("4 : "+problem.type+" , "+userData.contestAccount);
+
         return problem;
     }
 
@@ -383,6 +381,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
     };
 
     problemController.findOneByProblem(form.problemNum)
+        .then(contest)
         .then(validation)
         .then(earlyData)
         .then(security)
