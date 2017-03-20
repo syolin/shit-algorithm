@@ -106,9 +106,9 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
     const contest = problem => {
         const userData = userController.findOneByUserId(req.user.userId);
-        console.log("1 : "+userData.contestAccount);
-        console.log("1.5 :"+JSON.parse(userData).contestAccount);
-        console.log("2 : "+problem.type+" , "+userData.contestAccount);
+        const test = JSON.parse(userData);
+
+        console.log("1 : "+userData.contestAccount,",",problem.type,",",test.contestAccount);
         if (problem.type == "contest" && !userData.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         return problem;
     }
