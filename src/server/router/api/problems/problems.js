@@ -15,7 +15,7 @@ const router = express.Router();
  */
 router.get('/',auth.isAuthenticated(), function (req, res) {
 
-    let value = req.user.rating == '3' ? true : false;
+    let value = req.user.rating == '3' ? false : true;
 
     const respond = problems => {
         res.json({
