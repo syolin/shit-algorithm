@@ -50,6 +50,7 @@ app.use('/problems/:num',express.static(path.join(__dirname, 'public')));
 app.use('/solution/:num',express.static(path.join(__dirname, 'public')));
 app.use('/rank',express.static(path.join(__dirname, 'public')));
 app.use('/admin',express.static(path.join(__dirname, 'public')));
+app.use('/mypage',express.static(path.join(__dirname, 'public')));
 
 
 const compiler = webpack(config);
