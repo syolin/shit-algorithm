@@ -1986,7 +1986,7 @@ exports.default = {
         timelimit: this.timeLimit,
         memorylimit: this.memoryLimit,
         score: this.score,
-        type: this.type
+        type: this.problemType
       }).then(function () {
         _this3.$swal({
           title: '수정 성공',
@@ -2125,15 +2125,33 @@ exports.default = {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('problems').then(function (res) {
         var i = 0;
+        console.log(res);
         while (i < res.data.problems.length) {
           _this7.items.push({
             num: res.data.problems[i].num,
             name: res.data.problems[i].problemName,
             source: res.data.problems[i].source
           });
-          _this7.lastNum = res.data.problems[i].num;
           i += 1;
         }
+        _this7.$http.get('problems/contest').then(function (resContest) {
+          var j = 0;
+          while (j < res.data.problems.length) {
+            _this7.items.push({
+              num: res.data.problems[j].num,
+              name: res.data.problems[j].problemName,
+              soiurce: res.data.problems[j].source
+            });
+            j += 1;
+          }
+          _this7.lastNum = res.data.problems[i].num + res.data.problems[j].num;
+        }).catch(function (err) {
+          _this7.$swal({
+            title: '문제 로드 실패',
+            text: err,
+            type: 'error'
+          });
+        });
         _this7.enteringProblemmanage = true;
       }).catch(function (err) {
         _this7.$swal({
@@ -2177,7 +2195,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   data: function data() {
@@ -2360,42 +2385,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
   name: 'parallax',
@@ -2465,8 +2454,36 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2478,19 +2495,43 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  name: 'monitor',
-  data: function data() {
-    return {};
-  },
-  created: function created() {},
-  mounted: function mounted() {
-    var _this = this;
+    name: 'monitor',
+    data: function data() {
+        return {};
+    },
+    created: function created() {},
+    mounted: function mounted() {
+        var _this = this;
 
-    this.$nextTick(function () {
-      _this.$store.commit('loadingOff');
-      _this.$Progress.finish();
-    });
-  }
+        this.$nextTick(function () {
+            _this.$store.commit('loadingOff');
+            _this.$Progress.finish();
+        });
+    },
+
+    methods: {
+        monitoring: function monitoring() {
+            var _this2 = this;
+
+            this.$http.get('solution').then(function (res) {
+                var i = 0;
+                while (i < res.data.resolves.length) {
+                    var data = res.data.resolves[i].resolveData.data.replace('T', ', ');
+                    _this2.monitorData.push({
+                        userid: res.data.resolves[i].userId,
+                        code: res.data.resolves[i].resolveData.code,
+                        date: data.substring(0, data.length - 8),
+                        lang: res.data.resolves[i].resolveData.language,
+                        memory: res.data.resolves[i].resolveData.memory,
+                        num: res.data.resolves[i].resolveData.problemNum,
+                        result: res.data.resolves[i].resolveData.result,
+                        time: res.data.resolves[i].resolveData.time
+                    });
+                    i += 1;
+                }
+            });
+        }
+    }
 };
 
 /***/ }),
@@ -2578,21 +2619,11 @@ exports.default = {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/my-info').then(function (resInfo) {
         _this2.username = resInfo.data.user.username;
-        _this2.studentcode = resInfo.data.user.studentcode;
+        _this2.studentcode = resInfo.data.user.studentCode;
         _this2.userid = resInfo.data.user.userId;
-        _this2.$http.get('users/search/' + _this2.userid).then(function (res) {
-          _this2.score = res.data.users.score;
-          _this2.entering = true;
-        }).catch(function (err) {
-          _this2.$swal({
-            title: '문제 정답 로드 실패',
-            text: err,
-            type: 'error'
-          }).then(function () {
-            location.href = '/';
-          });
-        });
-        _this2.$http.get('solution/resultsuccess/' + _this2.userid).then(function (res) {
+        _this2.score = resInfo.data.user.score;
+        _this2.$http.get('solution/resultsuccess').then(function (res) {
+          _this2.successCount = res.data.resolves.length;
           var i = res.data.resolves.length - 5;
           while (i < res.data.resolves.length) {
             var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
@@ -2603,6 +2634,7 @@ exports.default = {
             });
             i += 1;
           }
+          _this2.entering = true;
         }).catch(function (err) {
           _this2.$swal({
             title: '문제 결과 조회 실패',
@@ -3003,11 +3035,15 @@ exports.default = {
   name: 'index',
   data: function data() {
     return {
+      normal_problem: true,
+      contest_problem: false,
+      random_problem: false,
       test: 'test',
       items: [],
       loadState: true,
       entering: false,
-      lineheight: ''
+      lineheight: '',
+      changeLoad: false
     };
   },
   created: function created() {
@@ -3126,96 +3162,215 @@ exports.default = {
   },
 
   methods: {
+    clickNormal: function clickNormal() {
+      this.normal_problem = true;
+      this.contest_problem = false;
+      this.random_problem = false;
+      this.changeLoad = true;
+      this.loadList(this.changeLoad);
+    },
+    clickContest: function clickContest() {
+      this.normal_problem = false;
+      this.contest_problem = true;
+      this.random_problem = false;
+      this.changeLoad = true;
+      this.loadList(this.changeLoad);
+    },
     scrollUp: function scrollUp() {
       $('html, body').stop().animate({
         scrollTop: 0
       }, 500);
     },
     shuffle: function shuffle() {
+      this.normal_problem = false;
+      this.contest_problem = false;
+      this.random_problem = true;
       this.items = _.shuffle(this.items);
     },
-    loadList: function loadList() {
+    loadList: function loadList(changeLoad) {
       var _this3 = this;
 
       //문제 로드
-      this.$http.defaults.headers.common.Authorization = this.userToken;
-      this.$http.get('problems').then(function (res) {
+      if (changeLoad) {
+        i = 0;
+        end = 10;
+        this.lineheight = 0;
+        this.items = [];
+        this.loadState = true;
+      } else {
         i = end;
         end += 10;
-        if (i / 10 === parseInt(length / 10, 10)) {
-          end = length;
-          _this3.loadState = false;
-        } else if (end === length) {
-          _this3.loadState = false;
-        }
-        //문제 결과 로드
-        _this3.$http.defaults.headers.common.Authorization = _this3.userToken;
-        _this3.$http.get('solution').then(function (resRatio) {
-          //문제 개수 반복
-          while (i < end) {
-            var num = res.data.problems[i].num;
-            var name = res.data.problems[i].problemName;
-            var source = res.data.problems[i].source;
-            var score = res.data.problems[i].score;
-            var count = 0;
-            var success = 0;
-            var fail = 0;
-            var ratio = 0;
-            var j = 0;
-            //문제 결과 수 반복
-            while (j < resRatio.data.resolves.length) {
-              //문제 번호 === 문제 결과 번호
-              if (i === resRatio.data.resolves[j].resolveData.problemNum) {
-                //문제 결과 카운트
-                if (resRatio.data.resolves[j].resolveData.result === 'success') {
-                  success += 1;
-                } else {
-                  fail += 1;
-                }
-                count += 1;
-              }
-              j += 1;
-            }
-            //결과 수정
-            ratio = success / count;
-            if (isNaN(ratio)) {
-              ratio = 0 + ' %';
-            } else if (ratio === 0) {
-              ratio = 0 + ' %';
-            } else {
-              ratio = ratio.toString().substring(2, 4) + ' %';
-            }
-            _this3.lineheight = 55 * i;
-            _this3.items.push({
-              num: num,
-              name: name,
-              source: source,
-              score: score,
-              success: success,
-              fail: fail,
-              count: count,
-              ratio: ratio
-            });
-            i += 1;
+      }
+      this.$http.defaults.headers.common.Authorization = this.userToken;
+      if (this.contest_problem === true) {
+        //대회 문제
+        this.$http.get('problems/contest').then(function (res) {
+          length = res.data.problems.length;
+          if (i / 10 === parseInt(length / 10, 10)) {
+            end = length;
+            _this3.loadState = false;
+          } else if (end === length) {
+            _this3.loadState = false;
           }
+          //문제 결과 로드
+          _this3.$http.defaults.headers.common.Authorization = _this3.userToken;
+          _this3.$http.get('solution').then(function (resRatio) {
+            //문제 개수 반복
+            while (i < end) {
+              var num = res.data.problems[i].num;
+              var name = res.data.problems[i].problemName;
+              var source = res.data.problems[i].source;
+              var score = res.data.problems[i].score;
+              var count = 0;
+              var success = 0;
+              var fail = 0;
+              var ratio = 0;
+              var j = 0;
+              //문제 결과 수 반복
+              while (j < resRatio.data.resolves.length) {
+                //문제 번호 === 문제 결과 번호
+                if (i === resRatio.data.resolves[j].resolveData.problemNum) {
+                  //문제 결과 카운트
+                  if (resRatio.data.resolves[j].resolveData.result === 'success') {
+                    success += 1;
+                  } else {
+                    fail += 1;
+                  }
+                  count += 1;
+                }
+                j += 1;
+              }
+              //결과 수정
+              ratio = success / count;
+              if (isNaN(ratio)) {
+                ratio = 0 + ' %';
+              } else if (ratio === 0) {
+                ratio = 0 + ' %';
+              } else {
+                ratio = ratio.toString().substring(2, 4) + ' %';
+              }
+              console.log(i);
+              _this3.lineheight = 60 * (i + 1);
+              console.log(_this3.lineheight);
+              _this3.items.push({
+                num: num,
+                name: name,
+                source: source,
+                score: score,
+                success: success,
+                fail: fail,
+                count: count,
+                ratio: ratio
+              });
+              i += 1;
+            }
+          }).catch(function (err) {
+            console.log(err);
+            _this3.$swal({
+              title: '문제 기록 로드 실패',
+              text: err,
+              type: 'error'
+            }).then(function () {
+              location.href = '/';
+            });
+          });
         }).catch(function (err) {
+          if (err.response.data.message === '아직 오픈되지 않았습니다.') {
+            err = '대회기간이 아닙니다.';
+            _this3.$swal({
+              title: '문제 로드 실패',
+              text: err,
+              type: 'error'
+            }).then(function () {
+              return false;
+            });
+          }
           _this3.$swal({
-            title: '문제 기록 로드 실패',
+            title: '문제 로드 실패',
             text: err,
             type: 'error'
           }).then(function () {
             location.href = '/';
           });
         });
-      }).catch(function (err) {
-        _this3.$swal({
-          title: '문제 로드 실패',
-          text: err,
-          type: 'error'
-        }).then(function () {
-          location.href = '/';
+      } else {
+        //일반 문제
+        this.$http.get('problems').then(function (res) {
+          if (i / 10 === parseInt(length / 10, 10)) {
+            end = length;
+            _this3.loadState = false;
+          } else if (end === length) {
+            _this3.loadState = false;
+          }
+          //문제 결과 로드
+          _this3.$http.defaults.headers.common.Authorization = _this3.userToken;
+          _this3.$http.get('solution').then(function (resRatio) {
+            //문제 개수 반복
+            while (i < end) {
+              var num = res.data.problems[i].num;
+              var name = res.data.problems[i].problemName;
+              var source = res.data.problems[i].source;
+              var score = res.data.problems[i].score;
+              var count = 0;
+              var success = 0;
+              var fail = 0;
+              var ratio = 0;
+              var j = 0;
+              //문제 결과 수 반복
+              while (j < resRatio.data.resolves.length) {
+                //문제 번호 === 문제 결과 번호
+                if (i === resRatio.data.resolves[j].resolveData.problemNum) {
+                  //문제 결과 카운트
+                  if (resRatio.data.resolves[j].resolveData.result === 'success') {
+                    success += 1;
+                  } else {
+                    fail += 1;
+                  }
+                  count += 1;
+                }
+                j += 1;
+              }
+              //결과 수정
+              ratio = success / count;
+              if (isNaN(ratio)) {
+                ratio = 0 + ' %';
+              } else if (ratio === 0) {
+                ratio = 0 + ' %';
+              } else {
+                ratio = ratio.toString().substring(2, 4) + ' %';
+              }
+              _this3.lineheight = 55 * i;
+              _this3.items.push({
+                num: num,
+                name: name,
+                source: source,
+                score: score,
+                success: success,
+                fail: fail,
+                count: count,
+                ratio: ratio
+              });
+              i += 1;
+            }
+          }).catch(function (err) {
+            _this3.$swal({
+              title: '문제 기록 로드 실패',
+              text: err,
+              type: 'error'
+            }).then(function () {
+              location.href = '/';
+            });
+          });
+        }).catch(function (err) {
+          _this3.$swal({
+            title: '문제 로드 실패',
+            text: err,
+            type: 'error'
+          }).then(function () {
+            location.href = '/';
+          });
         });
-      });
+      }
     },
     result: function result(num) {
       var _this4 = this;
@@ -3226,9 +3381,6 @@ exports.default = {
           _this4.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
         } else {
           location.href = 'https://algorithm.seoulit.kr/problems/' + num;
-          //              this.$router.push({
-          //                path: `problems/${num}`,
-          //              });
         }
       }).catch(function (err) {
         _this4.$swal('결과 조회 실패', err, 'error');
@@ -3364,7 +3516,6 @@ exports.default = {
         return;
       }
       this.$http.post('solution', {
-        userid: this.userid,
         problemnum: this.items[0].num,
         inputcode: this.code,
         name: 'problem',
@@ -3392,7 +3543,6 @@ exports.default = {
         return;
       }
       this.$http.post('solution', {
-        userid: this.userid,
         problemnum: this.items[0].num,
         inputcode: this.code,
         name: 'problem',
@@ -3422,7 +3572,6 @@ exports.default = {
     }
   }
 }; //
-//
 //
 //
 //
@@ -3574,6 +3723,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var i = 0;
 var end = 10;
@@ -3587,7 +3737,10 @@ exports.default = {
       loadState: true,
       entering: false,
       ranker: [],
-      users: []
+      users: [],
+      normal_rank: true,
+      contest_rank: false,
+      rank: true
     };
   },
   beforeCreate: function beforeCreate() {
@@ -3609,7 +3762,8 @@ exports.default = {
           while (i < length) {
             _this.data.push({
               name: res.data.users[i].username,
-              score: res.data.users[i].score
+              score: res.data.users[i].score,
+              contestScore: res.data.users[i].contestScore
             });
             i += 1;
           }
@@ -3672,39 +3826,130 @@ exports.default = {
   },
 
   methods: {
+    clickNormal: function clickNormal() {
+      this.normal_rank = true;
+      this.contest_rank = false;
+      this.changeLoad = true;
+      this.loadList(this.changeLoad);
+    },
+    clickContest: function clickContest() {
+      this.normal_rank = false;
+      this.contest_rank = true;
+      this.changeLoad = true;
+      this.loadList(this.changeLoad);
+    },
     scrollUp: function scrollUp() {
       $('html, body').stop().animate({
         scrollTop: 0
       }, 500);
     },
-    loadList: function loadList() {
+    loadList: function loadList(changeLoad) {
       var _this3 = this;
 
-      this.$http.get('users').then(function (res) {
+      if (changeLoad) {
+        i = 0;
+        end = 10;
+        this.lineheight = 0;
+        this.rank = false;
+        this.ranker = [];
+        this.users = [];
+        this.loadState = true;
+      } else {
         i = end;
         end += 10;
-        if (i / 10 === parseInt(length / 10, 10)) {
-          end = length;
-          _this3.loadState = false;
-        } else if (end === length) {
-          _this3.loadState = false;
-        }
-        while (i < end) {
-          _this3.users.push({
-            name: _this3.data[i].name,
-            score: _this3.data[i].score
+      }
+      if (this.contest_rank === true) {
+        // 대회 랭크
+        this.$http.get('users').then(function (res) {
+          console.log(_this3.data);
+          if (i / 10 === parseInt(length / 10, 10)) {
+            end = length;
+            _this3.loadState = false;
+          } else if (end === length) {
+            _this3.loadState = false;
+          }
+          var sort = 'contestScore';
+          _this3.data.sort(function (a, b) {
+            return b[sort] - a[sort];
           });
-          i += 1;
-        }
-      }).catch(function (err) {
-        _this3.$swal({
-          title: '유저 로드 실패',
-          text: err,
-          type: 'error'
-        }).then(function () {
-          location.href = '/';
+          while (i < end) {
+            var score = 0;
+            if (_this3.data[i].contestScore === 0) {
+              score = 0;
+            } else {
+              score = _this3.data[i].contestScore;
+            }
+            _this3.users.push({
+              name: _this3.data[i].name,
+              score: score
+            });
+            i += 1;
+          }
+
+          i = 0;
+          while (i < 3) {
+            _this3.ranker.push({
+              name: _this3.users[i].name,
+              score: _this3.users[i].score
+            });
+            i += 1;
+            if (i === 3) {
+              _this3.rank = true;
+            }
+          }
+        }).catch(function (err) {
+          _this3.$swal({
+            title: '유저 로드 실패',
+            text: err,
+            type: 'error'
+          }).then(function () {
+            location.href = '/';
+          });
         });
-      });
+      } else {
+        // 일반 랭크
+        this.$http.get('users').then(function (res) {
+          if (i / 10 === parseInt(length / 10, 10)) {
+            end = length;
+            _this3.loadState = false;
+          } else if (end === length) {
+            _this3.loadState = false;
+          }
+          var sort = 'score';
+          _this3.data.sort(function (a, b) {
+            return b[sort] - a[sort];
+          });
+          while (i < end) {
+            console.log(i);
+            console.log(end);
+            _this3.users.push({
+              name: _this3.data[i].name,
+              score: _this3.data[i].score
+            });
+            i += 1;
+          }
+
+          i = 0;
+          while (i < 3) {
+            _this3.ranker.push({
+              name: _this3.users[i].name,
+              score: _this3.users[i].score
+            });
+            i += 1;
+            if (i === 3) {
+              _this3.rank = true;
+            }
+          }
+        }).catch(function (err) {
+          _this3.$swal({
+            title: '유저 로드 실패',
+            text: err,
+            type: 'error'
+          }).then(function () {
+            location.href = '/';
+          });
+        });
+      }
     }
   }
 };
@@ -4673,7 +4918,42 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "button"
-  })])
+  }, [_c('div', {
+    staticClass: "wrapper"
+  }, [_c('h1', [_vm._v("Menu")]), _vm._v(" "), _c('a', {
+    staticClass: "menu-btn",
+    attrs: {
+      "onclick": "toggleMenu()"
+    }
+  }), _vm._v(" "), _c('section', {
+    staticClass: "one",
+    attrs: {
+      "onclick": "goToPage(0)"
+    }
+  }, [_c('h1', [_vm._v("Profile")])]), _vm._v(" "), _c('section', {
+    staticClass: "two",
+    attrs: {
+      "onclick": "goToPage(1)"
+    }
+  }, [_c('h1', [_vm._v("Friends")])]), _vm._v(" "), _c('section', {
+    staticClass: "three",
+    attrs: {
+      "onclick": "goToPage(2)"
+    }
+  }, [_c('h1', [_vm._v("Messages")])]), _vm._v(" "), _c('section', {
+    staticClass: "four",
+    attrs: {
+      "onclick": "goToPage(3)"
+    }
+  }, [_c('h1', [_vm._v("Settings")]), _vm._v(" "), _c('div', {
+    staticClass: "four-set"
+  }, [_c('div', {
+    staticClass: "fo-shit"
+  }, [_c('div', {
+    staticClass: "foleft"
+  }, [_c('p', [_vm._v("아이디")]), _vm._v(" "), _c('p', [_vm._v("학번")]), _vm._v(" "), _c('p', [_vm._v("이름")])]), _vm._v(" "), _c('div', {
+    staticClass: "foright"
+  }, [_c('p', [_vm._v("코드")]), _vm._v(" "), _c('p', [_vm._v("제출 결과")])])])])])])])])
 }]}
 
 /***/ }),
@@ -4695,23 +4975,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "rank1"
   }, [_vm._m(1), _vm._v(" "), _c('p', {
     staticClass: "rant1"
-  }, [_vm._v("2등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+  }, [_vm._v("2등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
     staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[1].name))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.ranker[1].name))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "rank2"
   }, [_vm._m(2), _vm._v(" "), _c('p', {
     staticClass: "rant1"
-  }, [_vm._v("1등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+  }, [_vm._v("1등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
     staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[0].name))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.ranker[0].name))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "rank3"
   }, [_vm._m(3), _vm._v(" "), _c('p', {
     staticClass: "rant1"
-  }, [_vm._v("3등")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+  }, [_vm._v("3등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
     staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[2].name))])])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.ranker[2].name))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "ui top attached tabular menu"
+  }, [_c('p', {
+    staticClass: "item",
+    class: {
+      active: _vm.normal_rank
+    },
+    attrs: {
+      "data-tab": "first"
+    },
+    on: {
+      "click": _vm.clickNormal
+    }
+  }, [_vm._v("순위")]), _vm._v(" "), _c('p', {
+    staticClass: "item",
+    class: {
+      active: _vm.contest_rank
+    },
+    attrs: {
+      "data-tab": "first"
+    },
+    on: {
+      "click": _vm.clickContest
+    }
+  }, [_vm._v("대회 순위")])]), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active"
-  }, [_vm._m(5), _vm._v(" "), _c('transition-group', {
+  }, [_vm._m(4), _vm._v(" "), _c('transition-group', {
     attrs: {
       "name": "flip-list, ranklist",
       "tag": "ul"
@@ -4751,7 +5055,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
-      "click": _vm.loadList
+      "click": function($event) {
+        _vm.loadList(false)
+      }
     }
   }, [_c('i', {
     staticClass: "large chevron down icon"
@@ -4789,16 +5095,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(93)
     }
   })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "ui top attached tabular menu"
-  }, [_c('p', {
-    staticClass: "item active",
-    attrs: {
-      "data-tab": "first",
-      "id": "item"
-    }
-  }, [_vm._v("순위")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "ui items"
@@ -5253,6 +5549,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "example"
   }, [_c('p', [_vm._v("문제이름 :" + _vm._s(_vm.problemName))]), _vm._v(" "), _c('p', [_vm._v("소스 : " + _vm._s(_vm.source))]), _vm._v(" "), _c('p', [_vm._v("설명 : " + _vm._s(_vm.explanation))]), _vm._v(" "), _c('p', [_vm._v("점수 : " + _vm._s(_vm.score))]), _vm._v(" "), _c('p', [_vm._v("입력예제 : " + _vm._s(_vm.inputExample))]), _vm._v(" "), _c('p', [_vm._v("입력예제2 : " + _vm._s(_vm.inputExample2))]), _vm._v(" "), _c('p', [_vm._v("출력예제 : " + _vm._s(_vm.outputExample))]), _vm._v(" "), _c('p', [_vm._v("출력예제2 : " + _vm._s(_vm.outputExample2))]), _vm._v(" "), _c('p', [_vm._v("시간 : " + _vm._s(_vm.timeLimit))]), _vm._v(" "), _c('p', [_vm._v("메모리 : " + _vm._s(_vm.memoryLimit))])]), _vm._v(" "), _c('button', {
+    staticClass: "addProblemButton",
     on: {
       "click": _vm.add
     }
@@ -5359,7 +5656,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "for": "explanation"
       }
-    }, [_vm._v("explanation : ")]), _c('input', {
+    }, [_vm._v("explanation : ")]), _c('textarea', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -5619,25 +5916,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "ui top attached tabular menu"
   }, [_c('a', {
-    staticClass: "item active",
+    staticClass: "item ",
+    class: {
+      active: _vm.normal_problem
+    },
     attrs: {
       "data-tab": "first",
       "id": "item"
+    },
+    on: {
+      "click": _vm.clickNormal
     }
   }, [_vm._v("일반 문제")]), _vm._v(" "), _c('a', {
     staticClass: "item",
+    class: {
+      active: _vm.contest_problem
+    },
     attrs: {
       "data-tab": "third"
+    },
+    on: {
+      "click": _vm.clickContest
     }
   }, [_vm._v("대회 문제")]), _vm._v(" "), _c('a', {
     staticClass: "item",
+    class: {
+      active: _vm.random_problem
+    },
     attrs: {
       "data-tab": "fourth"
     },
     on: {
       "click": _vm.shuffle
     }
-  }, [_vm._v("랜덤문제")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("문제 섞기")])]), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active",
     style: ({
       'max-height': _vm.lineheight + 'px'
@@ -5720,7 +6032,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
     staticClass: "ui button",
     on: {
-      "click": _vm.loadList
+      "click": function($event) {
+        _vm.loadList(false)
+      }
     }
   }, [_c('i', {
     staticClass: "large chevron down icon"
@@ -5809,7 +6123,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return (_vm.enteringProblemresult) ? _c('div', {
     staticClass: "probleminput"
   }, [_c('ul', [_vm._l((_vm.problemData), function(data) {
-    return _c('li', [_c('p', [_vm._v("ID : " + _vm._s(data.userid))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Num : " + _vm._s(data.num))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("language : " + _vm._s(data.lang))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Date : " + _vm._s(data.date))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Code : " + _vm._s(data.code))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Result : " + _vm._s(data.result))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Time : " + _vm._s(data.time))]), _c('br'), _vm._v(" "), _c('p', [_vm._v("Memory : " + _vm._s(data.memory))]), _c('br'), _vm._v(" "), _c('br')])
+    return _c('li', [_c('p', [_vm._v("ID : " + _vm._s(data.userid))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Num : " + _vm._s(data.num))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("language : " + _vm._s(data.lang))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Date : " + _vm._s(data.date))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Code : " + _vm._s(data.code))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Result : " + _vm._s(data.result))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Time : " + _vm._s(data.time))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Memory : " + _vm._s(data.memory))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br')])
   }), _vm._v(" "), _c('br')], 2)]) : _vm._e()
 },staticRenderFns: []}
 
@@ -5858,13 +6172,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('p', [_vm._v("출력 값 예제")]), _vm._v(" "), _c('pre', [_vm._v(_vm._s(item.outputex))])])]), _vm._v(" "), _c('div', {
       staticClass: "solve_main"
     }, [_c('div', {
-      staticClass: "solve_input",
-      on: {
-        "keydown": function($event) {
-          if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
-          _vm.enter($event)
-        }
-      }
+      staticClass: "solve_input"
     }, [_c('monaco-editor', {
       staticClass: "monacoEditor",
       attrs: {
@@ -6044,7 +6352,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "header"
   }, [_vm._v("내 활동")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "description"
-  }, [_c('p', [_vm._v("내 점수 : "), _c('span', [_vm._v(_vm._s(_vm.score))])]), _vm._v(" "), _c('p', [_vm._v("문제 푼 수 : "), _c('span', [_vm._v(_vm._s(_vm.successCount))])])])])]), _vm._v(" "), _c('div', {
+  }, [_c('p', [_vm._v("내 점수 : "), _c('span', [_vm._v(_vm._s(_vm.score) + " 점")])]), _vm._v(" "), _c('p', [_vm._v("문제 푼 수 : "), _c('span', [_vm._v(_vm._s(_vm.successCount) + " 개")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "card"
   }, [_c('div', {
     staticClass: "content"
@@ -6842,4 +7150,4 @@ new _vue2.default({
 
 /***/ })
 ]),[453]);
-//# sourceMappingURL=main.59f0955fc1a7adc02165.js.map
+//# sourceMappingURL=main.443879e78c4fb1859975.js.map
