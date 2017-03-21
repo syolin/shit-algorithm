@@ -107,23 +107,11 @@ router.delete('/:id',auth.isAuthenticated('admin'), function (req, res) {
 
 router.get('/contest/:bool', auth.isAuthenticated('admin'), function (req, res) {
 
-    const respond = bool => {
-        res.json({
-            result: 'success',
-            message : bool
-        });
-    };
+    controller.contestUpdate(req.params.bool);
 
-    const onError = error => {
-        res.status(409).json({
-            result: 'error',
-            message: error.message
-        });
-    };
-
-    controller.contestUpdate(req.params.bool)
-        .then(respond)
-        .catch(onError);
+    res.json({
+        result: 'success'
+    });
 });
 
 /*

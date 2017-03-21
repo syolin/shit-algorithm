@@ -42,12 +42,11 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
 router.get('/contest',auth.isAuthenticated(), function (req, res) {
 
     const contest = problems => {
-        const check = (user) => {
-            console.log("1 : "+user.contestAccount);
+        const check = user => {
             if (!user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         };
 
-        const respond = problems => {
+        const respond = () => {
             res.json({
                 result: 'success',
                 problems : problems
@@ -113,7 +112,7 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
     const contest = problem => {
 
-        const check = (user) => {
+        const check = user => {
             console.log("1 : "+user.contestAccount,",",problem.type);
             if (problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         };
@@ -124,7 +123,7 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
             return index;
         };
 
-        const respond = problem => {
+        const respond = user => {
             res.json({
                 result: 'success',
                 problem: problem
@@ -150,38 +149,6 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
     controller.findOneByProblem(req.params.num)
         .then(contest);
-});
-
-
-/*
-    테스트용
- */
-router.get('/updatesort/:num', auth.isAuthenticated('admin'), function (req, res) {
-
-    const validation = index => {
-        if (isNaN(req.params.num)) throw new Error("validation error");
-
-        return index;
-    };
-
-    const respond = problem => {
-        res.json({
-            result: 'success',
-            problem: problem
-        });
-    };
-
-    const onError = error => {
-        res.status(409).json({
-            result : 'error',
-            message : error.message
-        });
-    };
-
-    controller.updateWantNum(req.params.num)
-        .then(validation)
-        .then(respond)
-        .catch(onError);
 });
 
 /*
@@ -277,7 +244,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
         return;
     };
 
-    const respond = problem => {
+    const respond = () => {
         res.json({
             result: 'success',
         });

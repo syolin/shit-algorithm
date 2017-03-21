@@ -33,7 +33,7 @@ Problem.create = (problemName, source, explanation, score, type, problemData) =>
 Problem.findAll = (type, auth) => {
     if (auth) return Problem.find({type: type}).select('num problemName source score type').sort({num:1});
 
-    return Problem.find().select('num problemName source score type').sort({num:1});
+    return Problem.find({type: type}).select('num problemName source score type').sort({num:1});
 }
 
 /**

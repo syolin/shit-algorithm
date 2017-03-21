@@ -46,10 +46,12 @@ User.scoreUpdate = (userId,score,type) => {
     User.updateOne({userId: userId, type: type}, {$inc :{score: score}},false,function(err, result){})
 };
 
+/**
+ * 대회 온 오프
+ * @param boolean bool
+ */
 User.contestUpdate = (bool) => {
-    if (bool) return User.update({contestAccount: false}, {$inc : {contestAccount: true}},{multi: true});
-
-    // return User.update({contestAccount: true}, {contestAccount: false});
+    return User.update({}, {$set: {contestAccount: bool}}, {multi: true},function(err, result){});
 };
 
 /**

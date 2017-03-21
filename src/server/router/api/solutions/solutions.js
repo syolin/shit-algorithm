@@ -194,31 +194,26 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
     };
 
     const contest = problem => {
-        const check = (user) => {
-            console.log("1 : "+user.contestAccount,",",problem.type);
+        const check = user => {
             if (problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         };
 
-        const validation = problem => {
+        const validation = () => {
             if (!form.inputCode || !form.name || !form.lang || !form.userId || isNaN(form.problemNum)) throw new Error("validation error");
-
-            return problem;
         };
 
         // Not Found 예외 처리
-        const earlyData = problem => {
+        const earlyData = () => {
             if (!problem) throw new Error("해당 문제가 없습니다.");
-
-            return problem;
         };
 
         // 코드 제출 결과에 파일 또는 시스템 함수를 배제하기 위한 예외 처리
-        const security = problem => {
+        const security = () => {
             const commands = ['system','fcloseall','fdopen','fgetc','fgetchar','fgetpos','fopen','fputc','fputchar','fread','freopen','fseek','fsetpos','ftell','fwrite','getc','getw','putw','rename','rewind','tmpfile','tmpnam','unlink'];
-            // for (let command in commands) {
-            //     if (form.inputCode.indexOf(command) != -1) throw new Error("런타임 에러");
-            // }
-            return problem;
+            for (let command in commands) {
+                console.log("commnd : ",commands[command]);
+                if (form.inputCode.indexOf(commands[command]) != -1) throw new Error("runtime error");
+            }
         };
 
         // 컴파일 콜백 함수
@@ -279,7 +274,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
 
         // 실행 및 결과 함수
-        const setRequest = problem => {
+        const setRequest = () => {
             // 정답일 경우 예외 처리
             request.get({url : 'https://algorithm.seoulit.kr/api/solution/findsuccess/'+form.userId+'/'+problem.num, headers: {'Authorization': req.headers.authorization}}, function (err, Response, body) {
                 const bodyJson = JSON.parse(body || null);
