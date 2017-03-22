@@ -43,7 +43,7 @@ router.get('/contest',auth.isAuthenticated(), function (req, res) {
 
     const contest = problems => {
         const check = user => {
-            if (!user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+            if (user.rating != 3 && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         };
 
         const respond = () => {
@@ -114,7 +114,7 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
         const check = user => {
             console.log("1 : "+user.contestAccount,",",problem.type);
-            if (problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+            if ( user.rating != 3 && problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         };
 
         const validation = index => {
