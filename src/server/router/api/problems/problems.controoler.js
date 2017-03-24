@@ -39,7 +39,11 @@ Problem.findAll = (type) => {
  * @param number num
  * @returns {Promise}
  */
-Problem.findOneByProblem = num => {
+Problem.findOneByProblem = (num, auth) => {
+    if (auth) return Problem.findOne({
+        num
+    }).exec();
+
     return Problem.findOne({
         num
     }).select('num problemName source explanation problemData.inputExample problemData.outputExample problemData.timeLimit problemData.memoryLimit type score').exec();

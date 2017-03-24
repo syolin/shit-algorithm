@@ -108,6 +108,8 @@ router.delete('/:num',auth.isAuthenticated('admin'), function (req, res) {
  */
 router.get('/:num',auth.isAuthenticated(), function (req, res) {
 
+    let value = req.user.rating == '3' ? true : false;
+
     const contest = problem => {
 
         const check = user => {
@@ -145,14 +147,14 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
     };
 
 
-    controller.findOneByProblem(req.params.num)
+    controller.findOneByProblem(req.params.num, value)
         .then(contest);
 });
 
 /*
     해당 문제 수정
  */
-router.put('/',auth.isAuthenticated(), function (req, res) {
+router.put('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const form = {
         problemNum : body.problemnum,
