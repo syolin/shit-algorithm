@@ -42,7 +42,7 @@ Problem.findAll = (type) => {
 Problem.findOneByProblem = num => {
     return Problem.findOne({
         num
-    }).exec();
+    }).select('num problemName source explanation problemData.inputExample problemData.outputExample problemData.timeLimit problemData.memoryLimit type score').exec();
 };
 
 /**
