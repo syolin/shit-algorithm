@@ -54,49 +54,53 @@ var _vue = __webpack_require__(63);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(450);
+var _vueRouter = __webpack_require__(454);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _index = __webpack_require__(408);
+var _index = __webpack_require__(410);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _admin = __webpack_require__(402);
+var _admin = __webpack_require__(404);
 
 var _admin2 = _interopRequireDefault(_admin);
 
-var _problems = __webpack_require__(416);
+var _problems = __webpack_require__(419);
 
 var _problems2 = _interopRequireDefault(_problems);
 
-var _rank = __webpack_require__(418);
+var _rank = __webpack_require__(421);
 
 var _rank2 = _interopRequireDefault(_rank);
 
-var _solve = __webpack_require__(417);
+var _solve = __webpack_require__(420);
 
 var _solve2 = _interopRequireDefault(_solve);
 
-var _mypage = __webpack_require__(412);
+var _mypage = __webpack_require__(415);
 
 var _mypage2 = _interopRequireDefault(_mypage);
 
-var _notice = __webpack_require__(414);
+var _notice = __webpack_require__(417);
 
 var _notice2 = _interopRequireDefault(_notice);
 
-var _opennotice = __webpack_require__(415);
+var _opennotice = __webpack_require__(418);
 
 var _opennotice2 = _interopRequireDefault(_opennotice);
 
-var _notfound = __webpack_require__(413);
+var _notfound = __webpack_require__(416);
 
 var _notfound2 = _interopRequireDefault(_notfound);
 
-var _monitor = __webpack_require__(411);
+var _monitor = __webpack_require__(414);
 
 var _monitor2 = _interopRequireDefault(_monitor);
+
+var _contestintro = __webpack_require__(413);
+
+var _contestintro2 = _interopRequireDefault(_contestintro);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -136,6 +140,10 @@ exports.default = new _vueRouter2.default({
     path: '/notice/:num',
     name: 'openNotice',
     component: _opennotice2.default
+  }, {
+    path: '/contestIntro',
+    name: 'contestIntro',
+    component: _contestintro2.default
   }, {
     path: '/404',
     name: 'notfound',
@@ -217,14 +225,14 @@ exports.default = store;
 
 
 /* styles */
-__webpack_require__(391)
-__webpack_require__(390)
+__webpack_require__(393)
+__webpack_require__(392)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(166),
   /* template */
-  __webpack_require__(444),
+  __webpack_require__(448),
   /* scopeId */
   "data-v-88f23c12",
   /* cssModules */
@@ -377,7 +385,7 @@ Object.defineProperty(exports, "__esModule", {
 var browser = typeof window !== 'undefined';
 if (browser) {
   window.Swiper = __webpack_require__(127);
-  __webpack_require__(368);
+  __webpack_require__(369);
 }
 exports.default = {
   name: 'swiper',
@@ -426,8 +434,8 @@ exports.default = {
 //
 //
 
-var debounce = __webpack_require__(396);
-var monacoLoader = __webpack_require__(448);
+var debounce = __webpack_require__(398);
+var monacoLoader = __webpack_require__(452);
 module.exports = {
 
   props: {
@@ -849,15 +857,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
-var _vueRecaptcha = __webpack_require__(449);
+var _vueRecaptcha = __webpack_require__(453);
 
 var _vueRecaptcha2 = _interopRequireDefault(_vueRecaptcha);
 
-var _BounceLoader = __webpack_require__(423);
+var _BounceLoader = __webpack_require__(426);
 
 var _BounceLoader2 = _interopRequireDefault(_BounceLoader);
 
@@ -917,6 +922,7 @@ exports.default = {
   },
 
   computed: _extends({}, (0, _vuex.mapGetters)(['getterLoadingState']), {
+    //로딩 스피너 상태 값
     loadingState: function loadingState() {
       return this.$store.state.loadingState;
     }
@@ -924,17 +930,22 @@ exports.default = {
   beforeCreate: function beforeCreate() {
     var _this = this;
 
+    //프로그레스바 시작
     this.$Progress.start();
+    //메인은 로딩스피너가 생기지 않음
     if (this.$route.name !== 'index') {
       this.$store.commit('loadingOn');
     }
+    //기본 URL 설정
     var ROOT_URL = 'https://algorithm.seoulit.kr/api';
     this.$http.defaults.baseURL = ROOT_URL;
-    //      토큰 테스트
+    //쿠키에 저장되있는 토큰을 가져옴
     this.userToken = this.$cookie.get('userToken');
+    //쿠키에 토큰이 저장되있는 경우
     if (this.userToken != null) {
-      this.userToken = this.$cookie.get('userToken');
+      //헤더에 토큰을 추가
       this.$http.defaults.headers.common.Authorization = this.userToken;
+      //쿠키에서 받은 토큰값으로 정보를 받아와 로그인 상태를 유지
       this.$http.get('users/my-info').then(function (resInfo) {
         _this.userRating = resInfo.data.user.rating;
         _this.username = resInfo.data.user.username;
@@ -947,6 +958,7 @@ exports.default = {
         });
       });
     }
+    //라우팅 시 이동히가진 메소드 호출
     this.$router.beforeEach(function (to, from, next) {
       next();
       if (to.name !== 'index') {
@@ -1169,23 +1181,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _member = __webpack_require__(403);
+var _member = __webpack_require__(405);
 
 var _member2 = _interopRequireDefault(_member);
 
-var _problemmange = __webpack_require__(406);
+var _problemmange = __webpack_require__(408);
 
 var _problemmange2 = _interopRequireDefault(_problemmange);
 
-var _noticemanage = __webpack_require__(405);
+var _noticemanage = __webpack_require__(407);
 
 var _noticemanage2 = _interopRequireDefault(_noticemanage);
 
-var _nonaccount = __webpack_require__(404);
+var _nonaccount = __webpack_require__(406);
 
 var _nonaccount2 = _interopRequireDefault(_nonaccount);
 
-var _problemresult = __webpack_require__(407);
+var _problemresult = __webpack_require__(409);
 
 var _problemresult2 = _interopRequireDefault(_problemresult);
 
@@ -2022,7 +2034,7 @@ exports.default = {
         _this4.problemNum = res.data.problem.num;
         _this4.score = res.data.problem.score;
         _this4.explanation = res.data.problem.explanation;
-        _this4.type = res.data.problem.type;
+        _this4.problemType = res.data.problem.type;
       }).catch(function (err) {
         _this4.$swal({
           title: '문제 조회 실패',
@@ -2125,7 +2137,6 @@ exports.default = {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('problems').then(function (res) {
         var i = 0;
-        console.log(res);
         while (i < res.data.problems.length) {
           _this7.items.push({
             num: res.data.problems[i].num,
@@ -2134,24 +2145,7 @@ exports.default = {
           });
           i += 1;
         }
-        _this7.$http.get('problems/contest').then(function (resContest) {
-          var j = 0;
-          while (j < res.data.problems.length) {
-            _this7.items.push({
-              num: res.data.problems[j].num,
-              name: res.data.problems[j].problemName,
-              soiurce: res.data.problems[j].source
-            });
-            j += 1;
-          }
-          _this7.lastNum = res.data.problems[i].num + res.data.problems[j].num;
-        }).catch(function (err) {
-          _this7.$swal({
-            title: '문제 로드 실패',
-            text: err,
-            type: 'error'
-          });
-        });
+        _this7.lastNum = res.data.problems[i - 1].num;
         _this7.enteringProblemmanage = true;
       }).catch(function (err) {
         _this7.$swal({
@@ -2270,11 +2264,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _timeline = __webpack_require__(410);
+var _timeline = __webpack_require__(412);
 
 var _timeline2 = _interopRequireDefault(_timeline);
 
-var _main = __webpack_require__(409);
+var _main = __webpack_require__(411);
 
 var _main2 = _interopRequireDefault(_main);
 
@@ -2454,8 +2448,51 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+
+exports.default = {
+  name: 'contestIntroduce',
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.$store.commit('loadingOff');
+      _this.$Progress.finish();
+    });
+  }
+};
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2535,7 +2572,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2666,7 +2703,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2699,7 +2736,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2858,7 +2895,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2867,6 +2904,11 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2940,7 +2982,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3042,7 +3084,7 @@ exports.default = {
       items: [],
       loadState: true,
       entering: false,
-      lineheight: '',
+      lineheight: 1,
       changeLoad: false
     };
   },
@@ -3081,11 +3123,11 @@ exports.default = {
               //문제 결과 수 반복
               while (j < resRatio.data.resolves.length) {
                 //문제 번호 === 문제 결과 번호
-                if (i === resRatio.data.resolves[j].resolveData.problemNum) {
+                if (i + 101 === resRatio.data.resolves[j].resolveData.problemNum) {
                   //문제 결과 카운트
                   if (resRatio.data.resolves[j].resolveData.result === 'success') {
                     success += 1;
-                  } else {
+                  } else if (resRatio.data.resolves[j].resolveData.result === 'fail') {
                     fail += 1;
                   }
                   count += 1;
@@ -3101,7 +3143,7 @@ exports.default = {
               } else if (ratio !== 0) {
                 ratio = parseInt(ratio * 100, 10) + ' %';
               }
-              _this.lineheight = 55 * i;
+
               _this.items.push({
                 num: num,
                 name: name,
@@ -3114,6 +3156,7 @@ exports.default = {
               });
               i += 1;
             }
+            _this.lineheight = 45 * _this.items.length;
             _this.entering = true;
           }).catch(function (err) {
             _this.$swal({
@@ -3194,7 +3237,6 @@ exports.default = {
       if (changeLoad) {
         i = 0;
         end = 10;
-        this.lineheight = 0;
         this.items = [];
         this.loadState = true;
       } else {
@@ -3229,7 +3271,7 @@ exports.default = {
               //문제 결과 수 반복
               while (j < resRatio.data.resolves.length) {
                 //문제 번호 === 문제 결과 번호
-                if (i === resRatio.data.resolves[j].resolveData.problemNum) {
+                if (i + 101 === resRatio.data.resolves[j].resolveData.problemNum) {
                   //문제 결과 카운트
                   if (resRatio.data.resolves[j].resolveData.result === 'success') {
                     success += 1;
@@ -3249,9 +3291,6 @@ exports.default = {
               } else {
                 ratio = ratio.toString().substring(2, 4) + ' %';
               }
-              console.log(i);
-              _this3.lineheight = 60 * (i + 1);
-              console.log(_this3.lineheight);
               _this3.items.push({
                 num: num,
                 name: name,
@@ -3263,9 +3302,9 @@ exports.default = {
                 ratio: ratio
               });
               i += 1;
+              _this3.lineheight = 45 * _this3.items.length;
             }
           }).catch(function (err) {
-            console.log(err);
             _this3.$swal({
               title: '문제 기록 로드 실패',
               text: err,
@@ -3282,16 +3321,18 @@ exports.default = {
               text: err,
               type: 'error'
             }).then(function () {
-              return false;
+              _this3.clickNormal();
+              return;
+            });
+          } else {
+            _this3.$swal({
+              title: '문제 로드 실패',
+              text: err,
+              type: 'error'
+            }).then(function () {
+              location.href = '/';
             });
           }
-          _this3.$swal({
-            title: '문제 로드 실패',
-            text: err,
-            type: 'error'
-          }).then(function () {
-            location.href = '/';
-          });
         });
       } else {
         //일반 문제
@@ -3319,7 +3360,7 @@ exports.default = {
               //문제 결과 수 반복
               while (j < resRatio.data.resolves.length) {
                 //문제 번호 === 문제 결과 번호
-                if (i === resRatio.data.resolves[j].resolveData.problemNum) {
+                if (i + 101 === resRatio.data.resolves[j].resolveData.problemNum) {
                   //문제 결과 카운트
                   if (resRatio.data.resolves[j].resolveData.result === 'success') {
                     success += 1;
@@ -3339,7 +3380,6 @@ exports.default = {
               } else {
                 ratio = ratio.toString().substring(2, 4) + ' %';
               }
-              _this3.lineheight = 55 * i;
               _this3.items.push({
                 num: num,
                 name: name,
@@ -3351,6 +3391,7 @@ exports.default = {
                 ratio: ratio
               });
               i += 1;
+              _this3.lineheight = 45 * _this3.items.length;
             }
           }).catch(function (err) {
             _this3.$swal({
@@ -3390,7 +3431,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3400,7 +3441,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vueMonacoEditor = __webpack_require__(447);
+var _vueMonacoEditor = __webpack_require__(451);
 
 var _vueMonacoEditor2 = _interopRequireDefault(_vueMonacoEditor);
 
@@ -3439,7 +3480,7 @@ exports.default = {
       }
     };
   },
-  created: function created() {
+  beforeCreate: function beforeCreate() {
     var _this = this;
 
     //      토큰 테스트
@@ -3462,6 +3503,16 @@ exports.default = {
             time: res.data.problem.problemData.timeLimit,
             memorylimit: res.data.problem.problemData.memoryLimit
           });
+        }).catch(function (err) {
+          if (err.response.data.message === '아직 오픈되지 않았습니다.') {
+            _this.$swal({
+              title: '문제 로드 실패',
+              text: '대회기간이 아닙니다',
+              type: 'error'
+            }).then(function () {
+              location.href = '/problems';
+            });
+          }
         });
       }).catch(function (error) {
         _this.$swal({
@@ -3632,7 +3683,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3861,7 +3912,6 @@ exports.default = {
       if (this.contest_rank === true) {
         // 대회 랭크
         this.$http.get('users').then(function (res) {
-          console.log(_this3.data);
           if (i / 10 === parseInt(length / 10, 10)) {
             end = length;
             _this3.loadState = false;
@@ -3920,8 +3970,6 @@ exports.default = {
             return b[sort] - a[sort];
           });
           while (i < end) {
-            console.log(i);
-            console.log(end);
             _this3.users.push({
               name: _this3.data[i].name,
               score: _this3.data[i].score
@@ -3955,7 +4003,6 @@ exports.default = {
 };
 
 /***/ }),
-/* 184 */,
 /* 185 */,
 /* 186 */,
 /* 187 */,
@@ -4139,12 +4186,7 @@ exports.default = {
 /* 365 */,
 /* 366 */,
 /* 367 */,
-/* 368 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 368 */,
 /* 369 */
 /***/ (function(module, exports) {
 
@@ -4295,66 +4337,34 @@ exports.default = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 394 */,
-/* 395 */,
+/* 394 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 396 */,
 /* 397 */,
 /* 398 */,
 /* 399 */,
-/* 400 */
+/* 400 */,
+/* 401 */,
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "sigo/img/sigo_404.70233b0.png";
 
 /***/ }),
-/* 401 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "sigo/img/sigoing.957a786.png";
-
-/***/ }),
-/* 402 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(375)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(167),
-  /* template */
-  __webpack_require__(429),
-  /* scopeId */
-  "data-v-1fb4ac10",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
 /* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(384)
-
-var Component = __webpack_require__(6)(
-  /* script */
-  __webpack_require__(168),
-  /* template */
-  __webpack_require__(440),
-  /* scopeId */
-  "data-v-608cdfa9",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+module.exports = __webpack_require__.p + "sigo/img/sigoing.957a786.png";
 
 /***/ }),
 /* 404 */
@@ -4362,15 +4372,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(393)
+__webpack_require__(376)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(169),
+  __webpack_require__(167),
   /* template */
-  __webpack_require__(446),
+  __webpack_require__(432),
   /* scopeId */
-  "data-v-90766562",
+  "data-v-1fb4ac10",
   /* cssModules */
   null
 )
@@ -4384,15 +4394,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(392)
+__webpack_require__(386)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(170),
+  __webpack_require__(168),
   /* template */
-  __webpack_require__(445),
+  __webpack_require__(444),
   /* scopeId */
-  "data-v-8fe46ee8",
+  "data-v-608cdfa9",
   /* cssModules */
   null
 )
@@ -4406,15 +4416,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(377)
+__webpack_require__(395)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(171),
+  __webpack_require__(169),
   /* template */
-  __webpack_require__(432),
+  __webpack_require__(450),
   /* scopeId */
-  "data-v-3b8f64c8",
+  "data-v-90766562",
   /* cssModules */
   null
 )
@@ -4428,16 +4438,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(380)
-__webpack_require__(381)
+__webpack_require__(394)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(172),
+  __webpack_require__(170),
   /* template */
-  __webpack_require__(435),
+  __webpack_require__(449),
   /* scopeId */
-  "data-v-4886e8bd",
+  "data-v-8fe46ee8",
   /* cssModules */
   null
 )
@@ -4451,15 +4460,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(379)
+__webpack_require__(378)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(173),
+  __webpack_require__(171),
   /* template */
-  __webpack_require__(434),
+  __webpack_require__(435),
   /* scopeId */
-  "data-v-41509454",
+  "data-v-3b8f64c8",
   /* cssModules */
   null
 )
@@ -4473,16 +4482,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(388)
-__webpack_require__(389)
+__webpack_require__(382)
+__webpack_require__(383)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(174),
+  __webpack_require__(172),
   /* template */
-  __webpack_require__(443),
+  __webpack_require__(439),
   /* scopeId */
-  "data-v-7bcd82e5",
+  "data-v-4886e8bd",
   /* cssModules */
   null
 )
@@ -4496,15 +4505,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(376)
+__webpack_require__(380)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(175),
+  __webpack_require__(173),
   /* template */
-  __webpack_require__(431),
+  __webpack_require__(437),
   /* scopeId */
-  "data-v-32d9b926",
+  "data-v-41509454",
   /* cssModules */
   null
 )
@@ -4518,15 +4527,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(371)
+__webpack_require__(390)
+__webpack_require__(391)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(176),
+  __webpack_require__(174),
   /* template */
-  __webpack_require__(425),
+  __webpack_require__(447),
   /* scopeId */
-  "data-v-0e30bda6",
+  "data-v-7bcd82e5",
   /* cssModules */
   null
 )
@@ -4540,16 +4550,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(386)
-__webpack_require__(387)
+__webpack_require__(377)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(177),
+  __webpack_require__(175),
   /* template */
-  __webpack_require__(442),
+  __webpack_require__(434),
   /* scopeId */
-  "data-v-637a59d0",
+  "data-v-32d9b926",
   /* cssModules */
   null
 )
@@ -4563,15 +4572,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(374)
+__webpack_require__(381)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(178),
+  __webpack_require__(176),
   /* template */
-  __webpack_require__(428),
+  __webpack_require__(438),
   /* scopeId */
-  "data-v-1f1cf6d0",
+  "data-v-427d4f57",
   /* cssModules */
   null
 )
@@ -4585,16 +4594,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(370)
-__webpack_require__(369)
+__webpack_require__(372)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(179),
+  __webpack_require__(177),
   /* template */
-  __webpack_require__(424),
+  __webpack_require__(428),
   /* scopeId */
-  "data-v-0a41af30",
+  "data-v-0e30bda6",
   /* cssModules */
   null
 )
@@ -4608,15 +4616,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(385)
+__webpack_require__(388)
+__webpack_require__(389)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(180),
+  __webpack_require__(178),
   /* template */
-  __webpack_require__(441),
+  __webpack_require__(446),
   /* scopeId */
-  "data-v-6209be0c",
+  "data-v-637a59d0",
   /* cssModules */
   null
 )
@@ -4630,15 +4639,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(378)
+__webpack_require__(375)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(181),
+  __webpack_require__(179),
   /* template */
-  __webpack_require__(433),
+  __webpack_require__(431),
   /* scopeId */
-  "data-v-3f6ebf20",
+  "data-v-1f1cf6d0",
   /* cssModules */
   null
 )
@@ -4652,15 +4661,16 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(382)
+__webpack_require__(371)
+__webpack_require__(370)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(182),
+  __webpack_require__(180),
   /* template */
-  __webpack_require__(437),
+  __webpack_require__(427),
   /* scopeId */
-  "data-v-572d1fb3",
+  "data-v-0a41af30",
   /* cssModules */
   null
 )
@@ -4674,15 +4684,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(372)
+__webpack_require__(387)
 
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(183),
+  __webpack_require__(181),
   /* template */
-  __webpack_require__(426),
+  __webpack_require__(445),
   /* scopeId */
-  "data-v-0f75cc20",
+  "data-v-6209be0c",
   /* cssModules */
   null
 )
@@ -4694,13 +4704,17 @@ module.exports = Component.exports
 /* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(379)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(161),
+  __webpack_require__(182),
   /* template */
-  __webpack_require__(439),
+  __webpack_require__(436),
   /* scopeId */
-  null,
+  "data-v-3f6ebf20",
   /* cssModules */
   null
 )
@@ -4712,13 +4726,17 @@ module.exports = Component.exports
 /* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(384)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(162),
+  __webpack_require__(183),
   /* template */
-  __webpack_require__(436),
+  __webpack_require__(441),
   /* scopeId */
-  null,
+  "data-v-572d1fb3",
   /* cssModules */
   null
 )
@@ -4730,13 +4748,17 @@ module.exports = Component.exports
 /* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(373)
+
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(163),
+  __webpack_require__(184),
   /* template */
-  __webpack_require__(430),
+  __webpack_require__(429),
   /* scopeId */
-  null,
+  "data-v-0f75cc20",
   /* cssModules */
   null
 )
@@ -4748,15 +4770,11 @@ module.exports = Component.exports
 /* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(373)
-
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(164),
+  __webpack_require__(161),
   /* template */
-  __webpack_require__(427),
+  __webpack_require__(443),
   /* scopeId */
   null,
   /* cssModules */
@@ -4770,15 +4788,11 @@ module.exports = Component.exports
 /* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/* styles */
-__webpack_require__(383)
-
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(165),
+  __webpack_require__(162),
   /* template */
-  __webpack_require__(438),
+  __webpack_require__(440),
   /* scopeId */
   null,
   /* cssModules */
@@ -4790,6 +4804,68 @@ module.exports = Component.exports
 
 /***/ }),
 /* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(163),
+  /* template */
+  __webpack_require__(433),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 425 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(374)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(164),
+  /* template */
+  __webpack_require__(430),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 426 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(385)
+
+var Component = __webpack_require__(6)(
+  /* script */
+  __webpack_require__(165),
+  /* template */
+  __webpack_require__(442),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 427 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4906,7 +4982,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 425 */
+/* 428 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4946,18 +5022,42 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "onclick": "goToPage(3)"
     }
   }, [_c('h1', [_vm._v("Settings")]), _vm._v(" "), _c('div', {
-    staticClass: "four-set"
+    staticClass: "ui cards"
   }, [_c('div', {
-    staticClass: "fo-shit"
+    staticClass: "card",
+    attrs: {
+      "id": "card"
+    }
   }, [_c('div', {
-    staticClass: "foleft"
-  }, [_c('p', [_vm._v("아이디")]), _vm._v(" "), _c('p', [_vm._v("학번")]), _vm._v(" "), _c('p', [_vm._v("이름")])]), _vm._v(" "), _c('div', {
-    staticClass: "foright"
-  }, [_c('p', [_vm._v("코드")]), _vm._v(" "), _c('p', [_vm._v("제출 결과")])])])])])])])])
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "description"
+  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "card",
+    attrs: {
+      "id": "card"
+    }
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "description"
+  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])])])])])])])
 }]}
 
 /***/ }),
-/* 426 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4990,8 +5090,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("3등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
     staticClass: "rant2"
   }, [_vm._v(_vm._s(_vm.ranker[2].name))]) : _vm._e()])]), _vm._v(" "), _c('div', {
-    staticClass: "ui top attached tabular menu"
-  }, [_c('p', {
+    staticClass: "ui top attached tabular menu",
+    attrs: {
+      "id": "topmn"
+    }
+  }, [_c('a', {
     staticClass: "item",
     class: {
       active: _vm.normal_rank
@@ -5002,7 +5105,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.clickNormal
     }
-  }, [_vm._v("순위")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("순위")]), _vm._v(" "), _c('a', {
     staticClass: "item",
     class: {
       active: _vm.contest_rank
@@ -5134,7 +5237,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 427 */
+/* 430 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5145,7 +5248,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 428 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5157,14 +5260,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "notfound_container"
   }, [_c('img', {
     attrs: {
-      "src": __webpack_require__(400),
+      "src": __webpack_require__(402),
       "alt": ""
     }
   }), _vm._v(" "), _c('span', [_vm._v("페이지가 존재하지 않습니다.")])])])
 }]}
 
 /***/ }),
-/* 429 */
+/* 432 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5217,7 +5320,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 430 */
+/* 433 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5225,7 +5328,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 431 */
+/* 434 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5281,7 +5384,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 432 */
+/* 435 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5903,7 +6006,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 433 */
+/* 436 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5951,24 +6054,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("문제 섞기")])]), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active",
-    style: ({
-      'max-height': _vm.lineheight + 'px'
-    }),
     attrs: {
       "data-tab": "first"
     }
   }, [_vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "ui bottom attached tab segment active",
-    style: ({
-      'max-height': _vm.lineheight + 'px',
-      'min-height': _vm.lineheight + 'px',
-      'overflow': 'hidden'
-    }),
     attrs: {
       "id": "list",
       "data-tab": "first"
     }
   }, [_c('transition-group', {
+    style: ({
+      'max-height': _vm.lineheight + 'px',
+      'min-height': _vm.lineheight + 'px',
+      'overflow': 'hidden'
+    }),
     attrs: {
       "name": "flip-list, problemlist",
       "tag": "ul"
@@ -5987,7 +6087,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_c('div', {
-      staticClass: "ui grid"
+      staticClass: "ui grid",
+      attrs: {
+        "id": "blemlist"
+      }
     }, [_c('div', {
       staticClass: "three wide column"
     }, [_c('p', {
@@ -6003,8 +6106,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('div', {
       staticClass: "ui grid"
     }, [_c('div', {
-      staticClass: "four wide column"
-    }, [_c('span', [_vm._v(_vm._s(item.score))])]), _vm._v(" "), _c('div', {
+      staticClass: "four wide column",
+      attrs: {
+        "id": "one"
+      }
+    }, [_c('span', [_vm._v(_vm._s(item.count))])]), _vm._v(" "), _c('div', {
       staticClass: "four wide column",
       attrs: {
         "id": "second"
@@ -6102,7 +6208,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 434 */
+/* 437 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6116,7 +6222,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 435 */
+/* 438 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "contest_intro"
+    }
+  }, [_vm._v("\n  대회 소개 페이지\n")])
+},staticRenderFns: []}
+
+/***/ }),
+/* 439 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6128,7 +6246,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 436 */
+/* 440 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6140,7 +6258,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 437 */
+/* 441 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6229,7 +6347,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 438 */
+/* 442 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6254,7 +6372,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 439 */
+/* 443 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6264,7 +6382,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 440 */
+/* 444 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6282,7 +6400,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 441 */
+/* 445 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6296,15 +6414,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "notipen"
   }, [_c('div', {
     staticClass: "noti-head"
-  }, [_c('p', [_vm._v(_vm._s(_vm.name))])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }, [_c('p', [_vm._v(_vm._s(_vm.name))])]), _vm._v(" "), _c('div', {
     staticClass: "noti-main"
-  }, [_c('p', [_vm._v(_vm._s(_vm.contents))])])]), _vm._v(" "), _c('div', {
-    staticClass: "noti-tag"
   }, [_c('div', {
-    staticClass: "noti1"
-  }, [_c('p', [_vm._v(_vm._s(_vm.num))])]), _vm._v(" "), _c('div', {
-    staticClass: "noti2"
-  }, [_c('p', [_vm._v(_vm._s(_vm.date))])])])])]) : _vm._e(), _vm._v(" "), _vm._m(0)])
+    staticClass: "noti-in"
+  }, [_c('p', [_vm._v(_vm._s(_vm.contents))])]), _vm._v(" "), _c('div', {
+    staticClass: "noti-sub"
+  }, [_c('p', [_c('span', [_vm._v(_vm._s(_vm.num))]), _vm._v("번")]), _vm._v(" "), _c('p', [_c('span', [_vm._v(_vm._s(_vm.date))])])])])])])]) : _vm._e(), _vm._v(" "), _vm._m(0)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "pageicon"
@@ -6318,7 +6434,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 442 */
+/* 446 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6366,7 +6482,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 443 */
+/* 447 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6442,7 +6558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 444 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6476,7 +6592,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "padding-top": "50px"
     },
     attrs: {
-      "src": __webpack_require__(401),
+      "src": __webpack_require__(403),
       "alt": ""
     }
   })])], 1)]), _vm._v(" "), _c('ul', {
@@ -6826,7 +6942,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 445 */
+/* 449 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -7022,7 +7138,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 446 */
+/* 450 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -7046,13 +7162,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 447 */,
-/* 448 */,
-/* 449 */,
-/* 450 */,
 /* 451 */,
 /* 452 */,
-/* 453 */
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7149,5 +7265,5 @@ new _vue2.default({
 });
 
 /***/ })
-]),[453]);
-//# sourceMappingURL=main.443879e78c4fb1859975.js.map
+]),[457]);
+//# sourceMappingURL=main.622d45a2c4539151e680.js.map
