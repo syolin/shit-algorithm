@@ -15,8 +15,6 @@ const router = express.Router();
  */
 router.get('/',auth.isAuthenticated(), function (req, res) {
 
-    let value = req.user.rating == '3' ? false : true;
-
     const respond = problems => {
         res.json({
             result: 'success',
@@ -31,7 +29,7 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         });
     };
 
-    controller.findAll("normal", value)
+    controller.findAll("normal")
         .then(respond)
         .catch(onError);
 });
