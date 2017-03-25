@@ -322,21 +322,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                 return;
                             };
 
-                            let resolveInfo = {
-                                userId : form.userId,
-                                resolveData : {
-                                    language: form.lang,
-                                    problemNum: form.problemNum,
-                                    code: form.inputCode,
-                                    result: '',
-                                    compileName: data.compileBody.name,
-                                    date: new Date(),
-                                    memory: 0,
-                                    time: 0,
-                                    problemType: problem.type
-                                }
-                            };
-
                             if(!data.url[1]) {
                                 let result;
                                 if (getResolve.result == data.example.output) {
@@ -357,7 +342,20 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     });
                                 }
 
-                                resolveInfo.result = result;
+                                let resolveInfo = {
+                                    userId : form.userId,
+                                    resolveData : {
+                                        language: form.lang,
+                                        problemNum: form.problemNum,
+                                        code: form.inputCode,
+                                        result: '',
+                                        compileName: data.compileBody.name,
+                                        date: new Date(),
+                                        memory: 0,
+                                        time: 0,
+                                        problemType: problem.type
+                                    }
+                                };
 
                                 // 디비에 결과 저장
                                 solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
@@ -395,7 +393,20 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                         });
                                     }
 
-                                    resolveInfo.result = result;
+                                    let resolveInfo = {
+                                        userId : form.userId,
+                                        resolveData : {
+                                            language: form.lang,
+                                            problemNum: form.problemNum,
+                                            code: form.inputCode,
+                                            result: '',
+                                            compileName: data.compileBody.name,
+                                            date: new Date(),
+                                            memory: 0,
+                                            time: 0,
+                                            problemType: problem.type
+                                        }
+                                    };
 
                                     // 디비에 결과 저장
                                     solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
