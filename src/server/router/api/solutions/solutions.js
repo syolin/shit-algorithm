@@ -261,7 +261,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                 //     };
                 // }
 
-                let url = example.input+','+example.input2;
+                let url = example.input ? solutionApiUrl +'/'+ example.input+','+example.input2 : solutionApiUrl;
 
                 callback({
                     form : form,
