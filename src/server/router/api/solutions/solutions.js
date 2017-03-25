@@ -322,8 +322,9 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                 return;
                             };
 
+                            let result;
+
                             if(!data.url[1]) {
-                                let result;
                                 if (getResolve.result == data.example.output) {
 
                                     result = 'success';
@@ -341,22 +342,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                         result: result
                                     });
                                 }
-
-                                let resolveInfo = {
-                                    userId : form.userId,
-                                    resolveData : {
-                                        language: form.lang,
-                                        problemNum: form.problemNum,
-                                        code: form.inputCode,
-                                        result: '',
-                                        compileName: data.compileBody.name,
-                                        date: new Date(),
-                                        memory: 0,
-                                        time: 0,
-                                        problemType: problem.type
-                                    }
-                                };
-
                                 // 디비에 결과 저장
                                 solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
                             } else {
@@ -374,7 +359,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     /*
                                      정답 체크 후 응답
                                      */
-                                    let result;
                                     if (getResolve.result == data.example.output && getResolve2.result == data.example.output2) {
 
                                         result = 'success';
@@ -392,26 +376,26 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                             result: result
                                         });
                                     }
-
-                                    let resolveInfo = {
-                                        userId : form.userId,
-                                        resolveData : {
-                                            language: form.lang,
-                                            problemNum: form.problemNum,
-                                            code: form.inputCode,
-                                            result: '',
-                                            compileName: data.compileBody.name,
-                                            date: new Date(),
-                                            memory: 0,
-                                            time: 0,
-                                            problemType: problem.type
-                                        }
-                                    };
-
-                                    // 디비에 결과 저장
-                                    solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
                                 });
                             }
+
+                            let resolveInfo = {
+                                userId : form.userId,
+                                resolveData : {
+                                    language: form.lang,
+                                    problemNum: form.problemNum,
+                                    code: form.inputCode,
+                                    result: result,
+                                    compileName: data.compileBody.name,
+                                    date: new Date(),
+                                    memory: 0,
+                                    time: 0,
+                                    problemType: problem.type
+                                }
+                            };
+
+                            // 디비에 결과 저장
+                            solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
 
                         });
                     })
