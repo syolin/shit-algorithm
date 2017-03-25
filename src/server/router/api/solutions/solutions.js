@@ -317,7 +317,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                             // 제출 하지 않고, 결과만 요청
                             if (req.body.mode) {
                                 res.json({
-                                    result: getResolve.result
+                                    result: getResolve.result[0]
                                 });
                                 return;
                             };
@@ -329,7 +329,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
                             console.log(problem.type);
 
-                            if (getResolve.result == data.example.output) {
+                            if (getResolve.result[0] == data.example.output && getResolve.result[1] == data.example.output2) {
 
                                 result = 'success';
 
