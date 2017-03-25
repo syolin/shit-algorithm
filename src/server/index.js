@@ -27,7 +27,7 @@ import auth from './modules/auth';
 
 const app = express();
 
-app.use('/',httpsRedrect(true));
+// app.use('/',httpsRedrect(true));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
