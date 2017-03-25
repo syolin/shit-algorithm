@@ -1185,9 +1185,9 @@ var _member = __webpack_require__(405);
 
 var _member2 = _interopRequireDefault(_member);
 
-var _problemmange = __webpack_require__(408);
+var _problemmanage = __webpack_require__(408);
 
-var _problemmange2 = _interopRequireDefault(_problemmange);
+var _problemmanage2 = _interopRequireDefault(_problemmanage);
 
 var _noticemanage = __webpack_require__(407);
 
@@ -1207,7 +1207,7 @@ exports.default = {
   name: 'admin',
   components: {
     member: _member2.default,
-    problemmanage: _problemmange2.default,
+    problemmanage: _problemmanage2.default,
     notice: _noticemanage2.default,
     nonaccount: _nonaccount2.default,
     problemresult: _problemresult2.default
@@ -1665,11 +1665,11 @@ exports.default = {
     modify: function modify() {
       var _this2 = this;
 
+      var date = new Date();
       this.$http.put('notices', {
-        num: this.num,
-        noticeName: this.name,
-        contents: this.content,
-        type: this.type
+        noticenum: this.num,
+        noticename: this.name,
+        contents: this.content
       }).then(function () {
         _this2.$swal({
           title: '수정 성공',
@@ -1901,6 +1901,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   data: function data() {
     return {
+      data: [],
       items: [],
       problemData: [],
       solveList: [],
@@ -2034,7 +2035,7 @@ exports.default = {
         _this4.problemNum = res.data.problem.num;
         _this4.score = res.data.problem.score;
         _this4.explanation = res.data.problem.explanation;
-        _this4.problemType = res.data.problem.type;
+        _this4.type = res.data.problem.type;
       }).catch(function (err) {
         _this4.$swal({
           title: '문제 조회 실패',
@@ -2137,15 +2138,47 @@ exports.default = {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('problems').then(function (res) {
         var i = 0;
+        console.log(res);
         while (i < res.data.problems.length) {
-          _this7.items.push({
+          _this7.data.push({
             num: res.data.problems[i].num,
             name: res.data.problems[i].problemName,
             source: res.data.problems[i].source
           });
           i += 1;
         }
-        _this7.lastNum = res.data.problems[i - 1].num;
+        _this7.$http.get('problems/contest').then(function (resContest) {
+          var j = 0;
+          while (j < resContest.data.problems.length) {
+            _this7.data.push({
+              num: resContest.data.problems[j].num,
+              name: resContest.data.problems[j].problemName,
+              source: resContest.data.problems[j].source
+            });
+            j += 1;
+          }
+          if (j === resContest.data.problems.length) {
+            var sort = 'num';
+            _this7.data.sort(function (a, b) {
+              return a[sort] - b[sort];
+            });
+            i = 0;
+            while (i < _this7.data.length) {
+              _this7.items.push({
+                num: _this7.data[i].num,
+                name: _this7.data[i].name,
+                source: _this7.data[i].source
+              });
+              i += 1;
+            }
+          }
+        }).catch(function (err) {
+          _this7.$swal({
+            title: '문제 로드 실패',
+            text: err,
+            type: 'error'
+          });
+        });
         _this7.enteringProblemmanage = true;
       }).catch(function (err) {
         _this7.$swal({
@@ -2660,16 +2693,18 @@ exports.default = {
         _this2.userid = resInfo.data.user.userId;
         _this2.score = resInfo.data.user.score;
         _this2.$http.get('solution/resultsuccess').then(function (res) {
-          _this2.successCount = res.data.resolves.length;
-          var i = res.data.resolves.length - 5;
-          while (i < res.data.resolves.length) {
-            var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
-            date = date.substring(0, date.length - 8);
-            _this2.recentProblem.push({
-              num: res.data.resolves[i].resolveData.problemNum,
-              date: date
-            });
-            i += 1;
+          if (res.resolves != null) {
+            _this2.successCount = res.data.resolves.length;
+            var i = res.data.resolves.length - 5;
+            while (i < res.data.resolves.length) {
+              var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
+              date = date.substring(0, date.length - 8);
+              _this2.recentProblem.push({
+                num: res.data.resolves[i].resolveData.problemNum,
+                date: date
+              });
+              i += 1;
+            }
           }
           _this2.entering = true;
         }).catch(function (err) {
@@ -2820,8 +2855,11 @@ exports.default = {
     this.$http.get('notices').then(function (res) {
       i = 0;
       length = res.data.notices.length;
-      if (length < 10) {
+      if (i / 10 === parseInt(length / 10, 10)) {
         end = length;
+        _this2.loadState = false;
+      } else if (end === length) {
+        _this2.loadState = false;
       }
       while (i < end) {
         var date = res.data.notices[i].date.replace('T', ', ');
@@ -3832,10 +3870,16 @@ exports.default = {
           }
           i = 0;
           while (i < 3) {
-            _this.ranker.push({
-              name: _this.users[i].name,
-              score: _this.users[i].score
-            });
+            if (_this.users[i] != null) {
+              _this.ranker.push({
+                name: _this.users[i].name,
+                score: 'sss'
+              });
+            } else {
+              _this.ranker.push({
+                name: i + 1 + '\uB4F1\uC5D0 \uB3C4\uC804\uD574\uBCF4\uC138\uC694'
+              });
+            }
             i += 1;
           }
           _this.entering = true;
@@ -3938,10 +3982,16 @@ exports.default = {
 
           i = 0;
           while (i < 3) {
-            _this3.ranker.push({
-              name: _this3.users[i].name,
-              score: _this3.users[i].score
-            });
+            if (_this3.users[i] != null) {
+              _this3.ranker.push({
+                name: _this3.users[i].name,
+                score: 'sss'
+              });
+            } else {
+              _this3.ranker.push({
+                name: i + 1 + '\uB4F1\uC5D0 \uB3C4\uC804\uD574\uBCF4\uC138\uC694'
+              });
+            }
             i += 1;
             if (i === 3) {
               _this3.rank = true;
@@ -3979,10 +4029,16 @@ exports.default = {
 
           i = 0;
           while (i < 3) {
-            _this3.ranker.push({
-              name: _this3.users[i].name,
-              score: _this3.users[i].score
-            });
+            if (_this3.users[i] != null) {
+              _this3.ranker.push({
+                name: _this3.users[i].name,
+                score: 'sss'
+              });
+            } else {
+              _this3.ranker.push({
+                name: i + 1 + '\uB4F1\uC5D0 \uB3C4\uC804\uD574\uBCF4\uC138\uC694'
+              });
+            }
             i += 1;
             if (i === 3) {
               _this3.rank = true;
@@ -4372,13 +4428,13 @@ module.exports = __webpack_require__.p + "sigo/img/sigoing.957a786.png";
 
 
 /* styles */
-__webpack_require__(376)
+__webpack_require__(377)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(167),
   /* template */
-  __webpack_require__(432),
+  __webpack_require__(433),
   /* scopeId */
   "data-v-1fb4ac10",
   /* cssModules */
@@ -4460,15 +4516,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(378)
+__webpack_require__(370)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(171),
   /* template */
-  __webpack_require__(435),
+  __webpack_require__(427),
   /* scopeId */
-  "data-v-3b8f64c8",
+  "data-v-01704bf6",
   /* cssModules */
   null
 )
@@ -4550,13 +4606,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(377)
+__webpack_require__(378)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(175),
   /* template */
-  __webpack_require__(434),
+  __webpack_require__(435),
   /* scopeId */
   "data-v-32d9b926",
   /* cssModules */
@@ -4594,13 +4650,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(372)
+__webpack_require__(373)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(177),
   /* template */
-  __webpack_require__(428),
+  __webpack_require__(429),
   /* scopeId */
   "data-v-0e30bda6",
   /* cssModules */
@@ -4639,13 +4695,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(375)
+__webpack_require__(376)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(179),
   /* template */
-  __webpack_require__(431),
+  __webpack_require__(432),
   /* scopeId */
   "data-v-1f1cf6d0",
   /* cssModules */
@@ -4661,14 +4717,14 @@ module.exports = Component.exports
 
 
 /* styles */
+__webpack_require__(372)
 __webpack_require__(371)
-__webpack_require__(370)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(180),
   /* template */
-  __webpack_require__(427),
+  __webpack_require__(428),
   /* scopeId */
   "data-v-0a41af30",
   /* cssModules */
@@ -4750,13 +4806,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(373)
+__webpack_require__(374)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(184),
   /* template */
-  __webpack_require__(429),
+  __webpack_require__(430),
   /* scopeId */
   "data-v-0f75cc20",
   /* cssModules */
@@ -4810,7 +4866,7 @@ var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(163),
   /* template */
-  __webpack_require__(433),
+  __webpack_require__(434),
   /* scopeId */
   null,
   /* cssModules */
@@ -4826,13 +4882,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(374)
+__webpack_require__(375)
 
 var Component = __webpack_require__(6)(
   /* script */
   __webpack_require__(164),
   /* template */
-  __webpack_require__(430),
+  __webpack_require__(431),
   /* scopeId */
   null,
   /* cssModules */
@@ -4866,525 +4922,6 @@ module.exports = Component.exports
 
 /***/ }),
 /* 427 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.entering) ? _c('div', {
-    attrs: {
-      "id": "notice"
-    }
-  }, [_c('div', {
-    staticClass: "noticen"
-  }, [_c('div', {
-    staticClass: "not-main"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "ui bottom attached tab segment active",
-    attrs: {
-      "data-tab": "first"
-    }
-  }, [_vm._m(2), _vm._v(" "), _c('div', {
-    staticClass: "notice_wrap"
-  }, [_c('transition-group', {
-    attrs: {
-      "name": "noticeList",
-      "tag": "div"
-    }
-  }, _vm._l((_vm.notices), function(notice) {
-    return _c('div', {
-      key: notice,
-      staticClass: "ui items"
-    }, [_c('div', {
-      staticClass: "item"
-    }, [_c('div', {
-      staticClass: "content",
-      on: {
-        "click": function($event) {
-          _vm.open(notice.num)
-        }
-      }
-    }, [_c('p', {
-      staticClass: "header",
-      attrs: {
-        "id": "pollist"
-      }
-    }, [_c('span', [_vm._v(_vm._s(notice.num))])]), _vm._v(" "), _c('a', {
-      staticClass: "ui header",
-      attrs: {
-        "id": "destent"
-      }
-    }, [_c('span', [_vm._v(_vm._s(notice.noticename))])]), _vm._v(" "), _c('p', {
-      staticClass: "notdate"
-    }, [_c('span', [_vm._v(_vm._s(notice.date))])])])])])
-  }))], 1)]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "huge chevron circle up icon",
-    on: {
-      "click": _vm.scrollUp
-    }
-  })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
-    staticClass: "ui button",
-    on: {
-      "click": _vm.loadList
-    }
-  }, [_c('i', {
-    staticClass: "large chevron down icon"
-  })]) : _vm._e()])])]) : _vm._e()
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h2', {
-    staticClass: "ui center aligned header",
-    attrs: {
-      "id": "not-head"
-    }
-  }, [_vm._v(" 공지사항\n        "), _c('div', {
-    staticClass: "sub header"
-  }, [_vm._v("SIGO의 알림를 외칩니다!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "ui top attached tabular menu"
-  }, [_c('p', {
-    staticClass: "item active",
-    attrs: {
-      "data-tab": "first",
-      "id": "item"
-    }
-  }, [_vm._v("목록")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "ui items"
-  }, [_c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "ui top attached tabular menu",
-    attrs: {
-      "id": "pob"
-    }
-  }, [_c('p', {
-    staticClass: "item",
-    attrs: {
-      "id": "ltemone"
-    }
-  }, [_vm._v("번호")]), _vm._v(" "), _c('p', {
-    staticClass: "item",
-    attrs: {
-      "id": "ltemtwo"
-    }
-  }, [_vm._v("제목")]), _vm._v(" "), _c('p', {
-    staticClass: "item",
-    attrs: {
-      "id": "ltemthr"
-    }
-  }, [_vm._v("날짜")])])])])])
-}]}
-
-/***/ }),
-/* 428 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "monitor"
-    }
-  }, [_c('div', {
-    staticClass: "button"
-  }, [_c('div', {
-    staticClass: "wrapper"
-  }, [_c('h1', [_vm._v("Menu")]), _vm._v(" "), _c('a', {
-    staticClass: "menu-btn",
-    attrs: {
-      "onclick": "toggleMenu()"
-    }
-  }), _vm._v(" "), _c('section', {
-    staticClass: "one",
-    attrs: {
-      "onclick": "goToPage(0)"
-    }
-  }, [_c('h1', [_vm._v("Profile")])]), _vm._v(" "), _c('section', {
-    staticClass: "two",
-    attrs: {
-      "onclick": "goToPage(1)"
-    }
-  }, [_c('h1', [_vm._v("Friends")])]), _vm._v(" "), _c('section', {
-    staticClass: "three",
-    attrs: {
-      "onclick": "goToPage(2)"
-    }
-  }, [_c('h1', [_vm._v("Messages")])]), _vm._v(" "), _c('section', {
-    staticClass: "four",
-    attrs: {
-      "onclick": "goToPage(3)"
-    }
-  }, [_c('h1', [_vm._v("Settings")]), _vm._v(" "), _c('div', {
-    staticClass: "ui cards"
-  }, [_c('div', {
-    staticClass: "card",
-    attrs: {
-      "id": "card"
-    }
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "description"
-  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "card",
-    attrs: {
-      "id": "card"
-    }
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "description"
-  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])])])])])])])
-}]}
-
-/***/ }),
-/* 429 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.entering) ? _c('div', {
-    attrs: {
-      "id": "index"
-    }
-  }, [_c('div', {
-    staticClass: "ranksys"
-  }, [_c('div', {
-    staticClass: "rank-main"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "rank-top"
-  }, [_c('div', {
-    staticClass: "rank1"
-  }, [_vm._m(1), _vm._v(" "), _c('p', {
-    staticClass: "rant1"
-  }, [_vm._v("2등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[1].name))]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "rank2"
-  }, [_vm._m(2), _vm._v(" "), _c('p', {
-    staticClass: "rant1"
-  }, [_vm._v("1등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[0].name))]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "rank3"
-  }, [_vm._m(3), _vm._v(" "), _c('p', {
-    staticClass: "rant1"
-  }, [_vm._v("3등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
-    staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[2].name))]) : _vm._e()])]), _vm._v(" "), _c('div', {
-    staticClass: "ui top attached tabular menu",
-    attrs: {
-      "id": "topmn"
-    }
-  }, [_c('a', {
-    staticClass: "item",
-    class: {
-      active: _vm.normal_rank
-    },
-    attrs: {
-      "data-tab": "first"
-    },
-    on: {
-      "click": _vm.clickNormal
-    }
-  }, [_vm._v("순위")]), _vm._v(" "), _c('a', {
-    staticClass: "item",
-    class: {
-      active: _vm.contest_rank
-    },
-    attrs: {
-      "data-tab": "first"
-    },
-    on: {
-      "click": _vm.clickContest
-    }
-  }, [_vm._v("대회 순위")])]), _vm._v(" "), _c('div', {
-    staticClass: "ui bottom attached tab segment active"
-  }, [_vm._m(4), _vm._v(" "), _c('transition-group', {
-    attrs: {
-      "name": "flip-list, ranklist",
-      "tag": "ul"
-    }
-  }, _vm._l((_vm.users), function(user, rank) {
-    return _c('div', {
-      key: user,
-      staticClass: "propol"
-    }, [_c('div', {
-      staticClass: "ui items"
-    }, [_c('div', {
-      staticClass: "item"
-    }, [_c('div', {
-      staticClass: "content"
-    }, [_c('p', {
-      staticClass: "header",
-      attrs: {
-        "id": "pollist"
-      }
-    }, [_c('span', [_vm._v(_vm._s(rank + 1))]), _vm._v("등")]), _vm._v(" "), _c('p', {
-      staticClass: "ui disabled header"
-    }, [_c('span', [_vm._v(_vm._s(user.name))])]), _vm._v(" "), _c('p', {
-      staticClass: "sub header",
-      attrs: {
-        "id": "subder"
-      }
-    }, [_c('span', [_vm._v(_vm._s(user.score))])])])])])])
-  }))], 1), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "huge chevron circle up icon",
-    on: {
-      "click": _vm.scrollUp
-    }
-  })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
-    staticClass: "ui button",
-    on: {
-      "click": function($event) {
-        _vm.loadList(false)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "large chevron down icon"
-  })]) : _vm._e()])])]) : _vm._e()
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h2', {
-    staticClass: "ui center aligned header",
-    attrs: {
-      "id": "rankhead"
-    }
-  }, [_vm._v(" 랭킹 시스템\n        "), _c('div', {
-    staticClass: "sub header"
-  }, [_vm._v("1등을 목표로 문제를 풀면서 친구들을 이겨보세요!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "rankge1"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(93)
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "rankge2"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(93)
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "rankge3"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(93)
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "ui items"
-  }, [_c('div', {
-    staticClass: "item"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('div', {
-    staticClass: "ui top attached tabular menu",
-    attrs: {
-      "id": "pob"
-    }
-  }, [_c('div', {
-    staticClass: "ui grid"
-  }, [_c('div', {
-    staticClass: "three wide column"
-  }, [_c('p', {
-    staticClass: "item",
-    attrs: {
-      "id": "ltemone"
-    }
-  }, [_vm._v("등수")])]), _vm._v(" "), _c('div', {
-    staticClass: "six wide column"
-  }, [_c('p', {
-    staticClass: "item",
-    attrs: {
-      "id": "ltemthr"
-    }
-  }, [_vm._v("이름")])]), _vm._v(" "), _c('div', {
-    staticClass: "seven wide column"
-  }, [_c('p', {
-    staticClass: "item",
-    attrs: {
-      "id": "ltemfou"
-    }
-  }, [_vm._v("점수")])])])])])])])
-}]}
-
-/***/ }),
-/* 430 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "__cov-progress",
-    style: (_vm.style)
-  })
-},staticRenderFns: []}
-
-/***/ }),
-/* 431 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "notfound"
-  }, [_c('div', {
-    staticClass: "notfound_container"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(402),
-      "alt": ""
-    }
-  }), _vm._v(" "), _c('span', [_vm._v("페이지가 존재하지 않습니다.")])])])
-}]}
-
-/***/ }),
-/* 432 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.entering) ? _c('div', {
-    attrs: {
-      "id": "admin"
-    }
-  }, [_c('div', {
-    staticClass: "sigo_container"
-  }, [(_vm.adminState) ? _c('div', {
-    staticClass: "adminPage",
-    staticStyle: {
-      "background-color": "white",
-      "color": "black"
-    }
-  }, [_c('div', {
-    staticClass: "ui"
-  }, [_c('h1', {
-    staticClass: "ui header admin"
-  }, [_vm._v("ADMINPAGE")]), _vm._v(" "), _c('div', {
-    staticClass: "ui secondary pointing menu"
-  }, [_c('a', {
-    staticClass: "item",
-    on: {
-      "click": _vm.click_member
-    }
-  }, [_vm._v("회원관리")]), _vm._v(" "), _c('a', {
-    staticClass: "item",
-    on: {
-      "click": _vm.click_nonaccount
-    }
-  }, [_vm._v("비승인 회원관리")]), _vm._v(" "), _c('a', {
-    staticClass: "item",
-    on: {
-      "click": _vm.click_list
-    }
-  }, [_vm._v("게시판관리")]), _vm._v(" "), _c('a', {
-    staticClass: "item",
-    on: {
-      "click": _vm.click_problem
-    }
-  }, [_vm._v("문제관리")]), _vm._v(" "), _c('a', {
-    staticClass: "item",
-    on: {
-      "click": _vm.click_result
-    }
-  }, [_vm._v("문제결과")])]), _vm._v(" "), _c('div', {
-    staticClass: "twelve wide stretched column"
-  }, [(_vm.memberState) ? _c('member') : _vm._e(), _vm._v(" "), (_vm.nonaccountState) ? _c('nonaccount') : _vm._e(), _vm._v(" "), (_vm.problemState) ? _c('problemmanage') : _vm._e(), _vm._v(" "), (_vm.listState) ? _c('notice') : _vm._e(), _vm._v(" "), (_vm.problemresultState) ? _c('problemresult') : _vm._e()], 1)])]) : _vm._e()])]) : _vm._e()
-},staticRenderFns: []}
-
-/***/ }),
-/* 433 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div')
-},staticRenderFns: []}
-
-/***/ }),
-/* 434 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "timeline"
-  }, [_c('div', {
-    attrs: {
-      "id": "footer"
-    }
-  }, [_c('div', {
-    staticClass: "footer"
-  }, [_c('div', {
-    staticClass: "left"
-  }, [_c('div', {
-    staticClass: "tople"
-  }, [_c('p', [_vm._v("SIGO")]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("공지사항")]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("문제")]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("랭킹")]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("마이페이지")])]), _vm._v(" "), _c('div', {
-    staticClass: "botle"
-  }, [_c('p', [_vm._v("© 2017 SIGO. All rights reserved.")])])]), _vm._v(" "), _c('div', {
-    staticClass: "right"
-  }, [_c('div', {
-    staticClass: "foico"
-  }, [_c('a', {
-    attrs: {
-      "href": "https://www.facebook.com/shitsigo/"
-    }
-  }, [_c('i', {
-    staticClass: "big facebook f icon"
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://github.com/shitKorea/shit-algorithm"
-    }
-  }, [_c('i', {
-    staticClass: "big git icon"
-  })])])])])])])
-}]}
-
-/***/ }),
-/* 435 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6004,6 +5541,525 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('li', [_vm._v("이름 : " + _vm._s(list.username))]), _vm._v(" "), _c('li', [_vm._v("학번 : " + _vm._s(list.studentcode))]), _vm._v(" "), _c('li', [_vm._v("결과 : " + _vm._s(list.result))]), _vm._v(" "), _c('li', [_vm._v("날짜 : " + _vm._s(list.date))]), _vm._v(" "), _c('li', [_vm._v("코드 : " + _vm._s(list.code))])])
   }))], 1)])]) : _vm._e()
 },staticRenderFns: []}
+
+/***/ }),
+/* 428 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.entering) ? _c('div', {
+    attrs: {
+      "id": "notice"
+    }
+  }, [_c('div', {
+    staticClass: "noticen"
+  }, [_c('div', {
+    staticClass: "not-main"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "ui bottom attached tab segment active",
+    attrs: {
+      "data-tab": "first"
+    }
+  }, [_vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "notice_wrap"
+  }, [_c('transition-group', {
+    attrs: {
+      "name": "noticeList",
+      "tag": "div"
+    }
+  }, _vm._l((_vm.notices), function(notice) {
+    return _c('div', {
+      key: notice,
+      staticClass: "ui items"
+    }, [_c('div', {
+      staticClass: "item"
+    }, [_c('div', {
+      staticClass: "content",
+      on: {
+        "click": function($event) {
+          _vm.open(notice.num)
+        }
+      }
+    }, [_c('p', {
+      staticClass: "header",
+      attrs: {
+        "id": "pollist"
+      }
+    }, [_c('span', [_vm._v(_vm._s(notice.num))])]), _vm._v(" "), _c('a', {
+      staticClass: "ui header",
+      attrs: {
+        "id": "destent"
+      }
+    }, [_c('span', [_vm._v(_vm._s(notice.noticename))])]), _vm._v(" "), _c('p', {
+      staticClass: "notdate"
+    }, [_c('span', [_vm._v(_vm._s(notice.date))])])])])])
+  }))], 1)]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "huge chevron circle up icon",
+    on: {
+      "click": _vm.scrollUp
+    }
+  })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
+    staticClass: "ui button",
+    on: {
+      "click": _vm.loadList
+    }
+  }, [_c('i', {
+    staticClass: "large chevron down icon"
+  })]) : _vm._e()])])]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h2', {
+    staticClass: "ui center aligned header",
+    attrs: {
+      "id": "not-head"
+    }
+  }, [_vm._v(" 공지사항\n        "), _c('div', {
+    staticClass: "sub header"
+  }, [_vm._v("SIGO의 알림를 외칩니다!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "ui top attached tabular menu"
+  }, [_c('p', {
+    staticClass: "item active",
+    attrs: {
+      "data-tab": "first",
+      "id": "item"
+    }
+  }, [_vm._v("목록")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "ui items"
+  }, [_c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "ui top attached tabular menu",
+    attrs: {
+      "id": "pob"
+    }
+  }, [_c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemone"
+    }
+  }, [_vm._v("번호")]), _vm._v(" "), _c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemtwo"
+    }
+  }, [_vm._v("제목")]), _vm._v(" "), _c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemthr"
+    }
+  }, [_vm._v("날짜")])])])])])
+}]}
+
+/***/ }),
+/* 429 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "monitor"
+    }
+  }, [_c('div', {
+    staticClass: "button"
+  }, [_c('div', {
+    staticClass: "wrapper"
+  }, [_c('h1', [_vm._v("Menu")]), _vm._v(" "), _c('a', {
+    staticClass: "menu-btn",
+    attrs: {
+      "onclick": "toggleMenu()"
+    }
+  }), _vm._v(" "), _c('section', {
+    staticClass: "one",
+    attrs: {
+      "onclick": "goToPage(0)"
+    }
+  }, [_c('h1', [_vm._v("Profile")])]), _vm._v(" "), _c('section', {
+    staticClass: "two",
+    attrs: {
+      "onclick": "goToPage(1)"
+    }
+  }, [_c('h1', [_vm._v("Friends")])]), _vm._v(" "), _c('section', {
+    staticClass: "three",
+    attrs: {
+      "onclick": "goToPage(2)"
+    }
+  }, [_c('h1', [_vm._v("Messages")])]), _vm._v(" "), _c('section', {
+    staticClass: "four",
+    attrs: {
+      "onclick": "goToPage(3)"
+    }
+  }, [_c('h1', [_vm._v("Settings")]), _vm._v(" "), _c('div', {
+    staticClass: "ui cards"
+  }, [_c('div', {
+    staticClass: "card",
+    attrs: {
+      "id": "card"
+    }
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "description"
+  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "card",
+    attrs: {
+      "id": "card"
+    }
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "header"
+  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
+    staticClass: "meta"
+  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "description"
+  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])])])])])])])
+}]}
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.entering) ? _c('div', {
+    attrs: {
+      "id": "index"
+    }
+  }, [_c('div', {
+    staticClass: "ranksys"
+  }, [_c('div', {
+    staticClass: "rank-main"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "rank-top"
+  }, [_c('div', {
+    staticClass: "rank1"
+  }, [_vm._m(1), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("2등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v(_vm._s(_vm.ranker[1].name))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "rank2"
+  }, [_vm._m(2), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("1등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v(_vm._s(_vm.ranker[0].name))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "rank3"
+  }, [_vm._m(3), _vm._v(" "), _c('p', {
+    staticClass: "rant1"
+  }, [_vm._v("3등")]), _vm._v(" "), (_vm.rank) ? _c('p', {
+    staticClass: "rant2"
+  }, [_vm._v(_vm._s(_vm.ranker[2].name))]) : _vm._e(), _vm._v(" "), _c('hr')])]), _vm._v(" "), _c('div', {
+    staticClass: "ui top attached tabular menu",
+    attrs: {
+      "id": "topmn"
+    }
+  }, [_c('a', {
+    staticClass: "item",
+    class: {
+      active: _vm.normal_rank
+    },
+    attrs: {
+      "data-tab": "first"
+    },
+    on: {
+      "click": _vm.clickNormal
+    }
+  }, [_vm._v("순위")]), _vm._v(" "), _c('a', {
+    staticClass: "item",
+    class: {
+      active: _vm.contest_rank
+    },
+    attrs: {
+      "data-tab": "first"
+    },
+    on: {
+      "click": _vm.clickContest
+    }
+  }, [_vm._v("대회 순위")])]), _vm._v(" "), _c('div', {
+    staticClass: "ui bottom attached tab segment active"
+  }, [_vm._m(4), _vm._v(" "), _c('transition-group', {
+    attrs: {
+      "name": "flip-list, ranklist",
+      "tag": "ul"
+    }
+  }, _vm._l((_vm.users), function(user, rank) {
+    return _c('div', {
+      key: user,
+      staticClass: "propol"
+    }, [_c('div', {
+      staticClass: "ui items"
+    }, [_c('div', {
+      staticClass: "item"
+    }, [_c('div', {
+      staticClass: "content"
+    }, [_c('p', {
+      staticClass: "header",
+      attrs: {
+        "id": "pollist"
+      }
+    }, [_c('span', [_vm._v(_vm._s(rank + 1))]), _vm._v("등")]), _vm._v(" "), _c('p', {
+      staticClass: "ui disabled header"
+    }, [_c('span', [_vm._v(_vm._s(user.name))])]), _vm._v(" "), _c('p', {
+      staticClass: "sub header",
+      attrs: {
+        "id": "subder"
+      }
+    }, [_c('span', [_vm._v(_vm._s(user.score))])])])])])])
+  }))], 1), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "huge chevron circle up icon",
+    on: {
+      "click": _vm.scrollUp
+    }
+  })]), _vm._v(" "), (_vm.loadState) ? _c('button', {
+    staticClass: "ui button",
+    on: {
+      "click": function($event) {
+        _vm.loadList(false)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "large chevron down icon"
+  })]) : _vm._e()])])]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h2', {
+    staticClass: "ui center aligned header",
+    attrs: {
+      "id": "rankhead"
+    }
+  }, [_vm._v(" 랭킹 시스템\n        "), _c('div', {
+    staticClass: "sub header"
+  }, [_vm._v("1등을 목표로 문제를 풀면서 친구들을 이겨보세요!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "rankge1"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(93)
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "rankge2"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(93)
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "rankge3"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(93)
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "ui items"
+  }, [_c('div', {
+    staticClass: "item"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "ui top attached tabular menu",
+    attrs: {
+      "id": "pob"
+    }
+  }, [_c('div', {
+    staticClass: "ui grid"
+  }, [_c('div', {
+    staticClass: "three wide column"
+  }, [_c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemone"
+    }
+  }, [_vm._v("등수")])]), _vm._v(" "), _c('div', {
+    staticClass: "six wide column"
+  }, [_c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemthr"
+    }
+  }, [_vm._v("이름")])]), _vm._v(" "), _c('div', {
+    staticClass: "seven wide column"
+  }, [_c('p', {
+    staticClass: "item",
+    attrs: {
+      "id": "ltemfou"
+    }
+  }, [_vm._v("점수")])])])])])])])
+}]}
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "__cov-progress",
+    style: (_vm.style)
+  })
+},staticRenderFns: []}
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "notfound"
+  }, [_c('div', {
+    staticClass: "notfound_container"
+  }, [_c('img', {
+    attrs: {
+      "src": __webpack_require__(402),
+      "alt": ""
+    }
+  }), _vm._v(" "), _c('span', [_vm._v("페이지가 존재하지 않습니다.")])])])
+}]}
+
+/***/ }),
+/* 433 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.entering) ? _c('div', {
+    attrs: {
+      "id": "admin"
+    }
+  }, [_c('div', {
+    staticClass: "sigo_container"
+  }, [(_vm.adminState) ? _c('div', {
+    staticClass: "adminPage",
+    staticStyle: {
+      "background-color": "white",
+      "color": "black"
+    }
+  }, [_c('div', {
+    staticClass: "ui"
+  }, [_c('h1', {
+    staticClass: "ui header admin"
+  }, [_vm._v("ADMINPAGE")]), _vm._v(" "), _c('div', {
+    staticClass: "ui secondary pointing menu"
+  }, [_c('a', {
+    staticClass: "item",
+    on: {
+      "click": _vm.click_member
+    }
+  }, [_vm._v("회원관리")]), _vm._v(" "), _c('a', {
+    staticClass: "item",
+    on: {
+      "click": _vm.click_nonaccount
+    }
+  }, [_vm._v("비승인 회원관리")]), _vm._v(" "), _c('a', {
+    staticClass: "item",
+    on: {
+      "click": _vm.click_list
+    }
+  }, [_vm._v("게시판관리")]), _vm._v(" "), _c('a', {
+    staticClass: "item",
+    on: {
+      "click": _vm.click_problem
+    }
+  }, [_vm._v("문제관리")]), _vm._v(" "), _c('a', {
+    staticClass: "item",
+    on: {
+      "click": _vm.click_result
+    }
+  }, [_vm._v("문제결과")])]), _vm._v(" "), _c('div', {
+    staticClass: "twelve wide stretched column"
+  }, [(_vm.memberState) ? _c('member') : _vm._e(), _vm._v(" "), (_vm.nonaccountState) ? _c('nonaccount') : _vm._e(), _vm._v(" "), (_vm.problemState) ? _c('problemmanage') : _vm._e(), _vm._v(" "), (_vm.listState) ? _c('notice') : _vm._e(), _vm._v(" "), (_vm.problemresultState) ? _c('problemresult') : _vm._e()], 1)])]) : _vm._e()])]) : _vm._e()
+},staticRenderFns: []}
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div')
+},staticRenderFns: []}
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "timeline"
+  }, [_c('div', {
+    attrs: {
+      "id": "footer"
+    }
+  }, [_c('div', {
+    staticClass: "footer"
+  }, [_c('div', {
+    staticClass: "left"
+  }, [_c('div', {
+    staticClass: "tople"
+  }, [_c('p', [_vm._v("SIGO")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("공지사항")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("문제")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("랭킹")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("마이페이지")])]), _vm._v(" "), _c('div', {
+    staticClass: "botle"
+  }, [_c('p', [_vm._v("© 2017 SIGO. All rights reserved.")])])]), _vm._v(" "), _c('div', {
+    staticClass: "right"
+  }, [_c('div', {
+    staticClass: "foico"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://www.facebook.com/shitsigo/"
+    }
+  }, [_c('i', {
+    staticClass: "big facebook f icon"
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "https://github.com/shitKorea/shit-algorithm"
+    }
+  }, [_c('i', {
+    staticClass: "big git icon"
+  })])])])])])])
+}]}
 
 /***/ }),
 /* 436 */
@@ -7266,4 +7322,4 @@ new _vue2.default({
 
 /***/ })
 ]),[457]);
-//# sourceMappingURL=main.622d45a2c4539151e680.js.map
+//# sourceMappingURL=main.43112edec7f40f9d8ea9.js.map
