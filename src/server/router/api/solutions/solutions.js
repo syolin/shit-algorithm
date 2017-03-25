@@ -322,14 +322,23 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                 return;
                             };
 
-                            let result;
+                            request.get({url: data.url[1], header: {'Authorization': req.header.authorization}}, function (err2, response2, body2) {
+                                let result;
 
-                            if(!data.url[1]) {
-                                if (getResolve.result == data.example.output) {
-
+                                if (err) {
+                                    res.status(409).json({
+                                        result: 'error',
+                                        message: err2
+                                    });
+                                    return;
+                                };
+                                const getResolve2 = JSON.parse(body2 || null);
+                                /*
+                                    정답 체크 후 응답
+                                */
+                                if (getResolve.result == data.example.output && getResolve2.result == data.example.output2) {
                                     result = 'success';
-
-                                    userController.scoreUpdate(form.userId, data.score, problem.type);
+                                     userController.scoreUpdate(form.userId, data.score, problem.type);
 
                                     res.json({
                                         result: result
@@ -342,60 +351,25 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                         result: result
                                     });
                                 }
+
+                                let resolveInfo = {
+                                    userId : form.userId,
+                                    resolveData : {
+                                        language: form.lang,
+                                        problemNum: form.problemNum,
+                                        code: form.inputCode,
+                                        result: result,
+                                        compileName: data.compileBody.name,
+                                        date: new Date(),
+                                        memory: 0,
+                                        time: 0,
+                                        problemType: problem.type
+                                    }
+                                };
+
                                 // 디비에 결과 저장
                                 solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
-                            } else {
-                                request.get({url: data.url[1], header: {'Authorization': req.header.authorization}}, function (err2, response2, body2) {
-                                    if (err) {
-                                        res.status(409).json({
-                                            result: 'error',
-                                            message: err2
-                                        });
-                                        return;
-                                    };
-
-                                    const getResolve2 = JSON.parse(body2 || null);
-
-                                    /*
-                                     정답 체크 후 응답
-                                     */
-                                    if (getResolve.result == data.example.output && getResolve2.result == data.example.output2) {
-
-                                        result = 'success';
-
-                                        userController.scoreUpdate(form.userId, data.score, problem.type);
-
-                                        res.json({
-                                            result: result
-                                        });
-                                    } else {
-
-                                        result = 'fail';
-
-                                        res.json({
-                                            result: result
-                                        });
-                                    }
-                                });
-                            }
-
-                            let resolveInfo = {
-                                userId : form.userId,
-                                resolveData : {
-                                    language: form.lang,
-                                    problemNum: form.problemNum,
-                                    code: form.inputCode,
-                                    result: result,
-                                    compileName: data.compileBody.name,
-                                    date: new Date(),
-                                    memory: 0,
-                                    time: 0,
-                                    problemType: problem.type
-                                }
-                            };
-
-                            // 디비에 결과 저장
-                            solutionController.create(resolveInfo.userId, resolveInfo.resolveData);
+                            });
 
                         });
                     })
