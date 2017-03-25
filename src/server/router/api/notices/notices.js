@@ -102,7 +102,7 @@ router.get('/:num', function (req, res) {
 router.put('/',auth.isAuthenticated('admin'), function (req, res) {
     const body = req.body;
     const form = {
-        noticeNum : body.noticemnum,
+        noticeNum : body.noticenum,
         noticeName : body.noticename,
         contents : body.contents,
         date : new Date()
