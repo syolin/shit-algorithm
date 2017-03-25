@@ -243,20 +243,25 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                 /*
                  두번쨰 예제가 있을 경우, 두번째 예제로 정답을 체크
                  */
-                let example;
-                if (req.body.mode) {
-                    example = {
-                        input : problem.problemData.inputExample,
-                        output : problem.problemData.outputExample
-                    };
-                } else {
-                    example = {
-                        input : problem.problemData.inputExample2 ? problem.problemData.inputExample2 : problem.problemData.inputExample,
-                        output : problem.problemData.outputExample2 ? problem.problemData.outputExample2 : problem.problemData.outputExample
-                    };
+                let example = {
+                    input : problem.problemData.inputExample,
+                    output : problem.problemData.outputExample,
+                    input2 : problem.problemData.inputExample2,
+                    output2 : problem.problemData.outputExample2
                 }
+                // if (req.body.mode) {
+                //     example = {
+                //         input : problem.problemData.inputExample,
+                //         output : problem.problemData.outputExample
+                //     };
+                // } else {
+                //     example = {
+                //         input : problem.problemData.inputExample2 ? problem.problemData.inputExample2 : problem.problemData.inputExample,
+                //         output : problem.problemData.outputExample2 ? problem.problemData.outputExample2 : problem.problemData.outputExample
+                //     };
+                // }
 
-                let url = example.input ? solutionApiUrl +'/'+ example.input : solutionApiUrl;
+                let url = example.input+','+example.input2;
 
                 callback({
                     form : form,
