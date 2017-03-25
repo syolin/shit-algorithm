@@ -195,7 +195,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
     const contest = problem => {
         const check = user => {
-            if (problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
+            if (user.rating != 3 &&problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         };
 
         const validation = () => {
@@ -211,7 +211,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         const security = () => {
             const commands = ['system','fcloseall','fdopen','fgetc','fgetchar','fgetpos','fopen','fputc','fputchar','fread','freopen','fseek','fsetpos','ftell','fwrite','getc','getw','putw','rename','rewind','tmpfile','tmpnam','unlink'];
             for (let command in commands) {
-                console.log("commnd : ",commands[command]);
                 if (form.inputCode.indexOf(commands[command]) != -1) throw new Error("runtime error");
             }
         };
@@ -322,6 +321,8 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                              정답 체크 후 응답
                              */
                             let result;
+
+                            console.log(problem.type);
 
                             if (getResolve.result == data.example.output) {
 

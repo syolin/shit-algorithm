@@ -60,8 +60,7 @@ const ResolveSchema = new Schema({
         time: Number,
         problemType: {
             type: String,
-            required: true,
-            default: "normal"
+            required: true
         }
     }
 });
