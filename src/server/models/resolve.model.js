@@ -57,7 +57,12 @@ const ResolveSchema = new Schema({
         compileName: String,
         date: Date,
         memory: Number,
-        time: Number
+        time: Number,
+        problemType: {
+            type: String,
+            required: true,
+            default: "normal"
+        }
     }
 });
 

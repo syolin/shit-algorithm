@@ -176,7 +176,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         name : req.body.name,
         lang : req.body.lang,
         userId : req.user.userId,
-        problemNum : req.body.problemnum
+        problemNum : req.body.problemnum,
     };
 
     let resolveInfo = {
@@ -245,7 +245,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                  두번쨰 예제가 있을 경우, 두번째 예제로 정답을 체크
                  */
                 let example;
-
                 if (req.body.mode) {
                     example = {
                         input : problem.problemData.inputExample,
@@ -352,7 +351,8 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     compileName: data.compileBody.name,
                                     date: new Date(),
                                     memory: 0,
-                                    time: 0
+                                    time: 0,
+                                    problemType: problem.type
                                 }
                             };
 
