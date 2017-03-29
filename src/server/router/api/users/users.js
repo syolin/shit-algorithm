@@ -114,6 +114,16 @@ router.get('/contest/:bool', auth.isAuthenticated('admin'), function (req, res) 
     });
 });
 
+router.get('/contest/:user/:bool', auth.isAuthenticated('admin'), function (req, res) {
+
+    controller.contestUpdate(req.params.bool, req.params.user);
+
+    res.json({
+        result: 'success'
+    });
+});
+
+
 /*
     GET /api/users/:id
     해당 유저 정보

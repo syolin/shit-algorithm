@@ -50,7 +50,8 @@ User.scoreUpdate = (userId,score,type) => {
  * 대회 온 오프
  * @param boolean bool
  */
-User.contestUpdate = (bool) => {
+User.contestUpdate = (bool, user) => {
+    if (user) return User.update({userId: user}, {$set: {contestAccount: bool}}, {multi: true},function(err, result){});
     return User.update({}, {$set: {contestAccount: bool}}, {multi: true},function(err, result){});
 };
 
