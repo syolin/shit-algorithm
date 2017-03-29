@@ -962,10 +962,13 @@ exports.default = {
     this.$router.beforeEach(function (to, from, next) {
       next();
       if (to.name !== 'index') {
+        // 로딩창 시작
         _this.$store.commit('loadingOn');
       }
+      // 프로그레스바 시작
       _this.$Progress.start();
     });
+    // 스코롤 이벤트 리스너 등록
     window.addEventListener('scroll', this.scrollFunction);
   },
   destroyed: function destroyed() {
@@ -974,6 +977,7 @@ exports.default = {
 
   methods: _extends({}, (0, _vuex.mapActions)(['loadingOn', 'loadingOff']), {
     scrollFunction: function scrollFunction() {
+      // 스크롤 메뉴 변경
       this.scrolled = window.scrollY;
       if (this.scrolled > 200) {
         this.scrollMenu = true;
@@ -982,6 +986,7 @@ exports.default = {
       }
     },
     problemLoginCheck: function problemLoginCheck() {
+      // 문제리스트 입장 체크
       if (this.$cookie.get('userToken') == null) {
         this.$swal('입장 불가', '로그인을 하셨나요?', 'error');
       } else {
@@ -991,6 +996,7 @@ exports.default = {
       }
     },
     rankLoginCheck: function rankLoginCheck() {
+      // 랭킹 입장 체크
       if (this.$cookie.get('userToken') == null) {
         this.$swal('입장 불가', '로그인을 하셨나요?', 'error');
       } else {
@@ -1006,6 +1012,7 @@ exports.default = {
       this.$cookie.delete('userName');
     },
     isNumber: function isNumber(number) {
+      // 회원가입 학번 숫자 체크
       var evt = number || window.event;
       var charCode = evt.which ? evt.which : evt.keyCode;
       if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
@@ -1015,13 +1022,16 @@ exports.default = {
       return true;
     },
     logout: function logout() {
+      // 로그아웃
       this.$swal({
         title: '로그아웃합니다',
         text: '이 상자는 2초후에 사라집니다',
         timer: 2000
       });
       this.cookieDel();
+      // 쿠키삭제
       this.$router.push({
+        // 메인으로 이동
         name: 'index'
       });
       this.loginState = false;
@@ -1034,6 +1044,8 @@ exports.default = {
     closeModal: function closeModal() {
       $('.ui.modal').modal('hide');
     },
+
+    // 켑챠 함수
     onloadCallback: function onloadCallback() {
       alert('grecaptcha is ready!');
     },
@@ -1046,11 +1058,14 @@ exports.default = {
     resetRecaptcha: function resetRecaptcha() {
       this.$refs.recaptcha.reset(); // Direct call reset method
     },
+
+    // 폼 제출
     submit: function submit() {
       var _this2 = this;
 
       var errMsg = void 0;
       if (this.signState === true) {
+        // 로그인
         this.$http.post('users/signin', {
           userid: this.userid,
           password: this.password
@@ -1069,7 +1084,7 @@ exports.default = {
               _this2.userRating = resInfo.data.user.rating;
               // Cookie : 이름 , 내용 , 만료기간 , 도메인
               _this2.$cookie.set('userToken', _this2.userToken, 1);
-              // 쿠키 값 출력
+              // 로그인 성공 모달
               _this2.$swal('로그인 성공', '안녕하세요!', 'success');
             }
           })
@@ -1083,6 +1098,7 @@ exports.default = {
             });
           });
         }).catch(function (err) {
+          // 에러시 모달 메세지
           if (err.response.data.message === 'account false') {
             errMsg = '관리자의 승인을 기다려주세요';
           } else if (err.response.data.message === 'login fail') {
@@ -1093,12 +1109,14 @@ exports.default = {
             errMsg = '5회 이상 틀려 확인정보를 입력해 주세요';
             _this2.infoSubmit = true;
           }
+          // 에러 모달
           _this2.$swal({
             title: '로그인 실패',
             text: errMsg,
             type: 'error'
           }).then(function () {
             if (_this2.infoSubmit === true) {
+              // 로그인 5회 실패시 회원 정보를 물어보는 모달
               _this2.failReset();
               _this2.infoSubmit = '';
             }
@@ -1112,18 +1130,22 @@ exports.default = {
           password: this.password,
           studentcode: this.studentcode
         }).then(function (resRegister) {
+          // 회원가입 성공
           _this2.closeModal();
           var username = resRegister.data.username;
           _this2.$swal({
+            // 회원가입 성공 모달
             title: '회원가입 성공',
             text: '\uC548\uB155\uD558\uC138\uC694 ' + username + '\uB2D8',
             type: 'success'
           });
         }).catch(function (error) {
           _this2.closeModal();
+          // 에러시 모달 메세지
           if (error.response.data.message === 'validation error') {
             errMsg = '정보를 제대로 기입해주세요';
           }
+          // 에러 모달
           _this2.$swal({
             title: '회원가입 실패',
             text: errMsg,
@@ -1135,6 +1157,7 @@ exports.default = {
     failReset: function failReset() {
       var _this3 = this;
 
+      // 로그인 5회 실패시 회원 정보를 물어보는 모달
       this.$swal.setDefaults({
         input: 'text',
         confirmButtonText: '다음',
@@ -1152,16 +1175,19 @@ exports.default = {
           studentcode: result[2]
         }).then(function () {
           _this3.$swal({
+            // 인증 성공
             title: '확인 완료되었습니다',
             text: '다시 로그인 해주세요',
             type: 'success'
           });
         }).catch(function () {
           _this3.$swal({
+            // 인증 실패
             title: '확인 실패하였습니다',
             text: '다시 시도해주세요',
             type: 'error'
           }).then(function () {
+            // 다시 인증
             _this3.failReset();
           });
         });
@@ -1206,6 +1232,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   name: 'admin',
   components: {
+    // 컴포넌트 등록
     member: _member2.default,
     problemmanage: _problemmanage2.default,
     notice: _noticemanage2.default,
@@ -1231,8 +1258,8 @@ exports.default = {
   updated: function updated() {
     var _this = this;
 
-    this.$Progress.start();
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -1240,45 +1267,57 @@ exports.default = {
   beforeCreate: function beforeCreate() {
     var _this2 = this;
 
-    //          토큰 테스트
+    // 토큰 테스트
     this.userToken = this.$cookie.get('userToken');
     if (this.userToken != null) {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/my-info').then(function (resInfo) {
+        // 유저 정보 확인
         _this2.userRating = resInfo.data.user.rating;
         if (_this2.userRating !== 3) {
+          // 어드민이 아닐 경우
           _this2.$swal({
+            // 입장 실패 모달
             title: '입장 실패',
             text: '어드민이 아닙니다',
             type: 'error'
           }).then(function () {
+            // 메인으로 이동
             location.href = '/';
           });
         } else {
+          // 어드민인 경우
           _this2.adminState = true;
           _this2.entering = true;
         }
       }).catch(function (error) {
+        // 유저 정보 확인
         _this2.$swal({
+          // 입장 실패 모달
           title: '유저 정보 조회 실패',
           text: error,
           type: 'error'
         }).then(function () {
+          // 메인으로 이동
           location.href = '/';
         });
       });
     } else {
+      // 토큰 인증 실패시
       this.$swal({
+        // 입장 실패 모달
         title: '입장 실패',
         text: '로그인을 해주세요',
         type: 'error'
       }).then(function () {
+        // 메인으로 이동
         location.href = '/';
       });
     }
   },
 
   methods: {
+    // 메뉴 컴포넌트 클릭 함수
     click_problem: function click_problem() {
       this.memberState = false;
       this.problemState = true;
@@ -1316,6 +1355,8 @@ exports.default = {
     }
   }
 }; //
+//
+//
 //
 //
 //
@@ -1384,13 +1425,14 @@ exports.default = {
     };
   },
   created: function created() {
-    //토큰테스트
+    // 유저 정보 로드
     this.getMember();
   },
   updated: function updated() {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -1400,7 +1442,9 @@ exports.default = {
     deleteuser: function deleteuser(userid, member) {
       var _this2 = this;
 
+      // 유저 삭제
       this.$swal({
+        // 삭제 확인 모달
         title: '유저 삭제',
         text: '정말로 삭제하시겠습니까?',
         type: 'question',
@@ -1409,37 +1453,43 @@ exports.default = {
         cancelButtonText: '취소'
       }).then(function () {
         _this2.$http.delete('users/' + userid).then(function () {
+          // 삭제 완료
           _this2.$swal({
+            // 삭제 완료 모달
             title: '삭제 완료',
             text: userid + ' \uB2D8\uC758 \uACC4\uC815\uC774 \uC0AD\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
+          // 리스트의 해당 인덱스의 유저 삭제
           _this2.members.splice(_this2.members.indexOf(member), 1);
         }).catch(function (err) {
+          // 삭제 실패
           _this2.$swal({
+            // 삭제 실패 모달
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
+        // 삭제 실패
         _this2.$swal({
+          // 삭제 실패 모달
           title: '삭제 실패',
           text: err,
           type: 'error'
         });
       });
     },
-
-    //            문제리스트
     getMember: function getMember() {
       var _this3 = this;
 
-      this.userToken = this.$cookie.get('userToken');
-      this.$http.defaults.headers.common.Authorization = this.userToken;
+      // 유저 정보 로드
       this.$http.get('users').then(function (res) {
+        // 로드 성공
         var i = 0;
         while (i < res.data.users.length) {
+          // 데이터 추가
           _this3.members.push({
             userid: res.data.users[i].userId,
             username: res.data.users[i].username,
@@ -1450,7 +1500,9 @@ exports.default = {
         }
         _this3.enteringMember = true;
       }).catch(function (err) {
+        // 유저 정보 로드 실패
         _this3.$swal({
+          // 로드 실패 모달
           title: '유저 로드 실패',
           text: err,
           type: 'error'
@@ -1499,13 +1551,14 @@ exports.default = {
     };
   },
   created: function created() {
-    this.userToken = this.$cookie.get('userToken');
+    // 유저 정보 로드
     this.getMember();
   },
   updated: function updated() {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -1515,20 +1568,26 @@ exports.default = {
     account: function account(userid, member) {
       var _this2 = this;
 
+      // 유저 승인
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('users/account/' + userid).then(function (res) {
+        // 승인 성공
         _this2.$swal({
+          // 성공 모달
           title: '승인 완료',
           text: userid + '\uB2D8\uC744 \uC2B9\uC778\uD558\uC600\uC2B5\uB2C8\uB2E4',
           type: 'success'
         });
+        // 리스트의 해당 인덱스의 유저 삭제
         _this2.members.splice(_this2.members.indexOf(member), 1);
       });
     },
     deletenonuser: function deletenonuser(userid, member) {
       var _this3 = this;
 
+      // 유저 삭제
       this.$swal({
+        // 확인 모달
         title: '유저 삭제',
         text: '정말로 삭제하시겠습니까?',
         type: 'question',
@@ -1536,22 +1595,30 @@ exports.default = {
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(function () {
+        // 유저 삭제 확인
         _this3.$http.delete('users/' + userid).then(function () {
+          // 삭제 성공
           _this3.$swal({
+            // 성공 모달
             title: '삭제 완료',
             text: userid + '\uB2D8\uC758 \uACC4\uC815\uC774 \uC0AD\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
+          // 리스트의 해당 인덱스의 유저 삭제
           _this3.members.splice(_this3.members.indexOf(member), 1);
         }).catch(function (err) {
+          // 삭제 실패
           _this3.$swal({
+            // 실패 모달
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
+        // 삭제 실패
         _this3.$swal({
+          // 실패 모달
           title: '삭제 실패',
           text: err,
           type: 'error'
@@ -1561,10 +1628,13 @@ exports.default = {
     getMember: function getMember() {
       var _this4 = this;
 
+      // 유저 정보 로드
       this.$http.defaults.headers.common.Authorization = this.userToken;
+      // 승인되지 않은 유저 정보 로드
       this.$http.get('users/non-account').then(function (res) {
         var i = 0;
         while (i < res.data.users.length) {
+          // 데이터 추가
           _this4.members.push({
             userid: res.data.users[i].userId,
             username: res.data.users[i].username,
@@ -1650,12 +1720,14 @@ exports.default = {
     };
   },
   created: function created() {
+    // 공지 로드
     this.loadNotice();
   },
   updated: function updated() {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -1665,23 +1737,28 @@ exports.default = {
     modify: function modify() {
       var _this2 = this;
 
+      // 공지 수정
       var date = new Date();
       this.$http.put('notices', {
         noticenum: this.num,
         noticename: this.name,
         contents: this.content
       }).then(function () {
+        // 수정 성공
         _this2.$swal({
+          // 성공 모달
           title: '수정 성공',
           text: '공지를 수정하였습니다',
           type: 'success'
         });
       }).catch(function (err) {
+        // 수정 실패
         var errMsgs = void 0;
         if (err.response.data.message === 'validation error') {
           errMsgs = '모든 정보를 입력해주세요';
         }
         _this2.$swal({
+          // 실패 모달
           title: '수정 실패',
           text: errMsgs,
           type: 'error'
@@ -1689,6 +1766,7 @@ exports.default = {
       });
     },
     noticeAdd: function noticeAdd() {
+      // 공지 추가 버튼
       this.noticeAddState = !this.noticeAddState;
       if (this.noticeAddState) {
         this.noticeMsg = '닫기';
@@ -1699,14 +1777,25 @@ exports.default = {
     modifyNotice: function modifyNotice(num) {
       var _this3 = this;
 
+      // 공지 수정 정보 로드
+      this.noticeAddState = !this.noticeAddState;
+      if (this.noticeAddState) {
+        this.noticeMsg = '닫기';
+      } else {
+        this.noticeMsg = '공지 등록하기';
+      }
       this.$http.get('notices/' + num).then(function (res) {
+        // 공지 정보 로드 성공 
+
         _this3.noticeModify = !_this3.noticeModify;
         _this3.num = res.data.notice.num;
         _this3.name = res.data.notice.noticeName;
         _this3.content = res.data.notice.contents;
         _this3.type = res.data.notice.type;
       }).catch(function (err) {
+        // 공지 정보 로드 실패
         _this3.$swal({
+          // 실패 모달
           title: '공지 조회 실패',
           text: err,
           type: 'error'
@@ -1716,30 +1805,40 @@ exports.default = {
     deleteNotice: function deleteNotice(num, notice) {
       var _this4 = this;
 
+      // 공지 삭제
       this.$swal({
-        title: '공 삭제',
+        // 삭제 확인 모달
+        title: '공지 삭제',
         text: '정말로 삭제하시겠습니까?',
         type: 'question',
         showCancelButton: true,
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(function () {
+        // 삭제 확인
         _this4.$http.delete('notices/' + num).then(function () {
+          // 삭제 완료
           _this4.$swal({
+            // 성공 모달
             title: '삭제 완료',
             test: num + '\uBC88 \uACF5\uC9C0\uB97C \uC0AD\uC81C\uD558\uC168\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
+          // 리스트의 해당 인덱스의 공지 삭제
           _this4.noticeList.splice(_this4.noticeList.indexOf(notice), 1);
         }).catch(function (err) {
+          //삭제 실패
           _this4.$swal({
+            // 실패 모달
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
+        // 삭제 실패
         _this4.$swal({
+          // 실패 모달
           title: '삭제 실패',
           text: err,
           type: 'error'
@@ -1749,9 +1848,11 @@ exports.default = {
     loadNotice: function loadNotice() {
       var _this5 = this;
 
+      // 공지 로드
       this.$http.get('notices').then(function (res) {
         var i = 0;
         while (i < res.data.notices.length) {
+          // 데이터 추가
           _this5.noticeList.push({
             name: res.data.notices[i].noticeName,
             content: res.data.notices[i].contents,
@@ -1763,7 +1864,9 @@ exports.default = {
         }
         _this5.enteringNoticemanage = true;
       }).catch(function (err) {
+        // 공지 로드 실패
         _this5.$swal({
+          // 실패 모달
           title: '공지 로드 실패',
           text: err.response.data.message,
           type: 'error'
@@ -1773,12 +1876,17 @@ exports.default = {
     addNotice: function addNotice() {
       var _this6 = this;
 
+      // 공지 등록
       this.$http.post('notices', {
         noticename: this.name,
         contents: this.content,
         type: this.type
       }).then(function () {
-        _this6.$swal('등록 성공', '공지를 등록하였습니다', 'success');
+        // 등록 성공
+        _this6.$swal(
+        //성공 모달
+        '등록 성공', '공지를 등록하였습니다', 'success');
+        // 데이터 추가
         _this6.noticeList.push({
           num: _this6.lastNotice + 1,
           name: _this6.name,
@@ -1786,11 +1894,13 @@ exports.default = {
           type: _this6.type
         });
       }).catch(function (err) {
+        // 등록 실패
         var errMsg = void 0;
         if (err.response.data.message === 'validation error') {
           errMsg = '정보를 모두 입력해주세요';
         }
         _this6.$swal({
+          // 실패 모달
           title: '등록 실패',
           text: errMsg,
           type: 'error'
@@ -1925,15 +2035,14 @@ exports.default = {
     };
   },
   created: function created() {
-    //토큰테스트
-    this.userToken = this.$cookie.get('userToken');
-    this.$http.defaults.headers.common.Authorization = this.userToken;
+    // 문제 로드
     this.fetchData();
   },
   updated: function updated() {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -1941,6 +2050,7 @@ exports.default = {
 
   methods: {
     openAdd: function openAdd() {
+      // 문제 등록 버튼
       this.addState = !this.addState;
       if (this.addState) {
         this.addMsg = '닫기';
@@ -1951,7 +2061,9 @@ exports.default = {
     deleteData: function deleteData(num, item) {
       var _this2 = this;
 
+      // 문제 삭제
       this.$swal({
+        // 삭제 확인 모달
         title: '문제 삭제',
         text: '정말로 삭제하시겠습니까?',
         type: 'question',
@@ -1959,24 +2071,32 @@ exports.default = {
         confirmButtonText: '삭제',
         cancelButtonText: '취소'
       }).then(function () {
+        // 삭제 확인
         _this2.userToken = _this2.$cookie.get('userToken');
         _this2.$http.defaults.headers.common.Authorization = _this2.userToken;
         _this2.$http.delete('problems/' + num).then(function () {
+          // 삭제 성공
           _this2.$swal({
+            // 성공 모달
             title: '삭제 완료',
             text: num + '\uBC88 \uBB38\uC81C\uB97C \uC0AD\uC81C\uD558\uC168\uC2B5\uB2C8\uB2E4',
             type: 'success'
           });
+          // 리스트의 해당 인덱스의 문제 삭제
           _this2.items.splice(_this2.items.indexOf(item), 1);
         }).catch(function (err) {
+          // 삭제 실패
           _this2.$swal({
+            // 실패 모달
             title: '삭제 실패',
             text: err,
             type: 'error'
           });
         });
       }).catch(function () {
+        // 삭제 실패
         _this2.$swal({
+          // 실패 모달
           title: '삭제 실패',
           text: err,
           type: 'error'
@@ -1986,6 +2106,7 @@ exports.default = {
     modify: function modify() {
       var _this3 = this;
 
+      // 문제 수정
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.put('problems', {
         problemnum: this.problemNum,
@@ -2001,17 +2122,21 @@ exports.default = {
         score: this.score,
         type: this.problemType
       }).then(function () {
+        // 수정 성공
         _this3.$swal({
+          // 성공 모달
           title: '수정 성공',
           text: '문제를 수정하였습니다',
           type: 'success'
         });
       }).catch(function (err) {
+        // 수정 실패
         var errMsgs = void 0;
         if (err.response.data.message === 'validation error') {
           errMsgs = '모든 정보를 입력해주세요';
         }
         _this3.$swal({
+          // 실패 모달
           title: '수정 실페',
           text: errMsgs,
           type: 'error'
@@ -2021,8 +2146,16 @@ exports.default = {
     modifyData: function modifyData(num) {
       var _this4 = this;
 
+      // 해당 문제 정보 로드
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('problems/' + num).then(function (res) {
+        // 문제 정보 로드 성공
+        _this4.addState = !_this4.addState;
+        if (_this4.addState) {
+          _this4.addMsg = '닫기';
+        } else {
+          _this4.addMsg = '문제 등록하기';
+        }
         _this4.modifyState = !_this4.modifyState;
         _this4.problemName = res.data.problem.problemName;
         _this4.source = res.data.problem.source;
@@ -2037,6 +2170,7 @@ exports.default = {
         _this4.explanation = res.data.problem.explanation;
         _this4.type = res.data.problem.type;
       }).catch(function (err) {
+        // 로드 실패
         _this4.$swal({
           title: '문제 조회 실패',
           text: err,
@@ -2047,9 +2181,11 @@ exports.default = {
     solveListData: function solveListData(num) {
       var _this5 = this;
 
+      // 해당 문제 결과 로드
       this.solveList = [];
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('solution').then(function (res) {
+        // 문제 결과 로드 성공
         var i = 0;
         var username = void 0;
         var id = void 0;
@@ -2059,14 +2195,17 @@ exports.default = {
         var code = void 0;
         while (i < res.data.resolves.length) {
           if (res.data.resolves[i].resolveData.problemNum === num) {
+            // 문제 결과의 번호와 해당 문제의 번호가 맞으면 데이터 추가
             id = res.data.resolves[i].userId;
             result = res.data.resolves[i].resolveData.result;
             date = res.data.resolves[i].resolveData.date;
             code = res.data.resolves[i].resolveData.code;
             _this5.$http.defaults.headers.common.Authorization = _this5.userToken;
+            // 해당 아이디의 정보 로드
             _this5.$http.get('users/search/' + id).then(function (userInfo) {
               username = userInfo.data.users.username;
               studentcode = userInfo.data.users.studentCode;
+              // 데이터 추가
               _this5.solveList.push({
                 username: username,
                 studentcode: studentcode,
@@ -2079,7 +2218,9 @@ exports.default = {
           i += 1;
         }
       }).catch(function (err) {
+        // 문제 결과 로드 실패
         _this5.$swal({
+          // 실패 모달
           title: '결과 로드 실패',
           text: err,
           type: 'error'
@@ -2087,6 +2228,7 @@ exports.default = {
       });
     },
     isNumber: function isNumber(number) {
+      // 문제 수정 추가시, 메모리, 시간 제한 숫자 체크
       var evt = number || window.event;
       var charCode = evt.which ? evt.which : evt.keyCode;
       if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46) {
@@ -2098,6 +2240,7 @@ exports.default = {
     add: function add() {
       var _this6 = this;
 
+      // 문제 등록
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.post('problems', {
         type: this.problemType,
@@ -2112,18 +2255,24 @@ exports.default = {
         memorylimit: this.memoryLimit,
         score: this.score
       }).then(function () {
-        _this6.$swal('등록 성공', '문제를 등록하였습니다', 'success');
+        // 등록 성공
+        _this6.$swal(
+        // 성공 모달
+        '등록 성공', '문제를 등록하였습니다', 'success');
+        // 데이터 추가
         _this6.items.push({
           num: _this6.lastNum + 1,
           name: _this6.problemName,
           source: _this6.source
         });
       }).catch(function (err) {
+        // 등록 실패
         var errMsg = void 0;
         if (err.response.data.message === 'validation error') {
           errMsg = '정보가 부족합니다';
         }
         _this6.$swal({
+          // 실패 모달
           title: '등록 실패',
           text: errMsg,
           type: 'error'
@@ -2133,13 +2282,14 @@ exports.default = {
     fetchData: function fetchData() {
       var _this7 = this;
 
-      //토큰테스트
+      // 문제 로드
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('problems').then(function (res) {
         var i = 0;
         console.log(res);
         while (i < res.data.problems.length) {
+          // 데이터 추가
           _this7.data.push({
             num: res.data.problems[i].num,
             name: res.data.problems[i].problemName,
@@ -2147,7 +2297,9 @@ exports.default = {
           });
           i += 1;
         }
-        _this7.$http.get('problems/contest').then(function (resContest) {
+        _this7.$http.get('problems/contest')
+        // 대회 문제 로드
+        .then(function (resContest) {
           var j = 0;
           while (j < resContest.data.problems.length) {
             _this7.data.push({
@@ -2158,12 +2310,14 @@ exports.default = {
             j += 1;
           }
           if (j === resContest.data.problems.length) {
+            // 문제 리스트 정렬                  
             var sort = 'num';
             _this7.data.sort(function (a, b) {
               return a[sort] - b[sort];
             });
             i = 0;
             while (i < _this7.data.length) {
+              // 데이터 추가
               _this7.items.push({
                 num: _this7.data[i].num,
                 name: _this7.data[i].name,
@@ -2173,7 +2327,9 @@ exports.default = {
             }
           }
         }).catch(function (err) {
+          // 문제 로드 실패
           _this7.$swal({
+            // 실패 모달
             title: '문제 로드 실패',
             text: err,
             type: 'error'
@@ -2181,7 +2337,9 @@ exports.default = {
         });
         _this7.enteringProblemmanage = true;
       }).catch(function (err) {
+        // 문제 로드 실패
         _this7.$swal({
+          // 실패 모달
           title: '문제 로드 실패',
           text: err,
           type: 'error'
@@ -2240,12 +2398,14 @@ exports.default = {
     };
   },
   created: function created() {
+    // 문제 결과 로드
     this.ratio();
   },
   updated: function updated() {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -2255,9 +2415,11 @@ exports.default = {
     ratio: function ratio() {
       var _this2 = this;
 
+      // 문제 결과 로드
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('solution').then(function (res) {
+        // 로드 성공
         var i = 0;
         while (i < res.data.resolves.length) {
           var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
@@ -2271,12 +2433,15 @@ exports.default = {
             result: res.data.resolves[i].resolveData.result,
             time: res.data.resolves[i].resolveData.time
           });
+          // 데이터 추가
           _this2.ratioData.push(_defineProperty({}, i, res.data.resolves[i].resolveData.problemNum));
           i += 1;
         }
         _this2.enteringProblemresult = true;
       }).catch(function (err) {
+        // 문제 결과 로드 실패
         _this2.$swal({
+          // 실페 모달
           title: '문제 결과 로드 실패',
           text: err,
           type: 'error'
@@ -2323,6 +2488,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   name: 'index',
   components: {
+    // 컴포넌트 등록
     parallax: _main2.default,
     timeline: _timeline2.default
   },
@@ -2333,6 +2499,7 @@ exports.default = {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -2418,6 +2585,7 @@ exports.default = {
   data: function data() {
     return {
       swiperOption: {
+        // 스와이퍼 옵션
         parallax: true,
         speed: 600,
         autoplay: 5000,
@@ -2467,9 +2635,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   name: 'sigo',
   data: function data() {
-    return {
-      timeline: []
-    };
+    return {};
   }
 };
 
@@ -2498,6 +2664,7 @@ exports.default = {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -2563,42 +2730,328 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
+var i = 0;
+var monitoring = null;
 exports.default = {
     name: 'monitor',
     data: function data() {
-        return {};
+        return {
+            entering: false,
+            monitorState: 'normal',
+            monitorData: [],
+            count: 0,
+            success: 0,
+            fail: 0,
+            compileError: 0,
+            resolveLength: 0
+        };
     },
-    created: function created() {},
-    mounted: function mounted() {
+    created: function created() {
         var _this = this;
 
+        // 토큰 테스트
+        this.userToken = this.$cookie.get('userToken');
+        if (this.userToken != null) {
+            this.$http.defaults.headers.common.Authorization = this.userToken;
+            this.$http.get('users/my-info').then(function (resInfo) {
+                // 유저정보 확인
+                _this.userRating = resInfo.data.user.rating;
+                if (_this.userRating !== 3) {
+                    // 어드민이 아닌 경우
+                    _this.$swal({
+                        // 실패 모달
+                        title: '입장 실패',
+                        text: '어드민이 아닙니다',
+                        type: 'error'
+                    }).then(function () {
+                        // 메인으로 이동
+                        location.href = '/';
+                    });
+                } else {
+                    // 어드민인 경우
+                    _this.entering = true;
+                    // 모니터링 시작                            
+                    _this.monitoring('first');
+                    monitoring = setInterval(function () {
+                        // 3초마다 모니터링 시작
+                        _this.monitoring('more');
+                    }, 3000);
+                }
+            }).catch(function (error) {
+                // 유저 정보 조회 실패
+                _this.$swal({
+                    // 실패 모달
+                    title: '유저 정보 조회 실패',
+                    text: error,
+                    type: 'error'
+                }).then(function () {
+                    // 메인으로 이동
+                    location.href = '/';
+                });
+            });
+        } else {
+            // 토큰 테스트 실패
+            this.$swal({
+                // 실패 모달
+                title: '입장 실패',
+                text: '로그인을 해주세요',
+                type: 'error'
+            }).then(function () {
+                // 메인으로 이동
+                location.href = '/';
+            });
+        }
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
         this.$nextTick(function () {
-            _this.$store.commit('loadingOff');
-            _this.$Progress.finish();
+            // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
+            _this2.$store.commit('loadingOff');
+            _this2.$Progress.finish();
         });
     },
 
     methods: {
-        monitoring: function monitoring() {
-            var _this2 = this;
+        normalMonitor: function normalMonitor() {
+            var _this3 = this;
 
+            // 일반 모니터링
+            this.monitorState = 'normal';
+            this.monitorData = [];
+            i = 0;
+            this.monitoring('first');
+            clearInterval(monitoring);
+            monitoring = setInterval(function () {
+                _this3.monitoring('more');
+            }, 3000);
+        },
+        contestMonitor: function contestMonitor() {
+            var _this4 = this;
+
+            // 대회 모니터링
+            this.monitorState = 'contest';
+            this.monitorData = [];
+            i = 0;
+            this.monitoring('first');
+            clearInterval(monitoring);
+            monitoring = setInterval(function () {
+                _this4.monitoring('more');
+            }, 3000);
+        },
+        contestOpen: function contestOpen() {
+            var _this5 = this;
+
+            this.$http.get('users/contest/true').then(function () {
+                _this5.$swal('대회 오픈', '대회가 시작되었습니다.', 'success');
+            }).catch(function (err) {
+                _this5.$swal({
+                    title: '대회 오픈 실패',
+                    text: err,
+                    type: 'error'
+                });
+            });
+        },
+        contestClose: function contestClose() {
+            var _this6 = this;
+
+            this.$http.get('users/contest/false').then(function () {
+                _this6.$swal('대회 종료', '대회가 종료되었습니다.', 'success');
+            }).catch(function (err) {
+                _this6.$swal({
+                    title: '대회 종료 실패',
+                    text: err,
+                    type: 'error'
+                });
+            });
+        },
+        monitoring: function monitoring(state) {
+            var _this7 = this;
+
+            // 문제 결과 로드
             this.$http.get('solution').then(function (res) {
-                var i = 0;
-                while (i < res.data.resolves.length) {
-                    var data = res.data.resolves[i].resolveData.data.replace('T', ', ');
-                    _this2.monitorData.push({
-                        userid: res.data.resolves[i].userId,
-                        code: res.data.resolves[i].resolveData.code,
-                        date: data.substring(0, data.length - 8),
-                        lang: res.data.resolves[i].resolveData.language,
-                        memory: res.data.resolves[i].resolveData.memory,
-                        num: res.data.resolves[i].resolveData.problemNum,
-                        result: res.data.resolves[i].resolveData.result,
-                        time: res.data.resolves[i].resolveData.time
-                    });
-                    i += 1;
+                // 로드 성공
+                if (state === 'first') {
+                    // 처음 모니터링하는 경우
+                    _this7.success = 0;
+                    _this7.fail = 0;
+                    _this7.count = 0;
+                    _this7.compileError = 0;
+                    _this7.resolveLength = 0;
+                    while (i < res.data.resolves.length) {
+                        if (_this7.monitorState === 'normal') {
+                            // 일반 모니터링인 경우
+                            if (res.data.resolves[i].resolveData.problemType === 'normal') {
+                                var data = res.data.resolves[i].resolveData.date.replace('T', ', ');
+                                // 성공 실패 총 결과 
+                                if (res.data.resolves[i].resolveData.result === 'success') {
+                                    _this7.success += 1;
+                                } else if (res.data.resolves[i].resolveData.result === 'fail') {
+                                    _this7.fail += 1;
+                                } else if (res.data.resolves[i].resolveData.result === 'compile error') {
+                                    _this7.compileError += 1;
+                                }
+                                _this7.count += 1;
+                                // 데이터 추가
+                                _this7.monitorData.push({
+                                    userid: res.data.resolves[i].userId,
+                                    code: res.data.resolves[i].resolveData.code,
+                                    date: data.substring(0, data.length - 8),
+                                    memory: res.data.resolves[i].resolveData.memory,
+                                    num: res.data.resolves[i].resolveData.problemNum,
+                                    result: res.data.resolves[i].resolveData.result,
+                                    time: res.data.resolves[i].resolveData.time
+                                });
+                            }
+                        } else if (_this7.monitorState === 'contest') {
+                            // 대회 모니터링인 경우
+                            if (res.data.resolves[i].resolveData.problemType === 'contest') {
+                                var _data = res.data.resolves[i].resolveData.date.replace('T', ', ');
+                                // 성공 실패 총 결과                                         
+                                if (res.data.resolves[i].resolveData.result === 'success') {
+                                    _this7.success += 1;
+                                } else if (res.data.resolves[i].resolveData.result === 'fail') {
+                                    _this7.fail += 1;
+                                } else if (res.data.resolves[i].resolveData.result === 'compile error') {
+                                    _this7.compileError += 1;
+                                }
+                                _this7.count += 1;
+                                // 데이터 추가
+                                _this7.monitorData.push({
+                                    userid: res.data.resolves[i].userId,
+                                    code: res.data.resolves[i].resolveData.code,
+                                    date: _data.substring(0, _data.length - 8),
+                                    memory: res.data.resolves[i].resolveData.memory,
+                                    num: res.data.resolves[i].resolveData.problemNum,
+                                    result: res.data.resolves[i].resolveData.result,
+                                    time: res.data.resolves[i].resolveData.time
+                                });
+                            }
+                        }
+                        i += 1;
+                        // 현재 개수 저장
+                        _this7.resolveLength = _this7.count;
+                    }
+                } else if (state === 'more') {
+                    // 처음 이후 모니터링
+                    i = 0;
+                    _this7.count = 0;
+                    if (_this7.monitorState === 'normal') {
+                        // 일반 모니터링인 경우
+                        while (i < res.data.resolves.length) {
+                            // 문제 결과 개수 로드                                    
+                            if (res.data.resolves[i].resolveData.problemType === 'normal') {
+                                _this7.count += 1;
+                            }
+                            i += 1;
+                        }
+                    } else if (_this7.monitorState === 'contest') {
+                        // 대회 모니터링인 경우
+                        while (i < res.data.resolves.length) {
+                            // 문제 결과 개수 로드
+                            if (res.data.resolves[i].resolveData.problemType === 'contest') {
+                                _this7.count += 1;
+                            }
+                            i += 1;
+                        }
+                    }
+                    if (_this7.resolveLength !== _this7.count) {
+                        // 전의 문제결과 개수와 현재 문제결과의 개수가 다른 경우
+                        // 최신문제가 인덱스 0 이므로 0부터 시작
+                        i = _this7.count - 1 - _this7.resolveLength;
+                        while (i >= 0) {
+                            if (_this7.monitorState === 'normal') {
+                                // 일반 모니터링인 경우
+                                if (res.data.resolves[i].resolveData.problemType === 'normal') {
+                                    var _data2 = res.data.resolves[i].resolveData.date.replace('T', ', ');
+                                    // 성공 샐피 총 결과
+                                    if (res.data.resolves[i].resolveData.result === 'success') {
+                                        _this7.success += 1;
+                                    } else if (res.data.resolves[i].resolveData.result === 'fail') {
+                                        _this7.fail += 1;
+                                    } else if (res.data.resolves[i].resolveData.result === 'compile error') {
+                                        _this7.compileError += 1;
+                                    }
+                                    // 데이터를 앞에서부터 추가
+                                    _this7.monitorData.unshift({
+                                        userid: res.data.resolves[i].userId,
+                                        code: res.data.resolves[i].resolveData.code,
+                                        date: _data2.substring(0, _data2.length - 8),
+                                        memory: res.data.resolves[i].resolveData.memory,
+                                        num: res.data.resolves[i].resolveData.problemNum,
+                                        result: res.data.resolves[i].resolveData.result,
+                                        time: res.data.resolves[i].resolveData.time
+                                    });
+                                }
+                            } else if (_this7.monitorState === 'contest') {
+                                if (res.data.resolves[i].resolveData.problemType === 'contest') {
+                                    var _data3 = res.data.resolves[i].resolveData.date.replace('T', ', ');
+                                    // 성공 실패 총 결과
+                                    if (res.data.resolves[i].resolveData.result === 'success') {
+                                        _this7.success += 1;
+                                    } else if (res.data.resolves[i].resolveData.result === 'fail') {
+                                        _this7.fail += 1;
+                                    } else if (res.data.resolves[i].resolveData.result === 'compile error') {
+                                        _this7.compileError += 1;
+                                    }
+                                    // 데이터를 앞에서부터 추가
+                                    _this7.monitorData.unshift({
+                                        userid: res.data.resolves[i].userId,
+                                        code: res.data.resolves[i].resolveData.code,
+                                        date: _data3.substring(0, _data3.length - 8),
+                                        memory: res.data.resolves[i].resolveData.memory,
+                                        num: res.data.resolves[i].resolveData.problemNum,
+                                        result: res.data.resolves[i].resolveData.result,
+                                        time: res.data.resolves[i].resolveData.time
+                                    });
+                                }
+                            }
+                            i -= 1;
+                        }
+                        // 현재 개수 저장
+                        _this7.resolveLength = _this7.count;
+                    }
                 }
+            }).catch(function (err) {
+                // 문제 결과 로드 실패
+                _this7.$swal({
+                    // 실패 모달
+                    title: '모니터링 페이지 오류',
+                    text: err,
+                    type: 'error'
+                }).then(function () {
+                    // 메인으로 이동
+                    location.href = '/';
+                });
             });
         }
     }
@@ -2676,6 +3129,7 @@ exports.default = {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -2694,11 +3148,14 @@ exports.default = {
         _this2.score = resInfo.data.user.score;
         _this2.$http.get('solution/resultsuccess').then(function (res) {
           if (res.resolves != null) {
+            // 문제 푼 결과가 있는 경우
             _this2.successCount = res.data.resolves.length;
+            // 최근 5문제만 출력
             var i = res.data.resolves.length - 5;
             while (i < res.data.resolves.length) {
               var date = res.data.resolves[i].resolveData.date.replace('T', ', ');
               date = date.substring(0, date.length - 8);
+              // 데이터 추가
               _this2.recentProblem.push({
                 num: res.data.resolves[i].resolveData.problemNum,
                 date: date
@@ -2708,29 +3165,38 @@ exports.default = {
           }
           _this2.entering = true;
         }).catch(function (err) {
+          // 문제 결과 조회 실패
           _this2.$swal({
+            // 실패 모달
             title: '문제 결과 조회 실패',
             text: err,
             type: 'error'
           }).then(function () {
+            // 메인으로 이동
             location.href = '/';
           });
         });
       }).catch(function (error) {
+        // 유저 조회 실패
         _this2.$swal({
+          // 실패 모달
           title: '유저 조회 실패',
           text: error,
           type: 'error'
         }).then(function () {
+          // 메인으로 이동
           location.href = '/';
         });
       });
     } else {
+      // 토큰 인증 실패
       this.$swal({
+        // 실패 모달
         title: '입장 실패',
         text: '로그인을 해주세요',
         type: 'error'
       }).then(function () {
+        // 메인으로 이동
         location.href = '/';
       });
     }
@@ -2764,6 +3230,7 @@ exports.default = {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -2845,6 +3312,7 @@ exports.default = {
     var _this = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this.$store.commit('loadingOff');
       _this.$Progress.finish();
     });
@@ -2852,19 +3320,20 @@ exports.default = {
   created: function created() {
     var _this2 = this;
 
+    // 공지 로드
     this.$http.get('notices').then(function (res) {
       i = 0;
       length = res.data.notices.length;
-      if (i / 10 === parseInt(length / 10, 10)) {
+      if (length <= 10) {
+        // 공지가 10개 이하인 경우
         end = length;
-        _this2.loadState = false;
-      } else if (end === length) {
         _this2.loadState = false;
       }
       while (i < end) {
         var date = res.data.notices[i].date.replace('T', ', ');
         date = date.substring(0, date.length - 8);
         if (res.data.notices[i].type === 'notice') {
+          // 데이터 추가
           _this2.notices.push({
             num: res.data.notices[i].num,
             noticename: res.data.notices[i].noticeName,
@@ -2875,11 +3344,14 @@ exports.default = {
       }
       _this2.entering = true;
     }).catch(function (err) {
+      // 공지 로드 실패
       _this2.$swal({
+        // 실패 모달
         title: '공지 로드 실패',
         text: err,
         type: 'error'
       }).then(function (res) {
+        // 메인으로 이동
         location.href = '/';
       });
     });
@@ -2887,31 +3359,41 @@ exports.default = {
 
   methods: {
     scrollUp: function scrollUp() {
+      // 화면 상단으로 스크롤 애니메이션
       $('html, body').stop().animate({
         scrollTop: 0
       }, 500);
     },
     open: function open(num) {
+      // 공지 클릭 시
       location.href = 'https://algorithm.seoulit.kr/notice/' + num;
-      //        this.$router.push({
-      //          path: `notices/${num}`,
-      //        });
     },
     loadList: function loadList() {
       var _this3 = this;
 
+      // 공지 추가 로드
       this.$http.get('notices').then(function (res) {
+        // 처음 공지 로드의 마지막부터 시작
         i = end;
         end += 10;
         if (i / 10 === parseInt(length / 10, 10)) {
+          /**
+            공지가 끝난경우 ex) i = 10, length = 18
+            i / 10 = 1, paseInt(length / 10, 10) = 1
+            end를 총 공지 갯수만큼 변경
+           */
+          console.log(i);
+          console.log(length);
           end = length;
           _this3.loadState = false;
         } else if (end === length) {
+          // 10의 배수로 끝난 경우
           _this3.loadState = false;
         }
         while (i < end) {
           var date = res.data.notices[i].date.replace('T', ', ');
           date = date.substring(0, date.length - 8);
+          // 데이터 추가
           _this3.notices.push({
             num: res.data.notices[i].num,
             noticename: res.data.notices[i].noticeName,
@@ -2920,7 +3402,9 @@ exports.default = {
           i += 1;
         }
       }).catch(function (err) {
+        // 공지 로드 실패
         _this3.$swal({
+          // 실패 모달
           title: '공지 로드 실패',
           text: err,
           type: 'error'
@@ -2970,14 +3454,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
     name: 'openNotice',
@@ -2994,6 +3470,7 @@ exports.default = {
         var _this = this;
 
         this.$nextTick(function () {
+            // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
             _this.$store.commit('loadingOff');
             _this.$Progress.finish();
         });
@@ -3001,7 +3478,9 @@ exports.default = {
     created: function created() {
         var _this2 = this;
 
+        // 선택한 공지 로드            
         var num = this.$route.params.num;
+        // 해당라우터의 파람값으로 공지를 로드
         this.$http.get('notices/' + num).then(function (res) {
             _this2.num = res.data.notice.num;
             _this2.name = res.data.notice.noticeName;
@@ -3010,7 +3489,9 @@ exports.default = {
             _this2.date = _this2.date.substring(0, _this2.date.length - 8);
             _this2.entering = true;
         }).catch(function (err) {
+            // 공지 로드 실패
             _this2.$swal({
+                // 실패 모달
                 title: _this2.num + '\uBC88 \uACF5\uC9C0 \uB85C\uB4DC \uC2E4\uD328',
                 text: err,
                 type: 'error'
@@ -3136,16 +3617,20 @@ exports.default = {
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
+      // 유저 정보 로드
       this.$http.get('users/my-info').then(function (resInfo) {
         _this.userid = resInfo.data.user.userId;
         _this.$http.defaults.headers.common.Authorization = _this.userToken;
+        // 공지 로드
         _this.$http.get('problems').then(function (res) {
           length = res.data.problems.length;
           //문제 결과 로드
           _this.$http.defaults.headers.common.Authorization = _this.userToken;
+          // 문제 결과 로드
           _this.$http.get('solution').then(function (resRatio) {
             //문제 개수 반복
-            if (length < 10) {
+            if (length <= 10) {
+              // 문제가 10개 이하인 경우
               end = length;
             }
             while (i < end) {
@@ -3162,17 +3647,21 @@ exports.default = {
               while (j < resRatio.data.resolves.length) {
                 //문제 번호 === 문제 결과 번호
                 if (i + 101 === resRatio.data.resolves[j].resolveData.problemNum) {
+                  // 문제 번호 101번 부터 시작
+
                   //문제 결과 카운트
                   if (resRatio.data.resolves[j].resolveData.result === 'success') {
+                    // 성공
                     success += 1;
                   } else if (resRatio.data.resolves[j].resolveData.result === 'fail') {
+                    // 실패
                     fail += 1;
                   }
                   count += 1;
                 }
                 j += 1;
               }
-              //결과 수정
+              // 결과 비율
               ratio = success / count;
               if (isNaN(ratio)) {
                 ratio = 0 + ' %';
@@ -3181,7 +3670,7 @@ exports.default = {
               } else if (ratio !== 0) {
                 ratio = parseInt(ratio * 100, 10) + ' %';
               }
-
+              // 데이터 추가
               _this.items.push({
                 num: num,
                 name: name,
@@ -3194,41 +3683,54 @@ exports.default = {
               });
               i += 1;
             }
+            // 문제 개수만큼 높이 변경
             _this.lineheight = 45 * _this.items.length;
             _this.entering = true;
           }).catch(function (err) {
+            // 문제 기록 로드 실패
             _this.$swal({
+              // 실패 모달
               title: '문제 기록 로드 실패',
               text: err,
               type: 'error'
             }).then(function () {
+              // 메인으로 이동
               location.href = '/';
             });
           });
         }).catch(function (err) {
+          // 문제 로드 실패
           _this.$swal({
+            // 실패 모달
             title: '문제 로드 실패',
             text: err,
             type: 'error'
           }).then(function () {
+            // 메인으로 이동
             location.href = '/';
           });
         });
       }).catch(function (error) {
+        // 유저 조회 실패
         _this.$swal({
+          // 실패 모달
           title: '입장 실패',
           text: '유저 조회 실패',
           type: 'error'
         }).then(function () {
+          // 메인으로 이동
           location.href = '/';
         });
       });
     } else {
+      // 토큰 인증 실패
       this.$swal({
+        // 실패 모달
         title: '입장 실패',
         text: '로그인을 해주세요',
         type: 'error'
       }).then(function () {
+        // 메인으로 이동
         location.href = '/';
       });
     }
@@ -3237,6 +3739,7 @@ exports.default = {
     var _this2 = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this2.$store.commit('loadingOff');
       _this2.$Progress.finish();
     });
@@ -3244,25 +3747,33 @@ exports.default = {
 
   methods: {
     clickNormal: function clickNormal() {
-      this.normal_problem = true;
-      this.contest_problem = false;
-      this.random_problem = false;
-      this.changeLoad = true;
-      this.loadList(this.changeLoad);
+      // 일반문제 클릭
+      if (!this.changeLoad) {
+        this.normal_problem = true;
+        this.contest_problem = false;
+        this.random_problem = false;
+        this.changeLoad = true;
+        this.loadList(this.changeLoad);
+      }
     },
     clickContest: function clickContest() {
-      this.normal_problem = false;
-      this.contest_problem = true;
-      this.random_problem = false;
-      this.changeLoad = true;
-      this.loadList(this.changeLoad);
+      // 대회문제 클릭
+      if (!this.changeLoad) {
+        this.normal_problem = false;
+        this.contest_problem = true;
+        this.random_problem = false;
+        this.changeLoad = true;
+        this.loadList(this.changeLoad);
+      }
     },
     scrollUp: function scrollUp() {
+      // 상단으로 스크롤
       $('html, body').stop().animate({
         scrollTop: 0
       }, 500);
     },
     shuffle: function shuffle() {
+      // 문제 섞기
       this.normal_problem = false;
       this.contest_problem = false;
       this.random_problem = true;
@@ -3271,13 +3782,15 @@ exports.default = {
     loadList: function loadList(changeLoad) {
       var _this3 = this;
 
-      //문제 로드
+      // 문제 추가 로드
       if (changeLoad) {
+        // 문제 종류가 바뀐 경우 처음부터 로드
         i = 0;
         end = 10;
         this.items = [];
         this.loadState = true;
       } else {
+        // 같은 문제종류의 추가 로드인경우
         i = end;
         end += 10;
       }
@@ -3287,9 +3800,15 @@ exports.default = {
         this.$http.get('problems/contest').then(function (res) {
           length = res.data.problems.length;
           if (i / 10 === parseInt(length / 10, 10)) {
+            /**
+              문제가 끝난경우 ex) i = 10, length = 18
+              i / 10 = 1, paseInt(length / 10, 10) = 1
+              end를 총 공지 갯수만큼 변경
+             */
             end = length;
             _this3.loadState = false;
           } else if (end === length) {
+            // 10의 배수로 끝난 경우
             _this3.loadState = false;
           }
           //문제 결과 로드
@@ -3312,15 +3831,17 @@ exports.default = {
                 if (i + 101 === resRatio.data.resolves[j].resolveData.problemNum) {
                   //문제 결과 카운트
                   if (resRatio.data.resolves[j].resolveData.result === 'success') {
+                    // 성공
                     success += 1;
                   } else {
+                    // 실패
                     fail += 1;
                   }
                   count += 1;
                 }
                 j += 1;
               }
-              //결과 수정
+              // 문제 비율
               ratio = success / count;
               if (isNaN(ratio)) {
                 ratio = 0 + ' %';
@@ -3329,6 +3850,7 @@ exports.default = {
               } else {
                 ratio = ratio.toString().substring(2, 4) + ' %';
               }
+              // 데이터 추가
               _this3.items.push({
                 num: num,
                 name: name,
@@ -3340,34 +3862,45 @@ exports.default = {
                 ratio: ratio
               });
               i += 1;
+              // 문제 갯수 만큼 높이 변경
               _this3.lineheight = 45 * _this3.items.length;
             }
+            _this3.changeLoad = false;
           }).catch(function (err) {
+            // 문제 기록 로드 실패
             _this3.$swal({
+              // 실패 모달
               title: '문제 기록 로드 실패',
               text: err,
               type: 'error'
             }).then(function () {
+              // 메인으로 이동
               location.href = '/';
             });
           });
         }).catch(function (err) {
+          // 대회문제 로드 실패
           if (err.response.data.message === '아직 오픈되지 않았습니다.') {
+            // 대회기간이 아닌 경우
             err = '대회기간이 아닙니다.';
             _this3.$swal({
+              // 실패 모달
               title: '문제 로드 실패',
               text: err,
               type: 'error'
             }).then(function () {
+              // 일반문제로 이동
               _this3.clickNormal();
               return;
             });
           } else {
             _this3.$swal({
+              // 실패 모달
               title: '문제 로드 실패',
               text: err,
               type: 'error'
             }).then(function () {
+              // 메인으로 이동
               location.href = '/';
             });
           }
@@ -3376,9 +3909,15 @@ exports.default = {
         //일반 문제
         this.$http.get('problems').then(function (res) {
           if (i / 10 === parseInt(length / 10, 10)) {
+            /**
+            문제가 끝난경우 ex) i = 10, length = 18
+            i / 10 = 1, paseInt(length / 10, 10) = 1
+            end를 총 공지 갯수만큼 변경
+            */
             end = length;
             _this3.loadState = false;
           } else if (end === length) {
+            // 10의 배수로 끝난 경우
             _this3.loadState = false;
           }
           //문제 결과 로드
@@ -3401,15 +3940,17 @@ exports.default = {
                 if (i + 101 === resRatio.data.resolves[j].resolveData.problemNum) {
                   //문제 결과 카운트
                   if (resRatio.data.resolves[j].resolveData.result === 'success') {
+                    // 성공
                     success += 1;
                   } else {
+                    // 실패
                     fail += 1;
                   }
                   count += 1;
                 }
                 j += 1;
               }
-              //결과 수정
+              // 결과 비율
               ratio = success / count;
               if (isNaN(ratio)) {
                 ratio = 0 + ' %';
@@ -3418,6 +3959,7 @@ exports.default = {
               } else {
                 ratio = ratio.toString().substring(2, 4) + ' %';
               }
+              // 데이터 추가
               _this3.items.push({
                 num: num,
                 name: name,
@@ -3429,23 +3971,31 @@ exports.default = {
                 ratio: ratio
               });
               i += 1;
+              // 문제 갯수만큼 높이 변경
               _this3.lineheight = 45 * _this3.items.length;
             }
+            _this3.changeLoad = false;
           }).catch(function (err) {
+            // 문제 기록 로드 실패
             _this3.$swal({
+              // 실패 모달
               title: '문제 기록 로드 실패',
               text: err,
               type: 'error'
             }).then(function () {
+              // 메인으로 이동
               location.href = '/';
             });
           });
         }).catch(function (err) {
+          // 문제 로드 실패
           _this3.$swal({
+            // 실패 모달
             title: '문제 로드 실패',
             text: err,
             type: 'error'
           }).then(function () {
+            // 메인으로 이동
             location.href = '/';
           });
         });
@@ -3454,14 +4004,19 @@ exports.default = {
     result: function result(num) {
       var _this4 = this;
 
+      // 문제 입장
       this.$http.defaults.headers.common.Authorization = this.userToken;
+      // 푼 문제인지 체크
       this.$http.get('solution/findsuccess/' + this.userid + '/' + num).then(function (resresult) {
         if (resresult.data.result === true) {
+          // 이미 푼 문제인 경우
           _this4.$swal('입장 실패', '이미 푼 문제입니다', 'warning');
         } else {
+          // 아닌경우 -> 입장
           location.href = 'https://algorithm.seoulit.kr/problems/' + num;
         }
       }).catch(function (err) {
+        // 문제 결과 조회 실패
         _this4.$swal('결과 조회 실패', err, 'error');
       });
     }
@@ -3526,10 +4081,12 @@ exports.default = {
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
+      // 유저 정보 조회
       this.$http.get('users/my-info').then(function (resInfo) {
         _this.userid = resInfo.data.user.userId;
         var id = _this.$route.params.num;
         _this.$http.defaults.headers.common.Authorization = _this.userToken;
+        // 해당 라우터 파람의 값으로 문제 로드
         _this.$http.get('problems/' + id).then(function (res) {
           _this.items.push({
             num: res.data.problem.num,
@@ -3543,16 +4100,20 @@ exports.default = {
           });
         }).catch(function (err) {
           if (err.response.data.message === '아직 오픈되지 않았습니다.') {
+            // 대회기간이 아닌 경우
             _this.$swal({
+              // 실패 모달
               title: '문제 로드 실패',
               text: '대회기간이 아닙니다',
               type: 'error'
             }).then(function () {
+              // 문제페이지로 이동
               location.href = '/problems';
             });
           }
         });
       }).catch(function (error) {
+        // 유저 조회 실패
         _this.$swal({
           title: '유저 조회 실패',
           text: error,
@@ -3661,6 +4222,10 @@ exports.default = {
     }
   }
 }; //
+//
+//
+//
+//
 //
 //
 //
@@ -3845,8 +4410,11 @@ exports.default = {
         _this.$http.get('users').then(function (res) {
           i = 0;
           length = res.data.users.length;
-          if (length < 10) {
+          if (i / 10 === parseInt(length / 10, 10)) {
             end = length;
+            _this.loadState = false;
+          } else if (end === length) {
+            _this.loadState = false;
           }
           while (i < length) {
             _this.data.push({
@@ -4420,7 +4988,7 @@ module.exports = __webpack_require__.p + "sigo/img/sigo_404.70233b0.png";
 /* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "sigo/img/sigoing.957a786.png";
+module.exports = __webpack_require__.p + "sigo/img/sigoing.0e04ef2.png";
 
 /***/ }),
 /* 404 */
@@ -5538,7 +6106,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.solveList), function(list) {
     return _c('ul', {
       key: list
-    }, [_c('li', [_vm._v("이름 : " + _vm._s(list.username))]), _vm._v(" "), _c('li', [_vm._v("학번 : " + _vm._s(list.studentcode))]), _vm._v(" "), _c('li', [_vm._v("결과 : " + _vm._s(list.result))]), _vm._v(" "), _c('li', [_vm._v("날짜 : " + _vm._s(list.date))]), _vm._v(" "), _c('li', [_vm._v("코드 : " + _vm._s(list.code))])])
+    }, [_c('li', [_vm._v("이름 : " + _vm._s(list.username))]), _vm._v(" "), _c('li', [_vm._v("학번 : " + _vm._s(list.studentcode))]), _vm._v(" "), _c('li', [_vm._v("결과 : " + _vm._s(list.result))]), _vm._v(" "), _c('li', [_vm._v("날짜 : " + _vm._s(list.date))]), _vm._v(" "), _c('li', [_c('pre', [_vm._v("코드 : " + _vm._s(list.code))])])])
   }))], 1)])]) : _vm._e()
 },staticRenderFns: []}
 
@@ -5664,9 +6232,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return (_vm.entering) ? _c('div', {
     attrs: {
       "id": "monitor"
     }
@@ -5674,64 +6240,98 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "button"
   }, [_c('div', {
     staticClass: "wrapper"
-  }, [_c('h1', [_vm._v("Menu")]), _vm._v(" "), _c('a', {
-    staticClass: "menu-btn",
-    attrs: {
-      "onclick": "toggleMenu()"
+  }, [_c('div', {
+    staticClass: "four"
+  }, [_c('div', {
+    staticClass: "btn"
+  }, [_c('button', {
+    staticClass: "ui button",
+    on: {
+      "click": _vm.contestOpen
     }
-  }), _vm._v(" "), _c('section', {
-    staticClass: "one",
-    attrs: {
-      "onclick": "goToPage(0)"
+  }, [_vm._v("On")]), _vm._v(" "), _c('button', {
+    staticClass: "ui button",
+    on: {
+      "click": _vm.contestClose
     }
-  }, [_c('h1', [_vm._v("Profile")])]), _vm._v(" "), _c('section', {
-    staticClass: "two",
-    attrs: {
-      "onclick": "goToPage(1)"
-    }
-  }, [_c('h1', [_vm._v("Friends")])]), _vm._v(" "), _c('section', {
-    staticClass: "three",
-    attrs: {
-      "onclick": "goToPage(2)"
-    }
-  }, [_c('h1', [_vm._v("Messages")])]), _vm._v(" "), _c('section', {
-    staticClass: "four",
-    attrs: {
-      "onclick": "goToPage(3)"
-    }
-  }, [_c('h1', [_vm._v("Settings")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Off")])]), _vm._v(" "), _c('div', {
     staticClass: "ui cards"
   }, [_c('div', {
     staticClass: "card",
     attrs: {
-      "id": "card"
+      "id": "mncard"
     }
   }, [_c('div', {
     staticClass: "content"
   }, [_c('div', {
-    staticClass: "header"
-  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "description"
-  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "header",
+    on: {
+      "click": _vm.normalMonitor
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("일반문제")])]), _vm._v(" "), _c('div', {
+    staticClass: "header",
+    on: {
+      "click": _vm.contestMonitor
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("대회문제")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "ui cards"
+  }, [_c('div', {
     staticClass: "card",
     attrs: {
-      "id": "card"
+      "id": "topcard"
     }
   }, [_c('div', {
     staticClass: "content"
+  }, [_vm._m(0), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "content"
+  }, [_c('div', {
+    staticClass: "contentin"
+  }, [_c('p', [_vm._v(_vm._s(_vm.count))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.success))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.fail))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.compileError))])])])])])]), _vm._v(" "), _c('transition-group', {
+    staticClass: "ui cards",
+    attrs: {
+      "name": "monitorlist",
+      "tag": "ul"
+    }
+  }, _vm._l((_vm.monitorData), function(monitor) {
+    return _c('div', {
+      key: monitor,
+      staticClass: "card"
+    }, [_c('div', {
+      staticClass: "content"
+    }, [_c('div', {
+      staticClass: "header"
+    }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v(_vm._s(monitor.userid))])])]), _vm._v(" "), _c('div', {
+      staticClass: "meta"
+    }, [_c('p', [_vm._v("번호 : "), _c('span', [_vm._v(_vm._s(monitor.num))])])]), _vm._v(" "), _c('div', {
+      staticClass: "meta"
+    }, [_c('p', [_vm._v("결과 : "), _c('span', [_vm._v(_vm._s(monitor.result))])])]), _vm._v(" "), _c('div', {
+      staticClass: "meta"
+    }, [_c('p', [_vm._v("날짜 : "), _c('span', [_vm._v(_vm._s(monitor.date))])])]), _vm._v(" "), _c('div', {
+      staticClass: "meta"
+    }, [_c('p', [_vm._v("시간/메모리 : "), _c('span', [_vm._v(_vm._s(monitor.time) + " / " + _vm._s(monitor.memory))])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+      staticClass: "description"
+    }, [_c('pre', [_c('span', [_vm._v(_vm._s(monitor.code))])])])])])
+  }))], 1)])])]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "contentin"
   }, [_c('div', {
     staticClass: "header"
-  }, [_c('p', [_vm._v("아이디 : "), _c('span', [_vm._v("admin")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("학번 : "), _c('span', [_vm._v("10626")])])]), _vm._v(" "), _c('div', {
-    staticClass: "meta"
-  }, [_c('p', [_vm._v("이름 : "), _c('span', [_vm._v("기무띠")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "description"
-  }, [_c('p', [_vm._v("코드 : "), _c('span', [_vm._v("12313124")])]), _vm._v(" "), _c('p', [_vm._v("제출 결과 : "), _c('span', [_vm._v("true / false")])])])])])])])])])])
+  }, [_c('p', [_vm._v("푼 문제")])]), _vm._v(" "), _c('div', {
+    staticClass: "header"
+  }, [_c('p', [_vm._v("맞춘 문제")])]), _vm._v(" "), _c('div', {
+    staticClass: "header"
+  }, [_c('p', [_vm._v("틀린 문제")])]), _vm._v(" "), _c('div', {
+    staticClass: "header"
+  }, [_c('p', [_vm._v("컴파일 에러")])])])
 }]}
 
 /***/ }),
@@ -5963,6 +6563,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "ui"
+  }, [_c('div', {
+    staticClass: "adminmn"
   }, [_c('h1', {
     staticClass: "ui header admin"
   }, [_vm._v("ADMINPAGE")]), _vm._v(" "), _c('div', {
@@ -5992,7 +6594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.click_result
     }
-  }, [_vm._v("문제결과")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("문제결과")])])]), _vm._v(" "), _c('div', {
     staticClass: "twelve wide stretched column"
   }, [(_vm.memberState) ? _c('member') : _vm._e(), _vm._v(" "), (_vm.nonaccountState) ? _c('nonaccount') : _vm._e(), _vm._v(" "), (_vm.problemState) ? _c('problemmanage') : _vm._e(), _vm._v(" "), (_vm.listState) ? _c('notice') : _vm._e(), _vm._v(" "), (_vm.problemresultState) ? _c('problemresult') : _vm._e()], 1)])]) : _vm._e()])]) : _vm._e()
 },staticRenderFns: []}
@@ -6297,7 +6899,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return (_vm.enteringProblemresult) ? _c('div', {
     staticClass: "probleminput"
   }, [_c('ul', [_vm._l((_vm.problemData), function(data) {
-    return _c('li', [_c('p', [_vm._v("ID : " + _vm._s(data.userid))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Num : " + _vm._s(data.num))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("language : " + _vm._s(data.lang))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Date : " + _vm._s(data.date))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Code : " + _vm._s(data.code))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Result : " + _vm._s(data.result))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Time : " + _vm._s(data.time))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Memory : " + _vm._s(data.memory))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br')])
+    return _c('li', [_c('p', [_vm._v("ID : " + _vm._s(data.userid))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Num : " + _vm._s(data.num))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("language : " + _vm._s(data.lang))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Date : " + _vm._s(data.date))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('pre', [_vm._v("Code : " + _vm._s(data.code))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Result : " + _vm._s(data.result))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Time : " + _vm._s(data.time))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Memory : " + _vm._s(data.memory))]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br')])
   }), _vm._v(" "), _c('br')], 2)]) : _vm._e()
 },staticRenderFns: []}
 
@@ -6339,7 +6941,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "solve_sidebar"
     }, [_vm._m(0, true), _vm._v(" "), _c('div', {
       staticClass: "solve_explain"
-    }, [_vm._v("\n                " + _vm._s(item.explanation) + "\n            ")]), _vm._v(" "), _c('div', {
+    }, [_c('div', {
+      staticClass: "solve_explainner"
+    }, [_vm._v("\n                " + _vm._s(item.explanation) + "\n              ")])]), _vm._v(" "), _c('div', {
       staticClass: "solve_inputex"
     }, [_c('p', [_vm._v("입력 값 예제")]), _vm._v(" "), _c('pre', [_vm._v(_vm._s(item.inputex))])]), _vm._v(" "), _c('div', {
       staticClass: "solve_outputex"
@@ -6363,7 +6967,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "solve_footer"
     }, [_c('div', {
       staticClass: "solve_output"
-    }, [_c('p', [_vm._v(_vm._s(_vm.runMsg))]), _c('br'), _vm._v(" "), _c('pre', [_vm._v(_vm._s(_vm.codeResult))])]), _vm._v(" "), _c('div', {
+    }, [_c('p', [_vm._v(_vm._s(_vm.runMsg))]), _vm._v(" "), _c('div', {
+      staticClass: "solve-outputner"
+    }, [_c('pre', [_vm._v(_vm._s(_vm.codeResult))])])]), _vm._v(" "), _c('div', {
       staticClass: "solve_button"
     }, [_c('div', {
       staticClass: "solve_run",
@@ -7322,4 +7928,4 @@ new _vue2.default({
 
 /***/ })
 ]),[457]);
-//# sourceMappingURL=main.43112edec7f40f9d8ea9.js.map
+//# sourceMappingURL=main.1f2c4c345606c1b6d4e1.js.map
