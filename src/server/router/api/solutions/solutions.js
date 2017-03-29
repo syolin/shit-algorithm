@@ -179,6 +179,10 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
         problemNum : req.body.problemnum,
     };
 
+    const date = new Date();
+    const nowDate = date.getFullYear() + '-' + date.getMonth()+1 + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getMilliseconds();
+    console.log(nowDate);
+
     let resolveInfo = {
         userId : form.userId,
         resolveData : {
@@ -187,7 +191,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
             code: form.inputCode,
             result: '',
             compileName: '',
-            date: new Date(),
+            date: nowDate,
             memory: 0,
             time: 0
         }
