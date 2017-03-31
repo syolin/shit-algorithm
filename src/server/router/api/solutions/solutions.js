@@ -347,6 +347,9 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     result1 : getResolve.trim(),
                                     result2 : getResolve2.trim()
                                 };
+
+                                console.log(editResolve.result1+"\n");
+                                console.log(editResolve.result2+"\n");
                                 /*
                                     정답 체크 후 응답
                                 */
