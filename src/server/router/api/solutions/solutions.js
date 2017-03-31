@@ -253,7 +253,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                     input2 : problem.problemData.inputExample2,
                     output2 : problem.problemData.outputExample2
                 };
-
                 // if (req.body.mode) {
                 //     example = {
                 //         input : problem.problemData.inputExample,
@@ -338,24 +337,26 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     return;
                                 };
                                 const getResolve2 = JSON.parse(body2 || null);
-
+                                /*
+                                    정답 체크 후 응답
+                                */
 
                                 /*
-                                    결과 값
+                                 결과 값
                                  */
                                 const editResolve = {
-                                    result1 : getResolve.trim(),
-                                    result2 : getResolve2.trim()
+                                    result1 : getResolve.replace(/\s+$/, ""),
+                                    result2 : getResolve2.replace(/\s+$/, "")
                                 };
 
                                 console.log(editResolve.result1+"\n");
                                 console.log(editResolve.result2+"\n");
                                 /*
-                                    정답 체크 후 응답
-                                */
+                                 정답 체크 후 응답
+                                 */
                                 if (editResolve.result1 == data.example.output && editResolve.result2 == data.example.output2) {
                                     result = 'success';
-                                     userController.scoreUpdate(form.userId, data.score, problem.type);
+                                    userController.scoreUpdate(form.userId, data.score, problem.type);
 
                                     res.json({
                                         result: result
@@ -368,6 +369,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                         result: result
                                     });
                                 }
+
 
                                 let resolveInfo = {
                                     userId : form.userId,
