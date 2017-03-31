@@ -253,6 +253,7 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                     input2 : problem.problemData.inputExample2,
                     output2 : problem.problemData.outputExample2
                 };
+
                 // if (req.body.mode) {
                 //     example = {
                 //         input : problem.problemData.inputExample,
@@ -337,10 +338,19 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     return;
                                 };
                                 const getResolve2 = JSON.parse(body2 || null);
+
+
+                                /*
+                                    결과 값
+                                 */
+                                const editResolve = {
+                                    result1 : getResolve.trim(),
+                                    result2 : getResolve2.trim()
+                                };
                                 /*
                                     정답 체크 후 응답
                                 */
-                                if (getResolve.result == data.example.output && getResolve2.result == data.example.output2) {
+                                if (editResolve.result1 == data.example.output && editResolve.result2 == data.example.output2) {
                                     result = 'success';
                                      userController.scoreUpdate(form.userId, data.score, problem.type);
 

@@ -1280,7 +1280,8 @@ exports.default = {
             // 입장 실패 모달
             title: '입장 실패',
             text: '어드민이 아닙니다',
-            type: 'error'
+            type: 'error',
+            allowOutsideClick: false
           }).then(function () {
             // 메인으로 이동
             location.href = '/';
@@ -1296,7 +1297,8 @@ exports.default = {
           // 입장 실패 모달
           title: '유저 정보 조회 실패',
           text: error,
-          type: 'error'
+          type: 'error',
+          allowOutsideClick: false
         }).then(function () {
           // 메인으로 이동
           location.href = '/';
@@ -1308,7 +1310,8 @@ exports.default = {
         // 입장 실패 모달
         title: '입장 실패',
         text: '로그인을 해주세요',
-        type: 'error'
+        type: 'error',
+        allowOutsideClick: false
       }).then(function () {
         // 메인으로 이동
         location.href = '/';
@@ -1383,9 +1386,6 @@ exports.default = {
 //
 //
 //
-//
-//
-//
 
 /***/ }),
 /* 168 */
@@ -1413,9 +1413,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-
 
 exports.default = {
   data: function data() {
@@ -1538,10 +1535,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-
 
 exports.default = {
   data: function data() {
@@ -1552,6 +1545,7 @@ exports.default = {
   },
   created: function created() {
     // 유저 정보 로드
+    this.userToken = this.$cookie.get('userToken');
     this.getMember();
   },
   updated: function updated() {
@@ -1701,7 +1695,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
+//
 
 exports.default = {
   name: 'noticemanage',
@@ -1778,12 +1772,8 @@ exports.default = {
       var _this3 = this;
 
       // 공지 수정 정보 로드
-      this.noticeAddState = !this.noticeAddState;
-      if (this.noticeAddState) {
-        this.noticeMsg = '닫기';
-      } else {
-        this.noticeMsg = '공지 등록하기';
-      }
+      this.noticeAddState = false;
+      this.noticeMsg = '공지 등록하기';
       this.$http.get('notices/' + num).then(function (res) {
         // 공지 정보 로드 성공 
 
@@ -2006,7 +1996,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-
+//
+//
+//
 
 exports.default = {
   data: function data() {
@@ -2150,12 +2142,8 @@ exports.default = {
       this.$http.defaults.headers.common.Authorization = this.userToken;
       this.$http.get('problems/' + num).then(function (res) {
         // 문제 정보 로드 성공
-        _this4.addState = !_this4.addState;
-        if (_this4.addState) {
-          _this4.addMsg = '닫기';
-        } else {
-          _this4.addMsg = '문제 등록하기';
-        }
+        _this4.addState = false;
+        _this4.addMsg = '문제 등록하기';
         _this4.modifyState = !_this4.modifyState;
         _this4.problemName = res.data.problem.problemName;
         _this4.source = res.data.problem.source;
@@ -2202,17 +2190,20 @@ exports.default = {
             code = res.data.resolves[i].resolveData.code;
             _this5.$http.defaults.headers.common.Authorization = _this5.userToken;
             // 해당 아이디의 정보 로드
+            date = res.data.resolves[i].resolveData.date.replace('T', ', ');
+            date = date.substring(0, date.length - 8);
+
             _this5.$http.get('users/search/' + id).then(function (userInfo) {
               username = userInfo.data.users.username;
               studentcode = userInfo.data.users.studentCode;
-              // 데이터 추가
-              _this5.solveList.push({
-                username: username,
-                studentcode: studentcode,
-                result: result,
-                date: date,
-                code: code
-              });
+            });
+            // 데이터 추가                  
+            _this5.solveList.push({
+              username: username,
+              studentcode: studentcode,
+              result: result,
+              date: date,
+              code: code
             });
           }
           i += 1;
@@ -2362,6 +2353,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -2543,42 +2535,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
   name: 'parallax',
@@ -2631,6 +2587,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 exports.default = {
   name: 'sigo',
@@ -2649,6 +2606,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
 //
 //
 //
@@ -2681,10 +2639,6 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
 //
 //
 //
@@ -2791,7 +2745,8 @@ exports.default = {
                         // 실패 모달
                         title: '입장 실패',
                         text: '어드민이 아닙니다',
-                        type: 'error'
+                        type: 'error',
+                        allowOutsideClick: false
                     }).then(function () {
                         // 메인으로 이동
                         location.href = '/';
@@ -2812,7 +2767,8 @@ exports.default = {
                     // 실패 모달
                     title: '유저 정보 조회 실패',
                     text: error,
-                    type: 'error'
+                    type: 'error',
+                    allowOutsideClick: false
                 }).then(function () {
                     // 메인으로 이동
                     location.href = '/';
@@ -2824,7 +2780,8 @@ exports.default = {
                 // 실패 모달
                 title: '입장 실패',
                 text: '로그인을 해주세요',
-                type: 'error'
+                type: 'error',
+                allowOutsideClick: false
             }).then(function () {
                 // 메인으로 이동
                 location.href = '/';
@@ -2867,6 +2824,12 @@ exports.default = {
             monitoring = setInterval(function () {
                 _this4.monitoring('more');
             }, 3000);
+        },
+        codeView: function codeView(item) {
+            this.$swal({
+                title: 'Code',
+                html: '<pre style="text-align:left;">' + item.code + '</pre>'
+            });
         },
         contestOpen: function contestOpen() {
             var _this5 = this;
@@ -3170,7 +3133,8 @@ exports.default = {
             // 실패 모달
             title: '문제 결과 조회 실패',
             text: err,
-            type: 'error'
+            type: 'error',
+            allowOutsideClick: false
           }).then(function () {
             // 메인으로 이동
             location.href = '/';
@@ -3182,7 +3146,8 @@ exports.default = {
           // 실패 모달
           title: '유저 조회 실패',
           text: error,
-          type: 'error'
+          type: 'error',
+          allowOutsideClick: false
         }).then(function () {
           // 메인으로 이동
           location.href = '/';
@@ -3194,7 +3159,8 @@ exports.default = {
         // 실패 모달
         title: '입장 실패',
         text: '로그인을 해주세요',
-        type: 'error'
+        type: 'error',
+        allowOutsideClick: false
       }).then(function () {
         // 메인으로 이동
         location.href = '/';
@@ -3213,6 +3179,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
 //
 //
 //
@@ -3247,6 +3214,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
 //
 //
 //
@@ -3349,7 +3317,8 @@ exports.default = {
         // 실패 모달
         title: '공지 로드 실패',
         text: err,
-        type: 'error'
+        type: 'error',
+        allowOutsideClick: false
       }).then(function (res) {
         // 메인으로 이동
         location.href = '/';
@@ -3407,7 +3376,8 @@ exports.default = {
           // 실패 모달
           title: '공지 로드 실패',
           text: err,
-          type: 'error'
+          type: 'error',
+          allowOutsideClick: false
         }).then(function () {
           location.href = '/';
         });
@@ -3426,6 +3396,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
 //
 //
 //
@@ -3494,7 +3465,10 @@ exports.default = {
                 // 실패 모달
                 title: _this2.num + '\uBC88 \uACF5\uC9C0 \uB85C\uB4DC \uC2E4\uD328',
                 text: err,
-                type: 'error'
+                type: 'error',
+                allowOutsideClick: false
+            }).then(function () {
+                location.href = '/notice';
             });
         });
     }
@@ -3510,6 +3484,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
 //
 //
 //
@@ -3692,7 +3667,8 @@ exports.default = {
               // 실패 모달
               title: '문제 기록 로드 실패',
               text: err,
-              type: 'error'
+              type: 'error',
+              allowOutsideClick: false
             }).then(function () {
               // 메인으로 이동
               location.href = '/';
@@ -3704,7 +3680,8 @@ exports.default = {
             // 실패 모달
             title: '문제 로드 실패',
             text: err,
-            type: 'error'
+            type: 'error',
+            allowOutsideClick: false
           }).then(function () {
             // 메인으로 이동
             location.href = '/';
@@ -3716,7 +3693,8 @@ exports.default = {
           // 실패 모달
           title: '입장 실패',
           text: '유저 조회 실패',
-          type: 'error'
+          type: 'error',
+          allowOutsideClick: false
         }).then(function () {
           // 메인으로 이동
           location.href = '/';
@@ -3728,7 +3706,8 @@ exports.default = {
         // 실패 모달
         title: '입장 실패',
         text: '로그인을 해주세요',
-        type: 'error'
+        type: 'error',
+        allowOutsideClick: false
       }).then(function () {
         // 메인으로 이동
         location.href = '/';
@@ -3782,14 +3761,15 @@ exports.default = {
     loadList: function loadList(changeLoad) {
       var _this3 = this;
 
+      this.loadState = false;
       // 문제 추가 로드
       if (changeLoad) {
         // 문제 종류가 바뀐 경우 처음부터 로드
         i = 0;
         end = 10;
         this.items = [];
-        this.loadState = true;
-      } else {
+        this.lineheight = 0;
+      } else if (!changeLoad) {
         // 같은 문제종류의 추가 로드인경우
         i = end;
         end += 10;
@@ -3805,9 +3785,11 @@ exports.default = {
               i / 10 = 1, paseInt(length / 10, 10) = 1
               end를 총 공지 갯수만큼 변경
              */
+            console.log('ss');
             end = length;
             _this3.loadState = false;
           } else if (end === length) {
+            console.log('saa');
             // 10의 배수로 끝난 경우
             _this3.loadState = false;
           }
@@ -3828,7 +3810,7 @@ exports.default = {
               //문제 결과 수 반복
               while (j < resRatio.data.resolves.length) {
                 //문제 번호 === 문제 결과 번호
-                if (i + 101 === resRatio.data.resolves[j].resolveData.problemNum) {
+                if (i + 121 === resRatio.data.resolves[j].resolveData.problemNum) {
                   //문제 결과 카운트
                   if (resRatio.data.resolves[j].resolveData.result === 'success') {
                     // 성공
@@ -3866,13 +3848,18 @@ exports.default = {
               _this3.lineheight = 45 * _this3.items.length;
             }
             _this3.changeLoad = false;
+            _this3.$nextTick(function () {
+              _this3.loadState = true;
+            });
           }).catch(function (err) {
             // 문제 기록 로드 실패
             _this3.$swal({
               // 실패 모달
               title: '문제 기록 로드 실패',
               text: err,
-              type: 'error'
+              type: 'error',
+              allowOutsideClick: false
+
             }).then(function () {
               // 메인으로 이동
               location.href = '/';
@@ -3887,9 +3874,11 @@ exports.default = {
               // 실패 모달
               title: '문제 로드 실패',
               text: err,
-              type: 'error'
+              type: 'error',
+              allowOutsideClick: false
             }).then(function () {
               // 일반문제로 이동
+              _this3.loadState = true;
               _this3.clickNormal();
               return;
             });
@@ -3898,7 +3887,8 @@ exports.default = {
               // 실패 모달
               title: '문제 로드 실패',
               text: err,
-              type: 'error'
+              type: 'error',
+              allowOutsideClick: false
             }).then(function () {
               // 메인으로 이동
               location.href = '/';
@@ -3908,12 +3898,13 @@ exports.default = {
       } else {
         //일반 문제
         this.$http.get('problems').then(function (res) {
+          length = res.data.problems.length;
           if (i / 10 === parseInt(length / 10, 10)) {
             /**
-            문제가 끝난경우 ex) i = 10, length = 18
-            i / 10 = 1, paseInt(length / 10, 10) = 1
-            end를 총 공지 갯수만큼 변경
-            */
+              문제가 끝난경우 ex) i = 10, length = 18
+              i / 10 = 1, paseInt(length / 10, 10) = 1
+              end를 총 공지 갯수만큼 변경
+             */
             end = length;
             _this3.loadState = false;
           } else if (end === length) {
@@ -3924,6 +3915,9 @@ exports.default = {
           _this3.$http.defaults.headers.common.Authorization = _this3.userToken;
           _this3.$http.get('solution').then(function (resRatio) {
             //문제 개수 반복
+            console.log(i);
+            console.log(end);
+            console.log(length);
             while (i < end) {
               var num = res.data.problems[i].num;
               var name = res.data.problems[i].problemName;
@@ -3975,13 +3969,17 @@ exports.default = {
               _this3.lineheight = 45 * _this3.items.length;
             }
             _this3.changeLoad = false;
+            _this3.$nextTick(function () {
+              _this3.loadState = true;
+            });
           }).catch(function (err) {
             // 문제 기록 로드 실패
             _this3.$swal({
               // 실패 모달
               title: '문제 기록 로드 실패',
               text: err,
-              type: 'error'
+              type: 'error',
+              allowOutsideClick: false
             }).then(function () {
               // 메인으로 이동
               location.href = '/';
@@ -3993,7 +3991,8 @@ exports.default = {
             // 실패 모달
             title: '문제 로드 실패',
             text: err,
-            type: 'error'
+            type: 'error',
+            allowOutsideClick: false
           }).then(function () {
             // 메인으로 이동
             location.href = '/';
@@ -4055,7 +4054,7 @@ exports.default = {
       scanf: null,
       codeResult: '',
       compileResult: '',
-      code: 'int main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}',
+      code: '/*\n* 1. \uC785\uB825\uBC1B\uC744 \uACBD\uC6B0 scanf \uB294 \uB2E8 \uD55C\uBC88\uB9CC \uC0AC\uC6A9\uD55C\uB2E4.\n* 2. printf \uB294 \uBA87\uBC88\uC744 \uC0AC\uC6A9\uD574\uB3C4 \uC0C1\uAD00\uC5C6\uC73C\uB098, \uCD9C\uB825 \uC608\uC81C\uC640 \uB098\uC624\uB3C4\uB85D \uAD6C\uD604\uD55C\uB2E4.\n* 3. \uD30C\uC77C\uC774\uB098 \uC2DC\uC2A4\uD15C\uC744 \uB2E4\uB8E8\uB294 \uD568\uC218\uB97C \uC0AC\uC6A9\uD560 \uC218 \uC5C6\uC73C\uBA70, \uD639\uC5EC\uB098 \uC0AC\uC6A9\uC2DC Runtime error\uB97C \uB744\uC6C0.\n* 4. \uACB0\uACFC\uB97C \uCD9C\uB825\uD558\uB294 \uCF54\uB4DC\uB97C \uC791\uC131\uD560 \uB54C, \uCD9C\uB825 \uC608\uC81C \uAC12\uACFC \uB3D9\uC77C\uD55C \uD615\uC2DD\uC73C\uB85C \uB098\uC624\uB3C4\uB85D \uD574\uC57C\uD55C\uB2E4.\n* 4-1. \uCD9C\uB825 \uC608\uC81C\uB97C \uC798 \uBCF4\uACE0, \\n \uACFC \uAC19\uC740 \uC904\uB118\uAE40\uACFC \uB744\uC5B4\uC4F0\uAE30\uB97C \uC8FC\uC758\uD558\uC5EC \uC791\uC131\uD55C\uB2E4.\n* 5. stdio.h, math.h \uB77C\uC774\uBE0C\uB7EC\uB9AC\uB294 \uC120\uC5B8\uB418\uC5B4 \uC788\uB294 \uC0C1\uD0DC\uC774\uB2E4.\n* 6. \uC2E4\uD589\uD558\uAE30\uB294 \uBBF8\uB9AC \uAC12\uC744 \uD14C\uC2A4\uD2B8 \uD574\uBCF4\uB294 \uAC83\uC73C\uB85C \uC791\uC131\uD55C \uCF54\uB4DC\uC5D0 \uC785\uB825 \uAC12 \uC608\uC81C\uAC00 \uB4E4\uC5B4\uAC00\uACE0, \uCD9C\uB825 \uAC12 \uC608\uC81C\uC640 \uAC19\uC740 \uC815\uB2F5\uC774 \uB418\uC5B4\uC57C\uD558\uB294 \uC54C\uACE0\uB9AC\uC998\uC744 \uC791\uC131\uD574\uC57C\uD55C\uB2E4.\n* 7. \uC785\uB825 \uAC12\uC740 \uC608\uC81C\uC5D0 \uC788\uB294 \uAC12\uB4E4\uC758 \uC67C\uCABD\uC5D0\uC11C\uBD80\uD130 \uC624\uB978\uCABD\uC21C\uC73C\uB85C \uAC12\uC774 \uB4E4\uC5B4\uAC04\uB2E4\n*/      \nint main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}\n',
       runState: false,
       runMsg: '실행 결과가 이곳에 나타납니다',
       options: {
@@ -4105,7 +4104,8 @@ exports.default = {
               // 실패 모달
               title: '문제 로드 실패',
               text: '대회기간이 아닙니다',
-              type: 'error'
+              type: 'error',
+              allowOutsideClick: false
             }).then(function () {
               // 문제페이지로 이동
               location.href = '/problems';
@@ -4115,30 +4115,35 @@ exports.default = {
       }).catch(function (error) {
         // 유저 조회 실패
         _this.$swal({
+          // 실패 모달
           title: '유저 조회 실패',
           text: error,
-          type: 'error'
+          type: 'error',
+          allowOutsideClick: false
         }).then(function () {
+          // 메인으로 이동
           location.href = '/';
         });
       });
     } else {
+      // 토큰 인증 실패
       this.$swal({
+        // 실패 모달
         title: '입장 실패',
         text: '로그인을 해주세요',
-        type: 'error'
+        type: 'error',
+        allowOutsideClick: false
       }).then(function () {
+        // 메인으로 이동
         location.href = '/';
       });
     }
-  },
-  destroy: function destroy() {
-    this.solveMenu = false;
   },
   updated: function updated() {
     var _this2 = this;
 
     this.$nextTick(function () {
+      // 데이터 갱신 완료시 프로그레스바, 로딩창 종료
       _this2.$store.commit('loadingOff');
       _this2.$Progress.finish();
     });
@@ -4146,21 +4151,26 @@ exports.default = {
 
   methods: {
     onMounted: function onMounted(editor) {
+      // 에디터 생성
       this.editor = editor;
     },
     onCodeChange: function onCodeChange(editor) {
+      // 에디터 감지
       this.code = editor.getValue();
     },
     codeReset: function codeReset() {
-      this.editor.setValue('int main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}');
-      this.code = 'int main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}';
+      // 에디터 초기화
+      this.editor.setValue('/*\n* 1. \uC785\uB825\uBC1B\uC744 \uACBD\uC6B0 scanf \uB294 \uB2E8 \uD55C\uBC88\uB9CC \uC0AC\uC6A9\uD55C\uB2E4.\n* 2. printf \uB294 \uBA87\uBC88\uC744 \uC0AC\uC6A9\uD574\uB3C4 \uC0C1\uAD00\uC5C6\uC73C\uB098, \uCD9C\uB825 \uC608\uC81C\uC640 \uB098\uC624\uB3C4\uB85D \uAD6C\uD604\uD55C\uB2E4.\n* 3. \uD30C\uC77C\uC774\uB098 \uC2DC\uC2A4\uD15C\uC744 \uB2E4\uB8E8\uB294 \uD568\uC218\uB97C \uC0AC\uC6A9\uD560 \uC218 \uC5C6\uC73C\uBA70, \uD639\uC5EC\uB098 \uC0AC\uC6A9\uC2DC Runtime error\uB97C \uB744\uC6C0.\n* 4. \uACB0\uACFC\uB97C \uCD9C\uB825\uD558\uB294 \uCF54\uB4DC\uB97C \uC791\uC131\uD560 \uB54C, \uCD9C\uB825 \uC608\uC81C \uAC12\uACFC \uB3D9\uC77C\uD55C \uD615\uC2DD\uC73C\uB85C \uB098\uC624\uB3C4\uB85D \uD574\uC57C\uD55C\uB2E4.\n* 4-1. \uCD9C\uB825 \uC608\uC81C\uB97C \uC798 \uBCF4\uACE0, \\n \uACFC \uAC19\uC740 \uC904\uB118\uAE40\uACFC \uB744\uC5B4\uC4F0\uAE30\uB97C \uC8FC\uC758\uD558\uC5EC \uC791\uC131\uD55C\uB2E4.\n* 5. stdio.h, math.h \uB77C\uC774\uBE0C\uB7EC\uB9AC\uB294 \uC120\uC5B8\uB418\uC5B4 \uC788\uB294 \uC0C1\uD0DC\uC774\uB2E4.\n* 6. \uC2E4\uD589\uD558\uAE30\uB294 \uBBF8\uB9AC \uAC12\uC744 \uD14C\uC2A4\uD2B8 \uD574\uBCF4\uB294 \uAC83\uC73C\uB85C \uC791\uC131\uD55C \uCF54\uB4DC\uC5D0 \uC785\uB825 \uAC12 \uC608\uC81C\uAC00 \uB4E4\uC5B4\uAC00\uACE0, \uCD9C\uB825 \uAC12 \uC608\uC81C\uC640 \uAC19\uC740 \uC815\uB2F5\uC774 \uB418\uC5B4\uC57C\uD558\uB294 \uC54C\uACE0\uB9AC\uC998\uC744 \uC791\uC131\uD574\uC57C\uD55C\uB2E4.\n* 7. \uC785\uB825 \uAC12\uC740 \uC608\uC81C\uC5D0 \uC788\uB294 \uAC12\uB4E4\uC758 \uC67C\uCABD\uC5D0\uC11C\uBD80\uD130 \uC624\uB978\uCABD\uC21C\uC73C\uB85C \uAC12\uC774 \uB4E4\uC5B4\uAC04\uB2E4\n*/        \nint main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}\n');
+      this.code = '/*\n* 1. \uC785\uB825\uBC1B\uC744 \uACBD\uC6B0 scanf \uB294 \uB2E8 \uD55C\uBC88\uB9CC \uC0AC\uC6A9\uD55C\uB2E4.\n* 2. printf \uB294 \uBA87\uBC88\uC744 \uC0AC\uC6A9\uD574\uB3C4 \uC0C1\uAD00\uC5C6\uC73C\uB098, \uCD9C\uB825 \uC608\uC81C\uC640 \uB098\uC624\uB3C4\uB85D \uAD6C\uD604\uD55C\uB2E4.\n* 3. \uD30C\uC77C\uC774\uB098 \uC2DC\uC2A4\uD15C\uC744 \uB2E4\uB8E8\uB294 \uD568\uC218\uB97C \uC0AC\uC6A9\uD560 \uC218 \uC5C6\uC73C\uBA70, \uD639\uC5EC\uB098 \uC0AC\uC6A9\uC2DC Runtime error\uB97C \uB744\uC6C0.\n* 4. \uACB0\uACFC\uB97C \uCD9C\uB825\uD558\uB294 \uCF54\uB4DC\uB97C \uC791\uC131\uD560 \uB54C, \uCD9C\uB825 \uC608\uC81C \uAC12\uACFC \uB3D9\uC77C\uD55C \uD615\uC2DD\uC73C\uB85C \uB098\uC624\uB3C4\uB85D \uD574\uC57C\uD55C\uB2E4.\n* 4-1. \uCD9C\uB825 \uC608\uC81C\uB97C \uC798 \uBCF4\uACE0, \\n \uACFC \uAC19\uC740 \uC904\uB118\uAE40\uACFC \uB744\uC5B4\uC4F0\uAE30\uB97C \uC8FC\uC758\uD558\uC5EC \uC791\uC131\uD55C\uB2E4.\n* 5. stdio.h, math.h \uB77C\uC774\uBE0C\uB7EC\uB9AC\uB294 \uC120\uC5B8\uB418\uC5B4 \uC788\uB294 \uC0C1\uD0DC\uC774\uB2E4.\n* 6. \uC2E4\uD589\uD558\uAE30\uB294 \uBBF8\uB9AC \uAC12\uC744 \uD14C\uC2A4\uD2B8 \uD574\uBCF4\uB294 \uAC83\uC73C\uB85C \uC791\uC131\uD55C \uCF54\uB4DC\uC5D0 \uC785\uB825 \uAC12 \uC608\uC81C\uAC00 \uB4E4\uC5B4\uAC00\uACE0, \uCD9C\uB825 \uAC12 \uC608\uC81C\uC640 \uAC19\uC740 \uC815\uB2F5\uC774 \uB418\uC5B4\uC57C\uD558\uB294 \uC54C\uACE0\uB9AC\uC998\uC744 \uC791\uC131\uD574\uC57C\uD55C\uB2E4.\n* 7. \uC785\uB825 \uAC12\uC740 \uC608\uC81C\uC5D0 \uC788\uB294 \uAC12\uB4E4\uC758 \uC67C\uCABD\uC5D0\uC11C\uBD80\uD130 \uC624\uB978\uCABD\uC21C\uC73C\uB85C \uAC12\uC774 \uB4E4\uC5B4\uAC04\uB2E4\n*/      \nint main() {\n      //\uCF54\uB4DC\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\n}\n';
       this.runMsg = '실행 결과가 이곳에 나타납니다';
       this.codeResult = '';
     },
     codeRun: function codeRun() {
       var _this3 = this;
 
+      // 에디터 실행
       if (this.code.replace(/^\s*/, '') === '') {
+        // 공백만있는 경우
         this.$swal('컴파일오류', '코드를 입력해주세요', 'error');
         this.runMsg = 'ERROR';
         return;
@@ -4172,9 +4182,11 @@ exports.default = {
         lang: this.lang,
         mode: true
       }).then(function (resSubmit) {
+        // 실행 성공
         _this3.codeResult = resSubmit.data.result;
         _this3.runMsg = '실행 결과 ';
       }).catch(function (err) {
+        // 실행 실패
         if (err.response.data.result === 'compile error') {
           _this3.runMsg = '컴파일 에러';
           _this3.codeResult = err.response.data.message;
@@ -4187,8 +4199,11 @@ exports.default = {
     codeSubmit: function codeSubmit() {
       var _this4 = this;
 
+      // 코드 제출
       if (this.code.replace(/^\s*/, '') === '') {
-        this.$swal('컴파일오류', '코드를 입력해주세요', 'error');
+        this.$swal(
+        // 실패 모달
+        '컴파일오류', '코드를 입력해주세요', 'error');
         this.runMsg = 'ERROR';
         return;
       }
@@ -4198,22 +4213,32 @@ exports.default = {
         name: 'problem',
         lang: this.lang
       }).then(function (resSubmit) {
+        // 제출 성공
         var result = resSubmit.data.result;
         if (result === 'success') {
+          // 실패
           _this4.runMsg = 'SUCCESS';
           _this4.$swal({
+            // 성공 모달
             title: '정답',
             text: '다른 문제도 풀어보세요',
-            type: 'success'
+            type: 'success',
+            allowOutsideClick: false
           }).then(function () {
+            // 문제페이지로 이동
             location.href = '/problems';
           });
         } else {
+          // 실패
           _this4.runMsg = 'FAIL';
-          _this4.$swal('실패', '다시 도전해 보세요', 'error');
+          _this4.$swal(
+          // 실패 모달
+          '실패', '다시 도전해 보세요', 'error');
         }
       }).catch(function (err) {
+        // 제출 실패
         _this4.$swal({
+          // 실패 모달
           title: '실패',
           text: '다시 도전해 보세요',
           type: 'error'
@@ -4222,6 +4247,7 @@ exports.default = {
     }
   }
 }; //
+//
 //
 //
 //
@@ -4405,18 +4431,26 @@ exports.default = {
     if (this.userToken != null) {
       this.userToken = this.$cookie.get('userToken');
       this.$http.defaults.headers.common.Authorization = this.userToken;
+      // 유저 정보 조회
       this.$http.get('users/my-info').then(function (resInfo) {
         _this.userid = resInfo.data.user.userId;
         _this.$http.get('users').then(function (res) {
           i = 0;
           length = res.data.users.length;
           if (i / 10 === parseInt(length / 10, 10)) {
+            /**
+              유저가 끝난경우 ex) i = 10, length = 18
+              i / 10 = 1, paseInt(length / 10, 10) = 1
+              end를 총 공지 갯수만큼 변경
+             */
             end = length;
             _this.loadState = false;
           } else if (end === length) {
+            // 10의 배수로 끝난 경우
             _this.loadState = false;
           }
           while (i < length) {
+            // 데이터 추가
             _this.data.push({
               name: res.data.users[i].username,
               score: res.data.users[i].score,
@@ -4424,12 +4458,14 @@ exports.default = {
             });
             i += 1;
           }
+          // 랭크 정렬
           var sort = 'score';
           _this.data.sort(function (a, b) {
             return b[sort] - a[sort];
           });
           i = 0;
           while (i < end) {
+            // 유저데이터 추가
             _this.users.push({
               name: _this.data[i].name,
               score: _this.data[i].score
@@ -4438,6 +4474,7 @@ exports.default = {
           }
           i = 0;
           while (i < 3) {
+            // 랭킹 3위 추가
             if (_this.users[i] != null) {
               _this.ranker.push({
                 name: _this.users[i].name,
@@ -4445,6 +4482,7 @@ exports.default = {
               });
             } else {
               _this.ranker.push({
+                // 랭킹에 유저가 없는 경우
                 name: i + 1 + '\uB4F1\uC5D0 \uB3C4\uC804\uD574\uBCF4\uC138\uC694'
               });
             }
@@ -4455,7 +4493,8 @@ exports.default = {
           _this.$swal({
             title: '유저 정보 조회 실패',
             text: err,
-            type: 'error'
+            type: 'error',
+            allowOutsideClick: false
           }).then(function () {
             location.href = '/';
           });
@@ -4464,7 +4503,8 @@ exports.default = {
         _this.$swal({
           title: '유저 조회 실패',
           text: error,
-          type: 'error'
+          type: 'error',
+          allowOutsideClick: false
         }).then(function () {
           location.href = '/';
         });
@@ -4473,7 +4513,8 @@ exports.default = {
       this.$swal({
         title: '입장 실패',
         text: '로그인을 해주세요',
-        type: 'error'
+        type: 'error',
+        allowOutsideClick: false
       }).then(function () {
         location.href = '/';
       });
@@ -4569,7 +4610,8 @@ exports.default = {
           _this3.$swal({
             title: '유저 로드 실패',
             text: err,
-            type: 'error'
+            type: 'error',
+            allowOutsideClick: false
           }).then(function () {
             location.href = '/';
           });
@@ -4616,7 +4658,8 @@ exports.default = {
           _this3.$swal({
             title: '유저 로드 실패',
             text: err,
-            type: 'error'
+            type: 'error',
+            allowOutsideClick: false
           }).then(function () {
             location.href = '/';
           });
@@ -6303,7 +6346,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.monitorData), function(monitor) {
     return _c('div', {
       key: monitor,
-      staticClass: "card"
+      staticClass: "card",
+      on: {
+        "click": function($event) {
+          _vm.codeView(monitor)
+        }
+      }
     }, [_c('div', {
       staticClass: "content"
     }, [_c('div', {
@@ -6316,9 +6364,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "meta"
     }, [_c('p', [_vm._v("날짜 : "), _c('span', [_vm._v(_vm._s(monitor.date))])])]), _vm._v(" "), _c('div', {
       staticClass: "meta"
-    }, [_c('p', [_vm._v("시간/메모리 : "), _c('span', [_vm._v(_vm._s(monitor.time) + " / " + _vm._s(monitor.memory))])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-      staticClass: "description"
-    }, [_c('pre', [_c('span', [_vm._v(_vm._s(monitor.code))])])])])])
+    }, [_c('p', [_vm._v("시간/메모리 : "), _c('span', [_vm._v(_vm._s(monitor.time) + " / " + _vm._s(monitor.memory))])])])])])
   }))], 1)])])]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -6365,9 +6411,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "rank3"
   }, [_vm._m(3), _vm._v(" "), _c('p', {
     staticClass: "rant1"
-  }, [_vm._v("3등")]), _vm._v(" "), (_vm.rank) ? _c('p', {
+  }, [_vm._v("3등")]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.rank) ? _c('p', {
     staticClass: "rant2"
-  }, [_vm._v(_vm._s(_vm.ranker[2].name))]) : _vm._e(), _vm._v(" "), _c('hr')])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.ranker[2].name))]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "ui top attached tabular menu",
     attrs: {
       "id": "topmn"
@@ -6931,9 +6977,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "solve_title"
     }, [_c('div', {
       staticClass: "solve_num"
-    }, [_vm._v("\n                " + _vm._s(item.num) + " 번 -\n            ")]), _vm._v(" "), _c('div', {
+    }, [_vm._v("\n        " + _vm._s(item.num) + " 번 -\n      ")]), _vm._v(" "), _c('div', {
       staticClass: "solve_name"
-    }, [_vm._v("\n                " + _vm._s(item.name) + " 문제를 풀어봅시다\n            ")])]), _vm._v(" "), _c('hr', {
+    }, [_vm._v("\n        " + _vm._s(item.name) + " 문제를 풀어봅시다\n      ")])]), _vm._v(" "), _c('hr', {
       attrs: {
         "id": "head-hr"
       }
@@ -6943,7 +6989,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "solve_explain"
     }, [_c('div', {
       staticClass: "solve_explainner"
-    }, [_vm._v("\n                " + _vm._s(item.explanation) + "\n              ")])]), _vm._v(" "), _c('div', {
+    }, [_vm._v("\n          " + _vm._s(item.explanation) + "\n        ")])]), _vm._v(" "), _c('div', {
       staticClass: "solve_inputex"
     }, [_c('p', [_vm._v("입력 값 예제")]), _vm._v(" "), _c('pre', [_vm._v(_vm._s(item.inputex))])]), _vm._v(" "), _c('div', {
       staticClass: "solve_outputex"
@@ -6976,17 +7022,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": _vm.codeRun
       }
-    }, [_vm._v("\n                        실행하기\n                    ")]), _vm._v(" "), _c('div', {
+    }, [_vm._v("\n            실행하기\n          ")]), _vm._v(" "), _c('div', {
       staticClass: "solve_reset",
       on: {
         "click": _vm.codeReset
       }
-    }, [_vm._v("\n                        초기화하기\n                    ")]), _vm._v(" "), _c('div', {
+    }, [_vm._v("\n            초기화하기\n          ")]), _vm._v(" "), _c('div', {
       staticClass: "solve_submit",
       on: {
         "click": _vm.codeSubmit
       }
-    }, [_vm._v("\n                        제출하기\n                    ")])])])]), _vm._v(" "), _vm._m(1, true)])
+    }, [_vm._v("\n            제출하기\n          ")])])])]), _vm._v(" "), _vm._m(1, true)])
   }))
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -7051,7 +7097,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return (_vm.enteringMember) ? _c('div', {
     staticClass: "member"
   }, [_c('ul', [_vm._l((_vm.members), function(member) {
-    return _c('li', [_vm._v("\n            아이디: "), _c('span', [_vm._v(_vm._s(member.userid))]), _c('br'), _vm._v("\n            이름: "), _c('span', [_vm._v(_vm._s(member.username))]), _c('br'), _vm._v("\n            학번 : "), _c('span', [_vm._v(_vm._s(member.studentcode))]), _c('br'), _vm._v("\n            점수 : "), _c('span', [_vm._v(_vm._s(member.score))]), _c('br'), _vm._v(" "), _c('button', {
+    return _c('li', [_vm._v("\n      아이디: "), _c('span', [_vm._v(_vm._s(member.userid))]), _c('br'), _vm._v(" 이름: "), _c('span', [_vm._v(_vm._s(member.username))]), _c('br'), _vm._v(" 학번 : "), _c('span', [_vm._v(_vm._s(member.studentcode))]), _c('br'), _vm._v(" 점수 : "), _c('span', [_vm._v(_vm._s(member.score))]), _c('br'), _vm._v(" "), _c('button', {
       on: {
         "click": function($event) {
           _vm.deleteuser(member.userid, member)
@@ -7398,14 +7444,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.submit
     }
-  }, [_vm._v("\n                    로그인\n                  ")])]), _vm._v(" "), _c('button', {
+  }, [_vm._v("\n                      로그인\n                    ")])]), _vm._v(" "), _c('button', {
     staticClass: "ui button black signButton",
     on: {
       "click": function($event) {
         _vm.signState = false
       }
     }
-  }, [_vm._v("\n                  회원가입하기\n                ")])])])])])]) : _c('div', {
+  }, [_vm._v("\n                    회원가입하기\n                  ")])])])])])]) : _c('div', {
     staticClass: "register_form"
   }, [_c('div', {
     staticClass: "description"
@@ -7578,7 +7624,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.signState = true
       }
     }
-  }, [_vm._v("\n                  로그인하기\n                ")])])])])])])])]) : _vm._e(), _vm._v(" "), _c('vue-progress-bar'), _vm._v(" "), _c('transition', {
+  }, [_vm._v("\n                    로그인하기\n                  ")])])])])])])])]) : _vm._e(), _vm._v(" "), _c('vue-progress-bar'), _vm._v(" "), _c('transition', {
     attrs: {
       "name": "spinner",
       "mode": "out-in"
@@ -7807,7 +7853,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return (_vm.enteringNon) ? _c('div', {
     staticClass: "nonaccount"
   }, [_c('ul', [_vm._l((_vm.members), function(member) {
-    return _c('li', [_vm._v("\n      아이디: "), _c('span', [_vm._v(_vm._s(member.userid))]), _c('br'), _vm._v("\n      이름: "), _c('span', [_vm._v(_vm._s(member.username))]), _c('br'), _vm._v("\n      학번 : "), _c('span', [_vm._v(_vm._s(member.studentcode))]), _c('br'), _vm._v("\n      등급 : "), _c('span', [_vm._v(_vm._s(member.rating))]), _c('br'), _vm._v("\n      승인여부 : "), _c('span', [_vm._v(_vm._s(member.account))]), _c('br'), _vm._v(" "), _c('button', {
+    return _c('li', [_vm._v("\n      아이디: "), _c('span', [_vm._v(_vm._s(member.userid))]), _c('br'), _vm._v(" 이름: "), _c('span', [_vm._v(_vm._s(member.username))]), _c('br'), _vm._v(" 학번 : "), _c('span', [_vm._v(_vm._s(member.studentcode))]), _c('br'), _vm._v(" 등급 : "), _c('span', [_vm._v(_vm._s(member.rating))]), _c('br'), _vm._v(" 승인여부 : "), _c('span', [_vm._v(_vm._s(member.account))]), _c('br'), _vm._v(" "), _c('button', {
       on: {
         "click": function($event) {
           _vm.account(member.userid, member)
@@ -7928,4 +7974,4 @@ new _vue2.default({
 
 /***/ })
 ]),[457]);
-//# sourceMappingURL=main.1f2c4c345606c1b6d4e1.js.map
+//# sourceMappingURL=main.c813cdc57069d5564a4e.js.map

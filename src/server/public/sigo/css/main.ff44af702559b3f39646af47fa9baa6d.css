@@ -1035,7 +1035,7 @@ a[data-v-32d9b926]:hover{
   color: rgb(221,221,221);
 }
 
-.typed{
+.typed {
   color: #fff !important;
   font-size: 200%;
 }
@@ -1291,6 +1291,8 @@ li[data-v-01704bf6]{
     transform: translateX(100px);
     opacity: 0;
 }
+
+
 
 
 
@@ -2081,6 +2083,10 @@ height: 148px;
 
 
 
+
+
+
+
 hr[data-v-637a59d0]{
     width: 376px;
     border-color: rgba(214,214,214,.43);
@@ -2655,7 +2661,7 @@ a[data-v-88f23c12]:hover{
 body {
   background-color: rgb(40, 40, 40) !important;
 }
-.dimmable:not(.body){
+.dimmable:not(.body) {
   position: static !important;
 }
 
@@ -2694,4 +2700,4 @@ body {
   z-index: 999999;
 }
 
-/*# sourceMappingURL=main.7ab6a683d6c4029384ef2d672fdf515e.css.map*/
+/*# sourceMappingURL=main.ff44af702559b3f39646af47fa9baa6d.css.map*/
