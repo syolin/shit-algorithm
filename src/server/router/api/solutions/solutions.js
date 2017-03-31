@@ -181,7 +181,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
 
     const date = new Date();
     const nowDate = date.getFullYear() + '-' + date.getMonth()+1 + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getMilliseconds();
-    console.log(nowDate);
 
     let resolveInfo = {
         userId : form.userId,
@@ -348,9 +347,6 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     result1 : getResolve.result.trim(),
                                     result2 : getResolve2.result.trim()
                                 };
-
-                                console.log(editResolve.result1+"\n");
-                                console.log(editResolve.result2+"\n");
                                 /*
                                  정답 체크 후 응답
                                  */

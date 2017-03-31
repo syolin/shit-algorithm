@@ -113,7 +113,6 @@ router.get('/:num',auth.isAuthenticated(), function (req, res) {
     const contest = problem => {
 
         const check = user => {
-            console.log("1 : "+user.contestAccount,",",problem.type);
             if ( user.rating != 3 && problem.type == "contest" && !user.contestAccount) throw new Error("아직 오픈되지 않았습니다.");
         };
 
