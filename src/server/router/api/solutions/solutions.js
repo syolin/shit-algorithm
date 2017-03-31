@@ -345,8 +345,8 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                  결과 값
                                  */
                                 const editResolve = {
-                                    result1 : getResolve.replace(/\s+$/, ""),
-                                    result2 : getResolve2.replace(/\s+$/, "")
+                                    result1 : getResolve.result.replace(/\s+$/, ""),
+                                    result2 : getResolve2.result.replace(/\s+$/, "")
                                 };
 
                                 console.log(editResolve.result1+"\n");
