@@ -43,7 +43,8 @@ User.accountTrue = userId => {
  * @param number score
  */
 User.scoreUpdate = (userId,score,type) => {
-    User.updateOne({userId: userId, type: type}, {$inc :{score: score}},false,function(err, result){})
+    if (type == "contest") User.updateOne({userId: userId}, {$inc :{contestScore: score}},false,function(err, result){})
+    else if (type == "normal") User.updateOne({userId: userId}, {$inc :{score: score}},false,function(err, result){})
 };
 
 /**
