@@ -1,10 +1,8 @@
 import express from 'express';
 import xssFilters from 'xss-filters';
-import request from 'request';
 
 import controller from './users.controller';
 import auth from '../../../modules/auth';
-import captcha from '../../../modules/captcha';
 
 const router = express.Router();
 
@@ -176,6 +174,26 @@ router.get('/non-account', auth.isAuthenticated('admin'), function (req, res) {
         .catch(onError);
 });
 
+router.get('/non-account-length', function (req, res) {
+    const respond = users => {
+        res.json({
+            result: 'success',
+            users : users.length
+        });
+    }
+
+    const onError = error => {
+        res.status(409).json({
+            result: 'error',
+            message: error.message
+        });
+    }
+
+    controller.findSpecificUser('account')
+        .then(respond)
+        .catch(onError);
+});
+
 router.get('/my-info',auth.isAuthenticated(), function (req, res) {
     res.json({
         result: 'success',
@@ -231,7 +249,6 @@ router.get('/account/:user',auth.isAuthenticated('admin'), function (req, res) {
  */
 router.post('/signup', function(req, res) {
 
-    // 요청 들어온 body 값
     const userInfo = {
         username : xssFilters.inHTMLData(req.body.username),
         userId : xssFilters.inHTMLData(req.body.userid),
@@ -243,7 +260,8 @@ router.post('/signup', function(req, res) {
 
     // Validation
     const validation = user => {
-        if (!userInfo.username || !userInfo.userId || !userInfo.password || isNaN(userInfo.studentCode) /*|| isNaN(userInfo.rating)*/) throw new Error('validation error');
+
+        if (!req.body.username || !req.body.userid || !req.body.password || isNaN(req.body.studentcode) /*|| isNaN(userInfo.rating)*/) throw new Error('validation error');
 
         var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
         if (special_pattern.test(req.body.userid) == true || special_pattern.test(req.body.userid) == true) throw new Error('validation error');
@@ -291,6 +309,7 @@ router.post('/signup', function(req, res) {
     controller.findOneByUserId(userInfo.userId)
         .then(validation)
         .then(create)
+        .then(slackUpdate)
         .then(respond)
         .catch(onError);
 
