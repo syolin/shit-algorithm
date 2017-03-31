@@ -29,52 +29,6 @@ router.get('/',auth.isAuthenticated(), function (req, res) {
         .catch(onError);
 });
 
-// router.get('/captcha', function (req,res) {
-//     captcha.signKey(function (key) {
-//         if (key == 'error') throw new Error('captcha error');
-//         const path = captcha.signImage(key);
-//         if (path == 'error') {
-//             res.json({
-//                 result : 'error'
-//             });
-//         };
-//         res.json({
-//             result: 'success',
-//             key : key,
-//             path : captcha.signImage(key).path
-//         });
-//     });
-// });
-//
-// router.get('/captcha/:key/:input', function (req, res) {
-//     captcha.checkImage(req.params.key, req.params.input, function (value) {
-//         if (value == 'error') {
-//             res.status(403).json({
-//                 result : 'error',
-//                 message : 'api error'
-//             });
-//
-//             return;
-//         };
-//
-//         const valueJson = JSON.parse(value);
-//
-//         if(valueJson.result == true) {
-//             res.json({
-//                 result : 'true'
-//             });
-//         } else {
-//             res.status(403).json({
-//                 result : 'error',
-//                 message : valueJson.errorMessage
-//             });
-//         };
-//
-//         console.log(valueJson);
-//
-//     });
-// });
-
 router.delete('/:id',auth.isAuthenticated('admin'), function (req, res) {
 
     const validation = index => {
@@ -97,7 +51,7 @@ router.delete('/:id',auth.isAuthenticated('admin'), function (req, res) {
         });
     };
 
-    controller.deleteOne(req.params.userId)
+    controller.deleteOne(req.params.id)
         .then(validation)
         .then(respond)
         .catch(onError);
@@ -268,19 +222,6 @@ router.post('/signup', function(req, res) {
 
         return user;
     }
-
-    // const captcha = (user, callback) => {
-    //     request.post({
-    //         url: 'https://www.google.com/recaptcha/api/siteverify',
-    //         form: {secret: '6LejvBgUAAAAAOVYE7DeBDxi-9Lev1dlmT7ca0fY', response: captcha}
-    //     }, function (err, response, body) {
-    //         const bodyJson = JSON.parse(body);
-    //         console.log(bodyJson.success,(!bodyJson), bodyJson);
-    //         callback(bodyJson.success);
-    //     });
-    //
-    //
-    // };
 
     // 아이디 체크 및 데이터 입력
     const create = user => {
