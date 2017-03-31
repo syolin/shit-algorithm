@@ -250,7 +250,6 @@ router.post('/signup', function(req, res) {
     controller.findOneByUserId(userInfo.userId)
         .then(validation)
         .then(create)
-        .then(slackUpdate)
         .then(respond)
         .catch(onError);
 
