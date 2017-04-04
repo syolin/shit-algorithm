@@ -337,8 +337,9 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                 };
                                 const getResolve2 = JSON.parse(body2 || null);
 
-                                if (isNull(getResolve) || isNull(getResolve2)) {
-                                    console.log(getResolve, " - ", getResolve2);
+                                console.log(getResolve, " - ", getResolve2);
+                                if (!getResolve || !getResolve2) {
+                                    console.log("nope : " , getResolve, " - ", getResolve2);
                                     res.status(409).json({
                                         result: 'error',
                                         message: "예기치 않은 오류가 발생했습니다."
