@@ -234,6 +234,7 @@ router.post('/',auth.isAuthenticated('admin'), function (req, res) {
 
     // Validation
     if (!problemInfo.problemName || !problemInfo.source || !problemInfo.explanation ||
+        !problemInfo.inputExample || !problemInfo.inputExample2 || !problemInfo.outputExample || !problemInfo.outputExample2 ||
         isNaN(problemInfo.problemData.timeLimit) || isNaN(problemInfo.problemData.memoryLimit)) {
         res.status(403).json({
             result : 'error',

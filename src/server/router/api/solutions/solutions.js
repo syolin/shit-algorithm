@@ -336,6 +336,15 @@ router.post('/',auth.isAuthenticated(), function (req, res) {
                                     return;
                                 };
                                 const getResolve2 = JSON.parse(body2 || null);
+
+                                if (isNull(getResolve) || isNull(getResolve2)) {
+                                    console.log(getResolve, " - ", getResolve2);
+                                    res.status(409).json({
+                                        result: 'error',
+                                        message: "예기치 않은 오류가 발생했습니다."
+                                    });
+                                    return;
+                                }
                                 /*
                                     정답 체크 후 응답
                                 */
